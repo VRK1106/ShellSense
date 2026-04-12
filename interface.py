@@ -9,7 +9,7 @@ from PyQt6.QtCore import Qt, pyqtSignal, QObject
 class HotkeySignaler(QObject):
     signal = pyqtSignal()
 
-vectorizer, le, clf = joblib.load('shellsense_v2.pkl')
+vectorizer, le, clf = joblib.load('shellsense_v3.pkl')
 
 SAFE_COMMANDS = {
     "POWER_OFF": ["shutdown", "/s", "/t", "0"],
@@ -73,20 +73,15 @@ class ShellSenseUI(QWidget):
         text_vec = vectorizer.transform([user_text.lower()])
         probs = clf.predict_proba(text_vec)[0]
         max_prob = max(probs)
-        
         prediction_id = clf.predict(text_vec)[0]
         intent = le.inverse_transform([prediction_id])[0]
-
-        # LOGIC: If confidence is above 0.35, we trust it. 
-        # For a student project on an i7, this is a safe 'usability' threshold.
+        print(f"--- Brain Analysis ---")
         if max_prob < 0.35:
-            print(f"⚠️ Confidence too low ({max_prob:.2f}). Try being more specific.")
-            self.search_bar.clear()
-            self.hide()
-            return
-            
-        print(f"✅ Intent: {intent} ({max_prob:.2f})")
-        self.execute_logic(intent, user_text)
+            print(f"❓ Low confidence ({max_prob:.2f}). Trying best guess: {intent}")
+        else:
+            print(f"✅ High confidence ({max_prob:.2f}). Intent: {intent}")
+
+        self.execute_logic(intent, user_text) # This runs in BOTH cases now
         self.search_bar.clear()
         self.hide()
 

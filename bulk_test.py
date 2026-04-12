@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 
 df = pd.read_csv('Cleaned_text_intent.csv')
-vectorizer, le, clf = joblib.load('shellsense_v2.pkl')
+vectorizer, le, clf = joblib.load('shellsense_v3.pkl')
 
 X = vectorizer.transform(df['text'].astype(str).str.lower())
 y_true = le.transform(df['intent'])

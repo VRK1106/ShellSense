@@ -1,0 +1,23 @@
+text,intent,predicted
+schedule shutdown,POWER_OFF_TIMER,POWER_OFF
+shutdown with delay,POWER_OFF_TIMER,POWER_OFF
+connection details,CHECK_IP,PING_GOOGLE
+check the signal,PING_GOOGLE,CHECK_IP
+kill the lag,PROCESS_KILL,OPEN_TASK_MANAGER
+end this program,PROCESS_KILL,OPEN_TASK_MANAGER
+force quit,PROCESS_KILL,QUIT_PROGRAM
+stop this app,PROCESS_KILL,QUIT_PROGRAM
+close it down,PROCESS_KILL,QUIT_PROGRAM
+get rid of this task,PROCESS_KILL,OPEN_TASK_MANAGER
+is my drive full,STORAGE_INFO,CHECK_IP
+check the c drive,STORAGE_INFO,OPEN_CMD
+how much room is left,STORAGE_INFO,TRACE_ROUTE
+out of space,STORAGE_INFO,SYSTEM_DETAILS
+disk health,STORAGE_INFO,TRACE_ROUTE
+shutting down,POWER_OFF,QUIT_PROGRAM
+gonna head out,POWER_OFF,OPEN_CMD
+sleep time,POWER_OFF,POWER_OFF_TIMER
+how much ram,CHECK_RESOURCES,OPEN_CALCULATOR
+memory check,CHECK_RESOURCES,OPEN_CALCULATOR
+is my cpu hot,CHECK_RESOURCES,CHECK_IP
+system load,CHECK_RESOURCES,RESTART
