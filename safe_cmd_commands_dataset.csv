@@ -1,0 +1,5801 @@
+command,intent
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+tracert google.com,TRACE_ROUTE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+shutdown /s /t 10,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+shutdown /s /t 300,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 10,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 30,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+shutdown /s /t 30,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 1200,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 10,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 30,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 10,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 60,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 10,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+shutdown /s /t 30,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 60,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 120,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 10,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 30,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 30,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /s /t 900,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+shutdown /s /t 1200,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 300,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /s /t 30,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+shutdown /s /t 300,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 3600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+shutdown /s /t 300,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /s /t 1800,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 120,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /s /t 30,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 60,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 300,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 30,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+shutdown /s /t 30,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 300,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 120,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /s /t 30,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 300,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+taskmgr,OPEN_TASK_MANAGER
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 60,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+shutdown /s /t 30,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /s /t 300,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 120,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+start cmd,OPEN_CMD
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 30,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /s /t 60,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+tasklist,SHOW_TASKS
+calc,OPEN_CALCULATOR
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+calc,OPEN_CALCULATOR
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+ping google.com,PING_GOOGLE
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+start cmd,OPEN_CMD
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 30,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 600,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 60,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 300,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 10,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ipconfig,CHECK_IP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+tasklist,SHOW_TASKS
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+nslookup google.com,DNS_LOOKUP
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+nslookup google.com,DNS_LOOKUP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+systeminfo,SHOW_SYSTEM_INFO
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+taskmgr,OPEN_TASK_MANAGER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /r /t 0,RESTART
+shutdown /s /t 30,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+shutdown /s /t 120,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 300,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 30,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 1200,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+start cmd,OPEN_CMD
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+ipconfig,CHECK_IP
+ping google.com,PING_GOOGLE
+taskmgr,OPEN_TASK_MANAGER
+taskmgr,OPEN_TASK_MANAGER
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+nslookup google.com,DNS_LOOKUP
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+tasklist,SHOW_TASKS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 600,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+ping google.com,PING_GOOGLE
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+ping google.com,PING_GOOGLE
+ipconfig,CHECK_IP
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 900,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+tasklist,SHOW_TASKS
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 10,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+ping google.com,PING_GOOGLE
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+start cmd,OPEN_CMD
+shutdown /r /t 0,RESTART
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /s /t 300,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+start cmd,OPEN_CMD
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+tasklist,SHOW_TASKS
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 3600,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+calc,OPEN_CALCULATOR
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 300,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+shutdown /r /t 0,RESTART
+nslookup google.com,DNS_LOOKUP
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+shutdown /s /t 300,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 60,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /r /t 0,RESTART
+shutdown /s /t 600,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /s /t 1800,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+tracert google.com,TRACE_ROUTE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+calc,OPEN_CALCULATOR
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+ping google.com,PING_GOOGLE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+systeminfo,SHOW_SYSTEM_INFO
+ipconfig,CHECK_IP
+shutdown /s /t 120,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 30,SHUTDOWN_TIMER
+ipconfig,CHECK_IP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+ipconfig,CHECK_IP
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+ipconfig,CHECK_IP
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+shutdown /s /t 120,SHUTDOWN_TIMER
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+ping google.com,PING_GOOGLE
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+systeminfo,SHOW_SYSTEM_INFO
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+shutdown /r /t 0,RESTART
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 900,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+taskmgr,OPEN_TASK_MANAGER
+ipconfig,CHECK_IP
+nslookup google.com,DNS_LOOKUP
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+tasklist,SHOW_TASKS
+taskmgr,OPEN_TASK_MANAGER
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+tasklist,SHOW_TASKS
+shutdown /s /t 1200,SHUTDOWN_TIMER
+tasklist,SHOW_TASKS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+ping google.com,PING_GOOGLE
+shutdown /s /t 30,SHUTDOWN_TIMER
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+start cmd,OPEN_CMD
+taskmgr,OPEN_TASK_MANAGER
+ping google.com,PING_GOOGLE
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+shutdown /r /t 0,RESTART
+"rundll32 user32.dll,LockWorkStation",LOCK_SCREEN
+nslookup google.com,DNS_LOOKUP
+taskmgr,OPEN_TASK_MANAGER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 1800,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+shutdown /s /t 600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 120,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+nslookup google.com,DNS_LOOKUP
+start cmd,OPEN_CMD
+shutdown /s /t 900,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 120,SHUTDOWN_TIMER
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+tracert google.com,TRACE_ROUTE
+shutdown /s /t 300,SHUTDOWN_TIMER
+shutdown /s /t 10,SHUTDOWN_TIMER
+shutdown /s /t 600,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start cmd,OPEN_CMD
+shutdown /s /t 300,SHUTDOWN_TIMER
+ncpa.cpl,OPEN_NETWORK_SETTINGS
+tracert google.com,TRACE_ROUTE
+calc,OPEN_CALCULATOR
+shutdown /s /t 60,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+calc,OPEN_CALCULATOR
+nslookup google.com,DNS_LOOKUP
+ipconfig,CHECK_IP
+systeminfo,SHOW_SYSTEM_INFO
+systeminfo,SHOW_SYSTEM_INFO
+taskmgr,OPEN_TASK_MANAGER
+calc,OPEN_CALCULATOR
+shutdown /s /t 900,SHUTDOWN_TIMER
+shutdown /s /t 1200,SHUTDOWN_TIMER
+shutdown /r /t 0,RESTART
+start ms-settings:network,OPEN_NETWORK_SETTINGS
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 1800,SHUTDOWN_TIMER
+shutdown /s /t 30,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+shutdown /s /t 3600,SHUTDOWN_TIMER
+calc,OPEN_CALCULATOR
+calc,OPEN_CALCULATOR

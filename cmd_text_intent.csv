@@ -1,0 +1,1201 @@
+text,intent
+power off pc,POWER_OFF
+can you power off pc,POWER_OFF
+can you power off pc,POWER_OFF
+shutdown system,POWER_OFF
+power off pc quickly,POWER_OFF
+please turn off computer,POWER_OFF
+please switch off laptop,POWER_OFF
+turn off computer now,POWER_OFF
+turn off computer now,POWER_OFF
+switch off laptop quickly,POWER_OFF
+can you switch off laptop,POWER_OFF
+can you switch off laptop,POWER_OFF
+power off pc,POWER_OFF
+shutdown system quickly,POWER_OFF
+switch off laptop now,POWER_OFF
+turn off computer quickly,POWER_OFF
+shutdown system now,POWER_OFF
+switch off laptop,POWER_OFF
+shutdown system,POWER_OFF
+please shutdown system,POWER_OFF
+can you turn off computer,POWER_OFF
+switch off laptop now,POWER_OFF
+please shutdown system,POWER_OFF
+shutdown system,POWER_OFF
+can you turn off computer,POWER_OFF
+please shutdown system,POWER_OFF
+switch off laptop,POWER_OFF
+can you switch off laptop,POWER_OFF
+can you turn off computer,POWER_OFF
+shutdown system,POWER_OFF
+turn off computer now,POWER_OFF
+power off pc now,POWER_OFF
+switch off laptop quickly,POWER_OFF
+switch off laptop quickly,POWER_OFF
+can you switch off laptop,POWER_OFF
+turn off computer now,POWER_OFF
+can you shutdown system,POWER_OFF
+power off pc quickly,POWER_OFF
+please switch off laptop,POWER_OFF
+turn off computer now,POWER_OFF
+please switch off laptop,POWER_OFF
+shutdown system,POWER_OFF
+switch off laptop,POWER_OFF
+shutdown system now,POWER_OFF
+switch off laptop now,POWER_OFF
+turn off computer now,POWER_OFF
+please switch off laptop,POWER_OFF
+switch off laptop,POWER_OFF
+please power off pc,POWER_OFF
+turn off computer quickly,POWER_OFF
+can you shutdown system,POWER_OFF
+power off pc quickly,POWER_OFF
+turn off computer,POWER_OFF
+turn off computer now,POWER_OFF
+power off pc now,POWER_OFF
+switch off laptop now,POWER_OFF
+please power off pc,POWER_OFF
+can you switch off laptop,POWER_OFF
+can you turn off computer,POWER_OFF
+shutdown system,POWER_OFF
+can you power off pc,POWER_OFF
+please switch off laptop,POWER_OFF
+switch off laptop now,POWER_OFF
+please power off pc,POWER_OFF
+turn off computer now,POWER_OFF
+can you power off pc,POWER_OFF
+switch off laptop now,POWER_OFF
+switch off laptop now,POWER_OFF
+can you shutdown system,POWER_OFF
+turn off computer,POWER_OFF
+power off pc,POWER_OFF
+turn off computer,POWER_OFF
+power off pc,POWER_OFF
+please switch off laptop,POWER_OFF
+turn off computer now,POWER_OFF
+please turn off computer,POWER_OFF
+switch off laptop quickly,POWER_OFF
+can you shutdown system,POWER_OFF
+shutdown system,POWER_OFF
+switch off laptop now,POWER_OFF
+switch off laptop quickly,POWER_OFF
+switch off laptop quickly,POWER_OFF
+turn off computer quickly,POWER_OFF
+switch off laptop now,POWER_OFF
+power off pc quickly,POWER_OFF
+power off pc,POWER_OFF
+power off pc quickly,POWER_OFF
+can you shutdown system,POWER_OFF
+turn off computer now,POWER_OFF
+can you switch off laptop,POWER_OFF
+turn off computer quickly,POWER_OFF
+can you shutdown system,POWER_OFF
+can you shutdown system,POWER_OFF
+please power off pc,POWER_OFF
+please shutdown system,POWER_OFF
+shutdown system quickly,POWER_OFF
+turn off computer,POWER_OFF
+please power off pc,POWER_OFF
+can you turn off computer,POWER_OFF
+switch off laptop now,POWER_OFF
+turn off computer,POWER_OFF
+switch off laptop now,POWER_OFF
+can you turn off computer,POWER_OFF
+please switch off laptop,POWER_OFF
+turn off computer quickly,POWER_OFF
+power off pc now,POWER_OFF
+can you power off pc,POWER_OFF
+switch off laptop,POWER_OFF
+switch off laptop,POWER_OFF
+turn off computer now,POWER_OFF
+turn off computer,POWER_OFF
+power off pc now,POWER_OFF
+please shutdown system,POWER_OFF
+please turn off computer,POWER_OFF
+power off pc quickly,POWER_OFF
+can you shutdown system,POWER_OFF
+power off pc quickly,POWER_OFF
+shutdown system quickly,POWER_OFF
+switch off laptop,POWER_OFF
+turn off computer now,POWER_OFF
+shutdown system quickly,POWER_OFF
+switch off laptop,POWER_OFF
+switch off laptop now,POWER_OFF
+shutdown system now,POWER_OFF
+shutdown system now,POWER_OFF
+please power off pc,POWER_OFF
+can you turn off computer,POWER_OFF
+shutdown system now,POWER_OFF
+please shutdown system,POWER_OFF
+switch off laptop,POWER_OFF
+please turn off computer,POWER_OFF
+turn off computer now,POWER_OFF
+can you power off pc,POWER_OFF
+power off pc,POWER_OFF
+please turn off computer,POWER_OFF
+can you turn off computer,POWER_OFF
+power off pc quickly,POWER_OFF
+shutdown system now,POWER_OFF
+turn off computer now,POWER_OFF
+can you turn off computer,POWER_OFF
+switch off laptop now,POWER_OFF
+power off pc quickly,POWER_OFF
+turn off computer,POWER_OFF
+power off pc quickly,POWER_OFF
+power off pc now,POWER_OFF
+switch off laptop now,POWER_OFF
+shutdown system quickly,POWER_OFF
+can you power off pc,POWER_OFF
+switch off laptop quickly,POWER_OFF
+shutdown system now,POWER_OFF
+shutdown after some time quickly,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+shutdown later,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+turn off in 30 minutes now,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+shutdown after some time now,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+please shutdown later,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time now,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+shutdown later,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+please shutdown later,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+turn off in 30 minutes now,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+shutdown later,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+shutdown after some time now,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+shutdown after some time now,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time now,POWER_OFF_TIMER
+shutdown after some time now,POWER_OFF_TIMER
+turn off in 30 minutes now,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+shutdown later,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+shutdown after some time now,POWER_OFF_TIMER
+turn off in 30 minutes now,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+please shutdown later,POWER_OFF_TIMER
+shutdown after some time quickly,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+shutdown after some time now,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+shutdown later,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+restart computer now,RESTART
+reboot system,RESTART
+restart my pc,RESTART
+reboot system now,RESTART
+restart my pc now,RESTART
+please reboot system,RESTART
+please reboot system,RESTART
+reboot system,RESTART
+please restart computer,RESTART
+please restart my pc,RESTART
+restart computer now,RESTART
+reboot system,RESTART
+please restart my pc,RESTART
+restart computer now,RESTART
+reboot system,RESTART
+please reboot system,RESTART
+reboot system quickly,RESTART
+can you reboot system,RESTART
+reboot system quickly,RESTART
+can you restart computer,RESTART
+reboot system now,RESTART
+restart my pc,RESTART
+restart computer,RESTART
+can you restart computer,RESTART
+restart my pc quickly,RESTART
+can you restart computer,RESTART
+please restart computer,RESTART
+please restart computer,RESTART
+restart my pc now,RESTART
+restart my pc,RESTART
+restart my pc,RESTART
+can you restart my pc,RESTART
+restart my pc now,RESTART
+can you restart my pc,RESTART
+restart my pc now,RESTART
+restart my pc now,RESTART
+reboot system quickly,RESTART
+restart computer,RESTART
+restart computer,RESTART
+can you restart computer,RESTART
+can you restart computer,RESTART
+reboot system,RESTART
+can you restart my pc,RESTART
+please restart my pc,RESTART
+restart computer,RESTART
+please restart computer,RESTART
+restart my pc quickly,RESTART
+restart computer,RESTART
+restart my pc now,RESTART
+restart my pc now,RESTART
+restart computer quickly,RESTART
+please restart computer,RESTART
+please reboot system,RESTART
+reboot system,RESTART
+can you restart my pc,RESTART
+please reboot system,RESTART
+reboot system quickly,RESTART
+please restart my pc,RESTART
+restart my pc,RESTART
+restart computer,RESTART
+restart my pc quickly,RESTART
+restart my pc quickly,RESTART
+restart computer now,RESTART
+restart my pc now,RESTART
+restart computer quickly,RESTART
+can you restart computer,RESTART
+please restart computer,RESTART
+please reboot system,RESTART
+can you reboot system,RESTART
+restart computer,RESTART
+reboot system quickly,RESTART
+can you restart computer,RESTART
+restart computer,RESTART
+reboot system now,RESTART
+restart my pc quickly,RESTART
+restart my pc now,RESTART
+restart computer now,RESTART
+restart computer,RESTART
+restart my pc,RESTART
+restart my pc now,RESTART
+reboot system quickly,RESTART
+can you restart my pc,RESTART
+restart computer now,RESTART
+reboot system now,RESTART
+restart my pc quickly,RESTART
+can you restart computer,RESTART
+reboot system,RESTART
+can you restart my pc,RESTART
+restart computer now,RESTART
+can you restart my pc,RESTART
+can you restart my pc,RESTART
+please restart my pc,RESTART
+can you reboot system,RESTART
+please reboot system,RESTART
+reboot system now,RESTART
+reboot system quickly,RESTART
+please restart my pc,RESTART
+restart computer quickly,RESTART
+please restart my pc,RESTART
+can you restart my pc,RESTART
+restart my pc quickly,RESTART
+reboot system now,RESTART
+please reboot system,RESTART
+can you reboot system,RESTART
+reboot system,RESTART
+reboot system quickly,RESTART
+restart my pc,RESTART
+restart my pc quickly,RESTART
+reboot system,RESTART
+restart computer,RESTART
+reboot system quickly,RESTART
+restart computer now,RESTART
+restart computer,RESTART
+restart computer,RESTART
+restart my pc,RESTART
+restart my pc now,RESTART
+reboot system,RESTART
+please restart computer,RESTART
+restart computer,RESTART
+please restart computer,RESTART
+reboot system quickly,RESTART
+restart computer,RESTART
+restart computer now,RESTART
+restart computer now,RESTART
+reboot system,RESTART
+please restart my pc,RESTART
+restart computer quickly,RESTART
+can you restart computer,RESTART
+restart computer now,RESTART
+restart computer,RESTART
+restart my pc quickly,RESTART
+can you restart computer,RESTART
+can you restart computer,RESTART
+can you restart computer,RESTART
+restart my pc,RESTART
+reboot system,RESTART
+please restart computer,RESTART
+restart computer,RESTART
+restart my pc,RESTART
+reboot system,RESTART
+please reboot system,RESTART
+reboot system now,RESTART
+restart my pc,RESTART
+restart my pc now,RESTART
+restart computer quickly,RESTART
+please restart my pc,RESTART
+restart my pc quickly,RESTART
+please restart my pc,RESTART
+restart computer now,RESTART
+reboot system quickly,RESTART
+open network settings,OPEN_NET
+please open wifi settings,OPEN_NET
+show internet settings now,OPEN_NET
+show internet settings now,OPEN_NET
+can you show internet settings,OPEN_NET
+please open wifi settings,OPEN_NET
+can you open network settings,OPEN_NET
+can you open wifi settings,OPEN_NET
+open wifi settings,OPEN_NET
+open network settings quickly,OPEN_NET
+show internet settings quickly,OPEN_NET
+please open network settings,OPEN_NET
+can you show internet settings,OPEN_NET
+open network settings quickly,OPEN_NET
+open wifi settings now,OPEN_NET
+can you open wifi settings,OPEN_NET
+open network settings now,OPEN_NET
+open network settings now,OPEN_NET
+open network settings,OPEN_NET
+can you open wifi settings,OPEN_NET
+open network settings now,OPEN_NET
+open network settings quickly,OPEN_NET
+can you open network settings,OPEN_NET
+open network settings,OPEN_NET
+can you open network settings,OPEN_NET
+please show internet settings,OPEN_NET
+open network settings now,OPEN_NET
+open network settings,OPEN_NET
+can you open network settings,OPEN_NET
+show internet settings quickly,OPEN_NET
+show internet settings quickly,OPEN_NET
+please show internet settings,OPEN_NET
+can you open network settings,OPEN_NET
+please open network settings,OPEN_NET
+open network settings quickly,OPEN_NET
+show internet settings now,OPEN_NET
+open wifi settings now,OPEN_NET
+show internet settings,OPEN_NET
+open wifi settings,OPEN_NET
+open network settings,OPEN_NET
+can you show internet settings,OPEN_NET
+show internet settings quickly,OPEN_NET
+open wifi settings,OPEN_NET
+show internet settings now,OPEN_NET
+please open network settings,OPEN_NET
+open wifi settings quickly,OPEN_NET
+open wifi settings,OPEN_NET
+can you open network settings,OPEN_NET
+show internet settings quickly,OPEN_NET
+please show internet settings,OPEN_NET
+open network settings,OPEN_NET
+open network settings,OPEN_NET
+please open network settings,OPEN_NET
+open network settings quickly,OPEN_NET
+open wifi settings now,OPEN_NET
+can you show internet settings,OPEN_NET
+can you open network settings,OPEN_NET
+can you show internet settings,OPEN_NET
+can you open network settings,OPEN_NET
+can you open network settings,OPEN_NET
+show internet settings,OPEN_NET
+can you open wifi settings,OPEN_NET
+show internet settings quickly,OPEN_NET
+show internet settings now,OPEN_NET
+open network settings now,OPEN_NET
+open wifi settings,OPEN_NET
+open wifi settings,OPEN_NET
+please open network settings,OPEN_NET
+open network settings quickly,OPEN_NET
+show internet settings,OPEN_NET
+open network settings now,OPEN_NET
+can you open network settings,OPEN_NET
+can you show internet settings,OPEN_NET
+can you open wifi settings,OPEN_NET
+open wifi settings quickly,OPEN_NET
+can you show internet settings,OPEN_NET
+open network settings now,OPEN_NET
+can you open wifi settings,OPEN_NET
+open network settings now,OPEN_NET
+open wifi settings quickly,OPEN_NET
+show internet settings now,OPEN_NET
+please show internet settings,OPEN_NET
+show internet settings now,OPEN_NET
+open network settings now,OPEN_NET
+open wifi settings quickly,OPEN_NET
+can you show internet settings,OPEN_NET
+please open network settings,OPEN_NET
+can you show internet settings,OPEN_NET
+open wifi settings,OPEN_NET
+please open wifi settings,OPEN_NET
+please show internet settings,OPEN_NET
+open wifi settings quickly,OPEN_NET
+open wifi settings now,OPEN_NET
+open network settings now,OPEN_NET
+open network settings quickly,OPEN_NET
+open wifi settings,OPEN_NET
+open wifi settings now,OPEN_NET
+please show internet settings,OPEN_NET
+can you show internet settings,OPEN_NET
+please show internet settings,OPEN_NET
+show internet settings quickly,OPEN_NET
+open network settings,OPEN_NET
+open wifi settings,OPEN_NET
+open wifi settings,OPEN_NET
+can you show internet settings,OPEN_NET
+can you show internet settings,OPEN_NET
+please show internet settings,OPEN_NET
+show internet settings,OPEN_NET
+show internet settings,OPEN_NET
+please show internet settings,OPEN_NET
+can you show internet settings,OPEN_NET
+can you show internet settings,OPEN_NET
+show internet settings quickly,OPEN_NET
+open wifi settings quickly,OPEN_NET
+please open network settings,OPEN_NET
+please open wifi settings,OPEN_NET
+please open network settings,OPEN_NET
+show internet settings,OPEN_NET
+please open network settings,OPEN_NET
+open network settings,OPEN_NET
+can you show internet settings,OPEN_NET
+open network settings,OPEN_NET
+open wifi settings quickly,OPEN_NET
+show internet settings quickly,OPEN_NET
+can you show internet settings,OPEN_NET
+can you show internet settings,OPEN_NET
+open wifi settings now,OPEN_NET
+please open wifi settings,OPEN_NET
+can you open network settings,OPEN_NET
+can you show internet settings,OPEN_NET
+open network settings quickly,OPEN_NET
+please open network settings,OPEN_NET
+open wifi settings quickly,OPEN_NET
+can you show internet settings,OPEN_NET
+open wifi settings quickly,OPEN_NET
+open wifi settings,OPEN_NET
+please show internet settings,OPEN_NET
+can you show internet settings,OPEN_NET
+open network settings,OPEN_NET
+please open wifi settings,OPEN_NET
+please show internet settings,OPEN_NET
+can you open wifi settings,OPEN_NET
+show internet settings quickly,OPEN_NET
+show internet settings,OPEN_NET
+show internet settings now,OPEN_NET
+open wifi settings now,OPEN_NET
+open wifi settings quickly,OPEN_NET
+show internet settings,OPEN_NET
+can you show internet settings,OPEN_NET
+please open network settings,OPEN_NET
+please lock my computer,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+please lock my computer,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+can you lock screen now,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+lock my computer,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+lock my computer,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+lock my computer,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+can you lock screen now,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+lock my computer,LOCK_SCREEN
+can you lock screen now,LOCK_SCREEN
+can you lock screen now,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+please lock my computer,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+please lock my computer,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+please lock my computer,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+please lock my computer,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+can you lock screen now,LOCK_SCREEN
+please lock my computer,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+please lock my computer,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+lock my computer,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+can you lock screen now,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+lock my computer,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+please lock my computer,LOCK_SCREEN
+lock my computer,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+please check processes,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+can you check processes,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+can you check processes,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+check processes,OPEN_TASK_MANAGER
+can you open task manager,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+check processes now,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+check processes now,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+please check processes,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+please check processes,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+can you check processes,OPEN_TASK_MANAGER
+please check processes,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+check processes now,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+please check processes,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+can you open task manager,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+can you check processes,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+please check processes,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+can you open task manager,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+can you open task manager,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+check processes,OPEN_TASK_MANAGER
+can you check processes,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+can you check processes,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+can you open task manager,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+can you check processes,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+please check processes,OPEN_TASK_MANAGER
+check processes,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+check processes now,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+check processes now,OPEN_TASK_MANAGER
+please check processes,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+check processes,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+check processes now,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+can you check processes,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+check processes,OPEN_TASK_MANAGER
+can you open task manager,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+can you open task manager,OPEN_TASK_MANAGER
+check processes now,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+please check processes,OPEN_TASK_MANAGER
+open command prompt,OPEN_CMD
+can you start terminal,OPEN_CMD
+open command prompt now,OPEN_CMD
+can you start terminal,OPEN_CMD
+start terminal quickly,OPEN_CMD
+can you open command prompt,OPEN_CMD
+start terminal now,OPEN_CMD
+start terminal quickly,OPEN_CMD
+please open command prompt,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+start terminal quickly,OPEN_CMD
+please start terminal,OPEN_CMD
+start terminal quickly,OPEN_CMD
+please open command prompt,OPEN_CMD
+open command prompt now,OPEN_CMD
+can you start terminal,OPEN_CMD
+launch cmd now,OPEN_CMD
+can you launch cmd,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+launch cmd now,OPEN_CMD
+please open command prompt,OPEN_CMD
+can you open command prompt,OPEN_CMD
+launch cmd now,OPEN_CMD
+start terminal,OPEN_CMD
+please start terminal,OPEN_CMD
+start terminal now,OPEN_CMD
+open command prompt,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+please launch cmd,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+please open command prompt,OPEN_CMD
+start terminal,OPEN_CMD
+can you launch cmd,OPEN_CMD
+launch cmd now,OPEN_CMD
+can you launch cmd,OPEN_CMD
+can you open command prompt,OPEN_CMD
+open command prompt quickly,OPEN_CMD
+can you open command prompt,OPEN_CMD
+can you start terminal,OPEN_CMD
+please start terminal,OPEN_CMD
+launch cmd now,OPEN_CMD
+please start terminal,OPEN_CMD
+can you start terminal,OPEN_CMD
+can you launch cmd,OPEN_CMD
+start terminal now,OPEN_CMD
+can you start terminal,OPEN_CMD
+please open command prompt,OPEN_CMD
+please open command prompt,OPEN_CMD
+open command prompt now,OPEN_CMD
+start terminal,OPEN_CMD
+please start terminal,OPEN_CMD
+start terminal now,OPEN_CMD
+start terminal,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+open command prompt,OPEN_CMD
+start terminal quickly,OPEN_CMD
+start terminal quickly,OPEN_CMD
+can you launch cmd,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+open command prompt quickly,OPEN_CMD
+please open command prompt,OPEN_CMD
+launch cmd,OPEN_CMD
+start terminal,OPEN_CMD
+please launch cmd,OPEN_CMD
+please launch cmd,OPEN_CMD
+launch cmd now,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+can you launch cmd,OPEN_CMD
+open command prompt,OPEN_CMD
+start terminal quickly,OPEN_CMD
+open command prompt,OPEN_CMD
+please start terminal,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+please launch cmd,OPEN_CMD
+open command prompt quickly,OPEN_CMD
+start terminal now,OPEN_CMD
+can you launch cmd,OPEN_CMD
+launch cmd now,OPEN_CMD
+open command prompt quickly,OPEN_CMD
+please start terminal,OPEN_CMD
+can you open command prompt,OPEN_CMD
+can you start terminal,OPEN_CMD
+start terminal now,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+start terminal quickly,OPEN_CMD
+can you start terminal,OPEN_CMD
+can you open command prompt,OPEN_CMD
+start terminal,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+start terminal now,OPEN_CMD
+start terminal,OPEN_CMD
+can you start terminal,OPEN_CMD
+can you start terminal,OPEN_CMD
+please launch cmd,OPEN_CMD
+can you launch cmd,OPEN_CMD
+open command prompt now,OPEN_CMD
+please launch cmd,OPEN_CMD
+start terminal,OPEN_CMD
+start terminal,OPEN_CMD
+launch cmd now,OPEN_CMD
+can you open command prompt,OPEN_CMD
+please start terminal,OPEN_CMD
+can you open command prompt,OPEN_CMD
+open command prompt now,OPEN_CMD
+can you open command prompt,OPEN_CMD
+can you start terminal,OPEN_CMD
+please open command prompt,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+can you launch cmd,OPEN_CMD
+can you open command prompt,OPEN_CMD
+please open command prompt,OPEN_CMD
+open command prompt quickly,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+can you open command prompt,OPEN_CMD
+open command prompt now,OPEN_CMD
+can you launch cmd,OPEN_CMD
+can you launch cmd,OPEN_CMD
+please open command prompt,OPEN_CMD
+can you open command prompt,OPEN_CMD
+launch cmd,OPEN_CMD
+can you open command prompt,OPEN_CMD
+please start terminal,OPEN_CMD
+please open command prompt,OPEN_CMD
+launch cmd,OPEN_CMD
+launch cmd,OPEN_CMD
+please start terminal,OPEN_CMD
+can you launch cmd,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+can you open command prompt,OPEN_CMD
+open command prompt quickly,OPEN_CMD
+open command prompt,OPEN_CMD
+launch cmd,OPEN_CMD
+start terminal,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+launch cmd now,OPEN_CMD
+start terminal quickly,OPEN_CMD
+please launch cmd,OPEN_CMD
+can you launch cmd,OPEN_CMD
+start terminal now,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+can you launch cmd,OPEN_CMD
+can you start terminal,OPEN_CMD
+can you start terminal,OPEN_CMD
+start terminal,OPEN_CMD
+open command prompt now,OPEN_CMD
+start terminal now,OPEN_CMD
+please open command prompt,OPEN_CMD
+launch cmd,OPEN_CMD
+please open command prompt,OPEN_CMD
+can you start terminal,OPEN_CMD
+launch calculator quickly,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+can you launch calculator,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+can you launch calculator,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+open calculator now,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+open calculator now,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+open calculator,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+please open calculator,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+start calc app,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+start calc app,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+open calculator now,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+can you launch calculator,OPEN_CALCULATOR
+start calc app,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+can you launch calculator,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+open calculator,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+open calculator,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+start calc app,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+please open calculator,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+start calc app,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+can you launch calculator,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+please open calculator,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+please open calculator,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+can you launch calculator,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+can you launch calculator,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+please open calculator,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+please open calculator,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+can you launch calculator,OPEN_CALCULATOR
+start calc app,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+open calculator,OPEN_CALCULATOR
+start calc app,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+open calculator,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+please open calculator,OPEN_CALCULATOR
+open calculator,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+open calculator now,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+open calculator,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+launch calculator quickly,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+open calculator,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR

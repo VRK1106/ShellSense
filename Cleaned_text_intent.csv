@@ -1,0 +1,1049 @@
+text,intent
+power off pc,POWER_OFF
+can you power off pc,POWER_OFF
+shutdown system,POWER_OFF
+power off pc quickly,POWER_OFF
+please turn off computer,POWER_OFF
+please switch off laptop,POWER_OFF
+turn off computer now,POWER_OFF
+switch off laptop quickly,POWER_OFF
+can you switch off laptop,POWER_OFF
+shutdown system quickly,POWER_OFF
+switch off laptop now,POWER_OFF
+turn off computer quickly,POWER_OFF
+shutdown system now,POWER_OFF
+switch off laptop,POWER_OFF
+please shutdown system,POWER_OFF
+can you turn off computer,POWER_OFF
+power off pc now,POWER_OFF
+can you shutdown system,POWER_OFF
+please power off pc,POWER_OFF
+turn off computer,POWER_OFF
+shutdown after some time quickly,POWER_OFF_TIMER
+turn off in 30 minutes,POWER_OFF_TIMER
+shutdown after some time,POWER_OFF_TIMER
+can you turn off in 30 minutes,POWER_OFF_TIMER
+please shutdown after some time,POWER_OFF_TIMER
+shutdown later,POWER_OFF_TIMER
+shutdown later now,POWER_OFF_TIMER
+please turn off in 30 minutes,POWER_OFF_TIMER
+turn off in 30 minutes now,POWER_OFF_TIMER
+shutdown after some time now,POWER_OFF_TIMER
+can you shutdown after some time,POWER_OFF_TIMER
+turn off in 30 minutes quickly,POWER_OFF_TIMER
+please shutdown later,POWER_OFF_TIMER
+shutdown later quickly,POWER_OFF_TIMER
+can you shutdown later,POWER_OFF_TIMER
+restart computer now,RESTART
+reboot system,RESTART
+restart my pc,RESTART
+reboot system now,RESTART
+restart my pc now,RESTART
+please reboot system,RESTART
+please restart computer,RESTART
+please restart my pc,RESTART
+reboot system quickly,RESTART
+can you reboot system,RESTART
+can you restart computer,RESTART
+restart computer,RESTART
+restart my pc quickly,RESTART
+can you restart my pc,RESTART
+restart computer quickly,RESTART
+open network settings,OPEN_NETWORK_SETTINGS
+please open wifi settings,OPEN_NETWORK_SETTINGS
+show internet settings now,OPEN_NETWORK_SETTINGS
+can you show internet settings,OPEN_NETWORK_SETTINGS
+can you open network settings,OPEN_NETWORK_SETTINGS
+can you open wifi settings,OPEN_NETWORK_SETTINGS
+open wifi settings,OPEN_NETWORK_SETTINGS
+open network settings quickly,OPEN_NETWORK_SETTINGS
+show internet settings quickly,OPEN_NETWORK_SETTINGS
+please open network settings,OPEN_NETWORK_SETTINGS
+open wifi settings now,OPEN_NETWORK_SETTINGS
+open network settings now,OPEN_NETWORK_SETTINGS
+please show internet settings,OPEN_NETWORK_SETTINGS
+show internet settings,OPEN_NETWORK_SETTINGS
+open wifi settings quickly,OPEN_NETWORK_SETTINGS
+please lock my computer,LOCK_SCREEN
+lock screen now,LOCK_SCREEN
+lock screen now quickly,LOCK_SCREEN
+can you secure my pc,LOCK_SCREEN
+please lock screen now,LOCK_SCREEN
+lock my computer quickly,LOCK_SCREEN
+secure my pc now,LOCK_SCREEN
+lock screen now now,LOCK_SCREEN
+can you lock my computer,LOCK_SCREEN
+lock my computer now,LOCK_SCREEN
+secure my pc,LOCK_SCREEN
+can you lock screen now,LOCK_SCREEN
+lock my computer,LOCK_SCREEN
+please secure my pc,LOCK_SCREEN
+secure my pc quickly,LOCK_SCREEN
+please check processes,OPEN_TASK_MANAGER
+open task manager now,OPEN_TASK_MANAGER
+can you check processes,OPEN_TASK_MANAGER
+can you show running apps,OPEN_TASK_MANAGER
+show running apps now,OPEN_TASK_MANAGER
+please show running apps,OPEN_TASK_MANAGER
+check processes quickly,OPEN_TASK_MANAGER
+open task manager,OPEN_TASK_MANAGER
+please open task manager,OPEN_TASK_MANAGER
+check processes,OPEN_TASK_MANAGER
+can you open task manager,OPEN_TASK_MANAGER
+open task manager quickly,OPEN_TASK_MANAGER
+check processes now,OPEN_TASK_MANAGER
+show running apps,OPEN_TASK_MANAGER
+show running apps quickly,OPEN_TASK_MANAGER
+open command prompt,OPEN_CMD
+can you start terminal,OPEN_CMD
+open command prompt now,OPEN_CMD
+start terminal quickly,OPEN_CMD
+can you open command prompt,OPEN_CMD
+start terminal now,OPEN_CMD
+please open command prompt,OPEN_CMD
+launch cmd quickly,OPEN_CMD
+please start terminal,OPEN_CMD
+launch cmd now,OPEN_CMD
+can you launch cmd,OPEN_CMD
+start terminal,OPEN_CMD
+please launch cmd,OPEN_CMD
+open command prompt quickly,OPEN_CMD
+launch cmd,OPEN_CMD
+launch calculator quickly,OPEN_CALCULATOR
+open calculator quickly,OPEN_CALCULATOR
+can you launch calculator,OPEN_CALCULATOR
+start calc app now,OPEN_CALCULATOR
+please launch calculator,OPEN_CALCULATOR
+can you start calc app,OPEN_CALCULATOR
+launch calculator now,OPEN_CALCULATOR
+start calc app quickly,OPEN_CALCULATOR
+please start calc app,OPEN_CALCULATOR
+open calculator now,OPEN_CALCULATOR
+open calculator,OPEN_CALCULATOR
+launch calculator,OPEN_CALCULATOR
+can you open calculator,OPEN_CALCULATOR
+please open calculator,OPEN_CALCULATOR
+start calc app,OPEN_CALCULATOR
+launch calc,OPEN_CALCULATOR
+start calculator,OPEN_CALCULATOR
+can you open calc,OPEN_CALCULATOR
+i need calculator,OPEN_CALCULATOR
+run command prompt,OPEN_CMD
+open cmd window,OPEN_CMD
+launch terminal,OPEN_CMD
+start cmd,OPEN_CMD
+show task manager,OPEN_TASK_MANAGER
+open processes,OPEN_TASK_MANAGER
+check running apps,OPEN_TASK_MANAGER
+view task manager,OPEN_TASK_MANAGER
+lock screen,LOCK_SCREEN
+lock device,LOCK_SCREEN
+lock workstation,LOCK_SCREEN
+open internet settings,OPEN_NETWORK_SETTINGS
+network settings please,OPEN_NETWORK_SETTINGS
+show wifi settings,OPEN_NETWORK_SETTINGS
+open connections,OPEN_NETWORK_SETTINGS
+check system details,SYSTEM_DETAILS
+display system information,SYSTEM_DETAILS
+show system info,SYSTEM_DETAILS
+system information,SYSTEM_DETAILS
+view system info,SYSTEM_DETAILS
+list processes,OPEN_TASK_MANAGER
+show running tasks,OPEN_TASK_MANAGER
+display tasks,OPEN_TASK_MANAGER
+task list,OPEN_TASK_MANAGER
+display ip info,CHECK_IP
+ip details,CHECK_IP
+what is my ip,CHECK_IP
+check ip address,CHECK_IP
+show ip config,CHECK_IP
+check connectivity,PING_GOOGLE
+test network,PING_GOOGLE
+check internet connection,PING_GOOGLE
+ping google,PING_GOOGLE
+ping server,PING_GOOGLE
+track route,TRACE_ROUTE
+network route check,TRACE_ROUTE
+trace route to google,TRACE_ROUTE
+tracert google,TRACE_ROUTE
+trace network path,TRACE_ROUTE
+find domain ip,DNS_LOOKUP
+check dns,DNS_LOOKUP
+dns lookup,DNS_LOOKUP
+nslookup google,DNS_LOOKUP
+resolve domain,DNS_LOOKUP
+turn off later,POWER_OFF_TIMER
+schedule shutdown,POWER_OFF_TIMER
+shutdown after time,POWER_OFF_TIMER
+power off after time,POWER_OFF_TIMER
+shutdown with delay,POWER_OFF_TIMER
+restart pc,RESTART
+restart machine,RESTART
+reboot now,RESTART
+ip address,CHECK_IP
+can you ip address,CHECK_IP
+please ip address,CHECK_IP
+i need to ip address,CHECK_IP
+i want to ip address,CHECK_IP
+launch ip address,CHECK_IP
+start ip address,CHECK_IP
+execute ip address,CHECK_IP
+run ip address,CHECK_IP
+open ip address,CHECK_IP
+display ip address,CHECK_IP
+monitor ip address,CHECK_IP
+show me ip address,CHECK_IP
+give me ip address,CHECK_IP
+ip config,CHECK_IP
+can you ip config,CHECK_IP
+please ip config,CHECK_IP
+i need to ip config,CHECK_IP
+i want to ip config,CHECK_IP
+launch ip config,CHECK_IP
+start ip config,CHECK_IP
+execute ip config,CHECK_IP
+run ip config,CHECK_IP
+open ip config,CHECK_IP
+check ip config,CHECK_IP
+display ip config,CHECK_IP
+monitor ip config,CHECK_IP
+show me ip config,CHECK_IP
+give me ip config,CHECK_IP
+local ip,CHECK_IP
+can you local ip,CHECK_IP
+please local ip,CHECK_IP
+i need to local ip,CHECK_IP
+i want to local ip,CHECK_IP
+launch local ip,CHECK_IP
+start local ip,CHECK_IP
+execute local ip,CHECK_IP
+run local ip,CHECK_IP
+open local ip,CHECK_IP
+check local ip,CHECK_IP
+display local ip,CHECK_IP
+monitor local ip,CHECK_IP
+show me local ip,CHECK_IP
+give me local ip,CHECK_IP
+network ip,CHECK_IP
+can you network ip,CHECK_IP
+please network ip,CHECK_IP
+i need to network ip,CHECK_IP
+i want to network ip,CHECK_IP
+launch network ip,CHECK_IP
+start network ip,CHECK_IP
+execute network ip,CHECK_IP
+run network ip,CHECK_IP
+open network ip,CHECK_IP
+check network ip,CHECK_IP
+display network ip,CHECK_IP
+monitor network ip,CHECK_IP
+show me network ip,CHECK_IP
+give me network ip,CHECK_IP
+my ip info,CHECK_IP
+can you my ip info,CHECK_IP
+please my ip info,CHECK_IP
+i need to my ip info,CHECK_IP
+i want to my ip info,CHECK_IP
+launch my ip info,CHECK_IP
+start my ip info,CHECK_IP
+execute my ip info,CHECK_IP
+run my ip info,CHECK_IP
+open my ip info,CHECK_IP
+check my ip info,CHECK_IP
+display my ip info,CHECK_IP
+monitor my ip info,CHECK_IP
+show me my ip info,CHECK_IP
+give me my ip info,CHECK_IP
+pc specs,SYSTEM_DETAILS
+can you pc specs,SYSTEM_DETAILS
+please pc specs,SYSTEM_DETAILS
+i need to pc specs,SYSTEM_DETAILS
+i want to pc specs,SYSTEM_DETAILS
+launch pc specs,SYSTEM_DETAILS
+start pc specs,SYSTEM_DETAILS
+execute pc specs,SYSTEM_DETAILS
+run pc specs,SYSTEM_DETAILS
+open pc specs,SYSTEM_DETAILS
+check pc specs,SYSTEM_DETAILS
+display pc specs,SYSTEM_DETAILS
+monitor pc specs,SYSTEM_DETAILS
+show me pc specs,SYSTEM_DETAILS
+give me pc specs,SYSTEM_DETAILS
+can you system information,SYSTEM_DETAILS
+please system information,SYSTEM_DETAILS
+i need to system information,SYSTEM_DETAILS
+i want to system information,SYSTEM_DETAILS
+launch system information,SYSTEM_DETAILS
+start system information,SYSTEM_DETAILS
+execute system information,SYSTEM_DETAILS
+run system information,SYSTEM_DETAILS
+open system information,SYSTEM_DETAILS
+check system information,SYSTEM_DETAILS
+monitor system information,SYSTEM_DETAILS
+show me system information,SYSTEM_DETAILS
+give me system information,SYSTEM_DETAILS
+hardware info,SYSTEM_DETAILS
+can you hardware info,SYSTEM_DETAILS
+please hardware info,SYSTEM_DETAILS
+i need to hardware info,SYSTEM_DETAILS
+i want to hardware info,SYSTEM_DETAILS
+launch hardware info,SYSTEM_DETAILS
+start hardware info,SYSTEM_DETAILS
+execute hardware info,SYSTEM_DETAILS
+run hardware info,SYSTEM_DETAILS
+open hardware info,SYSTEM_DETAILS
+check hardware info,SYSTEM_DETAILS
+display hardware info,SYSTEM_DETAILS
+monitor hardware info,SYSTEM_DETAILS
+show me hardware info,SYSTEM_DETAILS
+give me hardware info,SYSTEM_DETAILS
+windows version,SYSTEM_DETAILS
+can you windows version,SYSTEM_DETAILS
+please windows version,SYSTEM_DETAILS
+i need to windows version,SYSTEM_DETAILS
+i want to windows version,SYSTEM_DETAILS
+launch windows version,SYSTEM_DETAILS
+start windows version,SYSTEM_DETAILS
+execute windows version,SYSTEM_DETAILS
+run windows version,SYSTEM_DETAILS
+open windows version,SYSTEM_DETAILS
+check windows version,SYSTEM_DETAILS
+display windows version,SYSTEM_DETAILS
+monitor windows version,SYSTEM_DETAILS
+show me windows version,SYSTEM_DETAILS
+give me windows version,SYSTEM_DETAILS
+bios details,SYSTEM_DETAILS
+can you bios details,SYSTEM_DETAILS
+please bios details,SYSTEM_DETAILS
+i need to bios details,SYSTEM_DETAILS
+i want to bios details,SYSTEM_DETAILS
+launch bios details,SYSTEM_DETAILS
+start bios details,SYSTEM_DETAILS
+execute bios details,SYSTEM_DETAILS
+run bios details,SYSTEM_DETAILS
+open bios details,SYSTEM_DETAILS
+check bios details,SYSTEM_DETAILS
+display bios details,SYSTEM_DETAILS
+monitor bios details,SYSTEM_DETAILS
+show me bios details,SYSTEM_DETAILS
+give me bios details,SYSTEM_DETAILS
+internet connection,PING_GOOGLE
+can you internet connection,PING_GOOGLE
+please internet connection,PING_GOOGLE
+i need to internet connection,PING_GOOGLE
+i want to internet connection,PING_GOOGLE
+launch internet connection,PING_GOOGLE
+start internet connection,PING_GOOGLE
+execute internet connection,PING_GOOGLE
+run internet connection,PING_GOOGLE
+open internet connection,PING_GOOGLE
+display internet connection,PING_GOOGLE
+monitor internet connection,PING_GOOGLE
+show me internet connection,PING_GOOGLE
+give me internet connection,PING_GOOGLE
+connectivity,PING_GOOGLE
+can you connectivity,PING_GOOGLE
+please connectivity,PING_GOOGLE
+i need to connectivity,PING_GOOGLE
+i want to connectivity,PING_GOOGLE
+launch connectivity,PING_GOOGLE
+start connectivity,PING_GOOGLE
+execute connectivity,PING_GOOGLE
+run connectivity,PING_GOOGLE
+open connectivity,PING_GOOGLE
+display connectivity,PING_GOOGLE
+monitor connectivity,PING_GOOGLE
+show me connectivity,PING_GOOGLE
+give me connectivity,PING_GOOGLE
+can you ping google,PING_GOOGLE
+please ping google,PING_GOOGLE
+i need to ping google,PING_GOOGLE
+i want to ping google,PING_GOOGLE
+launch ping google,PING_GOOGLE
+start ping google,PING_GOOGLE
+execute ping google,PING_GOOGLE
+run ping google,PING_GOOGLE
+open ping google,PING_GOOGLE
+check ping google,PING_GOOGLE
+display ping google,PING_GOOGLE
+monitor ping google,PING_GOOGLE
+show me ping google,PING_GOOGLE
+give me ping google,PING_GOOGLE
+network test,PING_GOOGLE
+can you network test,PING_GOOGLE
+please network test,PING_GOOGLE
+i need to network test,PING_GOOGLE
+i want to network test,PING_GOOGLE
+launch network test,PING_GOOGLE
+start network test,PING_GOOGLE
+execute network test,PING_GOOGLE
+run network test,PING_GOOGLE
+open network test,PING_GOOGLE
+check network test,PING_GOOGLE
+display network test,PING_GOOGLE
+monitor network test,PING_GOOGLE
+show me network test,PING_GOOGLE
+give me network test,PING_GOOGLE
+is internet working,PING_GOOGLE
+can you is internet working,PING_GOOGLE
+please is internet working,PING_GOOGLE
+i need to is internet working,PING_GOOGLE
+i want to is internet working,PING_GOOGLE
+launch is internet working,PING_GOOGLE
+start is internet working,PING_GOOGLE
+execute is internet working,PING_GOOGLE
+run is internet working,PING_GOOGLE
+open is internet working,PING_GOOGLE
+check is internet working,PING_GOOGLE
+display is internet working,PING_GOOGLE
+monitor is internet working,PING_GOOGLE
+show me is internet working,PING_GOOGLE
+give me is internet working,PING_GOOGLE
+trace route,TRACE_ROUTE
+can you trace route,TRACE_ROUTE
+please trace route,TRACE_ROUTE
+i need to trace route,TRACE_ROUTE
+i want to trace route,TRACE_ROUTE
+launch trace route,TRACE_ROUTE
+start trace route,TRACE_ROUTE
+execute trace route,TRACE_ROUTE
+run trace route,TRACE_ROUTE
+open trace route,TRACE_ROUTE
+check trace route,TRACE_ROUTE
+display trace route,TRACE_ROUTE
+monitor trace route,TRACE_ROUTE
+show me trace route,TRACE_ROUTE
+give me trace route,TRACE_ROUTE
+network path,TRACE_ROUTE
+can you network path,TRACE_ROUTE
+please network path,TRACE_ROUTE
+i need to network path,TRACE_ROUTE
+i want to network path,TRACE_ROUTE
+launch network path,TRACE_ROUTE
+start network path,TRACE_ROUTE
+execute network path,TRACE_ROUTE
+run network path,TRACE_ROUTE
+open network path,TRACE_ROUTE
+check network path,TRACE_ROUTE
+display network path,TRACE_ROUTE
+monitor network path,TRACE_ROUTE
+show me network path,TRACE_ROUTE
+give me network path,TRACE_ROUTE
+tracert,TRACE_ROUTE
+can you tracert,TRACE_ROUTE
+please tracert,TRACE_ROUTE
+i need to tracert,TRACE_ROUTE
+i want to tracert,TRACE_ROUTE
+launch tracert,TRACE_ROUTE
+start tracert,TRACE_ROUTE
+execute tracert,TRACE_ROUTE
+run tracert,TRACE_ROUTE
+open tracert,TRACE_ROUTE
+check tracert,TRACE_ROUTE
+display tracert,TRACE_ROUTE
+monitor tracert,TRACE_ROUTE
+show me tracert,TRACE_ROUTE
+give me tracert,TRACE_ROUTE
+can you track route,TRACE_ROUTE
+please track route,TRACE_ROUTE
+i need to track route,TRACE_ROUTE
+i want to track route,TRACE_ROUTE
+launch track route,TRACE_ROUTE
+start track route,TRACE_ROUTE
+execute track route,TRACE_ROUTE
+run track route,TRACE_ROUTE
+open track route,TRACE_ROUTE
+check track route,TRACE_ROUTE
+display track route,TRACE_ROUTE
+monitor track route,TRACE_ROUTE
+show me track route,TRACE_ROUTE
+give me track route,TRACE_ROUTE
+path to server,TRACE_ROUTE
+can you path to server,TRACE_ROUTE
+please path to server,TRACE_ROUTE
+i need to path to server,TRACE_ROUTE
+i want to path to server,TRACE_ROUTE
+launch path to server,TRACE_ROUTE
+start path to server,TRACE_ROUTE
+execute path to server,TRACE_ROUTE
+run path to server,TRACE_ROUTE
+open path to server,TRACE_ROUTE
+check path to server,TRACE_ROUTE
+display path to server,TRACE_ROUTE
+monitor path to server,TRACE_ROUTE
+show me path to server,TRACE_ROUTE
+give me path to server,TRACE_ROUTE
+dns info,DNS_LOOKUP
+can you dns info,DNS_LOOKUP
+please dns info,DNS_LOOKUP
+i need to dns info,DNS_LOOKUP
+i want to dns info,DNS_LOOKUP
+launch dns info,DNS_LOOKUP
+start dns info,DNS_LOOKUP
+execute dns info,DNS_LOOKUP
+run dns info,DNS_LOOKUP
+open dns info,DNS_LOOKUP
+check dns info,DNS_LOOKUP
+display dns info,DNS_LOOKUP
+monitor dns info,DNS_LOOKUP
+show me dns info,DNS_LOOKUP
+give me dns info,DNS_LOOKUP
+nslookup,DNS_LOOKUP
+can you nslookup,DNS_LOOKUP
+please nslookup,DNS_LOOKUP
+i need to nslookup,DNS_LOOKUP
+i want to nslookup,DNS_LOOKUP
+launch nslookup,DNS_LOOKUP
+start nslookup,DNS_LOOKUP
+execute nslookup,DNS_LOOKUP
+run nslookup,DNS_LOOKUP
+open nslookup,DNS_LOOKUP
+check nslookup,DNS_LOOKUP
+display nslookup,DNS_LOOKUP
+monitor nslookup,DNS_LOOKUP
+show me nslookup,DNS_LOOKUP
+give me nslookup,DNS_LOOKUP
+can you resolve domain,DNS_LOOKUP
+please resolve domain,DNS_LOOKUP
+i need to resolve domain,DNS_LOOKUP
+i want to resolve domain,DNS_LOOKUP
+launch resolve domain,DNS_LOOKUP
+start resolve domain,DNS_LOOKUP
+execute resolve domain,DNS_LOOKUP
+run resolve domain,DNS_LOOKUP
+open resolve domain,DNS_LOOKUP
+check resolve domain,DNS_LOOKUP
+display resolve domain,DNS_LOOKUP
+monitor resolve domain,DNS_LOOKUP
+show me resolve domain,DNS_LOOKUP
+give me resolve domain,DNS_LOOKUP
+domain ip,DNS_LOOKUP
+can you domain ip,DNS_LOOKUP
+please domain ip,DNS_LOOKUP
+i need to domain ip,DNS_LOOKUP
+i want to domain ip,DNS_LOOKUP
+launch domain ip,DNS_LOOKUP
+start domain ip,DNS_LOOKUP
+execute domain ip,DNS_LOOKUP
+run domain ip,DNS_LOOKUP
+open domain ip,DNS_LOOKUP
+check domain ip,DNS_LOOKUP
+display domain ip,DNS_LOOKUP
+monitor domain ip,DNS_LOOKUP
+show me domain ip,DNS_LOOKUP
+give me domain ip,DNS_LOOKUP
+can you check dns,DNS_LOOKUP
+please check dns,DNS_LOOKUP
+i need to check dns,DNS_LOOKUP
+i want to check dns,DNS_LOOKUP
+launch check dns,DNS_LOOKUP
+start check dns,DNS_LOOKUP
+execute check dns,DNS_LOOKUP
+run check dns,DNS_LOOKUP
+open check dns,DNS_LOOKUP
+check check dns,DNS_LOOKUP
+display check dns,DNS_LOOKUP
+monitor check dns,DNS_LOOKUP
+show me check dns,DNS_LOOKUP
+give me check dns,DNS_LOOKUP
+shutdown now,POWER_OFF
+can you shutdown now,POWER_OFF
+please shutdown now,POWER_OFF
+i need to shutdown now,POWER_OFF
+i want to shutdown now,POWER_OFF
+launch shutdown now,POWER_OFF
+start shutdown now,POWER_OFF
+execute shutdown now,POWER_OFF
+run shutdown now,POWER_OFF
+open shutdown now,POWER_OFF
+check shutdown now,POWER_OFF
+display shutdown now,POWER_OFF
+monitor shutdown now,POWER_OFF
+show me shutdown now,POWER_OFF
+give me shutdown now,POWER_OFF
+power off computer,POWER_OFF
+can you power off computer,POWER_OFF
+please power off computer,POWER_OFF
+i need to power off computer,POWER_OFF
+i want to power off computer,POWER_OFF
+launch power off computer,POWER_OFF
+start power off computer,POWER_OFF
+execute power off computer,POWER_OFF
+run power off computer,POWER_OFF
+open power off computer,POWER_OFF
+check power off computer,POWER_OFF
+display power off computer,POWER_OFF
+monitor power off computer,POWER_OFF
+show me power off computer,POWER_OFF
+give me power off computer,POWER_OFF
+turn off pc,POWER_OFF
+can you turn off pc,POWER_OFF
+please turn off pc,POWER_OFF
+i need to turn off pc,POWER_OFF
+i want to turn off pc,POWER_OFF
+launch turn off pc,POWER_OFF
+start turn off pc,POWER_OFF
+execute turn off pc,POWER_OFF
+run turn off pc,POWER_OFF
+open turn off pc,POWER_OFF
+check turn off pc,POWER_OFF
+display turn off pc,POWER_OFF
+monitor turn off pc,POWER_OFF
+show me turn off pc,POWER_OFF
+give me turn off pc,POWER_OFF
+switch off,POWER_OFF
+can you switch off,POWER_OFF
+please switch off,POWER_OFF
+i need to switch off,POWER_OFF
+i want to switch off,POWER_OFF
+launch switch off,POWER_OFF
+start switch off,POWER_OFF
+execute switch off,POWER_OFF
+run switch off,POWER_OFF
+open switch off,POWER_OFF
+check switch off,POWER_OFF
+display switch off,POWER_OFF
+monitor switch off,POWER_OFF
+show me switch off,POWER_OFF
+give me switch off,POWER_OFF
+can you reboot now,RESTART
+please reboot now,RESTART
+i need to reboot now,RESTART
+i want to reboot now,RESTART
+launch reboot now,RESTART
+start reboot now,RESTART
+execute reboot now,RESTART
+run reboot now,RESTART
+open reboot now,RESTART
+check reboot now,RESTART
+display reboot now,RESTART
+monitor reboot now,RESTART
+show me reboot now,RESTART
+give me reboot now,RESTART
+can you restart machine,RESTART
+please restart machine,RESTART
+i need to restart machine,RESTART
+i want to restart machine,RESTART
+launch restart machine,RESTART
+start restart machine,RESTART
+execute restart machine,RESTART
+run restart machine,RESTART
+open restart machine,RESTART
+check restart machine,RESTART
+display restart machine,RESTART
+monitor restart machine,RESTART
+show me restart machine,RESTART
+give me restart machine,RESTART
+can you restart pc,RESTART
+please restart pc,RESTART
+i need to restart pc,RESTART
+i want to restart pc,RESTART
+launch restart pc,RESTART
+start restart pc,RESTART
+execute restart pc,RESTART
+run restart pc,RESTART
+open restart pc,RESTART
+check restart pc,RESTART
+display restart pc,RESTART
+monitor restart pc,RESTART
+show me restart pc,RESTART
+give me restart pc,RESTART
+i need to reboot system,RESTART
+i want to reboot system,RESTART
+launch reboot system,RESTART
+start reboot system,RESTART
+execute reboot system,RESTART
+run reboot system,RESTART
+open reboot system,RESTART
+check reboot system,RESTART
+display reboot system,RESTART
+monitor reboot system,RESTART
+show me reboot system,RESTART
+give me reboot system,RESTART
+time for math,OPEN_CALCULATOR
+gotta do some sums,OPEN_CALCULATOR
+where is the calc,OPEN_CALCULATOR
+math mode,OPEN_CALCULATOR
+calculations please,OPEN_CALCULATOR
+what is my address,CHECK_IP
+show my network ip,CHECK_IP
+is my ip showing,CHECK_IP
+check the local address,CHECK_IP
+connection details,CHECK_IP
+internet info,CHECK_IP
+my connection is laggy,PING_GOOGLE
+is the net working,PING_GOOGLE
+check the signal,PING_GOOGLE
+am i online,PING_GOOGLE
+ping it,PING_GOOGLE
+kill the lag,PROCESS_KILL
+end this program,PROCESS_KILL
+force quit,PROCESS_KILL
+stop this app,PROCESS_KILL
+close it down,PROCESS_KILL
+get rid of this task,PROCESS_KILL
+is my drive full,STORAGE_INFO
+check the c drive,STORAGE_INFO
+how much room is left,STORAGE_INFO
+out of space,STORAGE_INFO
+disk health,STORAGE_INFO
+refresh the pc,RESTART
+give it a reboot,RESTART
+restart now,RESTART
+bounce the system,RESTART
+shutting down,POWER_OFF
+gonna head out,POWER_OFF
+kill the power,POWER_OFF
+power off now,POWER_OFF
+sleep time,POWER_OFF
+what are the specs,SYSTEM_DETAILS
+show me the hardware,SYSTEM_DETAILS
+pc info,SYSTEM_DETAILS
+how much ram,CHECK_RESOURCES
+memory check,CHECK_RESOURCES
+is my cpu hot,CHECK_RESOURCES
+system load,CHECK_RESOURCES
+internet strength,PING_GOOGLE
+can you internet strength,PING_GOOGLE
+please internet strength,PING_GOOGLE
+i need to internet strength,PING_GOOGLE
+i want to internet strength,PING_GOOGLE
+launch internet strength,PING_GOOGLE
+start internet strength,PING_GOOGLE
+execute internet strength,PING_GOOGLE
+run internet strength,PING_GOOGLE
+open internet strength,PING_GOOGLE
+check internet strength,PING_GOOGLE
+display internet strength,PING_GOOGLE
+monitor internet strength,PING_GOOGLE
+show me internet strength,PING_GOOGLE
+give me internet strength,PING_GOOGLE
+wifi issues,OPEN_NETWORK_SETTINGS
+can you wifi issues,OPEN_NETWORK_SETTINGS
+please wifi issues,OPEN_NETWORK_SETTINGS
+i need to wifi issues,OPEN_NETWORK_SETTINGS
+i want to wifi issues,OPEN_NETWORK_SETTINGS
+launch wifi issues,OPEN_NETWORK_SETTINGS
+start wifi issues,OPEN_NETWORK_SETTINGS
+execute wifi issues,OPEN_NETWORK_SETTINGS
+run wifi issues,OPEN_NETWORK_SETTINGS
+open wifi issues,OPEN_NETWORK_SETTINGS
+check wifi issues,OPEN_NETWORK_SETTINGS
+display wifi issues,OPEN_NETWORK_SETTINGS
+monitor wifi issues,OPEN_NETWORK_SETTINGS
+show me wifi issues,OPEN_NETWORK_SETTINGS
+give me wifi issues,OPEN_NETWORK_SETTINGS
+wifi settings,OPEN_NETWORK_SETTINGS
+can you wifi settings,OPEN_NETWORK_SETTINGS
+please wifi settings,OPEN_NETWORK_SETTINGS
+i need to wifi settings,OPEN_NETWORK_SETTINGS
+i want to wifi settings,OPEN_NETWORK_SETTINGS
+launch wifi settings,OPEN_NETWORK_SETTINGS
+start wifi settings,OPEN_NETWORK_SETTINGS
+execute wifi settings,OPEN_NETWORK_SETTINGS
+run wifi settings,OPEN_NETWORK_SETTINGS
+check wifi settings,OPEN_NETWORK_SETTINGS
+display wifi settings,OPEN_NETWORK_SETTINGS
+monitor wifi settings,OPEN_NETWORK_SETTINGS
+show me wifi settings,OPEN_NETWORK_SETTINGS
+give me wifi settings,OPEN_NETWORK_SETTINGS
+open network,OPEN_NETWORK_SETTINGS
+can you open network,OPEN_NETWORK_SETTINGS
+please open network,OPEN_NETWORK_SETTINGS
+i need to open network,OPEN_NETWORK_SETTINGS
+i want to open network,OPEN_NETWORK_SETTINGS
+launch open network,OPEN_NETWORK_SETTINGS
+start open network,OPEN_NETWORK_SETTINGS
+execute open network,OPEN_NETWORK_SETTINGS
+run open network,OPEN_NETWORK_SETTINGS
+open open network,OPEN_NETWORK_SETTINGS
+check open network,OPEN_NETWORK_SETTINGS
+display open network,OPEN_NETWORK_SETTINGS
+monitor open network,OPEN_NETWORK_SETTINGS
+show me open network,OPEN_NETWORK_SETTINGS
+give me open network,OPEN_NETWORK_SETTINGS
+network problems,OPEN_NETWORK_SETTINGS
+can you network problems,OPEN_NETWORK_SETTINGS
+please network problems,OPEN_NETWORK_SETTINGS
+i need to network problems,OPEN_NETWORK_SETTINGS
+i want to network problems,OPEN_NETWORK_SETTINGS
+launch network problems,OPEN_NETWORK_SETTINGS
+start network problems,OPEN_NETWORK_SETTINGS
+execute network problems,OPEN_NETWORK_SETTINGS
+run network problems,OPEN_NETWORK_SETTINGS
+open network problems,OPEN_NETWORK_SETTINGS
+check network problems,OPEN_NETWORK_SETTINGS
+display network problems,OPEN_NETWORK_SETTINGS
+monitor network problems,OPEN_NETWORK_SETTINGS
+show me network problems,OPEN_NETWORK_SETTINGS
+give me network problems,OPEN_NETWORK_SETTINGS
+internet is down,OPEN_NETWORK_SETTINGS
+can you internet is down,OPEN_NETWORK_SETTINGS
+please internet is down,OPEN_NETWORK_SETTINGS
+i need to internet is down,OPEN_NETWORK_SETTINGS
+i want to internet is down,OPEN_NETWORK_SETTINGS
+launch internet is down,OPEN_NETWORK_SETTINGS
+start internet is down,OPEN_NETWORK_SETTINGS
+execute internet is down,OPEN_NETWORK_SETTINGS
+run internet is down,OPEN_NETWORK_SETTINGS
+open internet is down,OPEN_NETWORK_SETTINGS
+check internet is down,OPEN_NETWORK_SETTINGS
+display internet is down,OPEN_NETWORK_SETTINGS
+monitor internet is down,OPEN_NETWORK_SETTINGS
+show me internet is down,OPEN_NETWORK_SETTINGS
+give me internet is down,OPEN_NETWORK_SETTINGS
+calculations,OPEN_CALCULATOR
+can you calculations,OPEN_CALCULATOR
+please calculations,OPEN_CALCULATOR
+i need to calculations,OPEN_CALCULATOR
+i want to calculations,OPEN_CALCULATOR
+launch calculations,OPEN_CALCULATOR
+start calculations,OPEN_CALCULATOR
+execute calculations,OPEN_CALCULATOR
+run calculations,OPEN_CALCULATOR
+open calculations,OPEN_CALCULATOR
+check calculations,OPEN_CALCULATOR
+display calculations,OPEN_CALCULATOR
+monitor calculations,OPEN_CALCULATOR
+show me calculations,OPEN_CALCULATOR
+give me calculations,OPEN_CALCULATOR
+do math,OPEN_CALCULATOR
+can you do math,OPEN_CALCULATOR
+please do math,OPEN_CALCULATOR
+i need to do math,OPEN_CALCULATOR
+i want to do math,OPEN_CALCULATOR
+launch do math,OPEN_CALCULATOR
+start do math,OPEN_CALCULATOR
+execute do math,OPEN_CALCULATOR
+run do math,OPEN_CALCULATOR
+open do math,OPEN_CALCULATOR
+check do math,OPEN_CALCULATOR
+display do math,OPEN_CALCULATOR
+monitor do math,OPEN_CALCULATOR
+show me do math,OPEN_CALCULATOR
+give me do math,OPEN_CALCULATOR
+calculate,OPEN_CALCULATOR
+can you calculate,OPEN_CALCULATOR
+please calculate,OPEN_CALCULATOR
+i need to calculate,OPEN_CALCULATOR
+i want to calculate,OPEN_CALCULATOR
+launch calculate,OPEN_CALCULATOR
+start calculate,OPEN_CALCULATOR
+execute calculate,OPEN_CALCULATOR
+run calculate,OPEN_CALCULATOR
+open calculate,OPEN_CALCULATOR
+check calculate,OPEN_CALCULATOR
+display calculate,OPEN_CALCULATOR
+monitor calculate,OPEN_CALCULATOR
+show me calculate,OPEN_CALCULATOR
+give me calculate,OPEN_CALCULATOR
+some numbers,OPEN_CALCULATOR
+can you some numbers,OPEN_CALCULATOR
+please some numbers,OPEN_CALCULATOR
+i need to some numbers,OPEN_CALCULATOR
+i want to some numbers,OPEN_CALCULATOR
+launch some numbers,OPEN_CALCULATOR
+start some numbers,OPEN_CALCULATOR
+execute some numbers,OPEN_CALCULATOR
+run some numbers,OPEN_CALCULATOR
+open some numbers,OPEN_CALCULATOR
+check some numbers,OPEN_CALCULATOR
+display some numbers,OPEN_CALCULATOR
+monitor some numbers,OPEN_CALCULATOR
+show me some numbers,OPEN_CALCULATOR
+give me some numbers,OPEN_CALCULATOR
+run some commands,OPEN_CMD
+can you run some commands,OPEN_CMD
+please run some commands,OPEN_CMD
+i need to run some commands,OPEN_CMD
+i want to run some commands,OPEN_CMD
+launch run some commands,OPEN_CMD
+start run some commands,OPEN_CMD
+execute run some commands,OPEN_CMD
+run run some commands,OPEN_CMD
+open run some commands,OPEN_CMD
+check run some commands,OPEN_CMD
+display run some commands,OPEN_CMD
+monitor run some commands,OPEN_CMD
+show me run some commands,OPEN_CMD
+give me run some commands,OPEN_CMD
+open terminal,OPEN_CMD
+can you open terminal,OPEN_CMD
+please open terminal,OPEN_CMD
+i need to open terminal,OPEN_CMD
+i want to open terminal,OPEN_CMD
+launch open terminal,OPEN_CMD
+start open terminal,OPEN_CMD
+execute open terminal,OPEN_CMD
+run open terminal,OPEN_CMD
+open open terminal,OPEN_CMD
+check open terminal,OPEN_CMD
+display open terminal,OPEN_CMD
+monitor open terminal,OPEN_CMD
+show me open terminal,OPEN_CMD
+give me open terminal,OPEN_CMD
+execute commands,OPEN_CMD
+can you execute commands,OPEN_CMD
+please execute commands,OPEN_CMD
+i need to execute commands,OPEN_CMD
+i want to execute commands,OPEN_CMD
+launch execute commands,OPEN_CMD
+start execute commands,OPEN_CMD
+execute execute commands,OPEN_CMD
+run execute commands,OPEN_CMD
+open execute commands,OPEN_CMD
+check execute commands,OPEN_CMD
+display execute commands,OPEN_CMD
+monitor execute commands,OPEN_CMD
+show me execute commands,OPEN_CMD
+give me execute commands,OPEN_CMD
+command shell,OPEN_CMD
+can you command shell,OPEN_CMD
+please command shell,OPEN_CMD
+i need to command shell,OPEN_CMD
+i want to command shell,OPEN_CMD
+launch command shell,OPEN_CMD
+start command shell,OPEN_CMD
+execute command shell,OPEN_CMD
+run command shell,OPEN_CMD
+open command shell,OPEN_CMD
+check command shell,OPEN_CMD
+display command shell,OPEN_CMD
+monitor command shell,OPEN_CMD
+show me command shell,OPEN_CMD
+give me command shell,OPEN_CMD
+kill some tasks,OPEN_TASK_MANAGER
+can you kill some tasks,OPEN_TASK_MANAGER
+please kill some tasks,OPEN_TASK_MANAGER
+i need to kill some tasks,OPEN_TASK_MANAGER
+i want to kill some tasks,OPEN_TASK_MANAGER
+launch kill some tasks,OPEN_TASK_MANAGER
+start kill some tasks,OPEN_TASK_MANAGER
+execute kill some tasks,OPEN_TASK_MANAGER
+run kill some tasks,OPEN_TASK_MANAGER
+open kill some tasks,OPEN_TASK_MANAGER
+check kill some tasks,OPEN_TASK_MANAGER
+display kill some tasks,OPEN_TASK_MANAGER
+monitor kill some tasks,OPEN_TASK_MANAGER
+show me kill some tasks,OPEN_TASK_MANAGER
+give me kill some tasks,OPEN_TASK_MANAGER
+end tasks,OPEN_TASK_MANAGER
+can you end tasks,OPEN_TASK_MANAGER
+please end tasks,OPEN_TASK_MANAGER
+i need to end tasks,OPEN_TASK_MANAGER
+i want to end tasks,OPEN_TASK_MANAGER
+launch end tasks,OPEN_TASK_MANAGER
+start end tasks,OPEN_TASK_MANAGER
+execute end tasks,OPEN_TASK_MANAGER
+run end tasks,OPEN_TASK_MANAGER
+open end tasks,OPEN_TASK_MANAGER
+check end tasks,OPEN_TASK_MANAGER
+display end tasks,OPEN_TASK_MANAGER
+monitor end tasks,OPEN_TASK_MANAGER
+show me end tasks,OPEN_TASK_MANAGER
+give me end tasks,OPEN_TASK_MANAGER
+kill processes,OPEN_TASK_MANAGER
+can you kill processes,OPEN_TASK_MANAGER
+please kill processes,OPEN_TASK_MANAGER
+i need to kill processes,OPEN_TASK_MANAGER
+i want to kill processes,OPEN_TASK_MANAGER
+launch kill processes,OPEN_TASK_MANAGER
+start kill processes,OPEN_TASK_MANAGER
+execute kill processes,OPEN_TASK_MANAGER
+run kill processes,OPEN_TASK_MANAGER
+open kill processes,OPEN_TASK_MANAGER
+check kill processes,OPEN_TASK_MANAGER
+display kill processes,OPEN_TASK_MANAGER
+monitor kill processes,OPEN_TASK_MANAGER
+show me kill processes,OPEN_TASK_MANAGER
+give me kill processes,OPEN_TASK_MANAGER
+close unresponsive apps,OPEN_TASK_MANAGER
+can you close unresponsive apps,OPEN_TASK_MANAGER
+please close unresponsive apps,OPEN_TASK_MANAGER
+i need to close unresponsive apps,OPEN_TASK_MANAGER
+i want to close unresponsive apps,OPEN_TASK_MANAGER
+launch close unresponsive apps,OPEN_TASK_MANAGER
+start close unresponsive apps,OPEN_TASK_MANAGER
+execute close unresponsive apps,OPEN_TASK_MANAGER
+run close unresponsive apps,OPEN_TASK_MANAGER
+open close unresponsive apps,OPEN_TASK_MANAGER
+check close unresponsive apps,OPEN_TASK_MANAGER
+display close unresponsive apps,OPEN_TASK_MANAGER
+monitor close unresponsive apps,OPEN_TASK_MANAGER
+show me close unresponsive apps,OPEN_TASK_MANAGER
+give me close unresponsive apps,OPEN_TASK_MANAGER
+stop program,QUIT_PROGRAM
+can you stop program,QUIT_PROGRAM
+please stop program,QUIT_PROGRAM
+i need to stop program,QUIT_PROGRAM
+i want to stop program,QUIT_PROGRAM
+launch stop program,QUIT_PROGRAM
+start stop program,QUIT_PROGRAM
+execute stop program,QUIT_PROGRAM
+run stop program,QUIT_PROGRAM
+open stop program,QUIT_PROGRAM
+check stop program,QUIT_PROGRAM
+display stop program,QUIT_PROGRAM
+monitor stop program,QUIT_PROGRAM
+show me stop program,QUIT_PROGRAM
+give me stop program,QUIT_PROGRAM
+exit program,QUIT_PROGRAM
+can you exit program,QUIT_PROGRAM
+please exit program,QUIT_PROGRAM
+i need to exit program,QUIT_PROGRAM
+i want to exit program,QUIT_PROGRAM
+launch exit program,QUIT_PROGRAM
+start exit program,QUIT_PROGRAM
+execute exit program,QUIT_PROGRAM
+run exit program,QUIT_PROGRAM
+open exit program,QUIT_PROGRAM
+check exit program,QUIT_PROGRAM
+display exit program,QUIT_PROGRAM
+monitor exit program,QUIT_PROGRAM
+show me exit program,QUIT_PROGRAM
+give me exit program,QUIT_PROGRAM
+quit operations,QUIT_PROGRAM
+can you quit operations,QUIT_PROGRAM
+please quit operations,QUIT_PROGRAM
+i need to quit operations,QUIT_PROGRAM
+i want to quit operations,QUIT_PROGRAM
+launch quit operations,QUIT_PROGRAM
+start quit operations,QUIT_PROGRAM
+execute quit operations,QUIT_PROGRAM
+run quit operations,QUIT_PROGRAM
+open quit operations,QUIT_PROGRAM
+check quit operations,QUIT_PROGRAM
+display quit operations,QUIT_PROGRAM
+monitor quit operations,QUIT_PROGRAM
+show me quit operations,QUIT_PROGRAM
+give me quit operations,QUIT_PROGRAM
+shut down interface,QUIT_PROGRAM
+can you shut down interface,QUIT_PROGRAM
+please shut down interface,QUIT_PROGRAM
+i need to shut down interface,QUIT_PROGRAM
+i want to shut down interface,QUIT_PROGRAM
+launch shut down interface,QUIT_PROGRAM
+start shut down interface,QUIT_PROGRAM
+execute shut down interface,QUIT_PROGRAM
+run shut down interface,QUIT_PROGRAM
+open shut down interface,QUIT_PROGRAM
+check shut down interface,QUIT_PROGRAM
+display shut down interface,QUIT_PROGRAM
+monitor shut down interface,QUIT_PROGRAM
+show me shut down interface,QUIT_PROGRAM
+give me shut down interface,QUIT_PROGRAM
+close shellsense,QUIT_PROGRAM
+can you close shellsense,QUIT_PROGRAM
+please close shellsense,QUIT_PROGRAM
+i need to close shellsense,QUIT_PROGRAM
+i want to close shellsense,QUIT_PROGRAM
+launch close shellsense,QUIT_PROGRAM
+start close shellsense,QUIT_PROGRAM
+execute close shellsense,QUIT_PROGRAM
+run close shellsense,QUIT_PROGRAM
+open close shellsense,QUIT_PROGRAM
+check close shellsense,QUIT_PROGRAM
+display close shellsense,QUIT_PROGRAM
+monitor close shellsense,QUIT_PROGRAM
+show me close shellsense,QUIT_PROGRAM
+give me close shellsense,QUIT_PROGRAM

@@ -1,0 +1,1201 @@
+text,intent,command
+shutdown system quickly,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+can you shutdown system,POWER_OFF,shutdown /s /t 0
+switch off laptop quickly,POWER_OFF,shutdown /s /t 0
+turn off computer quickly,POWER_OFF,shutdown /s /t 0
+please shutdown system,POWER_OFF,shutdown /s /t 0
+turn off computer quickly,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+shutdown system quickly,POWER_OFF,shutdown /s /t 0
+power off pc quickly,POWER_OFF,shutdown /s /t 0
+please power off pc,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+power off pc quickly,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+can you switch off laptop,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+please shutdown system,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+power off pc quickly,POWER_OFF,shutdown /s /t 0
+shutdown system,POWER_OFF,shutdown /s /t 0
+switch off laptop now,POWER_OFF,shutdown /s /t 0
+switch off laptop now,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+please power off pc,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+switch off laptop quickly,POWER_OFF,shutdown /s /t 0
+can you turn off computer,POWER_OFF,shutdown /s /t 0
+turn off computer quickly,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+power off pc quickly,POWER_OFF,shutdown /s /t 0
+please switch off laptop,POWER_OFF,shutdown /s /t 0
+please power off pc,POWER_OFF,shutdown /s /t 0
+switch off laptop quickly,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+switch off laptop now,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+can you turn off computer,POWER_OFF,shutdown /s /t 0
+can you shutdown system,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+can you shutdown system,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+shutdown system,POWER_OFF,shutdown /s /t 0
+can you shutdown system,POWER_OFF,shutdown /s /t 0
+can you turn off computer,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+please shutdown system,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+can you switch off laptop,POWER_OFF,shutdown /s /t 0
+can you switch off laptop,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+power off pc quickly,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+shutdown system,POWER_OFF,shutdown /s /t 0
+turn off computer quickly,POWER_OFF,shutdown /s /t 0
+turn off computer quickly,POWER_OFF,shutdown /s /t 0
+turn off computer now,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+power off pc,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+please shutdown system,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+shutdown system quickly,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+can you shutdown system,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+power off pc,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+can you turn off computer,POWER_OFF,shutdown /s /t 0
+please switch off laptop,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+please shutdown system,POWER_OFF,shutdown /s /t 0
+switch off laptop quickly,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+switch off laptop now,POWER_OFF,shutdown /s /t 0
+turn off computer quickly,POWER_OFF,shutdown /s /t 0
+can you shutdown system,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+power off pc,POWER_OFF,shutdown /s /t 0
+switch off laptop now,POWER_OFF,shutdown /s /t 0
+please shutdown system,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+power off pc,POWER_OFF,shutdown /s /t 0
+can you switch off laptop,POWER_OFF,shutdown /s /t 0
+can you turn off computer,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+turn off computer quickly,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+can you shutdown system,POWER_OFF,shutdown /s /t 0
+can you shutdown system,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+shutdown system now,POWER_OFF,shutdown /s /t 0
+switch off laptop quickly,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+can you turn off computer,POWER_OFF,shutdown /s /t 0
+shutdown system quickly,POWER_OFF,shutdown /s /t 0
+please power off pc,POWER_OFF,shutdown /s /t 0
+can you switch off laptop,POWER_OFF,shutdown /s /t 0
+please switch off laptop,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+please shutdown system,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+can you turn off computer,POWER_OFF,shutdown /s /t 0
+please switch off laptop,POWER_OFF,shutdown /s /t 0
+please switch off laptop,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+turn off computer now,POWER_OFF,shutdown /s /t 0
+power off pc now,POWER_OFF,shutdown /s /t 0
+turn off computer,POWER_OFF,shutdown /s /t 0
+switch off laptop now,POWER_OFF,shutdown /s /t 0
+shutdown system quickly,POWER_OFF,shutdown /s /t 0
+turn off computer now,POWER_OFF,shutdown /s /t 0
+power off pc,POWER_OFF,shutdown /s /t 0
+please switch off laptop,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+switch off laptop now,POWER_OFF,shutdown /s /t 0
+switch off laptop quickly,POWER_OFF,shutdown /s /t 0
+power off pc quickly,POWER_OFF,shutdown /s /t 0
+shutdown system quickly,POWER_OFF,shutdown /s /t 0
+please switch off laptop,POWER_OFF,shutdown /s /t 0
+please shutdown system,POWER_OFF,shutdown /s /t 0
+shutdown system,POWER_OFF,shutdown /s /t 0
+switch off laptop quickly,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+turn off computer quickly,POWER_OFF,shutdown /s /t 0
+switch off laptop,POWER_OFF,shutdown /s /t 0
+please turn off computer,POWER_OFF,shutdown /s /t 0
+can you power off pc,POWER_OFF,shutdown /s /t 0
+turn off in 30 minutes now,POWER_OFF_TIMER,shutdown /s /t 600
+can you turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later now,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later now,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later now,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later now,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+can you turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later now,POWER_OFF_TIMER,shutdown /s /t 600
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes now,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes now,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+can you shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes quickly,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time now,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 600
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+can you turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 600
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time now,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 600
+can you shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time now,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later now,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+can you turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes quickly,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes now,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+can you turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes now,POWER_OFF_TIMER,shutdown /s /t 600
+can you turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 600
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes quickly,POWER_OFF_TIMER,shutdown /s /t 600
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time now,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time now,POWER_OFF_TIMER,shutdown /s /t 1800
+can you shutdown later,POWER_OFF_TIMER,shutdown /s /t 1800
+please turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes quickly,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later now,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes now,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes now,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+please shutdown later,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later now,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+please shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time,POWER_OFF_TIMER,shutdown /s /t 600
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 1800
+turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+can you turn off in 30 minutes,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown after some time now,POWER_OFF_TIMER,shutdown /s /t 600
+shutdown later quickly,POWER_OFF_TIMER,shutdown /s /t 1800
+shutdown after some time now,POWER_OFF_TIMER,shutdown /s /t 600
+can you restart computer,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+can you reboot system,RESTART,shutdown /r /t 0
+can you restart my pc,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+please reboot system,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+restart computer,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+can you restart my pc,RESTART,shutdown /r /t 0
+please reboot system,RESTART,shutdown /r /t 0
+restart my pc,RESTART,shutdown /r /t 0
+please reboot system,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+please reboot system,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+please reboot system,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+can you reboot system,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+restart computer,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+can you reboot system,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+restart my pc,RESTART,shutdown /r /t 0
+can you restart my pc,RESTART,shutdown /r /t 0
+restart my pc quickly,RESTART,shutdown /r /t 0
+can you reboot system,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+please reboot system,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+restart my pc quickly,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+restart computer,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+please reboot system,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+please reboot system,RESTART,shutdown /r /t 0
+restart my pc quickly,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+can you restart my pc,RESTART,shutdown /r /t 0
+restart my pc quickly,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+can you reboot system,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+restart my pc quickly,RESTART,shutdown /r /t 0
+restart computer,RESTART,shutdown /r /t 0
+can you restart my pc,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+restart my pc,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+restart my pc,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+restart my pc,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+restart computer,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+restart my pc quickly,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+please restart my pc,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+restart my pc quickly,RESTART,shutdown /r /t 0
+can you reboot system,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+reboot system quickly,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+please reboot system,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+reboot system,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+can you reboot system,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+restart my pc,RESTART,shutdown /r /t 0
+can you reboot system,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+can you restart computer,RESTART,shutdown /r /t 0
+restart my pc,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+can you restart my pc,RESTART,shutdown /r /t 0
+restart my pc now,RESTART,shutdown /r /t 0
+reboot system now,RESTART,shutdown /r /t 0
+please restart computer,RESTART,shutdown /r /t 0
+restart computer,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+restart computer now,RESTART,shutdown /r /t 0
+restart my pc,RESTART,shutdown /r /t 0
+restart computer quickly,RESTART,shutdown /r /t 0
+open wifi settings now,OPEN_NET,start ms-settings:network
+can you open network settings,OPEN_NET,start ms-settings:network
+please show internet settings,OPEN_NET,ncpa.cpl
+open wifi settings now,OPEN_NET,ncpa.cpl
+please open network settings,OPEN_NET,ncpa.cpl
+please show internet settings,OPEN_NET,ncpa.cpl
+open network settings now,OPEN_NET,ncpa.cpl
+please open wifi settings,OPEN_NET,start ms-settings:network
+open network settings,OPEN_NET,start ms-settings:network
+open wifi settings,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,start ms-settings:network
+show internet settings,OPEN_NET,ncpa.cpl
+show internet settings,OPEN_NET,ncpa.cpl
+can you show internet settings,OPEN_NET,ncpa.cpl
+please show internet settings,OPEN_NET,start ms-settings:network
+can you show internet settings,OPEN_NET,start ms-settings:network
+open network settings,OPEN_NET,start ms-settings:network
+please open network settings,OPEN_NET,ncpa.cpl
+can you open wifi settings,OPEN_NET,start ms-settings:network
+open network settings,OPEN_NET,start ms-settings:network
+show internet settings,OPEN_NET,start ms-settings:network
+open wifi settings,OPEN_NET,start ms-settings:network
+please open wifi settings,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,start ms-settings:network
+please open wifi settings,OPEN_NET,ncpa.cpl
+can you open network settings,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,ncpa.cpl
+can you show internet settings,OPEN_NET,start ms-settings:network
+show internet settings,OPEN_NET,ncpa.cpl
+open wifi settings,OPEN_NET,ncpa.cpl
+open wifi settings quickly,OPEN_NET,ncpa.cpl
+open network settings,OPEN_NET,ncpa.cpl
+can you show internet settings,OPEN_NET,start ms-settings:network
+please show internet settings,OPEN_NET,start ms-settings:network
+open wifi settings,OPEN_NET,ncpa.cpl
+show internet settings now,OPEN_NET,ncpa.cpl
+open wifi settings quickly,OPEN_NET,start ms-settings:network
+please show internet settings,OPEN_NET,ncpa.cpl
+can you open wifi settings,OPEN_NET,ncpa.cpl
+open network settings quickly,OPEN_NET,start ms-settings:network
+open network settings quickly,OPEN_NET,start ms-settings:network
+can you open network settings,OPEN_NET,ncpa.cpl
+open wifi settings,OPEN_NET,ncpa.cpl
+please show internet settings,OPEN_NET,ncpa.cpl
+open wifi settings,OPEN_NET,ncpa.cpl
+show internet settings,OPEN_NET,start ms-settings:network
+please open wifi settings,OPEN_NET,ncpa.cpl
+can you open network settings,OPEN_NET,ncpa.cpl
+open network settings quickly,OPEN_NET,ncpa.cpl
+open wifi settings quickly,OPEN_NET,start ms-settings:network
+can you open network settings,OPEN_NET,ncpa.cpl
+can you show internet settings,OPEN_NET,start ms-settings:network
+open wifi settings,OPEN_NET,start ms-settings:network
+open wifi settings quickly,OPEN_NET,ncpa.cpl
+can you show internet settings,OPEN_NET,start ms-settings:network
+open wifi settings quickly,OPEN_NET,ncpa.cpl
+open network settings now,OPEN_NET,ncpa.cpl
+show internet settings now,OPEN_NET,ncpa.cpl
+can you show internet settings,OPEN_NET,ncpa.cpl
+can you open wifi settings,OPEN_NET,start ms-settings:network
+open network settings quickly,OPEN_NET,ncpa.cpl
+open network settings quickly,OPEN_NET,ncpa.cpl
+open network settings now,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,ncpa.cpl
+can you open wifi settings,OPEN_NET,ncpa.cpl
+open wifi settings now,OPEN_NET,ncpa.cpl
+open wifi settings,OPEN_NET,start ms-settings:network
+open network settings now,OPEN_NET,start ms-settings:network
+can you open wifi settings,OPEN_NET,start ms-settings:network
+open network settings now,OPEN_NET,start ms-settings:network
+can you show internet settings,OPEN_NET,ncpa.cpl
+please show internet settings,OPEN_NET,ncpa.cpl
+can you open wifi settings,OPEN_NET,start ms-settings:network
+show internet settings quickly,OPEN_NET,start ms-settings:network
+open network settings quickly,OPEN_NET,ncpa.cpl
+can you open network settings,OPEN_NET,ncpa.cpl
+show internet settings quickly,OPEN_NET,start ms-settings:network
+show internet settings now,OPEN_NET,ncpa.cpl
+can you open network settings,OPEN_NET,ncpa.cpl
+show internet settings now,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,ncpa.cpl
+open wifi settings now,OPEN_NET,start ms-settings:network
+show internet settings,OPEN_NET,start ms-settings:network
+open network settings,OPEN_NET,ncpa.cpl
+please open network settings,OPEN_NET,start ms-settings:network
+can you open wifi settings,OPEN_NET,ncpa.cpl
+please open network settings,OPEN_NET,ncpa.cpl
+can you show internet settings,OPEN_NET,start ms-settings:network
+can you open wifi settings,OPEN_NET,start ms-settings:network
+please open wifi settings,OPEN_NET,ncpa.cpl
+can you show internet settings,OPEN_NET,ncpa.cpl
+please open wifi settings,OPEN_NET,start ms-settings:network
+please open network settings,OPEN_NET,start ms-settings:network
+please show internet settings,OPEN_NET,ncpa.cpl
+open network settings quickly,OPEN_NET,start ms-settings:network
+please open wifi settings,OPEN_NET,start ms-settings:network
+please show internet settings,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,start ms-settings:network
+please open wifi settings,OPEN_NET,ncpa.cpl
+please open wifi settings,OPEN_NET,start ms-settings:network
+open network settings,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,ncpa.cpl
+please open wifi settings,OPEN_NET,ncpa.cpl
+show internet settings now,OPEN_NET,ncpa.cpl
+can you show internet settings,OPEN_NET,start ms-settings:network
+show internet settings quickly,OPEN_NET,start ms-settings:network
+please open wifi settings,OPEN_NET,ncpa.cpl
+please open wifi settings,OPEN_NET,start ms-settings:network
+can you show internet settings,OPEN_NET,ncpa.cpl
+open network settings,OPEN_NET,start ms-settings:network
+open network settings now,OPEN_NET,ncpa.cpl
+open wifi settings quickly,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,start ms-settings:network
+open network settings now,OPEN_NET,ncpa.cpl
+open network settings now,OPEN_NET,start ms-settings:network
+can you show internet settings,OPEN_NET,start ms-settings:network
+show internet settings quickly,OPEN_NET,start ms-settings:network
+can you open network settings,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,start ms-settings:network
+open network settings quickly,OPEN_NET,start ms-settings:network
+show internet settings quickly,OPEN_NET,start ms-settings:network
+open wifi settings quickly,OPEN_NET,start ms-settings:network
+show internet settings now,OPEN_NET,start ms-settings:network
+open wifi settings now,OPEN_NET,start ms-settings:network
+can you open wifi settings,OPEN_NET,start ms-settings:network
+can you open wifi settings,OPEN_NET,start ms-settings:network
+please open network settings,OPEN_NET,ncpa.cpl
+can you open network settings,OPEN_NET,ncpa.cpl
+show internet settings now,OPEN_NET,start ms-settings:network
+can you show internet settings,OPEN_NET,start ms-settings:network
+please open network settings,OPEN_NET,start ms-settings:network
+open wifi settings,OPEN_NET,ncpa.cpl
+show internet settings now,OPEN_NET,ncpa.cpl
+please open wifi settings,OPEN_NET,ncpa.cpl
+can you open wifi settings,OPEN_NET,ncpa.cpl
+please open network settings,OPEN_NET,start ms-settings:network
+open network settings quickly,OPEN_NET,ncpa.cpl
+please show internet settings,OPEN_NET,start ms-settings:network
+show internet settings,OPEN_NET,start ms-settings:network
+please show internet settings,OPEN_NET,ncpa.cpl
+please show internet settings,OPEN_NET,start ms-settings:network
+show internet settings quickly,OPEN_NET,start ms-settings:network
+can you open wifi settings,OPEN_NET,ncpa.cpl
+please show internet settings,OPEN_NET,ncpa.cpl
+show internet settings now,OPEN_NET,start ms-settings:network
+can you open wifi settings,OPEN_NET,start ms-settings:network
+open wifi settings quickly,OPEN_NET,start ms-settings:network
+can you open network settings,OPEN_NET,start ms-settings:network
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer quickly,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+secure my pc,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+lock my computer now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+please lock my computer,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you lock screen now,LOCK_SCREEN,"rundll32.exe user32.dll,LockWorkStation"
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+please check processes,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+check processes,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+please check processes,OPEN_TASK_MANAGER,taskmgr
+please open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+please open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+please check processes,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+please open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+check processes quickly,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+show running apps,OPEN_TASK_MANAGER,taskmgr
+please show running apps,OPEN_TASK_MANAGER,taskmgr
+please open task manager,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+please show running apps,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+show running apps,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+check processes quickly,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+check processes,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+check processes quickly,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+please show running apps,OPEN_TASK_MANAGER,taskmgr
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+show running apps,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+check processes,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+check processes quickly,OPEN_TASK_MANAGER,taskmgr
+please open task manager,OPEN_TASK_MANAGER,taskmgr
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+please open task manager,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+show running apps,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+check processes quickly,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+check processes,OPEN_TASK_MANAGER,taskmgr
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+please open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps now,OPEN_TASK_MANAGER,taskmgr
+please open task manager,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+check processes,OPEN_TASK_MANAGER,taskmgr
+check processes quickly,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+check processes,OPEN_TASK_MANAGER,taskmgr
+show running apps,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+please check processes,OPEN_TASK_MANAGER,taskmgr
+check processes,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+please check processes,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+please check processes,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+show running apps,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+can you open task manager,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+show running apps quickly,OPEN_TASK_MANAGER,taskmgr
+check processes,OPEN_TASK_MANAGER,taskmgr
+open task manager quickly,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+can you check processes,OPEN_TASK_MANAGER,taskmgr
+can you show running apps,OPEN_TASK_MANAGER,taskmgr
+open task manager,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+check processes now,OPEN_TASK_MANAGER,taskmgr
+open task manager now,OPEN_TASK_MANAGER,taskmgr
+check processes,OPEN_TASK_MANAGER,taskmgr
+launch cmd,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+start terminal quickly,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+can you start terminal,OPEN_CMD,start cmd
+open command prompt now,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+can you launch cmd,OPEN_CMD,start cmd
+open command prompt quickly,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+please open command prompt,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+can you launch cmd,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+open command prompt quickly,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+open command prompt quickly,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+can you launch cmd,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+please open command prompt,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+can you launch cmd,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+can you start terminal,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+can you start terminal,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+can you launch cmd,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+please open command prompt,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+can you open command prompt,OPEN_CMD,start cmd
+please open command prompt,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+start terminal,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+start terminal,OPEN_CMD,start cmd
+open command prompt now,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+open command prompt quickly,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+open command prompt now,OPEN_CMD,start cmd
+can you start terminal,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+open command prompt now,OPEN_CMD,start cmd
+start terminal,OPEN_CMD,start cmd
+start terminal,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+open command prompt now,OPEN_CMD,start cmd
+open command prompt now,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+start terminal,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+can you launch cmd,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+can you start terminal,OPEN_CMD,start cmd
+open command prompt quickly,OPEN_CMD,start cmd
+can you open command prompt,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+can you start terminal,OPEN_CMD,start cmd
+start terminal quickly,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+start terminal quickly,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+can you open command prompt,OPEN_CMD,start cmd
+can you launch cmd,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+launch cmd quickly,OPEN_CMD,start cmd
+can you open command prompt,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+start terminal,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+open command prompt quickly,OPEN_CMD,start cmd
+can you launch cmd,OPEN_CMD,start cmd
+can you launch cmd,OPEN_CMD,start cmd
+can you start terminal,OPEN_CMD,start cmd
+can you open command prompt,OPEN_CMD,start cmd
+please open command prompt,OPEN_CMD,start cmd
+please open command prompt,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+can you open command prompt,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+start terminal,OPEN_CMD,start cmd
+open command prompt,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+launch cmd now,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+open command prompt quickly,OPEN_CMD,start cmd
+start terminal,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+start terminal quickly,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+can you start terminal,OPEN_CMD,start cmd
+please launch cmd,OPEN_CMD,start cmd
+start terminal now,OPEN_CMD,start cmd
+start terminal,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+please start terminal,OPEN_CMD,start cmd
+open command prompt quickly,OPEN_CMD,start cmd
+launch cmd,OPEN_CMD,start cmd
+open command prompt quickly,OPEN_CMD,start cmd
+please open command prompt,OPEN_CMD,start cmd
+please launch calculator,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+open calculator now,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+can you launch calculator,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+start calc app now,OPEN_CALCULATOR,calc
+can you start calc app,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+start calc app now,OPEN_CALCULATOR,calc
+can you open calculator,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+can you launch calculator,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+start calc app quickly,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+can you start calc app,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+open calculator now,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+can you start calc app,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+open calculator now,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+can you start calc app,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+can you launch calculator,OPEN_CALCULATOR,calc
+start calc app quickly,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+can you launch calculator,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+can you launch calculator,OPEN_CALCULATOR,calc
+can you launch calculator,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+can you start calc app,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+can you launch calculator,OPEN_CALCULATOR,calc
+open calculator now,OPEN_CALCULATOR,calc
+can you launch calculator,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+open calculator now,OPEN_CALCULATOR,calc
+can you start calc app,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+can you open calculator,OPEN_CALCULATOR,calc
+start calc app quickly,OPEN_CALCULATOR,calc
+start calc app quickly,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+start calc app now,OPEN_CALCULATOR,calc
+start calc app quickly,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+can you start calc app,OPEN_CALCULATOR,calc
+can you open calculator,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+start calc app now,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+can you start calc app,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+open calculator,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+please start calc app,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+can you launch calculator,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+launch calculator quickly,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+please open calculator,OPEN_CALCULATOR,calc
+start calc app now,OPEN_CALCULATOR,calc
+please launch calculator,OPEN_CALCULATOR,calc
+start calc app quickly,OPEN_CALCULATOR,calc
+launch calculator now,OPEN_CALCULATOR,calc
+start calc app,OPEN_CALCULATOR,calc
+open calculator now,OPEN_CALCULATOR,calc
+open calculator quickly,OPEN_CALCULATOR,calc
+launch calculator,OPEN_CALCULATOR,calc
+can you start calc app,OPEN_CALCULATOR,calc
+start calc app quickly,OPEN_CALCULATOR,calc
