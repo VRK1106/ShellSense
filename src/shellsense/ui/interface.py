@@ -10,11 +10,12 @@ if src_root not in sys.path:
 import signal
 import keyboard
 from ctypes import windll, wintypes
-from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QVBoxLayout, QSystemTrayIcon, QMenu
+from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QVBoxLayout, QSystemTrayIcon, QMenu, QLabel
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QTimer
 
 from shellsense.services.brain_service import BrainService
+from shellsense.services.math_parser import evaluate_math
 from shellsense.services.executor import CommandExecutor
 from shellsense.core.logger import logger
 
@@ -186,11 +187,28 @@ class ShellSenseUI(QWidget):
         """)
         self.search_bar.returnPressed.connect(self.process_command)
         
+        self.result_label = QLabel(self)
+        self.result_label.setVisible(False)
+        self.result_label.setStyleSheet("""
+            QLabel {
+                background-color: rgba(30, 30, 30, 210);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 8px;
+                color: #00bcd4;
+                font-size: 16px;
+                padding: 8px;
+                font-family: 'Segoe UI', sans-serif;
+            }
+        """)
+        
         layout = QVBoxLayout()
+        layout.setContentsMargins(10, 10, 10, 10)
+        layout.setSpacing(8)
         layout.addWidget(self.search_bar)
+        layout.addWidget(self.result_label)
         self.setLayout(layout)
         
-        self.setFixedSize(600, 80)
+        self.setFixedSize(600, 78)
         self.center_on_screen()
 
     def center_on_screen(self):
@@ -205,6 +223,25 @@ class ShellSenseUI(QWidget):
     def process_command(self):
         user_text = self.search_bar.text().strip()
         if not user_text: return
+        
+        # Intercept math calculations
+        is_math, result = evaluate_math(user_text)
+        if is_math:
+            self.result_label.setText(f"Result: {result}  (Copied to Clipboard)")
+            self.result_label.setVisible(True)
+            self.setFixedSize(600, 125)
+            self.center_on_screen()
+            
+            clipboard = QApplication.clipboard()
+            clipboard.setText(result)
+            
+            self.tray_icon.showMessage(
+                "ShellSense Math",
+                f"Result: {result} (Copied to Clipboard)",
+                QSystemTrayIcon.MessageIcon.Information,
+                3000
+            )
+            return
         
         intent, confidence = self.brain.predict(user_text)
         
@@ -232,6 +269,8 @@ class ShellSenseUI(QWidget):
             logger.info("Window hidden.")
         else:
             self.search_bar.clear()
+            self.result_label.setVisible(False)
+            self.setFixedSize(600, 78)
             self.show()
             self.raise_()
             self.activateWindow()
