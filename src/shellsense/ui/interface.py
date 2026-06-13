@@ -34,6 +34,7 @@ class ShellSenseUI(QWidget):
         try:
             logger.info("Loading BrainService...")
             self.brain = BrainService()
+            self.last_math_result = None
             
             logger.info("Initializing UI...")
             self.initUI()
@@ -186,6 +187,7 @@ class ShellSenseUI(QWidget):
             }
         """)
         self.search_bar.returnPressed.connect(self.process_command)
+        self.search_bar.textChanged.connect(self.on_text_changed)
         
         self.result_label = QLabel(self)
         self.result_label.setVisible(False)
@@ -220,27 +222,45 @@ class ShellSenseUI(QWidget):
             y = (screen_geometry.height() - self.height()) // 2
             self.move(x, y)
 
+    def on_text_changed(self):
+        # If the query is modified after calculation, reset the math state and collapse UI
+        if getattr(self, 'last_math_result', None) is not None:
+            self.last_math_result = None
+            self.result_label.setVisible(False)
+            self.setFixedSize(600, 78)
+            self.center_on_screen()
+
     def process_command(self):
         user_text = self.search_bar.text().strip()
         if not user_text: return
         
-        # Intercept math calculations
-        is_math, result = evaluate_math(user_text)
-        if is_math:
-            self.result_label.setText(f"Result: {result}  (Copied to Clipboard)")
-            self.result_label.setVisible(True)
-            self.setFixedSize(600, 125)
-            self.center_on_screen()
-            
+        # If user presses Enter twice on the calculated math result
+        if getattr(self, 'last_math_result', None) is not None:
             clipboard = QApplication.clipboard()
-            clipboard.setText(result)
+            clipboard.setText(self.last_math_result)
             
             self.tray_icon.showMessage(
                 "ShellSense Math",
-                f"Result: {result} (Copied to Clipboard)",
+                f"Result: {self.last_math_result} (Copied to Clipboard)",
                 QSystemTrayIcon.MessageIcon.Information,
                 3000
             )
+            
+            self.last_math_result = None
+            self.result_label.setVisible(False)
+            self.setFixedSize(600, 78)
+            self.search_bar.clear()
+            self.hide()
+            return
+        
+        # Intercept math calculations
+        is_math, result = evaluate_math(user_text)
+        if is_math:
+            self.last_math_result = result
+            self.result_label.setText(f"Result: {result}  [Press Enter again to Copy & Close]")
+            self.result_label.setVisible(True)
+            self.setFixedSize(600, 125)
+            self.center_on_screen()
             return
         
         intent, confidence = self.brain.predict(user_text)
@@ -269,6 +289,7 @@ class ShellSenseUI(QWidget):
             logger.info("Window hidden.")
         else:
             self.search_bar.clear()
+            self.last_math_result = None
             self.result_label.setVisible(False)
             self.setFixedSize(600, 78)
             self.show()
