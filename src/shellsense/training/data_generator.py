@@ -11,99 +11,167 @@ OUTPUT_CSV = 'Cleaned_text_intent.csv'
 # (Provides clean, high-variety natural language combinations)
 generation_rules = {
     "CHECK_IP": {
-        "verbs": ["check", "get", "show", "display", "view", "reveal", "print", "what is", "whats", "find"],
         "nouns": ["ip", "ip address", "ipv4 address", "network ip", "local ip", "internal ip", "current ip", "ip config"],
-        "suffixes": ["", "now", "please", "for me", "of this pc", "of my machine", "on this system"]
+        "suffixes": ["", "now", "please", "for me", "of this pc", "of my machine", "on this system"],
+        "verbs": ["check", "get", "show", "display", "view", "reveal", "print", "what is", "whats", "find"]
     },
     "DNS_LOOKUP": {
-        "verbs": ["run", "do", "perform", "execute", "start", "query", "check", "lookup"],
         "nouns": ["dns info", "dns records", "nslookup", "dns resolution", "name resolution", "domain ip"],
-        "suffixes": ["for google.com", "for github.com", "on google", "on github", "for a website", "on 8.8.8.8", "for a host"]
+        "suffixes": ["for google.com", "for github.com", "on google", "on github", "for a website", "on 8.8.8.8", "for a host"],
+        "verbs": ["run", "do", "perform", "execute", "start", "query", "check", "lookup"]
     },
     "LOCK_SCREEN": {
-        "verbs": ["lock", "secure", "close access to", "protect", "log off", "sign out"],
         "nouns": ["screen", "pc", "computer", "machine", "windows screen", "session", "workstation"],
-        "suffixes": ["", "now", "immediately", "please", "for safety", "right away"]
+        "suffixes": ["", "now", "immediately", "please", "for safety", "right away"],
+        "verbs": ["lock", "secure", "close access to", "protect", "log off", "sign out"]
     },
     "OPEN_CALCULATOR": {
-        "verbs": ["open", "start", "launch", "run", "execute", "bring up", "show", "display"],
-        "nouns": ["calculator", "calc", "math app", "calculator utility", "calculations tool"],
-        "suffixes": ["", "please", "quickly", "now", "for some math", "to calculate numbers"]
+        "nouns": ["calculator", "calc", "math app", "calculator utility", "calculations tool", "calcuator", "claculator", "calclator"],
+        "suffixes": ["", "please", "quickly", "now", "for some math", "to calculate numbers"],
+        "verbs": ["open", "start", "launch", "run", "execute", "bring up", "show", "display"]
     },
     "OPEN_CMD": {
-        "verbs": ["open", "start", "launch", "run", "execute", "bring up"],
-        "nouns": ["cmd", "terminal", "command prompt", "command line", "command shell", "cli console", "shell prompt"],
-        "suffixes": ["", "please", "now", "instantly", "quickly"]
+        "nouns": ["cmd", "terminal", "command prompt", "command line", "command shell", "cli console", "shell prompt", "teminal", "termnial", "commnad prompt"],
+        "suffixes": ["", "please", "now", "instantly", "quickly"],
+        "verbs": ["open", "start", "launch", "run", "execute", "bring up"]
     },
     "OPEN_NET": {
-        "verbs": ["open", "start", "launch", "run", "go to", "access"],
         "nouns": ["default browser", "web browser", "the internet", "the net", "chrome browser", "edge browser", "web portal"],
-        "suffixes": ["", "please", "now", "to surf", "to go online"]
+        "suffixes": ["", "please", "now", "to surf", "to go online"],
+        "verbs": ["open", "start", "launch", "run", "go to", "access"]
     },
     "OPEN_NETWORK_SETTINGS": {
-        "verbs": ["open", "show", "view", "go to", "configure", "modify", "access", "manage"],
-        "nouns": ["network settings", "wifi settings", "internet settings", "adapter properties", "network connections", "wifi panel", "sharing center"],
-        "suffixes": ["", "please", "now", "to fix wifi", "to check connections"]
+        "nouns": ["network settings", "wifi settings", "internet settings", "adapter properties", "network connections", "wifi panel", "sharing center", "slow internet", "slow connection", "slow wifi", "slow network", "connection speed"],
+        "suffixes": ["", "please", "now", "to fix wifi", "to check connections"],
+        "verbs": ["open", "show", "view", "go to", "configure", "modify", "access", "manage", "fix my", "troubleshoot my"]
     },
     "OPEN_TASK_MANAGER": {
-        "verbs": ["open", "start", "launch", "show", "bring up", "access", "view"],
         "nouns": ["task manager", "process manager", "taskmgr", "system monitor", "active applications list"],
-        "suffixes": ["", "please", "now", "to end tasks", "to kill process"]
+        "suffixes": ["", "please", "now", "to end tasks", "to kill process"],
+        "verbs": ["open", "start", "launch", "show", "bring up", "access", "view"]
     },
     "PING_GOOGLE": {
-        "verbs": ["ping", "test connectivity to", "check latency to", "send packets to", "test network on"],
         "nouns": ["google", "google.com", "8.8.8.8", "google servers", "external host"],
-        "suffixes": ["", "please", "to check internet", "now", "for latency check"]
+        "suffixes": ["", "please", "to check internet", "now", "for latency check"],
+        "verbs": ["ping", "test connectivity to", "check latency to", "send packets to", "test network on"]
     },
     "POWER_OFF": {
-        "verbs": ["shutdown", "power off", "turn off", "switch off", "kill power to", "halt"],
         "nouns": ["pc", "computer", "machine", "system", "windows desktop", "workstation"],
-        "suffixes": ["now", "immediately", "right away", "instantly", "please", "safe shutdown"]
+        "suffixes": ["now", "immediately", "right away", "instantly", "please", "safe shutdown"],
+        "verbs": ["shutdown", "power off", "turn off", "switch off", "kill power to", "halt"]
     },
     "POWER_OFF_TIMER": {
-        "verbs": ["set a shutdown timer", "schedule shutdown", "turn off pc in", "shutdown timer for", "set power off in"],
         "nouns": ["10 minutes", "30 mins", "an hour", "5 minutes", "after 1 hour", "20 minutes", "15 mins", "45 minutes"],
-        "suffixes": ["", "please", "immediately", "from now"]
+        "suffixes": ["", "please", "immediately", "from now"],
+        "verbs": ["set a shutdown timer", "schedule shutdown", "turn off pc in", "shutdown timer for", "set power off in"]
     },
     "RESTART": {
-        "verbs": ["restart", "reboot", "power cycle", "reset"],
         "nouns": ["pc", "computer", "machine", "system", "workstation"],
-        "suffixes": ["now", "immediately", "please", "right away", "instantly"]
+        "suffixes": ["now", "immediately", "please", "right away", "instantly"],
+        "verbs": ["restart", "reboot", "power cycle", "reset"]
     },
     "SHOW_SYSTEM_INFO": {
-        "verbs": ["show", "display", "get", "view", "reveal", "print"],
-        "nouns": ["specs", "system info", "hardware details", "pc specifications", "os details", "cpu and ram info", "system details"],
-        "suffixes": ["", "please", "for me", "of this machine", "now"]
+        "nouns": ["specs", "system info", "hardware details", "pc specifications", "os details", "cpu and ram info", "system details", "hardware specs profile", "specs profile"],
+        "suffixes": ["", "please", "for me", "of this machine", "now"],
+        "verbs": ["show", "display", "get", "view", "reveal", "print", "verify", "do some math to verify"]
     },
     "SYSTEM_DETAILS": {  # Alias safety fallback to match both naming structures
-        "verbs": ["show", "display", "get", "view", "reveal", "print"],
-        "nouns": ["specs", "system info", "hardware details", "pc specifications", "os details", "cpu and ram info", "system details"],
-        "suffixes": ["", "please", "for me", "of this machine", "now"]
+        "nouns": ["specs", "system info", "hardware details", "pc specifications", "os details", "cpu and ram info", "system details", "hardware specs profile", "specs profile"],
+        "suffixes": ["", "please", "for me", "of this machine", "now"],
+        "verbs": ["show", "display", "get", "view", "reveal", "print", "verify", "do some math to verify"]
     },
     "SHOW_TASKS": {
-        "verbs": ["show", "display", "list", "get", "view", "print"],
         "nouns": ["running tasks", "active processes", "running programs", "system processes", "task list", "background tasks"],
-        "suffixes": ["", "please", "on this system", "now"]
+        "suffixes": ["", "please", "on this system", "now"],
+        "verbs": ["show", "display", "list", "get", "view", "print"]
     },
     "SHUTDOWN_TIMER": {
-        "verbs": ["set shutdown timer", "schedule pc turn off", "shutdown timer in", "auto shutdown in", "timer for shutdown"],
         "nouns": ["10 minutes", "30 mins", "an hour", "5 minutes", "after 1 hour", "20 minutes", "15 mins", "45 minutes"],
-        "suffixes": ["", "please", "now", "immediately"]
+        "suffixes": ["", "please", "now", "immediately"],
+        "verbs": ["set shutdown timer", "schedule pc turn off", "shutdown timer in", "auto shutdown in", "timer for shutdown"]
     },
     "TRACE_ROUTE": {
-        "verbs": ["tracert", "traceroute", "trace route", "track path", "map connection route"],
         "nouns": ["to google.com", "to github.com", "to a domain", "to 8.8.8.8", "to host", "to server"],
-        "suffixes": ["", "please", "now", "to debug route"]
+        "suffixes": ["", "please", "now", "to debug route"],
+        "verbs": ["tracert", "traceroute", "trace route", "track path", "map connection route"]
     },
     "QUIT_PROGRAM": {
-        "verbs": ["stop", "exit", "quit", "close", "shut down", "kill"],
         "nouns": ["program", "operations", "interface", "shellsense", "gui panel", "the application"],
-        "suffixes": ["", "please", "now", "instantly", "immediately"]
+        "suffixes": ["", "please", "now", "instantly", "immediately"],
+        "verbs": ["stop", "exit", "quit", "close", "shut down", "kill"]
+    },
+    "DRIVER_MGMT": {
+        "nouns": ["device manager", "drivers", "display drivers", "hdmi connection", "hardware drivers", "peripheral devices", "hdmi driver", "graphics driver", "hdmi lag", "monitor lag", "hdmi lag issues"],
+        "suffixes": ["", "please", "now", "for lag issues", "to fix displays"],
+        "verbs": ["open", "start", "launch", "run", "check", "update", "troubleshoot", "manage", "fix my", "resolve"]
+    },
+    "STORAGE_INFO": {
+        "nouns": ["storage info", "disk space", "hard drive storage", "disk management", "free space", "storage details", "disk capacity", "drive allocation", "partition info"],
+        "suffixes": ["", "please", "on this pc", "now", "for C drive"],
+        "verbs": ["check", "show", "get", "view", "display", "manage", "monitor"]
+    },
+    "NEUTRAL": {
+        "nouns": ["you doing", "the weather", "a joke", "your name", "about yourself", "how pc works", "with homework", "2 + 2", "the news", "the time", "coffee", "life", "universe"],
+        "suffixes": ["", "today", "please", "for me", "right now"],
+        "verbs": ["how are", "what is", "hello", "hi", "tell me", "can you", "why is", "who is", "explain", "what is the meaning of", "how do I make"]
+    },
+    "PROCESS_KILL": {
+        "nouns": ["process", "task", "program", "app", "application", "running process", "frozen app", "pid"],
+        "suffixes": ["", "now", "please", "by pid", "with force", "immediately"],
+        "verbs": ["kill", "terminate", "stop", "force close", "end", "close", "force quit"]
+    },
+    "CHECK_RESOURCES": {
+        "nouns": ["cpu usage", "ram utilization", "resource consumption", "memory load", "system resources", "hardware utilization", "performance statistics", "system load"],
+        "suffixes": ["", "please", "on this system", "to monitor status"],
+        "verbs": ["check", "show", "display", "get", "view", "monitor", "track"]
     }
 }
 
+def introduce_typos(text, probability=0.15):
+    """Randomly introduces typos into the text to train the model to be typo-tolerant."""
+    if random.random() > probability:
+        return text
+    
+    words = text.split()
+    if not words:
+        return text
+        
+    # Pick a random word to modify
+    idx = random.randint(0, len(words) - 1)
+    word = words[idx]
+    
+    # We only modify words that are long enough
+    if len(word) < 4:
+        return text
+        
+    typo_type = random.choice(["swap", "drop", "replace"])
+    
+    if typo_type == "swap":
+        # Swap two adjacent characters
+        pos = random.randint(0, len(word) - 2)
+        word_list = list(word)
+        word_list[pos], word_list[pos+1] = word_list[pos+1], word_list[pos]
+        words[idx] = "".join(word_list)
+    elif typo_type == "drop":
+        # Drop a character
+        pos = random.randint(0, len(word) - 1)
+        words[idx] = word[:pos] + word[pos+1:]
+    elif typo_type == "replace":
+        # Replace a character with a common typo or common misspelling
+        if "calculator" in word:
+            words[idx] = word.replace("calculator", "calcuator")
+        elif "shutdown" in word:
+            words[idx] = word.replace("shutdown", "shudown")
+        elif "network" in word:
+            words[idx] = word.replace("network", "netwrok")
+        else:
+            pos = random.randint(0, len(word) - 1)
+            words[idx] = word[:pos] + random.choice("abcdefghijklmnopqrstuvwxyz") + word[pos+1:]
+            
+    return " ".join(words)
+
 def generate_unique_sentences(intent, max_needed):
-    """Generates unique phrases dynamically using rule combinatorics."""
+    """Generates unique phrases dynamically using rule combinatorics with typo injection."""
     if intent not in generation_rules:
         # Generic programmatic fallback if rules for a class are omitted
         base_nouns = ["system utility", "interface command", "operation", "process"]
@@ -125,6 +193,8 @@ def generate_unique_sentences(intent, max_needed):
     for pref, verb, noun, suff in combinations:
         parts = [pref, verb, noun, suff]
         clean_str = " ".join([p.strip() for p in parts if p.strip()]).lower()
+        # Introduce typos with 15% probability
+        clean_str = introduce_typos(clean_str, probability=0.15)
         sentences.add(clean_str)
         if len(sentences) >= max_needed:
             break
@@ -151,38 +221,34 @@ def balance_dataset():
 
     balanced_dfs = []
 
-    # 2. Iterate through each intent to downsample or augment
+    # 2. Iterate through each intent to downsample or augment with new rules/typos
     for intent in all_intents:
         intent_df = df[df['intent'] == intent].drop_duplicates(subset=['text'])
         current_len = len(intent_df)
 
-        if current_len > TARGET_COUNT:
-            # DOWNSAMPLE overrepresented classes (e.g., SHUTDOWN_TIMER)
-            balanced_intent_df = intent_df.sample(n=TARGET_COUNT, random_state=42)
-            print(f"[{intent}] Downsampled from {current_len} to {TARGET_COUNT}")
-        elif current_len < TARGET_COUNT:
-            # AUGMENT underrepresented classes programmatically
-            needed = TARGET_COUNT - current_len
-            generated_phrases = generate_unique_sentences(intent, needed * 3)  # Get extra to ensure no collision
+        if current_len > 0:
+            # Take a blend: up to 50% from original, and the rest from generation
+            original_keep = min(current_len, TARGET_COUNT // 2)
+            original_sample = intent_df.sample(n=original_keep, random_state=42)
             
-            # Filter out phrases that already exist in the original data
-            existing_texts = set(intent_df['text'].tolist())
+            needed = TARGET_COUNT - original_keep
+            generated_phrases = generate_unique_sentences(intent, needed * 3)
+            existing_texts = set(original_sample['text'].tolist())
             unique_new_phrases = [p for p in generated_phrases if p not in existing_texts][:needed]
             
             new_rows_df = pd.DataFrame([{"text": p, "intent": intent} for p in unique_new_phrases])
-            balanced_intent_df = pd.concat([intent_df, new_rows_df]).drop_duplicates(subset=['text'])
+            balanced_intent_df = pd.concat([original_sample, new_rows_df]).drop_duplicates(subset=['text'])
             
-            # Safety checks in case final totals drift
+            # Safety check
             if len(balanced_intent_df) > TARGET_COUNT:
                 balanced_intent_df = balanced_intent_df.iloc[:TARGET_COUNT]
-            elif len(balanced_intent_df) < TARGET_COUNT:
-                print(f"Warning: Could only generate {len(balanced_intent_df)} unique rows for {intent}.")
             
-            print(f"[{intent}] Augmented from {current_len} to {len(balanced_intent_df)}")
+            print(f"[{intent}] Blended original ({original_keep}) and generated ({len(balanced_intent_df) - original_keep}) to match {TARGET_COUNT}")
         else:
-            # Already matches the target
-            balanced_intent_df = intent_df
-            print(f"[{intent}] Maintained perfectly at {TARGET_COUNT}")
+            # No original data, generate all
+            generated_phrases = generate_unique_sentences(intent, TARGET_COUNT)
+            balanced_intent_df = pd.DataFrame([{"text": p, "intent": intent} for p in generated_phrases])
+            print(f"[{intent}] Generated all {TARGET_COUNT} from scratch")
             
         balanced_dfs.append(balanced_intent_df)
 

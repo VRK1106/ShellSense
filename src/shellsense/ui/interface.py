@@ -47,14 +47,14 @@ class ShellSenseUI(QWidget):
             self.signaler = HotkeySignaler()
             self.signaler.signal.connect(self.toggle_visibility, Qt.ConnectionType.QueuedConnection)
             
-            # Keep a slow watchdog as a safety net (every 30s)
+            # Watchdog to make sure hotkey stays active (runs without forcing if already registered)
             self.hotkey_handle = None
             self.hotkey_timer = QTimer(self)
             self.hotkey_timer.timeout.connect(self.refresh_hotkey)
             self.hotkey_timer.start(30000) 
             
             logger.info("Refreshing initial hotkey...")
-            self.refresh_hotkey()
+            self.refresh_hotkey(force=True)
             logger.info("ShellSenseUI Initialization Complete.")
         except Exception as e:
             logger.critical(f"Error during UI Initialization: {e}", exc_info=True)
@@ -63,47 +63,69 @@ class ShellSenseUI(QWidget):
     def register_session_notifications(self):
         try:
             hwnd = self.winId()
-            # Register for session change notifications
-            windll.wtsapi32.WTSRegisterSessionNotification(int(hwnd), NOTIFY_FOR_THIS_SESSION)
-            logger.info("Registered for Windows session notifications.")
+            if not hwnd:
+                logger.error("No valid HWND found for session notifications.")
+                return
+            
+            # Explicitly define ctypes signature to prevent 64-bit truncation crashes
+            wtsapi32 = windll.wtsapi32
+            wtsapi32.WTSRegisterSessionNotification.argtypes = [wintypes.HWND, wintypes.DWORD]
+            wtsapi32.WTSRegisterSessionNotification.restype = wintypes.BOOL
+            
+            success = wtsapi32.WTSRegisterSessionNotification(int(hwnd), NOTIFY_FOR_THIS_SESSION)
+            if success:
+                logger.info("Registered for Windows session notifications.")
+            else:
+                logger.warning("WTSRegisterSessionNotification returned False.")
         except Exception as e:
             logger.error(f"Failed to register session notification: {e}")
 
-    def nativeEvent(self, eventType, message):
-        try:
-            event_bytes = bytes(eventType)
-        except Exception:
-            event_bytes = b""
-            
-        if event_bytes == b"windows_generic_MSG":
-            try:
-                msg = wintypes.MSG.from_address(int(message))
-                if msg.message == WM_WTSSESSION_CHANGE:
-                    if msg.wParam == WTS_SESSION_UNLOCK:
-                        logger.info("Windows Unlock detected! Immediately refreshing hotkey.")
-                        self.refresh_hotkey()
-            except Exception as e:
-                logger.error(f"Error parsing native MSG: {e}")
-                
-        is_handled, res = super().nativeEvent(eventType, message)
-        return is_handled, res
+    # def nativeEvent(self, eventType, message):
+    #     try:
+    #         event_bytes = bytes(eventType)
+    #     except Exception:
+    #         event_bytes = b""
+    #         
+    #     if event_bytes == b"windows_generic_MSG" and message:
+    #         try:
+    #             addr = int(message)
+    #             if addr != 0:
+    #                 msg = wintypes.MSG.from_address(addr)
+    #                 if msg.message == WM_WTSSESSION_CHANGE:
+    #                     if msg.wParam == WTS_SESSION_UNLOCK:
+    #                         logger.info("Windows Unlock detected! Refreshing hotkey.")
+    #                         self.refresh_hotkey(force=True)
+    #         except Exception as e:
+    #             logger.error(f"Error parsing native MSG: {e}")
+    #             
+    #     try:
+    #         is_handled, res = super().nativeEvent(eventType, message)
+    #         return is_handled, res
+    #     except Exception as e:
+    #         logger.error(f"Exception in super().nativeEvent: {e}")
+    #         return False, 0
     
-    def refresh_hotkey(self):
+    def refresh_hotkey(self, force=False):
         try:
-            # Safely remove existing hotkey if it exists
+            # Avoid re-registering if already registered and not forced.
+            # Unconditional recreation of keyboard hooks in a loop causes stability/crash issues in the keyboard library.
+            if self.hotkey_handle is not None and not force:
+                logger.debug("Hotkey already registered, skipping refresh.")
+                return
+
+            # Safely remove existing hotkey if it exists or if forcing a refresh
             if self.hotkey_handle is not None:
                 try:
                     keyboard.remove_hotkey(self.hotkey_handle)
                 except:
                     pass
+                self.hotkey_handle = None
             
             # Re-register
             self.hotkey_handle = keyboard.add_hotkey('ctrl+shift+space', self.signaler.signal.emit)
-            logger.debug("Hotkey hook refreshed.")
+            logger.info("Hotkey hook registered successfully.")
         except Exception as e:
-            # If the listener itself is broken, we might need to reset more aggressively
-            # but for now, we just log and try again next cycle
-            logger.error(f"Hotkey refresh failed: {e}")
+            logger.error(f"Hotkey registration failed: {e}")
             self.hotkey_handle = None
     
     def initTray(self):
@@ -121,7 +143,7 @@ class ShellSenseUI(QWidget):
         show_action.triggered.connect(self.toggle_visibility)
         
         repair_action = QAction("Repair Hotkey", self)
-        repair_action.triggered.connect(self.refresh_hotkey)
+        repair_action.triggered.connect(lambda: self.refresh_hotkey(force=True))
         
         quit_action = QAction("Quit", self)
         quit_action.triggered.connect(QApplication.quit)
@@ -140,7 +162,7 @@ class ShellSenseUI(QWidget):
         logger.info(f"Tray icon activated. Reason: {reason}")
         if reason in (QSystemTrayIcon.ActivationReason.Trigger, QSystemTrayIcon.ActivationReason.DoubleClick):
             logger.info("Tray icon clicked/double-clicked. Refreshing hotkey and toggling visibility.")
-            self.refresh_hotkey() # Refresh hook immediately on manual interaction
+            self.refresh_hotkey(force=True) # Refresh hook immediately on manual interaction
             self.toggle_visibility(trigger_source="Tray")
     
     def initUI(self):
@@ -216,6 +238,13 @@ class ShellSenseUI(QWidget):
             # Slightly longer delay to ensure Windows has registered the window show
             QTimer.singleShot(10, self.search_bar.setFocus)
             logger.info("Window shown and focused.")
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key.Key_Escape:
+            logger.info("Escape key pressed. Hiding search bar window.")
+            self.hide()
+        else:
+            super().keyPressEvent(event)
 
 def main():
     try:

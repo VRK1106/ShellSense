@@ -24,8 +24,13 @@ class CommandExecutor:
             if intent == "POWER_OFF_TIMER":
                 nums = re.findall(r'\d+', user_text)
                 if nums:
-                    # Replace placeholder {s} with calculated seconds
-                    seconds = str(int(nums[0]) * 60)
+                    val = int(nums[0])
+                    lower_text = user_text.lower()
+                    # If user specifies hours, multiply by 3600; otherwise assume minutes and multiply by 60
+                    if "hour" in lower_text or "hr" in lower_text:
+                        seconds = str(val * 3600)
+                    else:
+                        seconds = str(val * 60)
                     cmd_template = [seconds if x == "{s}" else x for x in cmd_template]
                 else:
                     logger.error("Timer intent detected but no duration found in user text.")
