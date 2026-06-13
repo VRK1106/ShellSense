@@ -257,7 +257,7 @@ class ShellSenseUI(QWidget):
         is_math, result = evaluate_math(user_text)
         if is_math:
             self.last_math_result = result
-            self.result_label.setText(f"Result: {result}  [Press Enter again to Copy & Close]")
+            self.result_label.setText(f"Result: {result}  [Enter to Copy & Close | Esc to Close]")
             self.result_label.setVisible(True)
             self.setFixedSize(600, 125)
             self.center_on_screen()
@@ -302,6 +302,10 @@ class ShellSenseUI(QWidget):
     def keyPressEvent(self, event):
         if event.key() == Qt.Key.Key_Escape:
             logger.info("Escape key pressed. Hiding search bar window.")
+            self.last_math_result = None
+            self.result_label.setVisible(False)
+            self.setFixedSize(600, 78)
+            self.search_bar.clear()
             self.hide()
         else:
             super().keyPressEvent(event)
