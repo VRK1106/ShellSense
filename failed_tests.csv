@@ -1,23 +1,69 @@
 text,intent,predicted
-schedule shutdown,POWER_OFF_TIMER,POWER_OFF
-shutdown with delay,POWER_OFF_TIMER,POWER_OFF
-connection details,CHECK_IP,PING_GOOGLE
-check the signal,PING_GOOGLE,CHECK_IP
-kill the lag,PROCESS_KILL,OPEN_TASK_MANAGER
-end this program,PROCESS_KILL,OPEN_TASK_MANAGER
-force quit,PROCESS_KILL,QUIT_PROGRAM
-stop this app,PROCESS_KILL,QUIT_PROGRAM
-close it down,PROCESS_KILL,QUIT_PROGRAM
-get rid of this task,PROCESS_KILL,OPEN_TASK_MANAGER
-is my drive full,STORAGE_INFO,CHECK_IP
-check the c drive,STORAGE_INFO,OPEN_CMD
-how much room is left,STORAGE_INFO,TRACE_ROUTE
-out of space,STORAGE_INFO,SYSTEM_DETAILS
-disk health,STORAGE_INFO,TRACE_ROUTE
-shutting down,POWER_OFF,QUIT_PROGRAM
-gonna head out,POWER_OFF,OPEN_CMD
-sleep time,POWER_OFF,POWER_OFF_TIMER
-how much ram,CHECK_RESOURCES,OPEN_CALCULATOR
-memory check,CHECK_RESOURCES,OPEN_CALCULATOR
-is my cpu hot,CHECK_RESOURCES,CHECK_IP
-system load,CHECK_RESOURCES,RESTART
+"""how do i kill this pesky slack notification every day at 3 pm?",PROCESS_KILL,POWER_OFF_TIMER
+see how this ip resolves when queried via google’s servers.,DNS_LOOKUP,TRACE_ROUTE
+"discover what ip belongs to ""wikipedia.de"".",DNS_LOOKUP,CHECK_IP
+display cpu information along with its usage stats.,SYSTEM_DETAILS,CHECK_RESOURCES
+can you provide a summary of my computer's system resources?,SYSTEM_DETAILS,CHECK_RESOURCES
+"""provide information regarding the power usage of my computer.",CHECK_RESOURCES,SYSTEM_DETAILS
+check how fast i can ping and reach [another destination ip/hostname].,TRACE_ROUTE,PING_GOOGLE
+"assess disk space utilization, please.",CHECK_RESOURCES,STORAGE_INFO
+"""turn off my computer as soon as it starts up again.",POWER_OFF,RESTART
+"""force terminate processes running in this session only.",POWER_OFF,PROCESS_KILL
+what's inside my hard drive in terms of capacity?,SYSTEM_DETAILS,STORAGE_INFO
+how much disk space do i have available right now?,STORAGE_INFO,CHECK_RESOURCES
+what is the available capacity after deleting unused files and apps?,STORAGE_INFO,SYSTEM_DETAILS
+"""power down every application on this machine immediately.",POWER_OFF,RESTART
+inspect my virtual disks for usage.,STORAGE_INFO,CHECK_RESOURCES
+abort the game session in minecraft server.,PROCESS_KILL,LOCK_SCREEN
+"""provide a detailed view of the current system activity levels.",CHECK_RESOURCES,SYSTEM_DETAILS
+"testing this time, will it pass through the firewall?",PING_GOOGLE,OPEN_CALCULATOR
+here’s a quick peek at everything running on the system.,OPEN_TASK_MANAGER,CHECK_RESOURCES
+"""force close running processes in the background.",POWER_OFF,PROCESS_KILL
+"press win, type 't', then press 'enter'.",OPEN_TASK_MANAGER,LOCK_SCREEN
+use winkey + l shortcut combination,LOCK_SCREEN,OPEN_CALCULATOR
+"shut down by 1 pm tomorrow, please.",POWER_OFF_TIMER,RESTART
+"""forcefully terminate running processes now.",POWER_OFF,PROCESS_KILL
+list all programs that consume significant amounts of ram.,CHECK_RESOURCES,SYSTEM_DETAILS
+"""could you help me power it down and on?",RESTART,PROCESS_KILL
+show me the version of the operating system i'm using.,SYSTEM_DETAILS,CHECK_RESOURCES
+"turn off at 6 pm tonight, please.",POWER_OFF_TIMER,POWER_OFF
+see how much ram is available to free up space in the future.,CHECK_RESOURCES,STORAGE_INFO
+can you stop program please,PROCESS_KILL,QUIT_PROGRAM
+"""i'm ready to quit_program.",QUIT_PROGRAM,PROCESS_KILL
+stop the music and focus; i need to write this report soon.,PROCESS_KILL,POWER_OFF
+look at how much disk space i have left on my drive.,CHECK_RESOURCES,STORAGE_INFO
+list down all open applications running on this system.,SYSTEM_DETAILS,OPEN_TASK_MANAGER
+how much free memory do i have?,STORAGE_INFO,CHECK_RESOURCES
+is there a need to update system boot times due to recent changes? 🛠️,CHECK_RESOURCES,STORAGE_INFO
+do you have any process killer commands available?,CHECK_RESOURCES,PROCESS_KILL
+"""force close all tasks so i can leave.",POWER_OFF,PROCESS_KILL
+see how well i can reach [specific server ip/hostname].,TRACE_ROUTE,DNS_LOOKUP
+display tasks,OPEN_TASK_MANAGER,CHECK_RESOURCES
+could you walk me through my wi-fi password recovery steps?,OPEN_NETWORK_SETTINGS,TRACE_ROUTE
+"""kill this running task manager tab to clear it up.",PROCESS_KILL,OPEN_TASK_MANAGER
+"""stop my computer from booting up later.",POWER_OFF,PROCESS_KILL
+how much ram and storage does this have?,SYSTEM_DETAILS,STORAGE_INFO
+"""provide a detailed overview of my computer's hardware specifications.",CHECK_RESOURCES,SYSTEM_DETAILS
+enable the power-off timer and set it for 30 minutes from now.,SYSTEM_DETAILS,POWER_OFF_TIMER
+run a full disk scan to ensure data integrity.,SYSTEM_DETAILS,STORAGE_INFO
+"""locked down this laptop immediately.",LOCK_SCREEN,RESTART
+can you explain the operating systems' versions now?,SYSTEM_DETAILS,OPEN_CALCULATOR
+what's the current network configuration?,CHECK_IP,SYSTEM_DETAILS
+"""my computer is going to bed, i need it ready for tomorrow when i wake up.",LOCK_SCREEN,POWER_OFF
+restarting my network adapter.,RESTART,OPEN_NETWORK_SETTINGS
+do you have any tips for forcefully stopping my text editor?,PROCESS_KILL,SYSTEM_DETAILS
+what's my current online status?,CHECK_IP,SYSTEM_DETAILS
+show me what's occupying most of my space.,STORAGE_INFO,SYSTEM_DETAILS
+i want to close program please,PROCESS_KILL,QUIT_PROGRAM
+shutdown application now,PROCESS_KILL,QUIT_PROGRAM
+"""powering off in 3 seconds to prevent overloading!",POWER_OFF,POWER_OFF_TIMER
+identify which process has a high cpu usage and terminate it.,SYSTEM_DETAILS,CHECK_RESOURCES
+"here are 75 unique, diverse, natural-sounding phrases for executing the intent ""power_off"":",POWER_OFF,PING_GOOGLE
+"""turning off my computer without a click.",LOCK_SCREEN,POWER_OFF
+"how much hard drive space do i have left, in gigabytes?",SYSTEM_DETAILS,STORAGE_INFO
+do i need to restart when configuring networks in windows?,OPEN_NETWORK_SETTINGS,RESTART
+"type in ""git bash on windows"" and press enter.",OPEN_CMD,OPEN_TASK_MANAGER
+"""immediately switch off and turn on again.",RESTART,POWER_OFF
+"""share some information regarding my computer's hardware specs.",CHECK_RESOURCES,SYSTEM_DETAILS
+give me a detailed report of my connection details.,CHECK_IP,SYSTEM_DETAILS
+abort the ongoing video chat for a faster internet download.,PROCESS_KILL,PING_GOOGLE

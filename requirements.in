@@ -1,0 +1,9 @@
+# Core Dependencies
+PyQt6
+keyboard
+joblib
+pandas
+scikit-learn
+
+# Development & Build
+pip-tools
