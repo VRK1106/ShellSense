@@ -71,14 +71,14 @@ generation_rules = {
         "verbs": ["restart", "reboot", "power cycle", "reset"]
     },
     "SHOW_SYSTEM_INFO": {
-        "nouns": ["specs", "system info", "hardware details", "pc specifications", "os details", "cpu and ram info", "system details", "hardware specs profile", "specs profile"],
+        "nouns": ["specs", "system info", "hardware details", "pc specifications", "os details", "cpu and ram info", "system details", "hardware specs profile", "specs profile", "system", "my system", "system information", "my pc specs"],
         "suffixes": ["", "please", "for me", "of this machine", "now"],
-        "verbs": ["show", "display", "get", "view", "reveal", "print", "verify", "do some math to verify"]
+        "verbs": ["show", "display", "get", "view", "reveal", "print", "verify", "do some math to verify", "show me about", "tell me about", "show details of"]
     },
     "SYSTEM_DETAILS": {  # Alias safety fallback to match both naming structures
-        "nouns": ["specs", "system info", "hardware details", "pc specifications", "os details", "cpu and ram info", "system details", "hardware specs profile", "specs profile"],
+        "nouns": ["specs", "system info", "hardware details", "pc specifications", "os details", "cpu and ram info", "system details", "hardware specs profile", "specs profile", "system", "my system", "system information", "my pc specs"],
         "suffixes": ["", "please", "for me", "of this machine", "now"],
-        "verbs": ["show", "display", "get", "view", "reveal", "print", "verify", "do some math to verify"]
+        "verbs": ["show", "display", "get", "view", "reveal", "print", "verify", "do some math to verify", "show me about", "tell me about", "show details of"]
     },
     "SHOW_TASKS": {
         "nouns": ["running tasks", "active processes", "running programs", "system processes", "task list", "background tasks"],
