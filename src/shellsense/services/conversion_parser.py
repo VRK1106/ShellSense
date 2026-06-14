@@ -399,36 +399,66 @@ def evaluate_conversion(query: str):
 
 def evaluate_translation(query: str):
     """
-    Evaluates offline-first translations.
+    Evaluates offline-first translations by dynamically identifying target languages in the query.
     Returns (success, result_string)
     """
     q = query.lower().strip()
     q = re.sub(r'[?=\s]+$', '', q) # Strip trailing question marks/equals
     
-    # Match patterns:
-    # "translate <phrase> to <lang>"
-    # "how to say <phrase> in <lang>"
-    # "what is <phrase> in <lang>"
-    match = re.match(
-        r'^(?:translate|how\s+to\s+say|what\s+is)\s+(.+?)\s+(?:to|in)\s+([a-zA-Z]+)$',
-        q
-    )
-    if not match:
-        return False, None
-        
-    phrase, target_lang = match.groups()
-    phrase = phrase.strip().strip("'\"")
-    target_lang = target_lang.strip().lower()
+    # 1. Identify target language
+    target_lang = None
+    lang_code = None
     
-    lang_code = LANGUAGE_CODES.get(target_lang)
-    if not lang_code:
-        return False, None
+    # Supported full language names
+    full_languages = ["spanish", "french", "german", "italian", "portuguese", "japanese", "chinese", "hindi"]
+    # Supported codes (excluding 'it' to prevent false positives with English pronoun 'it')
+    short_codes = ["es", "fr", "de", "pt", "ja", "zh", "hi"]
+    
+    # Search for full language names first
+    for lang in full_languages:
+        # Match as a whole word to avoid partial matches
+        if re.search(r'\b' + lang + r'\b', q):
+            target_lang = lang
+            lang_code = LANGUAGE_CODES[lang]
+            break
+            
+    # If not found, search for short codes or "it" with context
+    if not target_lang:
+        # Look for "to/in <short_code/it>" or "translate <phrase> <short_code/it>"
+        for code in list(short_codes) + ["it"]:
+            if re.search(r'\b(?:to|in)\s+' + code + r'\b', q):
+                target_lang = code
+                lang_code = LANGUAGE_CODES[code]
+                break
         
+        # If still not found, check if it ends with a short code (excluding 'it') and starts with 'translate'
+        if not target_lang and q.startswith("translate"):
+            for code in short_codes:
+                if q.endswith(" " + code):
+                    target_lang = code
+                    lang_code = LANGUAGE_CODES[code]
+                    break
+
+    if not target_lang:
+        return False, None
+
+    # 2. Extract the phrase to translate by removing target language name/code
+    phrase = re.sub(r'\b' + re.escape(target_lang) + r'\b', '', q).strip()
+    
+    # Clean common prefixes and suffixes
+    phrase = re.sub(r'^(?:translate|translation of|how to say|what is|say)\s+', '', phrase)
+    phrase = re.sub(r'\s+(?:to|in|of)$', '', phrase)
+    phrase = re.sub(r'^(?:to|in|of)\s+', '', phrase)
+    
+    phrase = phrase.strip().strip("'\"")
+    if not phrase:
+        return False, None
+
     # Check offline dictionary first (extremely fast and lightweight for low-spec machines)
     if lang_code in OFFLINE_TRANSLATIONS:
         dict_lang = OFFLINE_TRANSLATIONS[lang_code]
         if phrase in dict_lang:
-            return True, f"{dict_lang[phrase].capitalize()} ({target_lang.capitalize()})"
+            return True, f"{dict_lang[phrase].capitalize()} ({lang_code.upper()})"
             
     # As a secondary fallback, run a fast network check if online (0.8s timeout, non-blocking)
     try:
@@ -439,7 +469,7 @@ def evaluate_translation(query: str):
             data = json.loads(response.read().decode())
             translated_text = data.get("responseData", {}).get("translatedText")
             if translated_text:
-                return True, f"{translated_text} ({target_lang.capitalize()})"
+                return True, f"{translated_text} ({lang_code.upper()})"
     except Exception:
         pass
         

@@ -8,3 +8,4 @@ ENV/
 .vscode/
 .idea/
 *.log
+*.json
