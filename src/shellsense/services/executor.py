@@ -12,10 +12,6 @@ class CommandExecutor:
         """
         Executes the command associated with an intent safely.
         """
-        if intent == "LAUNCH_APP":
-            from shellsense.services.app_launcher import AppLauncher
-            return AppLauncher().launch(user_text)
-
         if intent not in SAFE_COMMANDS or SAFE_COMMANDS[intent] is None:
             logger.warning(f"Intent '{intent}' has no executable command mapping.")
             return False

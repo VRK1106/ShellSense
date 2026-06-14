@@ -279,10 +279,7 @@ class ShellSenseUI(QWidget):
         # Use the hardened executor service
         success = CommandExecutor.execute(intent, user_text)
         if not success:
-            if intent == "LAUNCH_APP":
-                self.result_label.setText("<span style='color: #ff5252;'>Error:</span> Application not found  [Esc to Close]")
-            else:
-                self.result_label.setText("<span style='color: #ff5252;'>Error:</span> Command failed to execute  [Esc to Close]")
+            self.result_label.setText("<span style='color: #ff5252;'>Error:</span> Command failed to execute  [Esc to Close]")
             self.result_label.setVisible(True)
             self.setFixedSize(600, 125)
             self.center_on_screen()
