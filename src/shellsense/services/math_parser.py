@@ -82,6 +82,17 @@ def evaluate_math(query: str):
     Translates and evaluates a math query safely.
     Returns (success, result_or_error_msg)
     """
+    # Try unit/currency/timezone/base conversions first
+    from shellsense.services.conversion_parser import evaluate_conversion, evaluate_translation
+    
+    is_conv, conv_res = evaluate_conversion(query)
+    if is_conv:
+        return True, conv_res
+        
+    is_trans, trans_res = evaluate_translation(query)
+    if is_trans:
+        return True, trans_res
+
     try:
         expr = translate_to_expression(query)
         if not is_math_expression(expr):

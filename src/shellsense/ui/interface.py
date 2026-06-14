@@ -253,11 +253,14 @@ class ShellSenseUI(QWidget):
             self.hide()
             return
         
-        # Intercept math calculations
+        # Intercept math calculations, conversions, and translations
         is_math, result = evaluate_math(user_text)
         if is_math:
             self.last_math_result = result
-            self.result_label.setText(f"Result: {result}  [Enter to Copy & Close | Esc to Close]")
+            if result.startswith("Error:"):
+                self.result_label.setText(f"<span style='color: #ff5252;'>{result}</span>  [Esc to Close]")
+            else:
+                self.result_label.setText(f"Result: {result}  [Enter to Copy & Close | Esc to Close]")
             self.result_label.setVisible(True)
             self.setFixedSize(600, 125)
             self.center_on_screen()
