@@ -241,6 +241,46 @@ LANGUAGE_CODES = {
     "tamil": "ta", "ta": "ta"
 }
 
+TRANSLITERATION_MAP = {
+    "ta": {
+        "vanakkam": "hello",
+        "nandri": "thank you",
+        "nanri": "thank you",
+        "varaveerpu": "welcome",
+        "thayavuseithu": "please",
+        "aam": "yes",
+        "illai": "no",
+        "eppadi irukkireergal": "how are you",
+        "eppadi irukinga": "how are you",
+        "mannikkavum": "sorry"
+    },
+    "hi": {
+        "namaste": "hello",
+        "dhanyavad": "thank you",
+        "shukriya": "thanks",
+        "swagat": "welcome",
+        "kripya": "please",
+        "haan": "yes",
+        "nahi": "no",
+        "aap kaise hain": "how are you",
+        "maaf kijiye": "sorry"
+    },
+    "ja": {
+        "konnichiwa": "hello",
+        "arigatou": "thank you",
+        "arigato": "thank you",
+        "yookoso": "welcome",
+        "onegaishimasu": "please",
+        "hai": "yes",
+        "iie": "no"
+    },
+    "zh": {
+        "nihao": "hello",
+        "xiexie": "thank you"
+    }
+}
+
+
 def evaluate_conversion(query: str):
     """
     Evaluates unit, timezone, currency, and base conversions.
@@ -413,79 +453,143 @@ def evaluate_conversion(query: str):
 
 def evaluate_translation(query: str):
     """
-    Evaluates offline-first translations by dynamically identifying target languages in the query.
+    Evaluates offline-first translations by dynamically identifying target and source languages in the query.
     Returns (success, result_string)
     """
     q = query.lower().strip()
     q = re.sub(r'[?=\s]+$', '', q) # Strip trailing question marks/equals
     
-    # 1. Identify target language
-    target_lang = None
-    lang_code = None
-    
-    # Supported full language names
+    # Supported languages
     full_languages = ["spanish", "french", "german", "italian", "portuguese", "japanese", "chinese", "hindi", "english", "tamil"]
-    # Supported codes (excluding 'it' to prevent false positives with English pronoun 'it')
     short_codes = ["es", "fr", "de", "pt", "ja", "zh", "hi", "en", "ta"]
     
-    # Search for full language names first
+    # 1. Find all language tokens in the query
+    found_langs = [] # list of (start_index, end_index, lang_name, lang_code)
+    
+    # Check full names
     for lang in full_languages:
-        # Match as a whole word to avoid partial matches
-        if re.search(r'\b' + lang + r'\b', q):
-            target_lang = lang
-            lang_code = LANGUAGE_CODES[lang]
-            break
+        for match in re.finditer(r'\b' + lang + r'\b', q):
+            found_langs.append((match.start(), match.end(), lang, LANGUAGE_CODES[lang]))
             
-    # If not found, search for short codes or "it" with context
-    if not target_lang:
-        # Look for "to/in <short_code/it>" or "translate <phrase> <short_code/it>"
-        for code in list(short_codes) + ["it"]:
-            if re.search(r'\b(?:to|in)\s+' + code + r'\b', q):
-                target_lang = code
-                lang_code = LANGUAGE_CODES[code]
-                break
-        
-        # If still not found, check if it ends with a short code (excluding 'it') and starts with 'translate'
-        if not target_lang and q.startswith("translate"):
-            for code in short_codes:
-                if q.endswith(" " + code):
-                    target_lang = code
-                    lang_code = LANGUAGE_CODES[code]
+    # Check short codes (if not already covered by full names, and avoiding lone "it" unless preceded by to/in)
+    for code in list(short_codes) + ["it"]:
+        for match in re.finditer(r'\b' + code + r'\b', q):
+            # Check if this range overlaps with any already found
+            overlap = False
+            for start, end, _, _ in found_langs:
+                if match.start() >= start and match.end() <= end:
+                    overlap = True
                     break
-
-    if not target_lang:
+            if overlap:
+                continue
+                
+            # For "it", only accept if preceded by "to" or "in" to avoid English pronoun "it"
+            if code == "it":
+                before = q[:match.start()].strip()
+                if not (before.endswith(" to") or before.endswith(" in")):
+                    continue
+                    
+            found_langs.append((match.start(), match.end(), code, LANGUAGE_CODES[code]))
+            
+    # Sort found languages by their position in the query
+    found_langs.sort(key=lambda x: x[0])
+    
+    target_lang = None
+    target_code = None
+    source_code = None
+    
+    # 2. Assign source and target based on syntax
+    if len(found_langs) >= 2:
+        # First is source, second is target
+        source_code = found_langs[0][3]
+        target_code = found_langs[1][3]
+        target_lang = found_langs[1][2]
+    elif len(found_langs) == 1:
+        # Only one language specified, treat it as target
+        target_lang = found_langs[0][2]
+        target_code = found_langs[0][3]
+        
+        # Source defaults to English, unless target is English
+        if target_code == "en":
+            source_code = "es" # default fallback
+        else:
+            source_code = "en"
+            
+    if not target_code:
         return False, None
-
-    # 2. Extract the phrase to translate by removing target language name/code
-    phrase = re.sub(r'\b' + re.escape(target_lang) + r'\b', '', q).strip()
-    
+        
+    # 3. Extract the phrase to translate by removing all matched language words/codes and connectors
+    phrase = q
+    for start, end, _, _ in sorted(found_langs, key=lambda x: x[0], reverse=True):
+        phrase = phrase[:start] + " " + phrase[end:]
+        
     # Clean common prefixes and suffixes
-    phrase = re.sub(r'^(?:translate|translation of|how to say|what is|say)\s+', '', phrase)
-    phrase = re.sub(r'\s+(?:to|in|of)$', '', phrase)
-    phrase = re.sub(r'^(?:to|in|of)\s+', '', phrase)
-    
+    phrase = re.sub(r'\b(?:translate|translation of|how to say|what is|say|from|to|in|of)\b', ' ', phrase)
+    phrase = re.sub(r'\s+', ' ', phrase).strip()
     phrase = phrase.strip().strip("'\"")
+    
     if not phrase:
         return False, None
+        
+    # 4. If target is English and source was not explicitly provided, detect source using script/transliteration
+    if target_code == "en" and len(found_langs) < 2:
+        # Check non-Latin character scripts first
+        if any(0x0B80 <= ord(c) <= 0x0BFF for c in phrase):
+            source_code = "ta"
+        elif any(0x0900 <= ord(c) <= 0x097F for c in phrase):
+            source_code = "hi"
+        elif any(0x3040 <= ord(c) <= 0x30FF or 0x4E00 <= ord(c) <= 0x9FFF for c in phrase):
+            # Japanese/Chinese characters
+            source_code = "ja" if any(0x3040 <= ord(c) <= 0x30FF for c in phrase) else "zh"
+        else:
+            # Check transliteration map
+            clean_phrase = re.sub(r'[^a-z0-9]', '', phrase.lower())
+            found_src = None
+            for code, trans_dict in TRANSLITERATION_MAP.items():
+                if clean_phrase in trans_dict:
+                    found_src = code
+                    break
+            if found_src:
+                source_code = found_src
 
-    # Check offline dictionary first (extremely fast and lightweight for low-spec machines)
-    if lang_code in OFFLINE_TRANSLATIONS:
-        dict_lang = OFFLINE_TRANSLATIONS[lang_code]
+    # 5. Check offline dictionaries
+    # Translating from English to target
+    if source_code == "en" and target_code in OFFLINE_TRANSLATIONS:
+        dict_lang = OFFLINE_TRANSLATIONS[target_code]
         if phrase in dict_lang:
-            return True, f"{dict_lang[phrase].capitalize()} ({lang_code.upper()})"
+            return True, f"{dict_lang[phrase].capitalize()} ({target_code.upper()})"
             
-    # As a secondary fallback, run a fast network check if online (0.8s timeout, non-blocking)
+    # Translating from source to English (native script matching)
+    if target_code == "en" and source_code in OFFLINE_TRANSLATIONS:
+        dict_lang = OFFLINE_TRANSLATIONS[source_code]
+        for eng_word, target_word in dict_lang.items():
+            if phrase == target_word or phrase == eng_word:
+                return True, f"{eng_word.capitalize()} ({target_code.upper()})"
+                
+    # Translating from transliterated source to English (transliteration matching)
+    if target_code == "en" and source_code in TRANSLITERATION_MAP:
+        trans_dict = TRANSLITERATION_MAP[source_code]
+        clean_phrase = re.sub(r'[^a-z0-9]', '', phrase.lower())
+        if clean_phrase in trans_dict:
+            eng_word = trans_dict[clean_phrase]
+            return True, f"{eng_word.capitalize()} ({target_code.upper()})"
+
+    # 6. Secondary fallback: run MyMemory API call
+    if source_code == target_code:
+        return True, f"{phrase} ({target_code.upper()})"
+        
     try:
         url_phrase = urllib.parse.quote(phrase)
-        url = f"https://api.mymemory.translated.net/get?q={url_phrase}&langpair=en|{lang_code}"
+        url = f"https://api.mymemory.translated.net/get?q={url_phrase}&langpair={source_code}|{target_code}"
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req, timeout=0.8) as response:
             data = json.loads(response.read().decode())
             translated_text = data.get("responseData", {}).get("translatedText")
             if translated_text:
-                return True, f"{translated_text} ({lang_code.upper()})"
+                if "IS AN INVALID" in translated_text.upper() or "INVALID LANGUAGE" in translated_text.upper():
+                    return True, f"Error: Invalid language pair {source_code.upper()} to {target_code.upper()}"
+                return True, f"{translated_text} ({target_code.upper()})"
     except Exception:
         pass
         
-    # Final fallback if offline and word is not in static list
     return True, f"Error: '{phrase}' not in offline dict / network timeout"
