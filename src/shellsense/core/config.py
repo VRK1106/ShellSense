@@ -8,10 +8,10 @@ MODEL_PATH = os.path.join(BASE_DIR, "shellsense_v3.pkl")
 # Intent to Command Mapping
 # Hardened to use lists for subprocess.Popen(shell=False)
 SAFE_COMMANDS = {
-    # "POWER_OFF": ["shutdown", "/s", "/t", "0"],
-    # "POWER_OFF_TIMER": ["shutdown", "/s", "/t", "{s}"],
-    # "RESTART": ["shutdown", "/r", "/t", "0"],
-    # "ABORT_ACTION": ["shutdown", "/a"],
+    "POWER_OFF": ["shutdown", "/s", "/t", "0"],
+    "POWER_OFF_TIMER": ["shutdown", "/s", "/t", "{s}"],
+    "RESTART": ["shutdown", "/r", "/t", "0"],
+    "ABORT_ACTION": ["shutdown", "/a"],
     "LOCK_SCREEN": ["rundll32.exe", "user32.dll,LockWorkStation"],
     "CHECK_RESOURCES": ["taskmgr", "/7"],
     "SERVICE_MGMT": ["cmd", "/c", "net start & pause"],
