@@ -213,6 +213,18 @@ OFFLINE_TRANSLATIONS = {
         "good night": "शुभ रात्रि", "thank you": "धन्यवाद", "thanks": "शुक्रिया",
         "welcome": "स्वागत", "please": "कृपया", "yes": "हाँ", "no": "नहीं",
         "goodbye": "अलविदा", "bye": "बाय", "how are you": "आप कैसे हैं?", "sorry": "माफ़ कीजिये"
+    },
+    "en": {
+        "hello": "hello", "hi": "hello", "good morning": "good morning", "good afternoon": "good afternoon",
+        "good night": "good night", "thank you": "thank you", "thanks": "thanks",
+        "welcome": "welcome", "please": "please", "yes": "yes", "no": "no",
+        "goodbye": "goodbye", "bye": "bye", "how are you": "how are you?", "sorry": "sorry"
+    },
+    "ta": {
+        "hello": "வணக்கம்", "hi": "வணக்கம்", "good morning": "காலை வணக்கம்", "good afternoon": "மதிய வணக்கம்",
+        "good night": "இனிய இரவு", "thank you": "நன்றி", "thanks": "நன்றி",
+        "welcome": "வரவேற்பு", "please": "தயவுசெய்து", "yes": "ஆம்", "no": "இல்லை",
+        "goodbye": "சென்று வருகிறேன்", "bye": "டாடா", "how are you": "எப்படி இருக்கிறீர்கள்?", "sorry": "மன்னிக்கவும்"
     }
 }
 
@@ -224,7 +236,9 @@ LANGUAGE_CODES = {
     "portuguese": "pt", "portugal": "pt", "pt": "pt",
     "japanese": "ja", "japan": "ja", "ja": "ja",
     "chinese": "zh", "china": "zh", "zh": "zh",
-    "hindi": "hi", "india": "hi", "hi": "hi"
+    "hindi": "hi", "india": "hi", "hi": "hi",
+    "english": "en", "uk": "en", "us": "en", "en": "en",
+    "tamil": "ta", "ta": "ta"
 }
 
 def evaluate_conversion(query: str):
@@ -410,9 +424,9 @@ def evaluate_translation(query: str):
     lang_code = None
     
     # Supported full language names
-    full_languages = ["spanish", "french", "german", "italian", "portuguese", "japanese", "chinese", "hindi"]
+    full_languages = ["spanish", "french", "german", "italian", "portuguese", "japanese", "chinese", "hindi", "english", "tamil"]
     # Supported codes (excluding 'it' to prevent false positives with English pronoun 'it')
-    short_codes = ["es", "fr", "de", "pt", "ja", "zh", "hi"]
+    short_codes = ["es", "fr", "de", "pt", "ja", "zh", "hi", "en", "ta"]
     
     # Search for full language names first
     for lang in full_languages:

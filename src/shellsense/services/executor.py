@@ -21,7 +21,7 @@ class CommandExecutor:
         
         try:
             # Handle specialized logic for certain intents
-            if intent == "POWER_OFF_TIMER":
+            if intent in ("POWER_OFF_TIMER", "SHUTDOWN_TIMER"):
                 nums = re.findall(r'\d+', user_text)
                 if nums:
                     val = int(nums[0])
