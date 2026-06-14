@@ -20,6 +20,11 @@ generation_rules = {
         "suffixes": ["for google.com", "for github.com", "on google", "on github", "for a website", "on 8.8.8.8", "for a host"],
         "verbs": ["run", "do", "perform", "execute", "start", "query", "check", "lookup"]
     },
+    "LAUNCH_APP": {
+        "nouns": ["chrome", "spotify", "notepad", "word", "excel", "powerpoint", "discord", "vscode", "paint", "steam", "photoshop", "firefox", "slack", "vs code", "visual studio code", "zoom", "teams", "outlook"],
+        "suffixes": ["", "please", "now", "app", "application"],
+        "verbs": ["open", "start", "launch", "run", "execute", "bring up"]
+    },
     "LOCK_SCREEN": {
         "nouns": ["screen", "pc", "computer", "machine", "windows screen", "session", "workstation"],
         "suffixes": ["", "now", "immediately", "please", "for safety", "right away"],

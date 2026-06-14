@@ -223,9 +223,9 @@ class ShellSenseUI(QWidget):
             self.move(x, y)
 
     def on_text_changed(self):
-        # If the query is modified after calculation, reset the math state and collapse UI
-        if getattr(self, 'last_math_result', None) is not None:
-            self.last_math_result = None
+        # Reset math results, clear error states, and collapse UI if the search query is modified
+        self.last_math_result = None
+        if self.result_label.isVisible():
             self.result_label.setVisible(False)
             self.setFixedSize(600, 78)
             self.center_on_screen()
@@ -277,7 +277,16 @@ class ShellSenseUI(QWidget):
             return
 
         # Use the hardened executor service
-        CommandExecutor.execute(intent, user_text)
+        success = CommandExecutor.execute(intent, user_text)
+        if not success:
+            if intent == "LAUNCH_APP":
+                self.result_label.setText("<span style='color: #ff5252;'>Error:</span> Application not found  [Esc to Close]")
+            else:
+                self.result_label.setText("<span style='color: #ff5252;'>Error:</span> Command failed to execute  [Esc to Close]")
+            self.result_label.setVisible(True)
+            self.setFixedSize(600, 125)
+            self.center_on_screen()
+            return
         
         self.search_bar.clear()
         self.hide()
