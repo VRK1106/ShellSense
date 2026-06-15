@@ -102,14 +102,8 @@ class ShellSenseUI(QWidget):
             except Exception:
                 pass
             
-            # 3. Bring ShellSense bar to screen and show visual overlay alert
-            self.result_label.setText(f"<span style='color: #ffb74d; font-weight: bold;'>⏰ Alert:</span> Time is up: '{task}'!  [Esc to Close]")
-            self.result_label.setVisible(True)
-            self.setFixedSize(600, 125)
-            self.center_on_screen()
-            self.show()
-            self.raise_()
-            self.activateWindow()
+            # 3. Bring ShellSense bar to screen and show visual overlay alert & snooze options
+            self.show_snooze_panel(task)
             
             if timer_info in self.active_timers:
                 self.active_timers.remove(timer_info)
@@ -158,7 +152,55 @@ class ShellSenseUI(QWidget):
         self.result_label.setVisible(True)
         self.setFixedSize(600, 125)
         self.center_on_screen()
+    def show_snooze_panel(self, task):
+        self.current_alert_task = task
+        self.alert_message_label.setText(f"⏰ Alert: Time is up for '{task}'!")
+        
+        self.result_label.setVisible(False)
+        self.timer_widget.setVisible(False)
+        self.alert_widget.setVisible(True)
+        
+        self.setFixedSize(600, 160)
+        self.center_on_screen()
+        self.show()
+        self.raise_()
+        self.activateWindow()
+        self.snooze_custom_val.clear()
+        self.snooze_custom_val.setStyleSheet("")
+        QTimer.singleShot(10, self.snooze_5_btn.setFocus)
 
+    def snooze_timer(self, minutes):
+        if not hasattr(self, 'current_alert_task') or not self.current_alert_task:
+            return
+            
+        task = self.current_alert_task
+        duration_ms = int(minutes * 60 * 1000)
+        time_desc = f"{minutes} minute" + ("s" if minutes != 1 else "")
+        
+        # Start new snoozed background timer
+        self.start_background_timer(task, duration_ms, time_desc)
+        
+        # Hide alert widget
+        self.alert_widget.setVisible(False)
+        
+        # Show success confirm
+        self.result_label.setText(f"Snoozed '{task}' for {time_desc}!  [Esc to Close]")
+        self.result_label.setVisible(True)
+        self.setFixedSize(600, 125)
+        self.center_on_screen()
+
+    def snooze_timer_custom(self):
+        val_str = self.snooze_custom_val.text().strip()
+        if not val_str:
+            return
+        try:
+            val = float(val_str)
+            if val <= 0:
+                raise ValueError("Must be positive")
+        except ValueError:
+            self.snooze_custom_val.setStyleSheet("QLineEdit { border: 2px solid #ff5252; color: #ff5252; background-color: rgba(20, 20, 20, 230); border-radius: 6px; padding: 4px; }")
+            return
+        self.snooze_timer(val)
     def register_session_notifications(self):
         try:
             hwnd = self.winId()
@@ -390,12 +432,93 @@ class ShellSenseUI(QWidget):
         self.timer_val_input.returnPressed.connect(self.submit_interactive_timer)
         self.timer_task_input.returnPressed.connect(self.submit_interactive_timer)
         
+        # Build interactive Alert/Snooze widget
+        self.alert_widget = QFrame(self)
+        self.alert_widget.setVisible(False)
+        self.alert_widget.setStyleSheet("""
+            QFrame {
+                background-color: rgba(30, 30, 30, 220);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 12px;
+                padding: 10px;
+            }
+            QLabel {
+                border: none;
+                background: transparent;
+                color: #ffb74d;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 15px;
+                font-weight: bold;
+            }
+            QLineEdit {
+                background-color: rgba(20, 20, 20, 230);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 6px;
+                color: white;
+                font-size: 13px;
+                padding: 4px;
+                font-family: 'Segoe UI', sans-serif;
+            }
+            QPushButton {
+                background-color: rgba(0, 120, 212, 0.85);
+                border: none;
+                border-radius: 6px;
+                color: white;
+                font-size: 13px;
+                font-weight: bold;
+                padding: 6px 10px;
+                font-family: 'Segoe UI', sans-serif;
+            }
+            QPushButton:hover {
+                background-color: #005a9e;
+            }
+        """)
+        
+        alert_layout = QVBoxLayout(self.alert_widget)
+        alert_layout.setContentsMargins(5, 5, 5, 5)
+        alert_layout.setSpacing(10)
+        
+        self.alert_message_label = QLabel("⏰ Alert: Time is up!", self.alert_widget)
+        self.alert_message_label.setWordWrap(True)
+        alert_layout.addWidget(self.alert_message_label)
+        
+        btn_layout = QHBoxLayout()
+        btn_layout.setSpacing(6)
+        
+        self.snooze_5_btn = QPushButton("Snooze 5m", self.alert_widget)
+        self.snooze_5_btn.clicked.connect(lambda: self.snooze_timer(5))
+        btn_layout.addWidget(self.snooze_5_btn)
+        
+        self.snooze_10_btn = QPushButton("Snooze 10m", self.alert_widget)
+        self.snooze_10_btn.clicked.connect(lambda: self.snooze_timer(10))
+        btn_layout.addWidget(self.snooze_10_btn)
+        
+        self.snooze_20_btn = QPushButton("Snooze 20m", self.alert_widget)
+        self.snooze_20_btn.clicked.connect(lambda: self.snooze_timer(20))
+        btn_layout.addWidget(self.snooze_20_btn)
+        
+        btn_layout.addStretch()
+        
+        self.snooze_custom_val = QLineEdit(self.alert_widget)
+        self.snooze_custom_val.setPlaceholderText("mins...")
+        self.snooze_custom_val.setFixedWidth(55)
+        btn_layout.addWidget(self.snooze_custom_val)
+        
+        self.snooze_custom_btn = QPushButton("Snooze", self.alert_widget)
+        self.snooze_custom_btn.clicked.connect(self.snooze_timer_custom)
+        btn_layout.addWidget(self.snooze_custom_btn)
+        
+        alert_layout.addLayout(btn_layout)
+        
+        self.snooze_custom_val.returnPressed.connect(self.snooze_timer_custom)
+        
         layout = QVBoxLayout()
         layout.setContentsMargins(10, 10, 10, 10)
         layout.setSpacing(8)
         layout.addWidget(self.search_bar)
         layout.addWidget(self.result_label)
         layout.addWidget(self.timer_widget)
+        layout.addWidget(self.alert_widget)
         self.setLayout(layout)
         
         self.setFixedSize(600, 78)
@@ -425,6 +548,12 @@ class ShellSenseUI(QWidget):
                 self.timer_widget.setVisible(False)
                 self.setFixedSize(600, 78)
                 self.center_on_screen()
+                
+        # Collapse alert widget if user types a new command
+        if hasattr(self, 'alert_widget') and self.alert_widget.isVisible():
+            self.alert_widget.setVisible(False)
+            self.setFixedSize(600, 78)
+            self.center_on_screen()
 
     def process_command(self):
         user_text = self.search_bar.text().strip()
