@@ -299,6 +299,13 @@ class ShellSenseUI(QWidget):
                 self.center_on_screen()
                 return
                 
+            if "Timer Formats:" in result:
+                self.result_label.setText(result)
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 200)
+                self.center_on_screen()
+                return
+                
             if result.startswith("Timer Created: "):
                 data = result[15:]
                 task, duration_ms_str, time_desc = data.split("|", 2)

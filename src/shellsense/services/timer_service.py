@@ -3,6 +3,19 @@ import re
 def evaluate_timer(query: str):
     q = query.lower().strip()
     
+    # Help formats check
+    if q in ('timer', 'timers', 'alarm', 'alarms'):
+        help_html = (
+            "<div style='line-height: 1.4; font-family: \"Segoe UI\", sans-serif; color: #00bcd4;'>"
+            "<b style='color: #ffffff; font-size: 16px;'>⏰ ShellSense Timer Formats:</b><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Timer with Task</b>: <code>timer 5 mins to check oven</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Standard Timer</b>: <code>timer 10 minutes</code> or <code>timer 5</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Reminders</b>: <code>remind me to stretch in 45 seconds</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Cancellation</b>: <code>stop timer</code> (all) or <code>stop timer [name]</code>"
+            "</div>"
+        )
+        return True, help_html
+
     # Cancellation checks
     if q in ('cancel timer', 'stop timer', 'clear timer', 'cancel timers', 'stop timers'):
         return True, "Cancel Timers"
