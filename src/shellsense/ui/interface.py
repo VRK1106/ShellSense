@@ -190,6 +190,7 @@ class ShellSenseUI(QWidget):
         self.search_bar.textChanged.connect(self.on_text_changed)
         
         self.result_label = QLabel(self)
+        self.result_label.setWordWrap(True)
         self.result_label.setVisible(False)
         self.result_label.setStyleSheet("""
             QLabel {
@@ -257,6 +258,13 @@ class ShellSenseUI(QWidget):
         is_math, result = evaluate_math(user_text)
         if is_math:
             self.last_math_result = result
+            if "Available Functions:" in result:
+                self.result_label.setText(result)
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 280)
+                self.center_on_screen()
+                return
+                
             if result.startswith("Error:"):
                 self.result_label.setText(f"<span style='color: #ff5252;'>{result}</span>  [Esc to Close]")
             else:

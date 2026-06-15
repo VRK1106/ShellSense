@@ -19,7 +19,7 @@ SAFE_COMMANDS = {
     "PROCESS_KILL": ["taskkill", "/F", "/PID", "{pid}"],
     "STORAGE_INFO": ["cmd", "/c", "wmic logicaldisk get size,freespace,caption & pause"],
     "SYSTEM_DETAILS": ["msinfo32"],
-    "DRIVER_MGMT": ["devmgmt.msc"],
+    "DRIVER_MGMT": ["cmd", "/c", "start", "devmgmt.msc"],
     "POWER_MGMT": ["cmd", "/c", "powercfg /batteryreport & start battery-report.html"],
     "OPEN_CALCULATOR": ["calc"],
     "OPEN_CMD": ["cmd", "/c", "start", "cmd"],

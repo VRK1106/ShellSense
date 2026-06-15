@@ -77,11 +77,34 @@ def is_math_expression(expression: str) -> bool:
     # Now check if it only contains digits, dots, spaces, and basic operators
     return bool(re.match(r'^[0-9+\-*/().\s^%]+$', clean_expr))
 
+def evaluate_help(query: str):
+    q = query.lower().strip()
+    if q in ('help', 'commands', 'functions', '?', 'list'):
+        help_html = (
+            "<div style='line-height: 1.4; font-family: \"Segoe UI\", sans-serif; color: #00bcd4;'>"
+            "<b style='color: #ffffff; font-size: 17px;'>✨ ShellSense Available Functions:</b><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Math</b>: <code>15% of 80</code>, <code>sqrt(144)</code>, <code>sin(pi/2)</code>, <code>5 * (3 + 2)</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Currency</b>: <code>100 usd to eur</code>, <code>50 gbp to inr</code>, <code>1000 jpy to usd</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Timezone</b>: <code>10:30 am est to ist</code>, <code>4 pm pst to gmt</code>, <code>12:00 cet in gmt</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Physical Units</b>: <code>10 miles to km</code>, <code>100 f to c</code>, <code>5 gallons to liters</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Number Bases</b>: <code>hex ff to binary</code>, <code>decimal 255 to hex</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Translation</b>: <code>hello in tamil</code>, <code>welcome german</code>, <code>vanakkam in english</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>System (Press Enter)</b>: <code>lock screen</code>, <code>system details</code>, <code>ping google</code>, "
+            "<code>shutdown in 1 hour</code>, <code>abort action</code>"
+            "</div>"
+        )
+        return True, help_html
+    return False, None
+
 def evaluate_math(query: str):
     """
     Translates and evaluates a math query safely.
     Returns (success, result_or_error_msg)
     """
+    is_help, help_res = evaluate_help(query)
+    if is_help:
+        return True, help_res
+
     # Try unit/currency/timezone/base conversions first
     from shellsense.services.conversion_parser import evaluate_conversion, evaluate_translation
     
