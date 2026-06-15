@@ -18,12 +18,10 @@ def evaluate_timer(query: str):
         if task_query:
             return True, f"Cancel Timer Name: {task_query}"
             
-    # Pattern 1: (remind me to |set timer to |timer to ) [task] (in |after ) [time]
-    # e.g., remind me to eat in 10 minutes
-    # e.g., set timer to eat after 10 minutes
-    # e.g., timer to check oven in 5 min
+    # Pattern 1: (remind me to |set [a/an/the] timer to |timer to ) [task] (in |after ) [time] [unit]
+    # e.g., set a timer to sleep after 10 minutes
     match1 = re.match(
-        r'^(?:remind\s+me\s+to|set\s+timer\s+to|timer\s+to)\s+(.+?)\s+(?:in|after)\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?$',
+        r'^(?:remind\s+me\s+to|set\s+(?:a\s+|an\s+|the\s+)?timer\s+to|timer\s+to)\s+(.+?)\s+(?:in|after)\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?$',
         q
     )
     if match1:
@@ -34,11 +32,10 @@ def evaluate_timer(query: str):
         time_desc = f"{value} {unit}" + ("s" if value != 1 else "")
         return True, f"Timer Created: {task.capitalize()}|{duration_ms}|{time_desc}"
 
-    # Pattern 2: (set timer for |timer for ) [time] to [task]
-    # e.g., set timer for 10 minutes to eat
-    # e.g., timer for 5 minutes to check oven
+    # Pattern 2: (set [a/an/the] timer for |timer for ) [time] to [task]
+    # e.g., set a timer for 10 minutes to eat
     match2 = re.match(
-        r'^(?:set\s+timer\s+for|timer\s+for)\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?\s+to\s+(.+?)$',
+        r'^(?:set\s+(?:a\s+|an\s+|the\s+)?timer\s+for|timer\s+for)\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?\s+to\s+(.+?)$',
         q
     )
     if match2:
@@ -49,11 +46,10 @@ def evaluate_timer(query: str):
         time_desc = f"{value} {unit}" + ("s" if value != 1 else "")
         return True, f"Timer Created: {task.capitalize()}|{duration_ms}|{time_desc}"
 
-    # Pattern 3: (set timer for |timer for ) [time]
-    # e.g., set timer for 10 minutes
-    # e.g., timer for 5 minutes
+    # Pattern 3: (set [a/an/the] timer for |timer for ) [time]
+    # e.g., set a timer for 10 minutes
     match3 = re.match(
-        r'^(?:set\s+timer\s+for|timer\s+for)\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?$',
+        r'^(?:set\s+(?:a\s+|an\s+|the\s+)?timer\s+for|timer\s+for)\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?$',
         q
     )
     if match3:
@@ -79,7 +75,6 @@ def evaluate_timer(query: str):
 
     # Pattern 5: timer [time]
     # e.g., timer 10 minutes
-    # e.g., timer 10
     match5 = re.match(
         r'^timer\s+(\d+(?:\.\d+)?)(?:\s*(second|sec|minute|min|hour|hr)s?)?$',
         q
@@ -91,11 +86,10 @@ def evaluate_timer(query: str):
         time_desc = f"{value} {unit}" + ("s" if value != 1 else "")
         return True, f"Timer Created: Timer|{duration_ms}|{time_desc}"
 
-    # Pattern 6: (remind me to |set timer to |timer to ) [task] (in |after ) [time] (default unit: minutes)
-    # e.g., remind me to eat in 10
-    # e.g., set timer to eat in 10
+    # Pattern 6: (remind me to |set [a/an/the] timer to |timer to ) [task] (in |after ) [time] (default unit: minutes)
+    # e.g., set a timer to sleep after 10
     match6 = re.match(
-        r'^(?:remind\s+me\s+to|set\s+timer\s+to|timer\s+to)\s+(.+?)\s+(?:in|after)\s+(\d+(?:\.\d+)?)$',
+        r'^(?:remind\s+me\s+to|set\s+(?:a\s+|an\s+|the\s+)?timer\s+to|timer\s+to)\s+(.+?)\s+(?:in|after)\s+(\d+(?:\.\d+)?)$',
         q
     )
     if match6:
