@@ -58,12 +58,17 @@ class ShellSenseUI(QWidget):
             
             logger.info("Refreshing initial hotkey...")
             self.refresh_hotkey(force=True)
+            
+            # Load any persisted timers from previous session
+            logger.info("Loading persisted timers...")
+            self.load_persisted_timers()
+            
             logger.info("ShellSenseUI Initialization Complete.")
         except Exception as e:
             logger.critical(f"Error during UI Initialization: {e}", exc_info=True)
             raise
     
-    def start_background_timer(self, task, duration_ms, time_desc):
+    def start_background_timer(self, task, duration_ms, time_desc, save=True):
         if not hasattr(self, 'active_timers'):
             self.active_timers = []
             
@@ -76,6 +81,9 @@ class ShellSenseUI(QWidget):
             "timer": timer
         }
         self.active_timers.append(timer_info)
+        
+        if save:
+            self.save_active_timers()
         
         def on_timeout():
             import winsound
@@ -108,6 +116,7 @@ class ShellSenseUI(QWidget):
             if timer_info in self.active_timers:
                 self.active_timers.remove(timer_info)
             timer.deleteLater()
+            self.save_active_timers()
             
         timer.timeout.connect(on_timeout)
         timer.start(duration_ms)
@@ -213,6 +222,99 @@ class ShellSenseUI(QWidget):
         self.setFixedSize(600, 78)
         self.search_bar.clear()
         self.hide()
+
+    def load_persisted_timers(self):
+        import json
+        import time
+        
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        src_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
+        timers_file = os.path.join(src_root, "timers.json")
+        
+        if not os.path.exists(timers_file):
+            return
+            
+        try:
+            with open(timers_file, "r") as f:
+                saved = json.load(f)
+        except Exception as e:
+            logger.error(f"Error loading persisted timers: {e}")
+            return
+            
+        now = time.time()
+        updated_list = []
+        
+        for item in saved:
+            task = item.get("task")
+            end_time = item.get("end_time")
+            time_desc = item.get("time_desc", "")
+            
+            if not task or not end_time:
+                continue
+                
+            remaining_ms = int((end_time - now) * 1000)
+            if remaining_ms <= 0:
+                # Use a default arg in lambda to capture the value correctly in the loop
+                QTimer.singleShot(1000, lambda t=task: self.trigger_missed_timer(t))
+            else:
+                self.start_background_timer(task, remaining_ms, time_desc, save=False)
+                updated_list.append(item)
+                
+        try:
+            with open(timers_file, "w") as f:
+                json.dump(updated_list, f, indent=4)
+        except Exception as e:
+            logger.error(f"Error saving updated persisted timers: {e}")
+
+    def save_active_timers(self):
+        import json
+        import time
+        
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        src_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
+        timers_file = os.path.join(src_root, "timers.json")
+        
+        saved_list = []
+        for t in self.active_timers:
+            remaining_ms = t["timer"].remainingTime()
+            if remaining_ms > 0:
+                end_time = time.time() + (remaining_ms / 1000.0)
+                saved_list.append({
+                    "task": t["task"],
+                    "end_time": end_time,
+                    "time_desc": t["time_desc"]
+                })
+                
+        try:
+            with open(timers_file, "w") as f:
+                json.dump(saved_list, f, indent=4)
+        except Exception as e:
+            logger.error(f"Error saving persisted timers: {e}")
+
+    def trigger_missed_timer(self, task):
+        import winsound
+        self.tray_icon.showMessage(
+            "⏰ ShellSense Missed Alert",
+            f"Missed alarm: {task}",
+            QSystemTrayIcon.MessageIcon.Warning,
+            10000
+        )
+        try:
+            import threading
+            def play_beeps():
+                import winsound
+                import time
+                for _ in range(3):
+                    try:
+                        winsound.Beep(800, 600)
+                    except Exception:
+                        pass
+                    time.sleep(1.0)
+            threading.Thread(target=play_beeps, daemon=True).start()
+        except Exception:
+            pass
+            
+        self.show_snooze_panel(task)
     def register_session_notifications(self):
         try:
             hwnd = self.winId()
@@ -631,6 +733,7 @@ class ShellSenseUI(QWidget):
                         t["timer"].stop()
                         t["timer"].deleteLater()
                     self.active_timers.clear()
+                    self.save_active_timers()
                     self.result_label.setText(f"Cancelled all active timers ({count} stopped).  [Esc to Close]")
                 else:
                     self.result_label.setText("No active timers running.  [Esc to Close]")
@@ -660,6 +763,7 @@ class ShellSenseUI(QWidget):
                         matched_timer["timer"].stop()
                         matched_timer["timer"].deleteLater()
                         self.active_timers.remove(matched_timer)
+                        self.save_active_timers()
                         self.result_label.setText(f"Cancelled timer '{matched_timer['task']}'.  [Esc to Close]")
                     else:
                         names_str = ", ".join(f"'{t['task']}'" for t in matches)
