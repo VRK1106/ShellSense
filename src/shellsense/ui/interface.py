@@ -88,8 +88,17 @@ class ShellSenseUI(QWidget):
             )
             # 2. Audible alerts
             try:
-                winsound.Beep(1000, 600)
-                winsound.PlaySound("SystemAsterisk", winsound.SND_ALIAS)
+                import threading
+                def play_beeps():
+                    import winsound
+                    import time
+                    for _ in range(3):
+                        try:
+                            winsound.Beep(1000, 600)
+                        except Exception:
+                            pass
+                        time.sleep(1.0)
+                threading.Thread(target=play_beeps, daemon=True).start()
             except Exception:
                 pass
             
