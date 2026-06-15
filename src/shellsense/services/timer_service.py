@@ -18,35 +18,94 @@ def evaluate_timer(query: str):
         if task_query:
             return True, f"Cancel Timer Name: {task_query}"
             
-    # Match: "remind me to [task] in [X] [units]"
-    match_remind = re.match(
-        r'^remind\s+me\s+to\s+(.+?)\s+in\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?$',
+    # Pattern 1: (remind me to |set timer to |timer to ) [task] (in |after ) [time]
+    # e.g., remind me to eat in 10 minutes
+    # e.g., set timer to eat after 10 minutes
+    # e.g., timer to check oven in 5 min
+    match1 = re.match(
+        r'^(?:remind\s+me\s+to|set\s+timer\s+to|timer\s+to)\s+(.+?)\s+(?:in|after)\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?$',
         q
     )
-    if match_remind:
-        task = match_remind.group(1).strip()
-        value = float(match_remind.group(2))
-        unit = match_remind.group(3)
-        
+    if match1:
+        task = match1.group(1).strip()
+        value = float(match1.group(2))
+        unit = match1.group(3)
         duration_ms = calculate_ms(value, unit)
         time_desc = f"{value} {unit}" + ("s" if value != 1 else "")
-        # Keep original casing of the task name if possible, or just capitalize the first letter
-        task_display = task.capitalize()
-        return True, f"Timer Created: {task_display}|{duration_ms}|{time_desc}"
-        
-    # Match: "timer [X] [units]" or "timer [X]"
-    match_timer = re.match(
-        r'^timer\s+(\d+(?:\.\d+)?)(?:\s*(second|sec|minute|min|hour|hr)s?)?$',
+        return True, f"Timer Created: {task.capitalize()}|{duration_ms}|{time_desc}"
+
+    # Pattern 2: (set timer for |timer for ) [time] to [task]
+    # e.g., set timer for 10 minutes to eat
+    # e.g., timer for 5 minutes to check oven
+    match2 = re.match(
+        r'^(?:set\s+timer\s+for|timer\s+for)\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?\s+to\s+(.+?)$',
         q
     )
-    if match_timer:
-        value = float(match_timer.group(1))
-        unit = match_timer.group(2) if match_timer.group(2) else "minute"
-        
+    if match2:
+        value = float(match2.group(1))
+        unit = match2.group(2)
+        task = match2.group(3).strip()
+        duration_ms = calculate_ms(value, unit)
+        time_desc = f"{value} {unit}" + ("s" if value != 1 else "")
+        return True, f"Timer Created: {task.capitalize()}|{duration_ms}|{time_desc}"
+
+    # Pattern 3: (set timer for |timer for ) [time]
+    # e.g., set timer for 10 minutes
+    # e.g., timer for 5 minutes
+    match3 = re.match(
+        r'^(?:set\s+timer\s+for|timer\s+for)\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?$',
+        q
+    )
+    if match3:
+        value = float(match3.group(1))
+        unit = match3.group(2)
         duration_ms = calculate_ms(value, unit)
         time_desc = f"{value} {unit}" + ("s" if value != 1 else "")
         return True, f"Timer Created: Timer|{duration_ms}|{time_desc}"
-        
+
+    # Pattern 4: timer [time] to [task]
+    # e.g., timer 10 minutes to eat
+    match4 = re.match(
+        r'^timer\s+(\d+(?:\.\d+)?)\s*(second|sec|minute|min|hour|hr)s?\s+to\s+(.+?)$',
+        q
+    )
+    if match4:
+        value = float(match4.group(1))
+        unit = match4.group(2)
+        task = match4.group(3).strip()
+        duration_ms = calculate_ms(value, unit)
+        time_desc = f"{value} {unit}" + ("s" if value != 1 else "")
+        return True, f"Timer Created: {task.capitalize()}|{duration_ms}|{time_desc}"
+
+    # Pattern 5: timer [time]
+    # e.g., timer 10 minutes
+    # e.g., timer 10
+    match5 = re.match(
+        r'^timer\s+(\d+(?:\.\d+)?)(?:\s*(second|sec|minute|min|hour|hr)s?)?$',
+        q
+    )
+    if match5:
+        value = float(match5.group(1))
+        unit = match5.group(2) if match5.group(2) else "minute"
+        duration_ms = calculate_ms(value, unit)
+        time_desc = f"{value} {unit}" + ("s" if value != 1 else "")
+        return True, f"Timer Created: Timer|{duration_ms}|{time_desc}"
+
+    # Pattern 6: (remind me to |set timer to |timer to ) [task] (in |after ) [time] (default unit: minutes)
+    # e.g., remind me to eat in 10
+    # e.g., set timer to eat in 10
+    match6 = re.match(
+        r'^(?:remind\s+me\s+to|set\s+timer\s+to|timer\s+to)\s+(.+?)\s+(?:in|after)\s+(\d+(?:\.\d+)?)$',
+        q
+    )
+    if match6:
+        task = match6.group(1).strip()
+        value = float(match6.group(2))
+        unit = "minute"
+        duration_ms = calculate_ms(value, unit)
+        time_desc = f"{value} {unit}" + ("s" if value != 1 else "")
+        return True, f"Timer Created: {task.capitalize()}|{duration_ms}|{time_desc}"
+
     return False, None
 
 def calculate_ms(value: float, unit: str) -> int:
