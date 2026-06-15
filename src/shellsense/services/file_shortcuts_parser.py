@@ -14,6 +14,18 @@ class DROPFILES(ctypes.Structure):
         ("fWide", wintypes.BOOL)
     ]
 
+# Define kernel32 prototypes to prevent pointer truncation on 64-bit Windows
+kernel32 = ctypes.windll.kernel32
+
+kernel32.GlobalAlloc.argtypes = [wintypes.UINT, ctypes.c_size_t]
+kernel32.GlobalAlloc.restype = ctypes.c_void_p
+
+kernel32.GlobalLock.argtypes = [ctypes.c_void_p]
+kernel32.GlobalLock.restype = ctypes.c_void_p
+
+kernel32.GlobalUnlock.argtypes = [ctypes.c_void_p]
+kernel32.GlobalUnlock.restype = wintypes.BOOL
+
 def copy_file_to_clipboard(filepath: str):
     abs_path = os.path.abspath(filepath)
     # Unicode file list double-null terminated
@@ -33,10 +45,16 @@ def copy_file_to_clipboard(filepath: str):
     win32clipboard.OpenClipboard()
     try:
         win32clipboard.EmptyClipboard()
-        hGlobal = ctypes.windll.kernel32.GlobalAlloc(win32con.GMEM_MOVEABLE, len(data))
-        pGlobal = ctypes.windll.kernel32.GlobalLock(hGlobal)
-        ctypes.memmove(pGlobal, data, len(data))
-        ctypes.windll.kernel32.GlobalUnlock(hGlobal)
+        hGlobal = kernel32.GlobalAlloc(win32con.GMEM_MOVEABLE, len(data))
+        if not hGlobal:
+            raise OSError("GlobalAlloc failed to allocate memory.")
+        pGlobal = kernel32.GlobalLock(hGlobal)
+        if not pGlobal:
+            raise OSError("GlobalLock failed to lock memory.")
+        try:
+            ctypes.memmove(pGlobal, data, len(data))
+        finally:
+            kernel32.GlobalUnlock(hGlobal)
         win32clipboard.SetClipboardData(win32con.CF_HDROP, hGlobal)
     finally:
         win32clipboard.CloseClipboard()
