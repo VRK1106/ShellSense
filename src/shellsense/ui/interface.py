@@ -261,7 +261,7 @@ class ShellSenseUI(QWidget):
             if "Available Functions:" in result:
                 self.result_label.setText(result)
                 self.result_label.setVisible(True)
-                self.setFixedSize(600, 280)
+                self.setFixedSize(600, 300)
                 self.center_on_screen()
                 return
                 

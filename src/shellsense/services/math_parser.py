@@ -82,6 +82,8 @@ def is_math_expression(expression: str) -> bool:
 def evaluate_help(query: str):
     q = query.lower().strip()
     if q in ('help', 'commands', 'functions', '?', 'list'):
+        snippets = load_snippets()
+        snippet_keys = ", ".join(f"<code>{k}</code>" for k in snippets.keys()) if snippets else "None"
         help_html = (
             "<div style='line-height: 1.4; font-family: \"Segoe UI\", sans-serif; color: #00bcd4;'>"
             "<b style='color: #ffffff; font-size: 17px;'>✨ ShellSense Available Functions:</b><br>"
@@ -91,6 +93,7 @@ def evaluate_help(query: str):
             "<span style='color: #ffffff;'>•</span> <b>Physical Units</b>: <code>10 miles to km</code>, <code>100 f to c</code>, <code>5 gallons to liters</code><br>"
             "<span style='color: #ffffff;'>•</span> <b>Number Bases</b>: <code>hex ff to binary</code>, <code>decimal 255 to hex</code><br>"
             "<span style='color: #ffffff;'>•</span> <b>Translation</b>: <code>hello in tamil</code>, <code>welcome german</code>, <code>vanakkam in english</code><br>"
+            "<span style='color: #ffffff;'>•</span> <b>Snippets</b>: <code>copy/paste [key]</code> where key is: " + snippet_keys + "<br>"
             "<span style='color: #ffffff;'>•</span> <b>System (Press Enter)</b>: <code>lock screen</code>, <code>system details</code>, <code>ping google</code>, "
             "<code>shutdown in 1 hour</code>, <code>abort action</code>"
             "</div>"
