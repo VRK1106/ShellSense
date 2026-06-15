@@ -35,6 +35,7 @@ class ShellSenseUI(QWidget):
             logger.info("Loading BrainService...")
             self.brain = BrainService()
             self.last_math_result = None
+            self.active_timers = []
             
             logger.info("Initializing UI...")
             self.initUI()
@@ -62,6 +63,39 @@ class ShellSenseUI(QWidget):
             logger.critical(f"Error during UI Initialization: {e}", exc_info=True)
             raise
     
+    def start_background_timer(self, task, duration_ms, time_desc):
+        if not hasattr(self, 'active_timers'):
+            self.active_timers = []
+            
+        timer = QTimer(self)
+        timer.setSingleShot(True)
+        
+        timer_info = {
+            "task": task,
+            "time_desc": time_desc,
+            "timer": timer
+        }
+        self.active_timers.append(timer_info)
+        
+        def on_timeout():
+            import winsound
+            self.tray_icon.showMessage(
+                "⏰ ShellSense Alert",
+                f"Time is up: {task}",
+                QSystemTrayIcon.MessageIcon.Information,
+                10000
+            )
+            try:
+                winsound.PlaySound("SystemAsterisk", winsound.SND_ALIAS)
+            except Exception:
+                pass
+            if timer_info in self.active_timers:
+                self.active_timers.remove(timer_info)
+            timer.deleteLater()
+            
+        timer.timeout.connect(on_timeout)
+        timer.start(duration_ms)
+
     def register_session_notifications(self):
         try:
             hwnd = self.winId()
@@ -261,10 +295,67 @@ class ShellSenseUI(QWidget):
             if "Available Functions:" in result:
                 self.result_label.setText(result)
                 self.result_label.setVisible(True)
-                self.setFixedSize(600, 330)
+                self.setFixedSize(600, 350)
                 self.center_on_screen()
                 return
                 
+            if result.startswith("Timer Created: "):
+                data = result[15:]
+                task, duration_ms_str, time_desc = data.split("|", 2)
+                duration_ms = int(float(duration_ms_str))
+                self.start_background_timer(task, duration_ms, time_desc)
+                self.result_label.setText(f"Timer set for '{task}' in {time_desc}!  [Esc to Close]")
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 125)
+                self.center_on_screen()
+                return
+
+            if result == "Cancel Timers":
+                if hasattr(self, 'active_timers') and self.active_timers:
+                    count = len(self.active_timers)
+                    for t in self.active_timers:
+                        t["timer"].stop()
+                        t["timer"].deleteLater()
+                    self.active_timers.clear()
+                    self.result_label.setText(f"Cancelled all active timers ({count} stopped).  [Esc to Close]")
+                else:
+                    self.result_label.setText("No active timers running.  [Esc to Close]")
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 125)
+                self.center_on_screen()
+                return
+
+            if result.startswith("Cancel Timer Name: "):
+                target_name = result[19:].strip().lower()
+                if not hasattr(self, 'active_timers') or not self.active_timers:
+                    self.result_label.setText("No active timers running.  [Esc to Close]")
+                else:
+                    import re
+                    norm_target = re.sub(r'[^a-z0-9]', '', target_name)
+                    matches = []
+                    for t in self.active_timers:
+                        t_name = t["task"].lower()
+                        norm_t_name = re.sub(r'[^a-z0-9]', '', t_name)
+                        if target_name in t_name or norm_target in norm_t_name:
+                            matches.append(t)
+                            
+                    if not matches:
+                        self.result_label.setText(f"No active timer matches '{target_name}'.  [Esc to Close]")
+                    elif len(matches) == 1:
+                        matched_timer = matches[0]
+                        matched_timer["timer"].stop()
+                        matched_timer["timer"].deleteLater()
+                        self.active_timers.remove(matched_timer)
+                        self.result_label.setText(f"Cancelled timer '{matched_timer['task']}'.  [Esc to Close]")
+                    else:
+                        names_str = ", ".join(f"'{t['task']}'" for t in matches)
+                        self.result_label.setText(f"Multiple matches found ({names_str}). Please be more specific.  [Esc to Close]")
+                        
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 125)
+                self.center_on_screen()
+                return
+
             if result.startswith("Copied: "):
                 val = result[8:]
                 clipboard = QApplication.clipboard()

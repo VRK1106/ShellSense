@@ -98,6 +98,7 @@ def evaluate_help(query: str):
             "<span style='color: #ffffff;'>•</span> <b>Translation</b>: <code>hello in tamil</code>, <code>welcome german</code>, <code>vanakkam in english</code><br>"
             "<span style='color: #ffffff;'>•</span> <b>Snippets</b>: <code>copy/paste [key]</code> where key is: " + snippet_keys + "<br>"
             "<span style='color: #ffffff;'>•</span> <b>Files</b>: <code>copy file/path [key]</code> or <code>open [key]</code> where key is: " + shortcut_keys + "<br>"
+            "<span style='color: #ffffff;'>•</span> <b>Alarms/Timers</b>: <code>timer 5 minutes</code>, <code>remind me to check oven in 10 mins</code>, <code>stop timer [name]</code><br>"
             "<span style='color: #ffffff;'>•</span> <b>System (Press Enter)</b>: <code>lock screen</code>, <code>system details</code>, <code>ping google</code>, "
             "<code>shutdown in 1 hour</code>, <code>abort action</code>"
             "</div>"
@@ -196,6 +197,12 @@ def evaluate_math(query: str):
     is_shortcut, shortcut_res = evaluate_file_shortcuts(query)
     if is_shortcut:
         return True, shortcut_res
+
+    # Try background timers next
+    from shellsense.services.timer_service import evaluate_timer
+    is_timer, timer_res = evaluate_timer(query)
+    if is_timer:
+        return True, timer_res
 
     # Try unit/currency/timezone/base conversions first
     from shellsense.services.conversion_parser import evaluate_conversion, evaluate_translation
