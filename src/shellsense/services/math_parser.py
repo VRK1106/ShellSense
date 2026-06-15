@@ -1,5 +1,7 @@
 import re
 import math
+import os
+import json
 
 SAFE_MATH_DICT = {
     'abs': abs,
@@ -96,6 +98,49 @@ def evaluate_help(query: str):
         return True, help_html
     return False, None
 
+def load_snippets():
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    snippets_path = os.path.join(base_dir, "snippets.json")
+    
+    if not os.path.exists(snippets_path):
+        default_snippets = {
+            "email": "user@example.com",
+            "zoom": "https://zoom.us/j/1234567890",
+            "address": "123 Main Street, City, Country",
+            "phone": "+1-234-567-8900",
+            "link": "https://github.com/VRK1106/ShellSense"
+        }
+        try:
+            with open(snippets_path, 'w', encoding='utf-8') as f:
+                json.dump(default_snippets, f, indent=4)
+        except Exception:
+            return default_snippets
+        return default_snippets
+        
+    try:
+        with open(snippets_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+def evaluate_snippets(query: str):
+    q = query.lower().strip()
+    clean_q = re.sub(r'^(?:copy\s+my|paste\s+my|get\s+my|show\s+my|my|copy|paste|get)\s+', '', q)
+    clean_q = clean_q.strip()
+    
+    snippets = load_snippets()
+    
+    # Exact match
+    if clean_q in snippets:
+        return True, f"Copied: {snippets[clean_q]}"
+        
+    # Word match
+    for key in snippets:
+        if re.search(r'\b' + re.escape(key) + r'\b', clean_q):
+            return True, f"Copied: {snippets[key]}"
+            
+    return False, None
+
 def evaluate_math(query: str):
     """
     Translates and evaluates a math query safely.
@@ -104,6 +149,11 @@ def evaluate_math(query: str):
     is_help, help_res = evaluate_help(query)
     if is_help:
         return True, help_res
+
+    # Try snippets next
+    is_snippet, snippet_res = evaluate_snippets(query)
+    if is_snippet:
+        return True, snippet_res
 
     # Try unit/currency/timezone/base conversions first
     from shellsense.services.conversion_parser import evaluate_conversion, evaluate_translation

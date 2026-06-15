@@ -265,6 +265,14 @@ class ShellSenseUI(QWidget):
                 self.center_on_screen()
                 return
                 
+            if result.startswith("Copied: "):
+                val = result[8:]
+                clipboard = QApplication.clipboard()
+                clipboard.setText(val)
+                self.search_bar.clear()
+                self.hide()
+                return
+                
             if result.startswith("Error:"):
                 self.result_label.setText(f"<span style='color: #ff5252;'>{result}</span>  [Esc to Close]")
             else:
