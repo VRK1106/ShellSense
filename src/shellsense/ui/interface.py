@@ -10,7 +10,7 @@ if src_root not in sys.path:
 import signal
 import keyboard
 from ctypes import windll, wintypes
-from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QVBoxLayout, QSystemTrayIcon, QMenu, QLabel
+from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QVBoxLayout, QSystemTrayIcon, QMenu, QLabel, QFrame, QHBoxLayout, QComboBox, QPushButton
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QTimer
 
@@ -117,6 +117,47 @@ class ShellSenseUI(QWidget):
             
         timer.timeout.connect(on_timeout)
         timer.start(duration_ms)
+
+    def submit_interactive_timer(self):
+        val_str = self.timer_val_input.text().strip()
+        if not val_str:
+            return
+        try:
+            val = float(val_str)
+            if val <= 0:
+                raise ValueError("Must be positive")
+        except ValueError:
+            self.timer_val_input.setStyleSheet("QLineEdit { border: 2px solid #ff5252; color: #ff5252; background-color: rgba(20, 20, 20, 230); border-radius: 6px; padding: 6px; }")
+            return
+            
+        self.timer_val_input.setStyleSheet("") # reset
+        unit_label = self.timer_unit_combo.currentText().lower()
+        if unit_label.startswith("minute"):
+            unit = "minute"
+        elif unit_label.startswith("second"):
+            unit = "second"
+        else:
+            unit = "hour"
+            
+        task = self.timer_task_input.text().strip()
+        if not task:
+            task = "Timer"
+            
+        from shellsense.services.timer_service import calculate_ms
+        duration_ms = calculate_ms(val, unit)
+        time_desc = f"{val} {unit}" + ("s" if val != 1 else "")
+        
+        self.start_background_timer(task, duration_ms, time_desc)
+        
+        # Reset and hide form
+        self.timer_widget.setVisible(False)
+        self.search_bar.clear()
+        
+        # Show success message
+        self.result_label.setText(f"Timer set for '{task}' in {time_desc}!  [Esc to Close]")
+        self.result_label.setVisible(True)
+        self.setFixedSize(600, 125)
+        self.center_on_screen()
 
     def register_session_notifications(self):
         try:
@@ -260,11 +301,101 @@ class ShellSenseUI(QWidget):
             }
         """)
         
+        # Build interactive Timer form widget
+        self.timer_widget = QFrame(self)
+        self.timer_widget.setVisible(False)
+        self.timer_widget.setStyleSheet("""
+            QFrame {
+                background-color: rgba(30, 30, 30, 220);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 12px;
+                padding: 10px;
+            }
+            QLabel {
+                border: none;
+                background: transparent;
+                color: #ffffff;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 14px;
+            }
+            QLineEdit {
+                background-color: rgba(20, 20, 20, 230);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 6px;
+                color: white;
+                font-size: 14px;
+                padding: 6px;
+                font-family: 'Segoe UI', sans-serif;
+            }
+            QComboBox {
+                background-color: rgba(20, 20, 20, 230);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 6px;
+                color: white;
+                font-size: 14px;
+                padding: 6px;
+                font-family: 'Segoe UI', sans-serif;
+                min-width: 90px;
+            }
+            QPushButton {
+                background-color: #0078d4;
+                border: none;
+                border-radius: 6px;
+                color: white;
+                font-size: 14px;
+                font-weight: bold;
+                padding: 8px 16px;
+                font-family: 'Segoe UI', sans-serif;
+            }
+            QPushButton:hover {
+                background-color: #005a9e;
+            }
+        """)
+        
+        timer_layout = QVBoxLayout(self.timer_widget)
+        timer_layout.setContentsMargins(5, 5, 5, 5)
+        timer_layout.setSpacing(8)
+        
+        row1_layout = QHBoxLayout()
+        row1_layout.setSpacing(8)
+        
+        title_label = QLabel("⏰ Create Alarm:", self.timer_widget)
+        title_label.setStyleSheet("font-weight: bold; color: #00bcd4; font-size: 15px;")
+        row1_layout.addWidget(title_label)
+        
+        row1_layout.addStretch()
+        
+        self.timer_val_input = QLineEdit(self.timer_widget)
+        self.timer_val_input.setPlaceholderText("Time...")
+        self.timer_val_input.setFixedWidth(80)
+        row1_layout.addWidget(self.timer_val_input)
+        
+        self.timer_unit_combo = QComboBox(self.timer_widget)
+        self.timer_unit_combo.addItems(["Minutes", "Seconds", "Hours"])
+        row1_layout.addWidget(self.timer_unit_combo)
+        
+        timer_layout.addLayout(row1_layout)
+        
+        self.timer_task_input = QLineEdit(self.timer_widget)
+        self.timer_task_input.setPlaceholderText("Reminder message (e.g. check the oven, sleep, eat)")
+        timer_layout.addWidget(self.timer_task_input)
+        
+        row3_layout = QHBoxLayout()
+        self.start_timer_btn = QPushButton("Start Timer", self.timer_widget)
+        self.start_timer_btn.clicked.connect(self.submit_interactive_timer)
+        row3_layout.addStretch()
+        row3_layout.addWidget(self.start_timer_btn)
+        timer_layout.addLayout(row3_layout)
+        
+        self.timer_val_input.returnPressed.connect(self.submit_interactive_timer)
+        self.timer_task_input.returnPressed.connect(self.submit_interactive_timer)
+        
         layout = QVBoxLayout()
         layout.setContentsMargins(10, 10, 10, 10)
         layout.setSpacing(8)
         layout.addWidget(self.search_bar)
         layout.addWidget(self.result_label)
+        layout.addWidget(self.timer_widget)
         self.setLayout(layout)
         
         self.setFixedSize(600, 78)
@@ -286,6 +417,14 @@ class ShellSenseUI(QWidget):
             self.result_label.setVisible(False)
             self.setFixedSize(600, 78)
             self.center_on_screen()
+            
+        # Collapse timer widget if search bar text is edited to something other than "timer" / "alarm" / "timers" / "alarms"
+        if hasattr(self, 'timer_widget') and self.timer_widget.isVisible():
+            txt = self.search_bar.text().strip().lower()
+            if txt not in ('timer', 'timers', 'alarm', 'alarms'):
+                self.timer_widget.setVisible(False)
+                self.setFixedSize(600, 78)
+                self.center_on_screen()
 
     def process_command(self):
         user_text = self.search_bar.text().strip()
@@ -322,10 +461,14 @@ class ShellSenseUI(QWidget):
                 return
                 
             if "Timer Formats:" in result:
-                self.result_label.setText(result)
-                self.result_label.setVisible(True)
-                self.setFixedSize(600, 200)
+                self.result_label.setVisible(False)
+                self.timer_widget.setVisible(True)
+                self.timer_val_input.clear()
+                self.timer_task_input.clear()
+                self.timer_val_input.setStyleSheet("")
+                self.setFixedSize(600, 230)
                 self.center_on_screen()
+                QTimer.singleShot(10, self.timer_val_input.setFocus)
                 return
                 
             if result.startswith("Timer Created: "):
@@ -470,12 +613,16 @@ class ShellSenseUI(QWidget):
     def toggle_visibility(self, trigger_source="Hotkey"):
         logger.info(f"{trigger_source} triggered. Toggling visibility.")
         if self.isVisible():
+            if hasattr(self, 'timer_widget'):
+                self.timer_widget.setVisible(False)
             self.hide()
             logger.info("Window hidden.")
         else:
             self.search_bar.clear()
             self.last_math_result = None
             self.result_label.setVisible(False)
+            if hasattr(self, 'timer_widget'):
+                self.timer_widget.setVisible(False)
             self.setFixedSize(600, 78)
             self.show()
             self.raise_()
@@ -489,6 +636,8 @@ class ShellSenseUI(QWidget):
             logger.info("Escape key pressed. Hiding search bar window.")
             self.last_math_result = None
             self.result_label.setVisible(False)
+            if hasattr(self, 'timer_widget'):
+                self.timer_widget.setVisible(False)
             self.setFixedSize(600, 78)
             self.search_bar.clear()
             self.hide()
