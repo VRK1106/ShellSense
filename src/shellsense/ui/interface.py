@@ -79,16 +79,29 @@ class ShellSenseUI(QWidget):
         
         def on_timeout():
             import winsound
+            # 1. Native Windows Notification
             self.tray_icon.showMessage(
                 "⏰ ShellSense Alert",
                 f"Time is up: {task}",
                 QSystemTrayIcon.MessageIcon.Information,
                 10000
             )
+            # 2. Audible alerts
             try:
+                winsound.Beep(1000, 600)
                 winsound.PlaySound("SystemAsterisk", winsound.SND_ALIAS)
             except Exception:
                 pass
+            
+            # 3. Bring ShellSense bar to screen and show visual overlay alert
+            self.result_label.setText(f"<span style='color: #ffb74d; font-weight: bold;'>⏰ Alert:</span> Time is up: '{task}'!  [Esc to Close]")
+            self.result_label.setVisible(True)
+            self.setFixedSize(600, 125)
+            self.center_on_screen()
+            self.show()
+            self.raise_()
+            self.activateWindow()
+            
             if timer_info in self.active_timers:
                 self.active_timers.remove(timer_info)
             timer.deleteLater()
