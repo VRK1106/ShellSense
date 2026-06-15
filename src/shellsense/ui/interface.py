@@ -148,10 +148,11 @@ class ShellSenseUI(QWidget):
         self.search_bar.clear()
         
         # Show success message
-        self.result_label.setText(f"Timer set for '{task}' in {time_desc}!  [Esc to Close]")
+        self.result_label.setText(f"Timer set for '{task}' in {time_desc}!")
         self.result_label.setVisible(True)
         self.setFixedSize(600, 125)
         self.center_on_screen()
+        QTimer.singleShot(1500, self.hide_and_clear)
     def show_snooze_panel(self, task):
         self.current_alert_task = task
         self.alert_message_label.setText(f"⏰ Alert: Time is up for '{task}'!")
@@ -184,10 +185,11 @@ class ShellSenseUI(QWidget):
         self.alert_widget.setVisible(False)
         
         # Show success confirm
-        self.result_label.setText(f"Snoozed '{task}' for {time_desc}!  [Esc to Close]")
+        self.result_label.setText(f"Snoozed '{task}' for {time_desc}!")
         self.result_label.setVisible(True)
         self.setFixedSize(600, 125)
         self.center_on_screen()
+        QTimer.singleShot(1500, self.hide_and_clear)
 
     def snooze_timer_custom(self):
         val_str = self.snooze_custom_val.text().strip()
@@ -201,6 +203,16 @@ class ShellSenseUI(QWidget):
             self.snooze_custom_val.setStyleSheet("QLineEdit { border: 2px solid #ff5252; color: #ff5252; background-color: rgba(20, 20, 20, 230); border-radius: 6px; padding: 4px; }")
             return
         self.snooze_timer(val)
+
+    def hide_and_clear(self):
+        self.result_label.setVisible(False)
+        if hasattr(self, 'timer_widget'):
+            self.timer_widget.setVisible(False)
+        if hasattr(self, 'alert_widget'):
+            self.alert_widget.setVisible(False)
+        self.setFixedSize(600, 78)
+        self.search_bar.clear()
+        self.hide()
     def register_session_notifications(self):
         try:
             hwnd = self.winId()
@@ -605,10 +617,11 @@ class ShellSenseUI(QWidget):
                 task, duration_ms_str, time_desc = data.split("|", 2)
                 duration_ms = int(float(duration_ms_str))
                 self.start_background_timer(task, duration_ms, time_desc)
-                self.result_label.setText(f"Timer set for '{task}' in {time_desc}!  [Esc to Close]")
+                self.result_label.setText(f"Timer set for '{task}' in {time_desc}!")
                 self.result_label.setVisible(True)
                 self.setFixedSize(600, 125)
                 self.center_on_screen()
+                QTimer.singleShot(1500, self.hide_and_clear)
                 return
 
             if result == "Cancel Timers":
