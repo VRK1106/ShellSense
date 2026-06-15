@@ -130,32 +130,46 @@ def evaluate_snippets(query: str):
     q = query.lower().strip()
     clean_q = re.sub(r'^(?:copy\s+my|paste\s+my|get\s+my|show\s+my|my|copy|paste|get)\s+', '', q)
     clean_q = clean_q.strip()
+    norm_q = re.sub(r'[^a-z0-9]', '', clean_q)
     
     raw_snippets = load_snippets()
-    # Normalize keys to lowercase for comparison
-    snippets = {k.lower(): v for k, v in raw_snippets.items()}
-    
-    # 1. Exact match (case-insensitive)
-    if clean_q in snippets:
-        return True, f"Copied: {snippets[clean_q]}"
+    # Map normalized key -> (original key, value)
+    norm_snippets = {}
+    for k, v in raw_snippets.items():
+        norm_k = re.sub(r'[^a-z0-9]', '', k.lower())
+        norm_snippets[norm_k] = (k, v)
         
-    # 2. Substring match (e.g., "address" in "palladam_address" or vice-versa)
-    for key in snippets:
-        if clean_q in key or key in clean_q:
-            return True, f"Copied: {snippets[key]}"
+    # 1. Exact match on normalized keys
+    if norm_q in norm_snippets:
+        orig_key, val = norm_snippets[norm_q]
+        return True, f"Copied: {val}"
+        
+    # 2. Substring match on normalized keys
+    matches = []
+    for norm_key in norm_snippets:
+        if norm_q in norm_key or norm_key in norm_q:
+            matches.append(norm_key)
             
+    if len(matches) == 1:
+        orig_key, val = norm_snippets[matches[0]]
+        return True, f"Copied: {val}"
+    elif len(matches) > 1:
+        keys_str = ", ".join(f"'{norm_snippets[m][0]}'" for m in matches)
+        return True, f"Error: Multiple matches found ({keys_str}). Please be more specific."
+        
     # 3. Fuzzy similarity match (for typos like "linkedin" -> "linkdin")
     import difflib
     best_match = None
     highest_ratio = 0.0
-    for key in snippets:
-        ratio = difflib.SequenceMatcher(None, clean_q, key).ratio()
+    for norm_key in norm_snippets:
+        ratio = difflib.SequenceMatcher(None, norm_q, norm_key).ratio()
         if ratio > highest_ratio:
             highest_ratio = ratio
-            best_match = key
+            best_match = norm_key
             
     if highest_ratio >= 0.75 and best_match:
-        return True, f"Copied: {snippets[best_match]}"
+        orig_key, val = norm_snippets[best_match]
+        return True, f"Copied: {val}"
             
     return False, None
 
