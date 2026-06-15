@@ -131,16 +131,31 @@ def evaluate_snippets(query: str):
     clean_q = re.sub(r'^(?:copy\s+my|paste\s+my|get\s+my|show\s+my|my|copy|paste|get)\s+', '', q)
     clean_q = clean_q.strip()
     
-    snippets = load_snippets()
+    raw_snippets = load_snippets()
+    # Normalize keys to lowercase for comparison
+    snippets = {k.lower(): v for k, v in raw_snippets.items()}
     
-    # Exact match
+    # 1. Exact match (case-insensitive)
     if clean_q in snippets:
         return True, f"Copied: {snippets[clean_q]}"
         
-    # Word match
+    # 2. Substring match (e.g., "address" in "palladam_address" or vice-versa)
     for key in snippets:
-        if re.search(r'\b' + re.escape(key) + r'\b', clean_q):
+        if clean_q in key or key in clean_q:
             return True, f"Copied: {snippets[key]}"
+            
+    # 3. Fuzzy similarity match (for typos like "linkedin" -> "linkdin")
+    import difflib
+    best_match = None
+    highest_ratio = 0.0
+    for key in snippets:
+        ratio = difflib.SequenceMatcher(None, clean_q, key).ratio()
+        if ratio > highest_ratio:
+            highest_ratio = ratio
+            best_match = key
+            
+    if highest_ratio >= 0.75 and best_match:
+        return True, f"Copied: {snippets[best_match]}"
             
     return False, None
 
