@@ -84,6 +84,9 @@ def evaluate_help(query: str):
     if q in ('help', 'commands', 'functions', '?', 'list'):
         snippets = load_snippets()
         snippet_keys = ", ".join(f"<code>{k}</code>" for k in snippets.keys()) if snippets else "None"
+        from shellsense.services.file_shortcuts_parser import load_file_shortcuts
+        shortcuts = load_file_shortcuts()
+        shortcut_keys = ", ".join(f"<code>{k}</code>" for k in shortcuts.keys()) if shortcuts else "None"
         help_html = (
             "<div style='line-height: 1.4; font-family: \"Segoe UI\", sans-serif; color: #00bcd4;'>"
             "<b style='color: #ffffff; font-size: 17px;'>✨ ShellSense Available Functions:</b><br>"
@@ -94,6 +97,7 @@ def evaluate_help(query: str):
             "<span style='color: #ffffff;'>•</span> <b>Number Bases</b>: <code>hex ff to binary</code>, <code>decimal 255 to hex</code><br>"
             "<span style='color: #ffffff;'>•</span> <b>Translation</b>: <code>hello in tamil</code>, <code>welcome german</code>, <code>vanakkam in english</code><br>"
             "<span style='color: #ffffff;'>•</span> <b>Snippets</b>: <code>copy/paste [key]</code> where key is: " + snippet_keys + "<br>"
+            "<span style='color: #ffffff;'>•</span> <b>Files</b>: <code>copy file/path [key]</code> or <code>open [key]</code> where key is: " + shortcut_keys + "<br>"
             "<span style='color: #ffffff;'>•</span> <b>System (Press Enter)</b>: <code>lock screen</code>, <code>system details</code>, <code>ping google</code>, "
             "<code>shutdown in 1 hour</code>, <code>abort action</code>"
             "</div>"
@@ -186,6 +190,12 @@ def evaluate_math(query: str):
     is_snippet, snippet_res = evaluate_snippets(query)
     if is_snippet:
         return True, snippet_res
+
+    # Try file shortcuts next
+    from shellsense.services.file_shortcuts_parser import evaluate_file_shortcuts
+    is_shortcut, shortcut_res = evaluate_file_shortcuts(query)
+    if is_shortcut:
+        return True, shortcut_res
 
     # Try unit/currency/timezone/base conversions first
     from shellsense.services.conversion_parser import evaluate_conversion, evaluate_translation

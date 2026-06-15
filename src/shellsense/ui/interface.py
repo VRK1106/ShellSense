@@ -261,7 +261,7 @@ class ShellSenseUI(QWidget):
             if "Available Functions:" in result:
                 self.result_label.setText(result)
                 self.result_label.setVisible(True)
-                self.setFixedSize(600, 300)
+                self.setFixedSize(600, 330)
                 self.center_on_screen()
                 return
                 
@@ -269,8 +269,48 @@ class ShellSenseUI(QWidget):
                 val = result[8:]
                 clipboard = QApplication.clipboard()
                 clipboard.setText(val)
-                self.search_bar.clear()
-                self.hide()
+                self.result_label.setText(f"Copied '{val}' to clipboard!  [Esc to Close]")
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 125)
+                self.center_on_screen()
+                return
+
+            if result.startswith("Copied File: "):
+                data = result[13:]
+                filepath, key = data.split("|", 1)
+                from shellsense.services.file_shortcuts_parser import copy_file_to_clipboard
+                try:
+                    copy_file_to_clipboard(filepath)
+                    self.result_label.setText(f"Copied file '{key}' to clipboard!  [Esc to Close]")
+                except Exception as e:
+                    self.result_label.setText(f"<span style='color: #ff5252;'>Error copying file: {e}</span>  [Esc to Close]")
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 125)
+                self.center_on_screen()
+                return
+
+            if result.startswith("Copied Path: "):
+                data = result[13:]
+                filepath, key = data.split("|", 1)
+                clipboard = QApplication.clipboard()
+                clipboard.setText(filepath)
+                self.result_label.setText(f"Copied path '{filepath}' to clipboard!  [Esc to Close]")
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 125)
+                self.center_on_screen()
+                return
+
+            if result.startswith("Opened File: "):
+                data = result[13:]
+                filepath, key = data.split("|", 1)
+                try:
+                    os.startfile(filepath)
+                    self.result_label.setText(f"Opened file '{key}' successfully!  [Esc to Close]")
+                except Exception as e:
+                    self.result_label.setText(f"<span style='color: #ff5252;'>Error opening file: {e}</span>  [Esc to Close]")
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 125)
+                self.center_on_screen()
                 return
                 
             if result.startswith("Error:"):
