@@ -585,12 +585,12 @@ class ShellSenseUI(QWidget):
         
         # Build interactive Timer form widget
         self.timer_widget = QFrame(self.container)
+        self.timer_widget.setObjectName("TimerWidget")
         self.timer_widget.setVisible(False)
         self.timer_widget.setStyleSheet("""
-            QFrame {
+            QFrame#TimerWidget {
                 background: transparent;
                 border: none;
-                padding: 10px;
             }
             QLabel {
                 border: none;
@@ -634,7 +634,7 @@ class ShellSenseUI(QWidget):
         """)
         
         timer_layout = QVBoxLayout(self.timer_widget)
-        timer_layout.setContentsMargins(5, 5, 5, 5)
+        timer_layout.setContentsMargins(10, 5, 10, 5)
         timer_layout.setSpacing(8)
         
         row1_layout = QHBoxLayout()
@@ -674,12 +674,12 @@ class ShellSenseUI(QWidget):
         
         # Build interactive Alert/Snooze widget
         self.alert_widget = QFrame(self.container)
+        self.alert_widget.setObjectName("AlertWidget")
         self.alert_widget.setVisible(False)
         self.alert_widget.setStyleSheet("""
-            QFrame {
+            QFrame#AlertWidget {
                 background: transparent;
                 border: none;
-                padding: 10px;
             }
             QLabel {
                 border: none;
@@ -714,7 +714,7 @@ class ShellSenseUI(QWidget):
         """)
         
         alert_layout = QVBoxLayout(self.alert_widget)
-        alert_layout.setContentsMargins(5, 5, 5, 5)
+        alert_layout.setContentsMargins(10, 5, 10, 5)
         alert_layout.setSpacing(10)
         
         self.alert_message_label = QLabel("Alert: Time is up!", self.alert_widget)
