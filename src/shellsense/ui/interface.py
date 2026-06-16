@@ -10,7 +10,7 @@ if src_root not in sys.path:
 import signal
 import keyboard
 from ctypes import windll, wintypes
-from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QVBoxLayout, QSystemTrayIcon, QMenu, QLabel, QFrame, QHBoxLayout, QComboBox, QPushButton
+from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QVBoxLayout, QSystemTrayIcon, QMenu, QLabel, QFrame, QHBoxLayout, QComboBox, QPushButton, QScrollArea
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtCore import Qt, pyqtSignal, QObject, QTimer
 
@@ -26,6 +26,57 @@ NOTIFY_FOR_THIS_SESSION = 0
 
 class HotkeySignaler(QObject):
     signal = pyqtSignal()
+
+class ScrollableLabel(QScrollArea):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWidgetResizable(True)
+        self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.setStyleSheet("QScrollArea { border: none; background: transparent; }")
+        
+        self.verticalScrollBar().setStyleSheet("""
+            QScrollBar:vertical {
+                border: none;
+                background: rgba(20, 20, 20, 150);
+                width: 8px;
+                margin: 0px;
+                border-radius: 4px;
+            }
+            QScrollBar::handle:vertical {
+                background: #00bcd4;
+                min-height: 20px;
+                border-radius: 4px;
+            }
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                border: none;
+                background: none;
+                height: 0px;
+            }
+            QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+                border: none;
+                background: none;
+            }
+        """)
+        
+        self.label = QLabel(self)
+        self.label.setWordWrap(True)
+        self.setWidget(self.label)
+        
+    def setText(self, text):
+        self.label.setText(text)
+        
+    def text(self):
+        return self.label.text() if hasattr(self, 'label') else ""
+        
+    def setStyleSheet(self, style):
+        if hasattr(self, 'label'):
+            self.label.setStyleSheet(style)
+        else:
+            super().setStyleSheet(style)
+        
+    def setWordWrap(self, wrap):
+        if hasattr(self, 'label'):
+            self.label.setWordWrap(wrap)
 
 class ShellSenseUI(QWidget):
     def __init__(self):
@@ -442,7 +493,7 @@ class ShellSenseUI(QWidget):
         self.search_bar.returnPressed.connect(self.process_command)
         self.search_bar.textChanged.connect(self.on_text_changed)
         
-        self.result_label = QLabel(self)
+        self.result_label = ScrollableLabel(self)
         self.result_label.setWordWrap(True)
         self.result_label.setVisible(False)
         self.result_label.setStyleSheet("""
