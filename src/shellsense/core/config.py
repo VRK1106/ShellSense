@@ -1,9 +1,22 @@
 import os
+import sys
 
 # Base paths
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-DATA_DIR = os.path.join(BASE_DIR, "data") # Future-proofing for data move
+if getattr(sys, 'frozen', False):
+    BASE_DIR = sys._MEIPASS
+    USER_DIR = os.path.dirname(sys.executable)
+else:
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+    USER_DIR = BASE_DIR
+
+DATA_DIR = os.path.join(BASE_DIR, "data")
 MODEL_PATH = os.path.join(BASE_DIR, "shellsense_v3.pkl")
+FILE_SHORTCUTS_PATH = os.path.join(USER_DIR, "file_shortcuts.json")
+SNIPPETS_PATH = os.path.join(USER_DIR, "snippets.json")
+if getattr(sys, 'frozen', False):
+    TIMERS_PATH = os.path.join(USER_DIR, "timers.json")
+else:
+    TIMERS_PATH = os.path.join(USER_DIR, "src", "timers.json")
 
 # Intent to Command Mapping
 # Hardened to use lists for subprocess.Popen(shell=False)

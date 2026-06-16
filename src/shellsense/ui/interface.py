@@ -412,9 +412,8 @@ class ShellSenseUI(QWidget):
         import json
         import time
         
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        src_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
-        timers_file = os.path.join(src_root, "timers.json")
+        from shellsense.core.config import TIMERS_PATH
+        timers_file = TIMERS_PATH
         
         if not os.path.exists(timers_file):
             return
@@ -455,9 +454,8 @@ class ShellSenseUI(QWidget):
         import json
         import time
         
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        src_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
-        timers_file = os.path.join(src_root, "timers.json")
+        from shellsense.core.config import TIMERS_PATH
+        timers_file = TIMERS_PATH
         
         saved_list = []
         for t in self.active_timers:

@@ -108,8 +108,8 @@ def evaluate_help(query: str):
     return False, None
 
 def load_snippets():
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-    snippets_path = os.path.join(base_dir, "snippets.json")
+    from shellsense.core.config import SNIPPETS_PATH
+    snippets_path = SNIPPETS_PATH
     
     if not os.path.exists(snippets_path):
         default_snippets = {

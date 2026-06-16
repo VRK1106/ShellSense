@@ -60,8 +60,8 @@ def copy_file_to_clipboard(filepath: str):
         win32clipboard.CloseClipboard()
 
 def load_file_shortcuts():
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-    shortcuts_path = os.path.join(base_dir, "file_shortcuts.json")
+    from shellsense.core.config import FILE_SHORTCUTS_PATH
+    shortcuts_path = FILE_SHORTCUTS_PATH
     
     if not os.path.exists(shortcuts_path):
         default_shortcuts = {
