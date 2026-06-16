@@ -289,6 +289,10 @@ def evaluate_conversion(query: str):
     q = query.lower().strip()
     q = re.sub(r'[?=\s]+$', '', q) # Strip trailing question marks/equals
 
+    # Intercept bare keywords for interactive conversion pane
+    if q in ("length", "area", "volume", "weight", "mass", "mass/weight", "speed", "pressure", "power", "temperature", "temp", "currency"):
+        return True, f"Open Conversion: {q}"
+
     # 1. Base / Number System conversions (e.g. "hex ff to binary")
     base_match = re.match(
         r'^(decimal|dec|hex|hexadecimal|bin|binary|oct|octal|base\s*\d+)\s+([0-9a-fA-F]+)\s+(?:to|in)\s+(decimal|dec|hex|hexadecimal|bin|binary|oct|octal|base\s*\d+)',

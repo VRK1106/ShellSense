@@ -24,6 +24,21 @@ WM_WTSSESSION_CHANGE = 0x02B1
 WTS_SESSION_UNLOCK = 0x08
 NOTIFY_FOR_THIS_SESSION = 0
 
+CONVERSION_CATEGORIES_UNITS = {
+    "length": ["m", "km", "cm", "mm", "mile", "yard", "foot", "inch"],
+    "area": ["sq_m", "sq_km", "sq_ft", "sq_yard", "sq_mile", "acre", "hectare"],
+    "volume": ["l", "ml", "gal", "qt", "pt", "cup", "fl_oz"],
+    "weight": ["g", "kg", "lb", "oz", "ton"],
+    "mass": ["g", "kg", "lb", "oz", "ton"],
+    "mass/weight": ["g", "kg", "lb", "oz", "ton"],
+    "speed": ["m/s", "km/h", "mph", "knot"],
+    "pressure": ["pa", "kpa", "bar", "psi", "atm"],
+    "power": ["w", "kw", "hp"],
+    "temperature": ["celsius", "fahrenheit", "kelvin"],
+    "temp": ["celsius", "fahrenheit", "kelvin"],
+    "currency": ["USD", "EUR", "GBP", "INR", "JPY", "CAD", "AUD", "CNY", "SGD", "CHF", "AED", "SAR"]
+}
+
 class HotkeySignaler(QObject):
     signal = pyqtSignal()
 
@@ -233,6 +248,78 @@ class ShellSenseUI(QWidget):
         self.setFixedSize(600, 125)
         self.center_on_screen()
         QTimer.singleShot(1500, self.hide_and_clear)
+
+    def show_conversion_panel(self, category):
+        self.current_conv_category = category
+        
+        # Format display title
+        display_name = category.title()
+        if category == "temp":
+            display_name = "Temperature"
+        elif category == "mass/weight":
+            display_name = "Mass/Weight"
+            
+        self.conv_title_label.setText(f"{display_name} Conversion:")
+        
+        units = CONVERSION_CATEGORIES_UNITS.get(category.lower(), [])
+        
+        self.conv_from_combo.clear()
+        self.conv_to_combo.clear()
+        self.conv_from_combo.addItems(units)
+        self.conv_to_combo.addItems(units)
+        
+        # Select defaults (e.g. from index 0, to index 1 if available)
+        if len(units) > 1:
+            self.conv_to_combo.setCurrentIndex(1)
+            
+        self.result_label.setVisible(False)
+        self.timer_widget.setVisible(False)
+        if hasattr(self, 'alert_widget'):
+            self.alert_widget.setVisible(False)
+            
+        self.conversion_widget.setVisible(True)
+        self.conv_val_input.clear()
+        self.conv_val_input.setStyleSheet("")
+        
+        # Expand window height to support form
+        self.setFixedSize(600, 160)
+        self.center_on_screen()
+        QTimer.singleShot(10, self.conv_val_input.setFocus)
+
+    def submit_interactive_conversion(self):
+        val_str = self.conv_val_input.text().strip()
+        if not val_str:
+            return
+            
+        try:
+            val = float(val_str)
+        except ValueError:
+            self.conv_val_input.setStyleSheet("QLineEdit { border: 1px solid #ff5252; color: #ff5252; background-color: rgba(255, 255, 255, 15); border-radius: 6px; padding: 6px; }")
+            return
+            
+        self.conv_val_input.setStyleSheet("") # reset
+        from_unit = self.conv_from_combo.currentText()
+        to_unit = self.conv_to_combo.currentText()
+        
+        # Construct conversion query
+        query = f"{val} {from_unit} to {to_unit}"
+        
+        # Evaluate using conversion parser
+        from shellsense.services.conversion_parser import evaluate_conversion
+        success, result = evaluate_conversion(query)
+        
+        if success:
+            self.result_label.setText(f"Result: {result}")
+        else:
+            self.result_label.setText(f"<span style='color: #ff5252;'>Error:</span> Conversion failed")
+            
+        # Hide conversion widget and show result label
+        self.conversion_widget.setVisible(False)
+        self.result_label.setVisible(True)
+        self.search_bar.clear()
+        self.setFixedSize(600, 125)
+        self.center_on_screen()
+        QTimer.singleShot(1500, self.hide_and_clear)
     def show_snooze_panel(self, task):
         self.current_alert_task = task
         self.alert_message_label.setText(f"Alert: Time is up for '{task}'!")
@@ -290,6 +377,8 @@ class ShellSenseUI(QWidget):
             self.timer_widget.setVisible(False)
         if hasattr(self, 'alert_widget'):
             self.alert_widget.setVisible(False)
+        if hasattr(self, 'conversion_widget'):
+            self.conversion_widget.setVisible(False)
         self.setFixedSize(600, 78)
         self.search_bar.clear()
         self.hide()
@@ -672,6 +761,95 @@ class ShellSenseUI(QWidget):
         self.timer_task_input.returnPressed.connect(self.submit_interactive_timer)
         container_layout.addWidget(self.timer_widget)
         
+        # Build interactive Conversion widget
+        self.conversion_widget = QFrame(self.container)
+        self.conversion_widget.setObjectName("ConversionWidget")
+        self.conversion_widget.setVisible(False)
+        self.conversion_widget.setStyleSheet("""
+            QFrame#ConversionWidget {
+                background: transparent;
+                border: none;
+            }
+            QLabel {
+                border: none;
+                background: transparent;
+                color: #ffffff;
+                font-family: 'Segoe UI', 'Inter', sans-serif;
+                font-size: 14px;
+            }
+            QLineEdit {
+                background-color: rgba(255, 255, 255, 15);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 6px;
+                color: white;
+                font-size: 14px;
+                padding: 6px;
+                font-family: 'Segoe UI', sans-serif;
+            }
+            QComboBox {
+                background-color: rgba(255, 255, 255, 15);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 6px;
+                color: white;
+                font-size: 14px;
+                padding: 6px;
+                font-family: 'Segoe UI', sans-serif;
+                min-width: 90px;
+            }
+            QPushButton {
+                background-color: rgba(255, 255, 255, 20);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 6px;
+                color: white;
+                font-size: 13px;
+                font-weight: 500;
+                padding: 6px 12px;
+                font-family: 'Segoe UI', sans-serif;
+            }
+            QPushButton:hover {
+                background-color: rgba(255, 255, 255, 35);
+            }
+        """)
+        
+        conv_layout = QVBoxLayout(self.conversion_widget)
+        conv_layout.setContentsMargins(10, 5, 10, 5)
+        conv_layout.setSpacing(8)
+        
+        row1_layout = QHBoxLayout()
+        row1_layout.setSpacing(8)
+        
+        self.conv_title_label = QLabel("Conversion:", self.conversion_widget)
+        self.conv_title_label.setStyleSheet("font-weight: 500; color: #ffffff; font-size: 15px;")
+        row1_layout.addWidget(self.conv_title_label)
+        row1_layout.addStretch()
+        
+        self.conv_val_input = QLineEdit(self.conversion_widget)
+        self.conv_val_input.setPlaceholderText("Value...")
+        self.conv_val_input.setFixedWidth(100)
+        row1_layout.addWidget(self.conv_val_input)
+        
+        self.conv_from_combo = QComboBox(self.conversion_widget)
+        row1_layout.addWidget(self.conv_from_combo)
+        
+        to_label = QLabel("to", self.conversion_widget)
+        to_label.setStyleSheet("color: rgba(255, 255, 255, 150);")
+        row1_layout.addWidget(to_label)
+        
+        self.conv_to_combo = QComboBox(self.conversion_widget)
+        row1_layout.addWidget(self.conv_to_combo)
+        
+        conv_layout.addLayout(row1_layout)
+        
+        row2_layout = QHBoxLayout()
+        self.conv_convert_btn = QPushButton("Convert", self.conversion_widget)
+        self.conv_convert_btn.clicked.connect(self.submit_interactive_conversion)
+        row2_layout.addStretch()
+        row2_layout.addWidget(self.conv_convert_btn)
+        conv_layout.addLayout(row2_layout)
+        
+        self.conv_val_input.returnPressed.connect(self.submit_interactive_conversion)
+        container_layout.addWidget(self.conversion_widget)
+        
         # Build interactive Alert/Snooze widget
         self.alert_widget = QFrame(self.container)
         self.alert_widget.setObjectName("AlertWidget")
@@ -845,6 +1023,11 @@ class ShellSenseUI(QWidget):
                 QTimer.singleShot(10, self.timer_val_input.setFocus)
                 return
                 
+            if result.startswith("Open Conversion: "):
+                category = result[17:].strip()
+                self.show_conversion_panel(category)
+                return
+                
             if result.startswith("Timer Created: "):
                 data = result[15:]
                 task, duration_ms_str, time_desc = data.split("|", 2)
@@ -1000,6 +1183,8 @@ class ShellSenseUI(QWidget):
         if self.isVisible():
             if hasattr(self, 'timer_widget'):
                 self.timer_widget.setVisible(False)
+            if hasattr(self, 'conversion_widget'):
+                self.conversion_widget.setVisible(False)
             self.hide()
             logger.info("Window hidden.")
         else:
@@ -1008,6 +1193,8 @@ class ShellSenseUI(QWidget):
             self.result_label.setVisible(False)
             if hasattr(self, 'timer_widget'):
                 self.timer_widget.setVisible(False)
+            if hasattr(self, 'conversion_widget'):
+                self.conversion_widget.setVisible(False)
             self.setFixedSize(600, 78)
             self.show()
             self.raise_()
@@ -1023,6 +1210,8 @@ class ShellSenseUI(QWidget):
             self.result_label.setVisible(False)
             if hasattr(self, 'timer_widget'):
                 self.timer_widget.setVisible(False)
+            if hasattr(self, 'conversion_widget'):
+                self.conversion_widget.setVisible(False)
             self.setFixedSize(600, 78)
             self.search_bar.clear()
             self.hide()
