@@ -169,12 +169,12 @@ def evaluate_system_tuner(query: str):
         
         # Format HTML list
         html = (
-            "<div style='line-height: 1.4; font-family: \"Segoe UI\", sans-serif; color: #00bcd4;'>"
-            "<b style='color: #ffffff; font-size: 17px;'>🚀 Active Windows Startup Apps:</b><br>"
+            "<div style='line-height: 1.6; font-family: \"Segoe UI\", \"Inter\", sans-serif; color: #e0e0e0; font-size: 14px;'>"
+            "<b style='color: #ffffff; font-size: 16px;'>Active Windows Startup Applications:</b><br><br>"
         )
         for a in apps:
             name_clean = a["name"].replace(".lnk", "")
-            html += f"<span style='color: #ffffff;'>•</span> <b>{name_clean}</b> <span style='color: #888888; font-size: 11px;'>({a['source']})</span><br>"
+            html += f"<span style='color: #888888;'>•</span> <b>{name_clean}</b> <span style='color: #888888; font-size: 12px;'>({a['source']})</span><br>"
         html += "</div>"
         return True, html
         

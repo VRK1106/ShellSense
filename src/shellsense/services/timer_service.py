@@ -6,12 +6,12 @@ def evaluate_timer(query: str):
     # Help formats check
     if q in ('timer', 'timers', 'alarm', 'alarms'):
         help_html = (
-            "<div style='line-height: 1.4; font-family: \"Segoe UI\", sans-serif; color: #00bcd4;'>"
-            "<b style='color: #ffffff; font-size: 16px;'>⏰ ShellSense Timer Formats:</b><br>"
-            "<span style='color: #ffffff;'>•</span> <b>Timer with Task</b>: <code>timer 5 mins to check oven</code><br>"
-            "<span style='color: #ffffff;'>•</span> <b>Standard Timer</b>: <code>timer 10 minutes</code> or <code>timer 5</code><br>"
-            "<span style='color: #ffffff;'>•</span> <b>Reminders</b>: <code>remind me to stretch in 45 seconds</code><br>"
-            "<span style='color: #ffffff;'>•</span> <b>Cancellation</b>: <code>stop timer</code> (all) or <code>stop timer [name]</code>"
+            "<div style='line-height: 1.6; font-family: \"Segoe UI\", \"Inter\", sans-serif; color: #e0e0e0; font-size: 14px;'>"
+            "<b style='color: #ffffff; font-size: 16px;'>Timer Command Formats:</b><br><br>"
+            "<span style='color: #888888;'>•</span> <b>Timer with Task</b>: <code>timer 5 mins to check oven</code><br>"
+            "<span style='color: #888888;'>•</span> <b>Standard Timer</b>: <code>timer 10 minutes</code> or <code>timer 5</code><br>"
+            "<span style='color: #888888;'>•</span> <b>Reminders</b>: <code>remind me to stretch in 45 seconds</code><br>"
+            "<span style='color: #888888;'>•</span> <b>Cancellation</b>: <code>stop timer</code> (all) or <code>stop timer [name]</code>"
             "</div>"
         )
         return True, help_html

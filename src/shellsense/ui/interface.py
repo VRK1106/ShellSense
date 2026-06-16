@@ -43,9 +43,12 @@ class ScrollableLabel(QScrollArea):
                 border-radius: 4px;
             }
             QScrollBar::handle:vertical {
-                background: #00bcd4;
+                background: rgba(255, 255, 255, 60);
                 min-height: 20px;
                 border-radius: 4px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: rgba(255, 255, 255, 90);
             }
             QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
                 border: none;
@@ -157,7 +160,7 @@ class ShellSenseUI(QWidget):
             import winsound
             # 1. Native Windows Notification
             self.tray_icon.showMessage(
-                "⏰ ShellSense Alert",
+                "ShellSense Alert",
                 f"Time is up: {task}",
                 QSystemTrayIcon.MessageIcon.Information,
                 10000
@@ -232,7 +235,7 @@ class ShellSenseUI(QWidget):
         QTimer.singleShot(1500, self.hide_and_clear)
     def show_snooze_panel(self, task):
         self.current_alert_task = task
-        self.alert_message_label.setText(f"⏰ Alert: Time is up for '{task}'!")
+        self.alert_message_label.setText(f"Alert: Time is up for '{task}'!")
         
         self.result_label.setVisible(False)
         self.timer_widget.setVisible(False)
@@ -362,7 +365,7 @@ class ShellSenseUI(QWidget):
     def trigger_missed_timer(self, task):
         import winsound
         self.tray_icon.showMessage(
-            "⏰ ShellSense Missed Alert",
+            "ShellSense Missed Alert",
             f"Missed alarm: {task}",
             QSystemTrayIcon.MessageIcon.Warning,
             10000
@@ -572,10 +575,10 @@ class ShellSenseUI(QWidget):
             QLabel {
                 background: transparent;
                 border: none;
-                color: #00bcd4;
-                font-size: 16px;
+                color: #e0e0e0;
+                font-size: 14px;
                 padding: 10px 16px;
-                font-family: 'Segoe UI', sans-serif;
+                font-family: 'Segoe UI', 'Inter', sans-serif;
             }
         """)
         container_layout.addWidget(self.result_label)
@@ -616,17 +619,17 @@ class ShellSenseUI(QWidget):
                 min-width: 90px;
             }
             QPushButton {
-                background-color: #00bcd4;
-                border: none;
+                background-color: rgba(255, 255, 255, 20);
+                border: 1px solid rgba(255, 255, 255, 0.15);
                 border-radius: 6px;
-                color: #121212;
-                font-size: 14px;
-                font-weight: bold;
-                padding: 8px 16px;
+                color: white;
+                font-size: 13px;
+                font-weight: 500;
+                padding: 6px 12px;
                 font-family: 'Segoe UI', sans-serif;
             }
             QPushButton:hover {
-                background-color: #0097a7;
+                background-color: rgba(255, 255, 255, 35);
             }
         """)
         
@@ -637,8 +640,8 @@ class ShellSenseUI(QWidget):
         row1_layout = QHBoxLayout()
         row1_layout.setSpacing(8)
         
-        title_label = QLabel("⏰ Create Alarm:", self.timer_widget)
-        title_label.setStyleSheet("font-weight: bold; color: #00bcd4; font-size: 15px;")
+        title_label = QLabel("Create Alarm:", self.timer_widget)
+        title_label.setStyleSheet("font-weight: 500; color: #ffffff; font-size: 15px;")
         row1_layout.addWidget(title_label)
         
         row1_layout.addStretch()
@@ -681,10 +684,10 @@ class ShellSenseUI(QWidget):
             QLabel {
                 border: none;
                 background: transparent;
-                color: #ffb74d;
-                font-family: 'Segoe UI', sans-serif;
-                font-size: 15px;
-                font-weight: bold;
+                color: #ffb86c;
+                font-family: 'Segoe UI', 'Inter', sans-serif;
+                font-size: 14px;
+                font-weight: 500;
             }
             QLineEdit {
                 background-color: rgba(255, 255, 255, 15);
@@ -696,17 +699,17 @@ class ShellSenseUI(QWidget):
                 font-family: 'Segoe UI', sans-serif;
             }
             QPushButton {
-                background-color: rgba(0, 188, 212, 0.85);
-                border: none;
+                background-color: rgba(255, 255, 255, 20);
+                border: 1px solid rgba(255, 255, 255, 0.15);
                 border-radius: 6px;
-                color: #121212;
+                color: white;
                 font-size: 13px;
-                font-weight: bold;
+                font-weight: 500;
                 padding: 6px 10px;
-                font-family: 'Segoe UI', sans-serif;
+                font-family: 'Segoe UI', 'Inter', sans-serif;
             }
             QPushButton:hover {
-                background-color: #00bcd4;
+                background-color: rgba(255, 255, 255, 35);
             }
         """)
         
@@ -714,7 +717,7 @@ class ShellSenseUI(QWidget):
         alert_layout.setContentsMargins(5, 5, 5, 5)
         alert_layout.setSpacing(10)
         
-        self.alert_message_label = QLabel("⏰ Alert: Time is up!", self.alert_widget)
+        self.alert_message_label = QLabel("Alert: Time is up!", self.alert_widget)
         self.alert_message_label.setWordWrap(True)
         alert_layout.addWidget(self.alert_message_label)
         
