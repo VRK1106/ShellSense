@@ -192,6 +192,12 @@ def evaluate_math(query: str):
     if is_snippet:
         return True, snippet_res
 
+    # Try last download finder next
+    from shellsense.services.download_finder import evaluate_last_download
+    is_download, download_res = evaluate_last_download(query)
+    if is_download:
+        return True, download_res
+
     # Try file shortcuts next
     from shellsense.services.file_shortcuts_parser import evaluate_file_shortcuts
     is_shortcut, shortcut_res = evaluate_file_shortcuts(query)
