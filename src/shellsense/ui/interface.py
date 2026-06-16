@@ -734,18 +734,19 @@ class ShellSenseUI(QWidget):
                         t["timer"].deleteLater()
                     self.active_timers.clear()
                     self.save_active_timers()
-                    self.result_label.setText(f"Cancelled all active timers ({count} stopped).  [Esc to Close]")
+                    self.result_label.setText(f"Cancelled all active timers ({count} stopped).")
                 else:
-                    self.result_label.setText("No active timers running.  [Esc to Close]")
+                    self.result_label.setText("No active timers running.")
                 self.result_label.setVisible(True)
                 self.setFixedSize(600, 125)
                 self.center_on_screen()
+                QTimer.singleShot(1500, self.hide_and_clear)
                 return
 
             if result.startswith("Cancel Timer Name: "):
                 target_name = result[19:].strip().lower()
                 if not hasattr(self, 'active_timers') or not self.active_timers:
-                    self.result_label.setText("No active timers running.  [Esc to Close]")
+                    self.result_label.setText("No active timers running.")
                 else:
                     import re
                     norm_target = re.sub(r'[^a-z0-9]', '', target_name)
@@ -757,31 +758,33 @@ class ShellSenseUI(QWidget):
                             matches.append(t)
                             
                     if not matches:
-                        self.result_label.setText(f"No active timer matches '{target_name}'.  [Esc to Close]")
+                        self.result_label.setText(f"No active timer matches '{target_name}'.")
                     elif len(matches) == 1:
                         matched_timer = matches[0]
                         matched_timer["timer"].stop()
                         matched_timer["timer"].deleteLater()
                         self.active_timers.remove(matched_timer)
                         self.save_active_timers()
-                        self.result_label.setText(f"Cancelled timer '{matched_timer['task']}'.  [Esc to Close]")
+                        self.result_label.setText(f"Cancelled timer '{matched_timer['task']}'.")
                     else:
                         names_str = ", ".join(f"'{t['task']}'" for t in matches)
-                        self.result_label.setText(f"Multiple matches found ({names_str}). Please be more specific.  [Esc to Close]")
+                        self.result_label.setText(f"Multiple matches found ({names_str}). Please be more specific.")
                         
                 self.result_label.setVisible(True)
                 self.setFixedSize(600, 125)
                 self.center_on_screen()
+                QTimer.singleShot(1500, self.hide_and_clear)
                 return
 
             if result.startswith("Copied: "):
                 val = result[8:]
                 clipboard = QApplication.clipboard()
                 clipboard.setText(val)
-                self.result_label.setText(f"Copied '{val}' to clipboard!  [Esc to Close]")
+                self.result_label.setText(f"Copied '{val}' to clipboard!")
                 self.result_label.setVisible(True)
                 self.setFixedSize(600, 125)
                 self.center_on_screen()
+                QTimer.singleShot(1500, self.hide_and_clear)
                 return
 
             if result.startswith("Copied File: "):
@@ -790,12 +793,13 @@ class ShellSenseUI(QWidget):
                 from shellsense.services.file_shortcuts_parser import copy_file_to_clipboard
                 try:
                     copy_file_to_clipboard(filepath)
-                    self.result_label.setText(f"Copied file '{key}' to clipboard!  [Esc to Close]")
+                    self.result_label.setText(f"Copied file '{key}' to clipboard!")
                 except Exception as e:
-                    self.result_label.setText(f"<span style='color: #ff5252;'>Error copying file: {e}</span>  [Esc to Close]")
+                    self.result_label.setText(f"<span style='color: #ff5252;'>Error copying file: {e}</span>")
                 self.result_label.setVisible(True)
                 self.setFixedSize(600, 125)
                 self.center_on_screen()
+                QTimer.singleShot(1500, self.hide_and_clear)
                 return
 
             if result.startswith("Copied Path: "):
@@ -803,10 +807,11 @@ class ShellSenseUI(QWidget):
                 filepath, key = data.split("|", 1)
                 clipboard = QApplication.clipboard()
                 clipboard.setText(filepath)
-                self.result_label.setText(f"Copied path '{filepath}' to clipboard!  [Esc to Close]")
+                self.result_label.setText(f"Copied path '{filepath}' to clipboard!")
                 self.result_label.setVisible(True)
                 self.setFixedSize(600, 125)
                 self.center_on_screen()
+                QTimer.singleShot(1500, self.hide_and_clear)
                 return
 
             if result.startswith("Opened File: "):
@@ -814,21 +819,23 @@ class ShellSenseUI(QWidget):
                 filepath, key = data.split("|", 1)
                 try:
                     os.startfile(filepath)
-                    self.result_label.setText(f"Opened file '{key}' successfully!  [Esc to Close]")
+                    self.result_label.setText(f"Opened file '{key}' successfully!")
                 except Exception as e:
-                    self.result_label.setText(f"<span style='color: #ff5252;'>Error opening file: {e}</span>  [Esc to Close]")
+                    self.result_label.setText(f"<span style='color: #ff5252;'>Error opening file: {e}</span>")
                 self.result_label.setVisible(True)
                 self.setFixedSize(600, 125)
                 self.center_on_screen()
+                QTimer.singleShot(1500, self.hide_and_clear)
                 return
                 
             if result.startswith("Error:"):
-                self.result_label.setText(f"<span style='color: #ff5252;'>{result}</span>  [Esc to Close]")
+                self.result_label.setText(f"<span style='color: #ff5252;'>{result}</span>")
             else:
-                self.result_label.setText(f"Result: {result}  [Enter to Copy & Close | Esc to Close]")
+                self.result_label.setText(f"Result: {result}")
             self.result_label.setVisible(True)
             self.setFixedSize(600, 125)
             self.center_on_screen()
+            QTimer.singleShot(1500, self.hide_and_clear)
             return
         
         intent, confidence = self.brain.predict(user_text)
@@ -847,10 +854,11 @@ class ShellSenseUI(QWidget):
         # Use the hardened executor service
         success = CommandExecutor.execute(intent, user_text)
         if not success:
-            self.result_label.setText("<span style='color: #ff5252;'>Error:</span> Command failed to execute  [Esc to Close]")
+            self.result_label.setText("<span style='color: #ff5252;'>Error:</span> Command failed to execute")
             self.result_label.setVisible(True)
             self.setFixedSize(600, 125)
             self.center_on_screen()
+            QTimer.singleShot(1500, self.hide_and_clear)
             return
         
         self.search_bar.clear()
