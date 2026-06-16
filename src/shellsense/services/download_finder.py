@@ -2,6 +2,37 @@ import os
 import re
 
 def get_last_downloaded_file():
+    # 1. First, try reading Windows Recent Files folder (.lnk shortcuts)
+    recent_dir = os.path.join(os.environ.get('APPDATA', ''), 'Microsoft\\Windows\\Recent')
+    if os.path.exists(recent_dir):
+        try:
+            import win32com.client
+            files = [os.path.join(recent_dir, f) for f in os.listdir(recent_dir) if f.endswith('.lnk')]
+            files.sort(key=os.path.getmtime, reverse=True)
+            
+            shell = win32com.client.Dispatch("WScript.Shell")
+            ignored_exts = ('.crdownload', '.tmp', '.part', '.download', '.lnk', '.log', '.git', '.py', '.json')
+            ignored_paths = ['\\appdata\\', '\\.git\\', '\\commandgenerator\\']
+            
+            for lnk in files:
+                try:
+                    shortcut = shell.CreateShortCut(lnk)
+                    target = shortcut.Targetpath
+                    if target and os.path.exists(target) and not os.path.isdir(target):
+                        # Filter out system, temp, code, and project files
+                        _, ext = os.path.splitext(target)
+                        if ext.lower() in ignored_exts:
+                            continue
+                        path_lower = target.lower()
+                        if any(p in path_lower for p in ignored_paths):
+                            continue
+                        return target
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    # 2. Fallback: Scan standard folders (Downloads, Desktop, Documents)
     user_profile = os.path.expanduser('~')
     search_dirs = [
         os.path.join(user_profile, 'Downloads'),
@@ -10,8 +41,8 @@ def get_last_downloaded_file():
     ]
     
     ignored_extensions = ('.crdownload', '.tmp', '.part', '.download')
+    fallback_files = []
     
-    files = []
     for d in search_dirs:
         if not os.path.exists(d):
             continue
@@ -21,16 +52,16 @@ def get_last_downloaded_file():
                 if os.path.isfile(filepath):
                     _, ext = os.path.splitext(f)
                     if ext.lower() not in ignored_extensions:
-                        files.append(filepath)
+                        fallback_files.append(filepath)
         except Exception:
             continue
             
-    if not files:
+    if not fallback_files:
         return None
         
     try:
-        files.sort(key=os.path.getmtime, reverse=True)
-        return files[0]
+        fallback_files.sort(key=os.path.getmtime, reverse=True)
+        return fallback_files[0]
     except Exception:
         return None
 
