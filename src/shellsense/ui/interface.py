@@ -703,6 +703,13 @@ class ShellSenseUI(QWidget):
                 self.center_on_screen()
                 return
                 
+            if "Active Windows Startup Apps:" in result:
+                self.result_label.setText(result)
+                self.result_label.setVisible(True)
+                self.setFixedSize(600, 350)
+                self.center_on_screen()
+                return
+                
             if "Timer Formats:" in result:
                 self.result_label.setVisible(False)
                 self.timer_widget.setVisible(True)

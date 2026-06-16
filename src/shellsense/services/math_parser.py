@@ -198,6 +198,12 @@ def evaluate_math(query: str):
     if is_download:
         return True, download_res
 
+    # Try system tuner next
+    from shellsense.services.system_tuner import evaluate_system_tuner
+    is_tuner, tuner_res = evaluate_system_tuner(query)
+    if is_tuner:
+        return True, tuner_res
+
     # Try file shortcuts next
     from shellsense.services.file_shortcuts_parser import evaluate_file_shortcuts
     is_shortcut, shortcut_res = evaluate_file_shortcuts(query)

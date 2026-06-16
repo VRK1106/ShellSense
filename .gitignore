@@ -9,3 +9,5 @@ ENV/
 .idea/
 *.log
 *.json
+shellsense_v1.pkl
+shellsense_v2.pkl
