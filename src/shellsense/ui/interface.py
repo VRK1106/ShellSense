@@ -198,7 +198,7 @@ class ShellSenseUI(QWidget):
             if val <= 0:
                 raise ValueError("Must be positive")
         except ValueError:
-            self.timer_val_input.setStyleSheet("QLineEdit { border: 2px solid #ff5252; color: #ff5252; background-color: rgba(20, 20, 20, 230); border-radius: 6px; padding: 6px; }")
+            self.timer_val_input.setStyleSheet("QLineEdit { border: 1px solid #ff5252; color: #ff5252; background-color: rgba(255, 255, 255, 15); border-radius: 6px; padding: 6px; }")
             return
             
         self.timer_val_input.setStyleSheet("") # reset
@@ -277,7 +277,7 @@ class ShellSenseUI(QWidget):
             if val <= 0:
                 raise ValueError("Must be positive")
         except ValueError:
-            self.snooze_custom_val.setStyleSheet("QLineEdit { border: 2px solid #ff5252; color: #ff5252; background-color: rgba(20, 20, 20, 230); border-radius: 6px; padding: 4px; }")
+            self.snooze_custom_val.setStyleSheet("QLineEdit { border: 1px solid #ff5252; color: #ff5252; background-color: rgba(255, 255, 255, 15); border-radius: 6px; padding: 4px; }")
             return
         self.snooze_timer(val)
 
@@ -462,6 +462,31 @@ class ShellSenseUI(QWidget):
         self.tray_icon.setIcon(icon) 
         
         tray_menu = QMenu()
+        tray_menu.setStyleSheet("""
+            QMenu {
+                background-color: rgb(20, 20, 25);
+                border: 1px solid rgba(255, 255, 255, 30);
+                border-radius: 8px;
+                padding: 4px;
+            }
+            QMenu::item {
+                background-color: transparent;
+                padding: 6px 20px;
+                color: rgba(255, 255, 255, 200);
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 13px;
+                border-radius: 4px;
+            }
+            QMenu::item:selected {
+                background-color: rgba(255, 255, 255, 20);
+                color: white;
+            }
+            QMenu::separator {
+                height: 1px;
+                background-color: rgba(255, 255, 255, 20);
+                margin: 4px 0px;
+            }
+        """)
         show_action = QAction("Show ShellSense (Ctrl+Shift+Space)", self)
         show_action.triggered.connect(self.toggle_visibility)
         
