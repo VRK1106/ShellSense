@@ -95,3 +95,33 @@ powershell -ExecutionPolicy Bypass -File .\create_shortcut.ps1
 2. Type `shell:startup` and hit Enter. This opens the **Startup** folder.
 3. Paste a copy of the `ShellSense` desktop shortcut into this folder.
 4. *ShellSense will now start silently in the background whenever you boot Windows.*
+
+---
+
+## 📜 Version History & Progression
+
+### 🛡️ Version 1 (v1) — Foundation
+* **Core Functions:**
+  * Basic command line generation and routing.
+  * Launching programs and executing shell scripts silently.
+  * Simple, flat keypress handlers for summoning the interface.
+* **Brain Service:** Initial model `shellsense_v1.pkl` focused on basic command classification and matching.
+
+### ⚡ Version 2 (v2) — Functional Utility Expansion
+* **Core Upgrades:**
+  * **Timezone Translator:** Integrated offline timezone offset translator (e.g., `est to ist`).
+  * **Real-time Currency Exchange:** Integrated fast currency conversions (e.g., `usd to eur`).
+  * **Downloads Finder:** Accessing or copying the latest file from the Downloads folder.
+  * **File Shortcuts:** Opening custom files/folders or copying custom text snippets via shorthand bindings configured in `file_shortcuts.json`.
+  * **Background Timers:** Setting native background timers that trigger native Windows OS alert dialogs.
+  * **System Tuner:** Auditing and disabling startup applications and clearing temp files.
+* **Brain Service:** Upgraded to `shellsense_v2.pkl` for increased classification confidence and broader parser intent classification.
+
+### 🌟 Version 3 (v3) — Interactive UI & UX Polish (Current)
+* **Core Upgrades:**
+  * **Frosted-Glass Redesign:** Added dynamic sizing, glassmorphism transparency, and a clean minimalist styling.
+  * **Dynamic Selection Panels:** Category inputs (like `length`, `mass/weight`, `timer`, etc.) now present visual inputs inside the palette instead of requiring pure command entry.
+  * **Result Action Widget:** Persistent `Copy & Close` and `Close` buttons allow mouse-driven action on command output.
+  * **Double-Enter & Escape Keyboard Flow:** Pressing Enter in the value field submits the conversion, focusing back to the search bar. Pressing Enter a second time copies the result and closes. Pressing Escape closes immediately without copying.
+  * **Snooze Option:** Custom snooze timer settings directly in the alarm popup alert.
+* **Brain Service:** High-confidence `shellsense_v3.pkl` model supporting categorization matching for interactive panels.
