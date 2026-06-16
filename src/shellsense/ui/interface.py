@@ -10,9 +10,9 @@ if src_root not in sys.path:
 import signal
 import keyboard
 from ctypes import windll, wintypes
-from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QVBoxLayout, QSystemTrayIcon, QMenu, QLabel, QFrame, QHBoxLayout, QComboBox, QPushButton, QScrollArea
+from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QVBoxLayout, QSystemTrayIcon, QMenu, QLabel, QFrame, QHBoxLayout, QComboBox, QPushButton, QScrollArea, QGraphicsOpacityEffect
 from PyQt6.QtGui import QIcon, QAction
-from PyQt6.QtCore import Qt, pyqtSignal, QObject, QTimer
+from PyQt6.QtCore import Qt, pyqtSignal, QObject, QTimer, QPropertyAnimation
 
 from shellsense.services.brain_service import BrainService
 from shellsense.services.math_parser import evaluate_math
@@ -79,6 +79,23 @@ class ScrollableLabel(QScrollArea):
             self.label.setWordWrap(wrap)
 
 class ShellSenseUI(QWidget):
+    def setFixedSize(self, *args):
+        super().setFixedSize(*args)
+        if hasattr(self, 'divider') and hasattr(self, 'result_label'):
+            has_results = (self.result_label.isVisible() or 
+                           self.timer_widget.isVisible() or 
+                           self.alert_widget.isVisible())
+            self.divider.setVisible(has_results)
+
+    def showEvent(self, event):
+        if hasattr(self, 'fade_animation'):
+            self.fade_animation.stop()
+            self.fade_animation.setStartValue(0.0)
+            self.fade_animation.setEndValue(1.0)
+            self.fade_animation.start()
+        super().showEvent(event)
+        if hasattr(self, 'search_bar'):
+            self.search_bar.setFocus()
     def __init__(self):
         super().__init__()
         logger.info("Initializing ShellSenseUI...")
@@ -477,45 +494,74 @@ class ShellSenseUI(QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         
-        self.search_bar = QLineEdit(self)
+        # 1. Main layout of QWidget
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        
+        # 2. Central container holding frosted glass style
+        self.container = QFrame(self)
+        self.container.setObjectName("CentralContainer")
+        self.container.setStyleSheet("""
+            QFrame#CentralContainer {
+                background-color: rgba(20, 20, 25, 220);
+                border: 1px solid rgba(255, 255, 255, 35);
+                border-radius: 12px;
+            }
+        """)
+        main_layout.addWidget(self.container)
+        
+        container_layout = QVBoxLayout(self.container)
+        container_layout.setContentsMargins(10, 10, 10, 10)
+        container_layout.setSpacing(8)
+        
+        # 3. Search Bar Widget
+        self.search_bar = QLineEdit(self.container)
         self.search_bar.setPlaceholderText("Search ShellSense Features...")
         self.search_bar.setStyleSheet("""
             QLineEdit {
-                background-color: rgba(20, 20, 20, 230);
-                border: 2px solid #0078d4;
-                border-radius: 12px;
-                color: white;
-                font-size: 18px;
-                padding: 12px;
-                font-family: 'Segoe UI', sans-serif;
+                background: transparent;
+                border: none;
+                color: #ffffff;
+                font-size: 22px;
+                font-family: 'Segoe UI', 'Inter', sans-serif;
+                padding: 14px 16px;
+                font-weight: 300;
             }
         """)
         self.search_bar.returnPressed.connect(self.process_command)
         self.search_bar.textChanged.connect(self.on_text_changed)
+        container_layout.addWidget(self.search_bar)
         
-        self.result_label = ScrollableLabel(self)
+        # 4. Divider Line
+        self.divider = QFrame(self.container)
+        self.divider.setFrameShape(QFrame.Shape.HLine)
+        self.divider.setStyleSheet("background-color: rgba(255, 255, 255, 25); max-height: 1px; border: none; margin: 0px 10px;")
+        self.divider.setVisible(False)
+        container_layout.addWidget(self.divider)
+        
+        # 5. Results Label Widget
+        self.result_label = ScrollableLabel(self.container)
         self.result_label.setWordWrap(True)
         self.result_label.setVisible(False)
         self.result_label.setStyleSheet("""
             QLabel {
-                background-color: rgba(30, 30, 30, 210);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 8px;
+                background: transparent;
+                border: none;
                 color: #00bcd4;
                 font-size: 16px;
-                padding: 8px;
+                padding: 10px 16px;
                 font-family: 'Segoe UI', sans-serif;
             }
         """)
+        container_layout.addWidget(self.result_label)
         
         # Build interactive Timer form widget
-        self.timer_widget = QFrame(self)
+        self.timer_widget = QFrame(self.container)
         self.timer_widget.setVisible(False)
         self.timer_widget.setStyleSheet("""
             QFrame {
-                background-color: rgba(30, 30, 30, 220);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 12px;
+                background: transparent;
+                border: none;
                 padding: 10px;
             }
             QLabel {
@@ -526,8 +572,8 @@ class ShellSenseUI(QWidget):
                 font-size: 14px;
             }
             QLineEdit {
-                background-color: rgba(20, 20, 20, 230);
-                border: 1px solid rgba(255, 255, 255, 0.2);
+                background-color: rgba(255, 255, 255, 15);
+                border: 1px solid rgba(255, 255, 255, 0.15);
                 border-radius: 6px;
                 color: white;
                 font-size: 14px;
@@ -535,8 +581,8 @@ class ShellSenseUI(QWidget):
                 font-family: 'Segoe UI', sans-serif;
             }
             QComboBox {
-                background-color: rgba(20, 20, 20, 230);
-                border: 1px solid rgba(255, 255, 255, 0.2);
+                background-color: rgba(255, 255, 255, 15);
+                border: 1px solid rgba(255, 255, 255, 0.15);
                 border-radius: 6px;
                 color: white;
                 font-size: 14px;
@@ -545,17 +591,17 @@ class ShellSenseUI(QWidget):
                 min-width: 90px;
             }
             QPushButton {
-                background-color: #0078d4;
+                background-color: #00bcd4;
                 border: none;
                 border-radius: 6px;
-                color: white;
+                color: #121212;
                 font-size: 14px;
                 font-weight: bold;
                 padding: 8px 16px;
                 font-family: 'Segoe UI', sans-serif;
             }
             QPushButton:hover {
-                background-color: #005a9e;
+                background-color: #0097a7;
             }
         """)
         
@@ -596,15 +642,15 @@ class ShellSenseUI(QWidget):
         
         self.timer_val_input.returnPressed.connect(self.submit_interactive_timer)
         self.timer_task_input.returnPressed.connect(self.submit_interactive_timer)
+        container_layout.addWidget(self.timer_widget)
         
         # Build interactive Alert/Snooze widget
-        self.alert_widget = QFrame(self)
+        self.alert_widget = QFrame(self.container)
         self.alert_widget.setVisible(False)
         self.alert_widget.setStyleSheet("""
             QFrame {
-                background-color: rgba(30, 30, 30, 220);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 12px;
+                background: transparent;
+                border: none;
                 padding: 10px;
             }
             QLabel {
@@ -616,8 +662,8 @@ class ShellSenseUI(QWidget):
                 font-weight: bold;
             }
             QLineEdit {
-                background-color: rgba(20, 20, 20, 230);
-                border: 1px solid rgba(255, 255, 255, 0.2);
+                background-color: rgba(255, 255, 255, 15);
+                border: 1px solid rgba(255, 255, 255, 0.15);
                 border-radius: 6px;
                 color: white;
                 font-size: 13px;
@@ -625,17 +671,17 @@ class ShellSenseUI(QWidget):
                 font-family: 'Segoe UI', sans-serif;
             }
             QPushButton {
-                background-color: rgba(0, 120, 212, 0.85);
+                background-color: rgba(0, 188, 212, 0.85);
                 border: none;
                 border-radius: 6px;
-                color: white;
+                color: #121212;
                 font-size: 13px;
                 font-weight: bold;
                 padding: 6px 10px;
                 font-family: 'Segoe UI', sans-serif;
             }
             QPushButton:hover {
-                background-color: #005a9e;
+                background-color: #00bcd4;
             }
         """)
         
@@ -674,17 +720,16 @@ class ShellSenseUI(QWidget):
         btn_layout.addWidget(self.snooze_custom_btn)
         
         alert_layout.addLayout(btn_layout)
+        container_layout.addWidget(self.alert_widget)
         
         self.snooze_custom_val.returnPressed.connect(self.snooze_timer_custom)
         
-        layout = QVBoxLayout()
-        layout.setContentsMargins(10, 10, 10, 10)
-        layout.setSpacing(8)
-        layout.addWidget(self.search_bar)
-        layout.addWidget(self.result_label)
-        layout.addWidget(self.timer_widget)
-        layout.addWidget(self.alert_widget)
-        self.setLayout(layout)
+        # 6. Animation & Opacity Setup
+        self.opacity_effect = QGraphicsOpacityEffect(self)
+        self.setGraphicsEffect(self.opacity_effect)
+        
+        self.fade_animation = QPropertyAnimation(self.opacity_effect, b"opacity")
+        self.fade_animation.setDuration(150)
         
         self.setFixedSize(600, 78)
         self.center_on_screen()
