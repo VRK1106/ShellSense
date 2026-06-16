@@ -2,23 +2,29 @@ import os
 import re
 
 def get_last_downloaded_file():
-    downloads_path = os.path.join(os.path.expanduser('~'), 'Downloads')
-    if not os.path.exists(downloads_path):
-        return None
-        
+    user_profile = os.path.expanduser('~')
+    search_dirs = [
+        os.path.join(user_profile, 'Downloads'),
+        os.path.join(user_profile, 'Desktop'),
+        os.path.join(user_profile, 'Documents')
+    ]
+    
     ignored_extensions = ('.crdownload', '.tmp', '.part', '.download')
     
     files = []
-    try:
-        for f in os.listdir(downloads_path):
-            filepath = os.path.join(downloads_path, f)
-            if os.path.isfile(filepath):
-                _, ext = os.path.splitext(f)
-                if ext.lower() not in ignored_extensions:
-                    files.append(filepath)
-    except Exception:
-        return None
-                
+    for d in search_dirs:
+        if not os.path.exists(d):
+            continue
+        try:
+            for f in os.listdir(d):
+                filepath = os.path.join(d, f)
+                if os.path.isfile(filepath):
+                    _, ext = os.path.splitext(f)
+                    if ext.lower() not in ignored_extensions:
+                        files.append(filepath)
+        except Exception:
+            continue
+            
     if not files:
         return None
         
@@ -41,7 +47,7 @@ def evaluate_last_download(query: str):
         
     filepath = get_last_downloaded_file()
     if not filepath:
-        return True, "Error: No downloaded files found in Downloads folder"
+        return True, "Error: No downloaded files found in search directories"
         
     filename = os.path.basename(filepath)
     
