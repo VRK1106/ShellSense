@@ -102,8 +102,11 @@ class ShellSenseUI(QWidget):
         if hasattr(self, 'divider') and hasattr(self, 'result_label'):
             has_results = (self.result_label.isVisible() or 
                            self.timer_widget.isVisible() or 
-                           self.alert_widget.isVisible())
+                           self.alert_widget.isVisible() or
+                           (hasattr(self, 'conversion_widget') and self.conversion_widget.isVisible()))
             self.divider.setVisible(has_results)
+            if hasattr(self, 'result_actions_widget'):
+                self.result_actions_widget.setVisible(self.result_label.isVisible())
 
     def showEvent(self, event):
         if hasattr(self, 'fade_animation'):
@@ -243,11 +246,7 @@ class ShellSenseUI(QWidget):
         self.search_bar.clear()
         
         # Show success message
-        self.result_label.setText(f"Timer set for '{task}' in {time_desc}!")
-        self.result_label.setVisible(True)
-        self.setFixedSize(600, 125)
-        self.center_on_screen()
-        QTimer.singleShot(1500, self.hide_and_clear)
+        self.show_result_message(f"Timer set for '{task}' in {time_desc}!", show_actions=False, auto_hide=True)
 
     def show_conversion_panel(self, category):
         self.current_conv_category = category
@@ -282,7 +281,7 @@ class ShellSenseUI(QWidget):
         self.conv_val_input.setStyleSheet("")
         
         # Expand window height to support form
-        self.setFixedSize(600, 160)
+        self.setFixedSize(600, 135)
         self.center_on_screen()
         QTimer.singleShot(10, self.conv_val_input.setFocus)
 
@@ -309,17 +308,14 @@ class ShellSenseUI(QWidget):
         success, result = evaluate_conversion(query)
         
         if success:
-            self.result_label.setText(f"Result: {result}")
+            res_str = f"Result: {result}"
         else:
-            self.result_label.setText(f"<span style='color: #ff5252;'>Error:</span> Conversion failed")
+            res_str = f"<span style='color: #ff5252;'>Error:</span> Conversion failed"
             
         # Hide conversion widget and show result label
         self.conversion_widget.setVisible(False)
-        self.result_label.setVisible(True)
         self.search_bar.clear()
-        self.setFixedSize(600, 125)
-        self.center_on_screen()
-        QTimer.singleShot(1500, self.hide_and_clear)
+        self.show_result_message(res_str, show_actions=True, auto_hide=False)
     def show_snooze_panel(self, task):
         self.current_alert_task = task
         self.alert_message_label.setText(f"Alert: Time is up for '{task}'!")
@@ -328,7 +324,7 @@ class ShellSenseUI(QWidget):
         self.timer_widget.setVisible(False)
         self.alert_widget.setVisible(True)
         
-        self.setFixedSize(600, 160)
+        self.setFixedSize(600, 175)
         self.center_on_screen()
         self.show()
         self.raise_()
@@ -352,11 +348,7 @@ class ShellSenseUI(QWidget):
         self.alert_widget.setVisible(False)
         
         # Show success confirm
-        self.result_label.setText(f"Snoozed '{task}' for {time_desc}!")
-        self.result_label.setVisible(True)
-        self.setFixedSize(600, 125)
-        self.center_on_screen()
-        QTimer.singleShot(1500, self.hide_and_clear)
+        self.show_result_message(f"Snoozed '{task}' for {time_desc}!", show_actions=False, auto_hide=True)
 
     def snooze_timer_custom(self):
         val_str = self.snooze_custom_val.text().strip()
@@ -371,8 +363,41 @@ class ShellSenseUI(QWidget):
             return
         self.snooze_timer(val)
 
+    def show_result_message(self, text, show_actions=True, auto_hide=False):
+        self.result_label.setText(text)
+        self.result_label.setVisible(True)
+        if hasattr(self, 'result_actions_widget'):
+            self.result_actions_widget.setVisible(show_actions)
+        if show_actions:
+            self.setFixedSize(600, 175)
+        else:
+            self.setFixedSize(600, 135)
+        self.center_on_screen()
+        if hasattr(self, 'search_bar'):
+            self.search_bar.setFocus()
+        if auto_hide:
+            QTimer.singleShot(1500, self.hide_and_clear)
+
+    def copy_result_and_close(self):
+        text = self.result_label.text().strip()
+        if text.startswith("Result: "):
+            text = text[8:]
+        import re
+        clean_text = re.sub(r'<[^>]*>', '', text)
+        clipboard = QApplication.clipboard()
+        clipboard.setText(clean_text)
+        self.tray_icon.showMessage(
+            "ShellSense",
+            "Result copied to clipboard!",
+            QSystemTrayIcon.MessageIcon.Information,
+            2000
+        )
+        self.hide_and_clear()
+
     def hide_and_clear(self):
         self.result_label.setVisible(False)
+        if hasattr(self, 'result_actions_widget'):
+            self.result_actions_widget.setVisible(False)
         if hasattr(self, 'timer_widget'):
             self.timer_widget.setVisible(False)
         if hasattr(self, 'alert_widget'):
@@ -666,11 +691,52 @@ class ShellSenseUI(QWidget):
                 border: none;
                 color: #e0e0e0;
                 font-size: 14px;
-                padding: 10px 16px;
+                padding: 6px 16px;
                 font-family: 'Segoe UI', 'Inter', sans-serif;
             }
         """)
         container_layout.addWidget(self.result_label)
+        
+        # 5b. Result Actions Widget
+        self.result_actions_widget = QFrame(self.container)
+        self.result_actions_widget.setObjectName("ResultActionsWidget")
+        self.result_actions_widget.setVisible(False)
+        self.result_actions_widget.setStyleSheet("""
+            QFrame#ResultActionsWidget {
+                background: transparent;
+                border: none;
+            }
+            QPushButton {
+                background-color: rgba(255, 255, 255, 20);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 6px;
+                color: white;
+                font-size: 13px;
+                font-weight: 500;
+                padding: 6px 12px;
+                font-family: 'Segoe UI', sans-serif;
+                min-width: 90px;
+            }
+            QPushButton:hover {
+                background-color: rgba(255, 255, 255, 35);
+            }
+        """)
+        
+        result_actions_layout = QHBoxLayout(self.result_actions_widget)
+        result_actions_layout.setContentsMargins(10, 0, 10, 5)
+        result_actions_layout.setSpacing(8)
+        
+        result_actions_layout.addStretch()
+        
+        self.result_copy_btn = QPushButton("Copy && Close", self.result_actions_widget)
+        self.result_copy_btn.clicked.connect(self.copy_result_and_close)
+        result_actions_layout.addWidget(self.result_copy_btn)
+        
+        self.result_close_btn = QPushButton("Close", self.result_actions_widget)
+        self.result_close_btn.clicked.connect(self.hide_and_clear)
+        result_actions_layout.addWidget(self.result_close_btn)
+        
+        container_layout.addWidget(self.result_actions_widget)
         
         # Build interactive Timer form widget
         self.timer_widget = QFrame(self.container)
@@ -794,7 +860,7 @@ class ShellSenseUI(QWidget):
                 font-size: 14px;
                 padding: 6px;
                 font-family: 'Segoe UI', sans-serif;
-                min-width: 90px;
+                min-width: 80px;
             }
             QPushButton {
                 background-color: rgba(255, 255, 255, 20);
@@ -811,41 +877,33 @@ class ShellSenseUI(QWidget):
             }
         """)
         
-        conv_layout = QVBoxLayout(self.conversion_widget)
+        conv_layout = QHBoxLayout(self.conversion_widget)
         conv_layout.setContentsMargins(10, 5, 10, 5)
         conv_layout.setSpacing(8)
         
-        row1_layout = QHBoxLayout()
-        row1_layout.setSpacing(8)
-        
         self.conv_title_label = QLabel("Conversion:", self.conversion_widget)
         self.conv_title_label.setStyleSheet("font-weight: 500; color: #ffffff; font-size: 15px;")
-        row1_layout.addWidget(self.conv_title_label)
-        row1_layout.addStretch()
+        conv_layout.addWidget(self.conv_title_label)
+        conv_layout.addStretch()
         
         self.conv_val_input = QLineEdit(self.conversion_widget)
         self.conv_val_input.setPlaceholderText("Value...")
-        self.conv_val_input.setFixedWidth(100)
-        row1_layout.addWidget(self.conv_val_input)
+        self.conv_val_input.setFixedWidth(80)
+        conv_layout.addWidget(self.conv_val_input)
         
         self.conv_from_combo = QComboBox(self.conversion_widget)
-        row1_layout.addWidget(self.conv_from_combo)
+        conv_layout.addWidget(self.conv_from_combo)
         
         to_label = QLabel("to", self.conversion_widget)
         to_label.setStyleSheet("color: rgba(255, 255, 255, 150);")
-        row1_layout.addWidget(to_label)
+        conv_layout.addWidget(to_label)
         
         self.conv_to_combo = QComboBox(self.conversion_widget)
-        row1_layout.addWidget(self.conv_to_combo)
+        conv_layout.addWidget(self.conv_to_combo)
         
-        conv_layout.addLayout(row1_layout)
-        
-        row2_layout = QHBoxLayout()
         self.conv_convert_btn = QPushButton("Convert", self.conversion_widget)
         self.conv_convert_btn.clicked.connect(self.submit_interactive_conversion)
-        row2_layout.addStretch()
-        row2_layout.addWidget(self.conv_convert_btn)
-        conv_layout.addLayout(row2_layout)
+        conv_layout.addWidget(self.conv_convert_btn)
         
         self.conv_val_input.returnPressed.connect(self.submit_interactive_conversion)
         container_layout.addWidget(self.conversion_widget)
@@ -970,10 +1028,22 @@ class ShellSenseUI(QWidget):
             self.alert_widget.setVisible(False)
             self.setFixedSize(600, 78)
             self.center_on_screen()
+            
+        # Collapse conversion widget if search bar text is edited to something other than bare category words
+        if hasattr(self, 'conversion_widget') and self.conversion_widget.isVisible():
+            txt = self.search_bar.text().strip().lower()
+            categories = ('length', 'area', 'volume', 'weight', 'mass', 'mass/weight', 'speed', 'pressure', 'power', 'temperature', 'temp', 'currency')
+            if txt not in categories:
+                self.conversion_widget.setVisible(False)
+                self.setFixedSize(600, 78)
+                self.center_on_screen()
 
     def process_command(self):
         user_text = self.search_bar.text().strip()
-        if not user_text: return
+        if not user_text:
+            if self.result_label.isVisible():
+                self.copy_result_and_close()
+            return
         
         # If user presses Enter twice on the calculated math result
         if getattr(self, 'last_math_result', None) is not None:
@@ -1033,11 +1103,7 @@ class ShellSenseUI(QWidget):
                 task, duration_ms_str, time_desc = data.split("|", 2)
                 duration_ms = int(float(duration_ms_str))
                 self.start_background_timer(task, duration_ms, time_desc)
-                self.result_label.setText(f"Timer set for '{task}' in {time_desc}!")
-                self.result_label.setVisible(True)
-                self.setFixedSize(600, 125)
-                self.center_on_screen()
-                QTimer.singleShot(1500, self.hide_and_clear)
+                self.show_result_message(f"Timer set for '{task}' in {time_desc}!", show_actions=False, auto_hide=True)
                 return
 
             if result == "Cancel Timers":
@@ -1048,19 +1114,16 @@ class ShellSenseUI(QWidget):
                         t["timer"].deleteLater()
                     self.active_timers.clear()
                     self.save_active_timers()
-                    self.result_label.setText(f"Cancelled all active timers ({count} stopped).")
+                    msg = f"Cancelled all active timers ({count} stopped)."
                 else:
-                    self.result_label.setText("No active timers running.")
-                self.result_label.setVisible(True)
-                self.setFixedSize(600, 125)
-                self.center_on_screen()
-                QTimer.singleShot(1500, self.hide_and_clear)
+                    msg = "No active timers running."
+                self.show_result_message(msg, show_actions=False, auto_hide=True)
                 return
 
             if result.startswith("Cancel Timer Name: "):
                 target_name = result[19:].strip().lower()
                 if not hasattr(self, 'active_timers') or not self.active_timers:
-                    self.result_label.setText("No active timers running.")
+                    msg = "No active timers running."
                 else:
                     import re
                     norm_target = re.sub(r'[^a-z0-9]', '', target_name)
@@ -1072,33 +1135,26 @@ class ShellSenseUI(QWidget):
                             matches.append(t)
                             
                     if not matches:
-                        self.result_label.setText(f"No active timer matches '{target_name}'.")
+                        msg = f"No active timer matches '{target_name}'."
                     elif len(matches) == 1:
                         matched_timer = matches[0]
                         matched_timer["timer"].stop()
                         matched_timer["timer"].deleteLater()
                         self.active_timers.remove(matched_timer)
                         self.save_active_timers()
-                        self.result_label.setText(f"Cancelled timer '{matched_timer['task']}'.")
+                        msg = f"Cancelled timer '{matched_timer['task']}'."
                     else:
                         names_str = ", ".join(f"'{t['task']}'" for t in matches)
-                        self.result_label.setText(f"Multiple matches found ({names_str}). Please be more specific.")
+                        msg = f"Multiple matches found ({names_str}). Please be more specific."
                         
-                self.result_label.setVisible(True)
-                self.setFixedSize(600, 125)
-                self.center_on_screen()
-                QTimer.singleShot(1500, self.hide_and_clear)
+                self.show_result_message(msg, show_actions=False, auto_hide=True)
                 return
 
             if result.startswith("Copied: "):
                 val = result[8:]
                 clipboard = QApplication.clipboard()
                 clipboard.setText(val)
-                self.result_label.setText(f"Copied '{val}' to clipboard!")
-                self.result_label.setVisible(True)
-                self.setFixedSize(600, 125)
-                self.center_on_screen()
-                QTimer.singleShot(1500, self.hide_and_clear)
+                self.show_result_message(f"Copied '{val}' to clipboard!", show_actions=False, auto_hide=True)
                 return
 
             if result.startswith("Copied File: "):
@@ -1107,13 +1163,10 @@ class ShellSenseUI(QWidget):
                 from shellsense.services.file_shortcuts_parser import copy_file_to_clipboard
                 try:
                     copy_file_to_clipboard(filepath)
-                    self.result_label.setText(f"Copied file '{key}' to clipboard!")
+                    msg = f"Copied file '{key}' to clipboard!"
                 except Exception as e:
-                    self.result_label.setText(f"<span style='color: #ff5252;'>Error copying file: {e}</span>")
-                self.result_label.setVisible(True)
-                self.setFixedSize(600, 125)
-                self.center_on_screen()
-                QTimer.singleShot(1500, self.hide_and_clear)
+                    msg = f"<span style='color: #ff5252;'>Error copying file: {e}</span>"
+                self.show_result_message(msg, show_actions=False, auto_hide=True)
                 return
 
             if result.startswith("Copied Path: "):
@@ -1121,11 +1174,7 @@ class ShellSenseUI(QWidget):
                 filepath, key = data.split("|", 1)
                 clipboard = QApplication.clipboard()
                 clipboard.setText(filepath)
-                self.result_label.setText(f"Copied path '{filepath}' to clipboard!")
-                self.result_label.setVisible(True)
-                self.setFixedSize(600, 125)
-                self.center_on_screen()
-                QTimer.singleShot(1500, self.hide_and_clear)
+                self.show_result_message(f"Copied path '{filepath}' to clipboard!", show_actions=False, auto_hide=True)
                 return
 
             if result.startswith("Opened File: "):
@@ -1133,23 +1182,17 @@ class ShellSenseUI(QWidget):
                 filepath, key = data.split("|", 1)
                 try:
                     os.startfile(filepath)
-                    self.result_label.setText(f"Opened file '{key}' successfully!")
+                    msg = f"Opened file '{key}' successfully!"
                 except Exception as e:
-                    self.result_label.setText(f"<span style='color: #ff5252;'>Error opening file: {e}</span>")
-                self.result_label.setVisible(True)
-                self.setFixedSize(600, 125)
-                self.center_on_screen()
-                QTimer.singleShot(1500, self.hide_and_clear)
+                    msg = f"<span style='color: #ff5252;'>Error opening file: {e}</span>"
+                self.show_result_message(msg, show_actions=False, auto_hide=True)
                 return
                 
             if result.startswith("Error:"):
-                self.result_label.setText(f"<span style='color: #ff5252;'>{result}</span>")
+                msg = f"<span style='color: #ff5252;'>{result}</span>"
             else:
-                self.result_label.setText(f"Result: {result}")
-            self.result_label.setVisible(True)
-            self.setFixedSize(600, 125)
-            self.center_on_screen()
-            QTimer.singleShot(1500, self.hide_and_clear)
+                msg = f"Result: {result}"
+            self.show_result_message(msg, show_actions=True, auto_hide=False)
             return
         
         intent, confidence = self.brain.predict(user_text)
@@ -1168,11 +1211,7 @@ class ShellSenseUI(QWidget):
         # Use the hardened executor service
         success = CommandExecutor.execute(intent, user_text)
         if not success:
-            self.result_label.setText("<span style='color: #ff5252;'>Error:</span> Command failed to execute")
-            self.result_label.setVisible(True)
-            self.setFixedSize(600, 125)
-            self.center_on_screen()
-            QTimer.singleShot(1500, self.hide_and_clear)
+            self.show_result_message("<span style='color: #ff5252;'>Error:</span> Command failed to execute", show_actions=True, auto_hide=False)
             return
         
         self.search_bar.clear()
@@ -1206,15 +1245,7 @@ class ShellSenseUI(QWidget):
     def keyPressEvent(self, event):
         if event.key() == Qt.Key.Key_Escape:
             logger.info("Escape key pressed. Hiding search bar window.")
-            self.last_math_result = None
-            self.result_label.setVisible(False)
-            if hasattr(self, 'timer_widget'):
-                self.timer_widget.setVisible(False)
-            if hasattr(self, 'conversion_widget'):
-                self.conversion_widget.setVisible(False)
-            self.setFixedSize(600, 78)
-            self.search_bar.clear()
-            self.hide()
+            self.hide_and_clear()
         else:
             super().keyPressEvent(event)
 
