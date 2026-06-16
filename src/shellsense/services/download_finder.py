@@ -12,7 +12,7 @@ def get_last_downloaded_file():
             
             shell = win32com.client.Dispatch("WScript.Shell")
             ignored_exts = ('.crdownload', '.tmp', '.part', '.download', '.lnk', '.log', '.git', '.py', '.json')
-            ignored_paths = ['\\appdata\\', '\\.git\\', '\\commandgenerator\\']
+            ignored_paths = ['\\appdata\\', '\\.git\\', '\\commandgenerator\\', '\\desktop\\']
             
             for lnk in files:
                 try:
@@ -32,11 +32,10 @@ def get_last_downloaded_file():
         except Exception:
             pass
 
-    # 2. Fallback: Scan standard folders (Downloads, Desktop, Documents)
+    # 2. Fallback: Scan standard folders (Downloads, Documents)
     user_profile = os.path.expanduser('~')
     search_dirs = [
         os.path.join(user_profile, 'Downloads'),
-        os.path.join(user_profile, 'Desktop'),
         os.path.join(user_profile, 'Documents')
     ]
     
