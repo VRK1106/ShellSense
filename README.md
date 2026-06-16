@@ -51,21 +51,47 @@
 
 ---
 
-## ⚡ Quick Start
+## ⚡ Getting Started & Setup
 
-1. **Install Dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. **Run Application:**
-   Double-click `run.bat` or run:
-   ```bash
-   pythonw -m shellsense.ui.interface
-   ```
-3. **Hotkeys:**
-   - **`Ctrl + Shift + Space`**: Summon / Dismiss the palette
-   - **`Escape`**: Clear result and close
-   - **`Enter`**: Process command / Copy result & close (after rendering output)
+Follow these steps to clone, configure, and use ShellSense:
+
+### 1. Clone the Repository
+Open your terminal (PowerShell, Command Prompt, or Git Bash) and run:
+```bash
+git clone https://github.com/VRK1106/ShellSense.git
+cd ShellSense
+```
+
+### 2. Install Dependencies
+Install the required packages using pip:
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Launch the Application
+Start the background engine:
+* **Option A:** Double-click the `run.bat` file in the project folder.
+* **Option B:** Run it via terminal:
+  ```bash
+  pythonw -m shellsense.ui.interface
+  ```
+*Once launched, the app runs silently in the background. You'll see a search icon appear in your **System Tray** (bottom-right).*
+
+---
+
+## ⌨️ How to Use & Give Inputs
+
+1. **Summon the Bar:** Press **`Ctrl + Shift + Space`** to bring up the frosted-glass search bar.
+2. **Type Your Command:**
+   - **Math:** Type `25 * 40` or `15% of 240` and press **Enter**.
+   - **Currency:** Type `100 usd to eur` and press **Enter**.
+   - **Timezone:** Type `10:00 am est to ist` and press **Enter**.
+   - **Recent Downloads:** Type `open last download` or `copy last download` and press **Enter**.
+   - **Interactive Panels:** Type category names like `length`, `pressure`, `weight`, or `timer` and press **Enter** to open dedicated inputs.
+     - *For Conversions (e.g. Length):* Type `50` in the value box and press **Enter** to get the output.
+3. **Handle Results:**
+   - Press **Enter** again (on the empty search bar) to **Copy the Result** to your clipboard and close the bar.
+   - Press **Escape** at any time to **Close the Bar** without copying.
 
 ---
 
