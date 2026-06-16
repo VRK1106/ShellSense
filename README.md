@@ -95,6 +95,44 @@ Start the background engine:
 
 ---
 
+## ⚙️ Customizing Shortcuts & Snippets
+
+You can create your own custom file hooks and text snippets by editing or creating JSON files in the project root.
+
+### 1. File Shortcuts (`file_shortcuts.json`)
+Create a file named `file_shortcuts.json` in the root of the project. It maps shorthand keys to full local file/folder paths.
+
+**Example `file_shortcuts.json`:**
+```json
+{
+    "resume": "C:\\Users\\Username\\Documents\\Resume.pdf",
+    "photo": "C:\\Users\\Username\\Pictures\\Photo_ID.jpeg",
+    "project": "D:\\Projects\\Codebase"
+}
+```
+
+* **Usage in ShellSense:**
+  - **Open file/folder:** Type `open resume` or `open project` and press Enter.
+  - **Copy file path:** Type `copy path resume` and press Enter.
+  - **Copy actual file (to clipboard):** Type `copy file photo` and press Enter. (You can then Ctrl+V directly to paste the image file into an email or File Explorer).
+
+### 2. Text Snippets (`snippets.json`)
+Create a file named `snippets.json` in the root of the project. It maps shorthand keys to text strings (e.g. emails, phone numbers, addresses, template text).
+
+**Example `snippets.json`:**
+```json
+{
+    "email": "username@gmail.com",
+    "phone": "+919876543210",
+    "address": "123 Main Street, City, Country"
+}
+```
+
+* **Usage in ShellSense:**
+  - **Copy text snippet:** Type `copy email` or `copy address` and press Enter. The value will be copied to your clipboard instantly.
+
+---
+
 ## 📌 Start Menu & Taskbar Shortcuts (Windows)
 
 To launch ShellSense instantly or keep it accessible, follow these simple setup steps:
