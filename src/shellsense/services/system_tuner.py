@@ -157,8 +157,13 @@ def clean_temp_files():
 def evaluate_system_tuner(query: str):
     q = query.lower().strip()
     
-    # 1. Clean temp files
-    if q in ("clean my temp files", "clean temp files", "clean temp", "clean temp cache", "free temp space"):
+    clean_phrases = (
+        "clean my temp files", "clean temp files", "clean temp", "clean temp cache", "free temp space",
+        "delete temp files", "remove temp files", "delete temp", "remove temp",
+        "system speed is slow", "system lags", "system lag", "pc is slow", "pc lags", "slow pc", "pc lag", "system slow",
+        "system is slow", "my system is slow", "my system lags", "computer is slow", "computer lags"
+    )
+    if q in clean_phrases:
         return True, clean_temp_files()
         
     # 2. Show startup apps

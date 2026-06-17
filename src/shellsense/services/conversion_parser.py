@@ -292,6 +292,10 @@ def evaluate_conversion(query: str):
     # Intercept bare keywords for interactive conversion pane
     if q == "distance":
         return True, "Open Conversion: length"
+    if q in ("timezone", "tz", "time", "timezone conversion", "time conversion"):
+        return True, "Open Conversion: timezone"
+    if q in ("number system", "number conversion", "number system conversion", "base conversion", "base", "number base"):
+        return True, "Open Conversion: number system"
     if q in ("length", "area", "volume", "weight", "mass", "mass/weight", "speed", "pressure", "power", "temperature", "temp", "currency"):
         return True, f"Open Conversion: {q}"
 
@@ -499,6 +503,10 @@ def evaluate_translation(query: str):
     """
     q = query.lower().strip()
     q = re.sub(r'[?=\s]+$', '', q) # Strip trailing question marks/equals
+    
+    # Intercept bare translation query words to trigger translation panel
+    if q in ("translate", "translation", "translate language", "translation pane"):
+        return True, "Open Translation: translation"
     
     # Supported languages
     full_languages = ["spanish", "french", "german", "italian", "portuguese", "japanese", "chinese", "hindi", "english", "tamil"]

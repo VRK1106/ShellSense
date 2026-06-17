@@ -2,6 +2,12 @@ import joblib
 import logging
 from shellsense.core.config import MODEL_PATH
 
+# Force PyInstaller to package scikit-learn and its submodules
+import sklearn
+import sklearn.feature_extraction.text
+import sklearn.preprocessing
+import sklearn.neural_network
+
 logger = logging.getLogger(__name__)
 
 class BrainService:
