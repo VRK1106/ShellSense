@@ -290,6 +290,8 @@ def evaluate_conversion(query: str):
     q = re.sub(r'[?=\s]+$', '', q) # Strip trailing question marks/equals
 
     # Intercept bare keywords for interactive conversion pane
+    if q == "distance":
+        return True, "Open Conversion: length"
     if q in ("length", "area", "volume", "weight", "mass", "mass/weight", "speed", "pressure", "power", "temperature", "temp", "currency"):
         return True, f"Open Conversion: {q}"
 
@@ -453,6 +455,41 @@ def evaluate_conversion(query: str):
                 
                 return True, f"{res_str} {dest_unit}"
 
+    # Fallback: if only a value and source unit are given without a target, convert to a default unit per category
+    single_match = re.match(r'^(\d+(?:\.\d+)?)\s*([a-zA-Z0-9]+)$', q)
+    if single_match:
+        val_str, src_unit = single_match.groups()
+        val = float(val_str)
+        src_unit = src_unit.strip()
+        # Define default target units for categories
+        default_targets = {
+            "length": "km",
+            "area": "sq_km",
+            "volume": "l",
+            "weight": "kg",
+            "speed": "km/h",
+            "pressure": "bar",
+            "power": "kw"
+        }
+        for category, config in UNIT_CATEGORIES.items():
+            factors = config["factors"]
+            if src_unit in factors:
+                # Choose default target for this category if available
+                dest_unit = default_targets.get(category)
+                if dest_unit and dest_unit in factors:
+                    base_val = val * factors[src_unit]
+                    converted = base_val / factors[dest_unit]
+                    if converted.is_integer():
+                        res_str = str(int(converted))
+                    else:
+                        res_str = f"{converted:.4f}".rstrip('0').rstrip('.')
+                    return True, f"{res_str} {dest_unit}"
+                # If no default target, just return value in base unit
+                base_val = val * factors[src_unit]
+                base_unit = config["base"]
+                return True, f"{base_val} {base_unit}"
+        # If unit not recognized, fall through to false
+        return False, None
     return False, None
 
 def evaluate_translation(query: str):

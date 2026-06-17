@@ -1030,7 +1030,7 @@ class ShellSenseUI(QWidget):
         # Collapse conversion widget if search bar text is edited to something other than bare category words
         if hasattr(self, 'conversion_widget') and self.conversion_widget.isVisible():
             txt = self.search_bar.text().strip().lower()
-            categories = ('length', 'area', 'volume', 'weight', 'mass', 'mass/weight', 'speed', 'pressure', 'power', 'temperature', 'temp', 'currency')
+            categories = ('length', 'distance', 'area', 'volume', 'weight', 'mass', 'mass/weight', 'speed', 'pressure', 'power', 'temperature', 'temp', 'currency')
             if txt not in categories:
                 self.conversion_widget.setVisible(False)
                 self.setFixedSize(600, 78)
