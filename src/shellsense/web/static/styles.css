@@ -298,6 +298,39 @@ header {
     color: white;
 }
 
+.btn-vault {
+    background: rgba(139, 92, 246, 0.15);
+    color: #c4b5fd;
+    border: 1px solid #8b5cf6;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.btn-vault:hover {
+    background: rgba(139, 92, 246, 0.35);
+    color: white;
+}
+
+.btn-vault.locked {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: #ef4444;
+    color: #fca5a5;
+}
+
+.btn-vault.locked:hover {
+    background: rgba(239, 68, 68, 0.3);
+    color: white;
+}
+
+.val-input.is-encrypted {
+    letter-spacing: 2px;
+    color: #a78bfa;
+}
+
 /* AI Section */
 .ai-container {
     display: flex;

@@ -108,6 +108,11 @@ def evaluate_help(query: str):
     return False, None
 
 def load_snippets():
+    from shellsense.core.config_manager import ConfigManager
+    snippets = ConfigManager.get_snippets()
+    if snippets:
+        return snippets
+        
     from shellsense.core.config import SNIPPETS_PATH
     snippets_path = SNIPPETS_PATH
     
@@ -133,6 +138,8 @@ def load_snippets():
         return {}
 
 def evaluate_snippets(query: str):
+    from shellsense.services.vault_service import VaultService
+    
     q = query.lower().strip()
     clean_q = re.sub(r'^(?:copy\s+my|paste\s+my|get\s+my|show\s+my|my|copy|paste|get)\s+', '', q)
     clean_q = clean_q.strip()
@@ -145,10 +152,15 @@ def evaluate_snippets(query: str):
         norm_k = re.sub(r'[^a-z0-9]', '', k.lower())
         norm_snippets[norm_k] = (k, v)
         
+    def _format_snippet_result(orig_key, val):
+        if VaultService.is_encrypted(val):
+            return True, f"Locked Snippet: {orig_key}|{val}"
+        return True, f"Copied: {val}"
+
     # 1. Exact match on normalized keys
     if norm_q in norm_snippets:
         orig_key, val = norm_snippets[norm_q]
-        return True, f"Copied: {val}"
+        return _format_snippet_result(orig_key, val)
         
     # 2. Substring match on normalized keys
     matches = []
@@ -158,7 +170,7 @@ def evaluate_snippets(query: str):
             
     if len(matches) == 1:
         orig_key, val = norm_snippets[matches[0]]
-        return True, f"Copied: {val}"
+        return _format_snippet_result(orig_key, val)
     elif len(matches) > 1:
         keys_str = ", ".join(f"'{norm_snippets[m][0]}'" for m in matches)
         return True, f"Error: Multiple matches found ({keys_str}). Please be more specific."
@@ -175,7 +187,7 @@ def evaluate_snippets(query: str):
             
     if highest_ratio >= 0.75 and best_match:
         orig_key, val = norm_snippets[best_match]
-        return True, f"Copied: {val}"
+        return _format_snippet_result(orig_key, val)
             
     return False, None
 

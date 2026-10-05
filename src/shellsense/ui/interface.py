@@ -145,6 +145,121 @@ class ScrollableLabel(QScrollArea):
         if hasattr(self, 'label'):
             self.label.setWordWrap(wrap)
 
+class VaultPasswordDialog(QDialog):
+    def __init__(self, key_name: str, enc_val: str, parent=None):
+        super().__init__(parent)
+        self.key_name = key_name
+        self.enc_val = enc_val
+        self.decrypted_text = None
+        
+        self.setWindowTitle("ShellSense Vault - Password Required")
+        self.setFixedSize(380, 180)
+        self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.Dialog | Qt.WindowType.WindowStaysOnTopHint)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(10, 10, 10, 10)
+        
+        frame = QFrame(self)
+        frame.setStyleSheet("""
+            QFrame {
+                background-color: #121826;
+                border: 1px solid #3b82f6;
+                border-radius: 12px;
+            }
+        """)
+        frame_layout = QVBoxLayout(frame)
+        frame_layout.setContentsMargins(16, 16, 16, 16)
+        frame_layout.setSpacing(10)
+
+        title_lbl = QLabel(f"🔒 <b>Protected Snippet:</b> {key_name}", frame)
+        title_lbl.setStyleSheet("color: #60a5fa; font-size: 14px; border: none;")
+        frame_layout.addWidget(title_lbl)
+
+        self.pass_input = QLineEdit(frame)
+        self.pass_input.setPlaceholderText("Enter Master Password...")
+        self.pass_input.setEchoMode(QLineEdit.EchoMode.Password)
+        self.pass_input.setStyleSheet("""
+            QLineEdit {
+                background: #1e293b;
+                color: #ffffff;
+                border: 1px solid #475569;
+                border-radius: 6px;
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            QLineEdit:focus {
+                border: 1px solid #3b82f6;
+            }
+        """)
+        self.pass_input.returnPressed.connect(self.attempt_unlock)
+        frame_layout.addWidget(self.pass_input)
+
+        self.error_lbl = QLabel("", frame)
+        self.error_lbl.setStyleSheet("color: #ef4444; font-size: 11px; border: none;")
+        self.error_lbl.hide()
+        frame_layout.addWidget(self.error_lbl)
+
+        btn_box = QHBoxLayout()
+        btn_box.setSpacing(8)
+        
+        cancel_btn = QPushButton("Cancel", frame)
+        cancel_btn.setStyleSheet("""
+            QPushButton {
+                background: #334155;
+                color: #e2e8f0;
+                border: none;
+                border-radius: 6px;
+                padding: 6px 14px;
+                font-weight: 500;
+            }
+            QPushButton:hover {
+                background: #475569;
+            }
+        """)
+        cancel_btn.clicked.connect(self.reject)
+        
+        unlock_btn = QPushButton("Unlock & Copy", frame)
+        unlock_btn.setStyleSheet("""
+            QPushButton {
+                background: #2563eb;
+                color: #ffffff;
+                border: none;
+                border-radius: 6px;
+                padding: 6px 14px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background: #1d4ed8;
+            }
+        """)
+        unlock_btn.clicked.connect(self.attempt_unlock)
+
+        btn_box.addStretch()
+        btn_box.addWidget(cancel_btn)
+        btn_box.addWidget(unlock_btn)
+        frame_layout.addLayout(btn_box)
+
+        layout.addWidget(frame)
+        self.pass_input.setFocus()
+
+    def attempt_unlock(self):
+        from shellsense.services.vault_service import VaultService
+        password = self.pass_input.text().strip()
+        if not password:
+            self.error_lbl.setText("Password cannot be empty.")
+            self.error_lbl.show()
+            return
+            
+        decrypted = VaultService.decrypt_value(self.enc_val, password)
+        if decrypted is not None:
+            self.decrypted_text = decrypted
+            self.accept()
+        else:
+            self.error_lbl.setText("Incorrect master password.")
+            self.error_lbl.show()
+            self.pass_input.selectAll()
+
 class RegistrationDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -2235,6 +2350,18 @@ class ShellSenseUI(QWidget):
                         msg = f"Multiple matches found ({names_str}). Please be more specific."
                         
                 self.show_result_message(msg, show_actions=True, auto_hide=False)
+                return
+
+            if result.startswith("Locked Snippet: "):
+                data = result[16:]
+                orig_key, enc_val = data.split("|", 1)
+                dialog = VaultPasswordDialog(orig_key, enc_val, self)
+                if dialog.exec() == QDialog.DialogCode.Accepted and dialog.decrypted_text:
+                    clipboard = QApplication.clipboard()
+                    clipboard.setText(dialog.decrypted_text)
+                    self.show_result_message(f"🔓 Unlocked & copied password for '{orig_key}' to clipboard!", show_actions=True, auto_hide=False)
+                else:
+                    self.show_result_message("<span style='color: #ef4444;'>🔒 Access Denied: Incorrect or cancelled password prompt.</span>", show_actions=True, auto_hide=False)
                 return
 
             if result.startswith("Copied: "):

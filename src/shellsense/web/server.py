@@ -56,6 +56,29 @@ def update_commands(payload: ConfigData):
         return {"status": "success"}
     raise HTTPException(status_code=500, detail="Failed to update commands")
 
+class VaultCryptRequest(BaseModel):
+    text: str
+    password: str
+
+# Endpoints for Vault
+@app.post("/api/vault/encrypt")
+def vault_encrypt(payload: VaultCryptRequest):
+    from src.shellsense.services.vault_service import VaultService
+    if not payload.password:
+        raise HTTPException(status_code=400, detail="Master password is required")
+    encrypted = VaultService.encrypt_value(payload.text, payload.password)
+    return {"encrypted": encrypted}
+
+@app.post("/api/vault/decrypt")
+def vault_decrypt(payload: VaultCryptRequest):
+    from src.shellsense.services.vault_service import VaultService
+    if not payload.password:
+        raise HTTPException(status_code=400, detail="Master password is required")
+    decrypted = VaultService.decrypt_value(payload.text, payload.password)
+    if decrypted is None:
+        raise HTTPException(status_code=401, detail="Incorrect master password or corrupted ciphertext")
+    return {"decrypted": decrypted}
+
 # Endpoint for AI Coder
 @app.post("/api/ai/code")
 def ai_code(request: PromptRequest):

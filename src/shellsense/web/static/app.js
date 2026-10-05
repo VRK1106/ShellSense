@@ -66,17 +66,15 @@ const app = {
         keyInput.className = 'key-input';
         keyInput.value = key;
         keyInput.placeholder = 'Key';
-        // Now key is editable
 
         const valInput = document.createElement('input');
         valInput.className = 'val-input';
         valInput.value = typeof value === 'object' ? JSON.stringify(value) : value;
         valInput.placeholder = 'Value';
 
-        const removeBtn = document.createElement('button');
-        removeBtn.className = 'btn-remove';
-        removeBtn.textContent = 'Remove';
-        removeBtn.onclick = () => row.remove();
+        if (container.id === 'snippets-editor' && String(valInput.value).startsWith('ENC:')) {
+            valInput.classList.add('is-encrypted');
+        }
 
         const saveBtn = document.createElement('button');
         saveBtn.className = 'btn-save-row';
@@ -88,8 +86,79 @@ const app = {
             else if (container.id === 'commands-editor') this.saveCommands();
         };
 
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'btn-remove';
+        removeBtn.textContent = 'Remove';
+        removeBtn.onclick = () => row.remove();
+
         row.appendChild(keyInput);
         row.appendChild(valInput);
+
+        // Add Vault toggle button for snippets
+        if (container.id === 'snippets-editor') {
+            const vaultBtn = document.createElement('button');
+            const isEnc = String(valInput.value).startsWith('ENC:');
+            vaultBtn.className = isEnc ? 'btn-vault locked' : 'btn-vault';
+            vaultBtn.textContent = isEnc ? '🔒 Locked' : '🔓 Protect';
+            vaultBtn.title = isEnc ? 'Click to decrypt and view/edit' : 'Click to encrypt with Master Password';
+
+            vaultBtn.onclick = async () => {
+                const currentVal = valInput.value.trim();
+                if (currentVal.startsWith('ENC:')) {
+                    const pass = prompt('Enter Master Password to decrypt:');
+                    if (!pass) return;
+                    try {
+                        const res = await fetch(`${API_BASE}/vault/decrypt`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ text: currentVal, password: pass })
+                        });
+                        const data = await res.json();
+                        if (res.ok) {
+                            valInput.value = data.decrypted;
+                            valInput.classList.remove('is-encrypted');
+                            vaultBtn.className = 'btn-vault';
+                            vaultBtn.textContent = '🔓 Protect';
+                            vaultBtn.title = 'Click to encrypt with Master Password';
+                            app.showToast('Decrypted successfully!');
+                        } else {
+                            app.showToast(data.detail || 'Failed to decrypt', true);
+                        }
+                    } catch(err) {
+                        app.showToast('Decryption request failed', true);
+                    }
+                } else {
+                    if (!currentVal) {
+                        app.showToast('Please enter a value to encrypt', true);
+                        return;
+                    }
+                    const pass = prompt('Enter Master Password to encrypt this snippet:');
+                    if (!pass) return;
+                    try {
+                        const res = await fetch(`${API_BASE}/vault/encrypt`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ text: currentVal, password: pass })
+                        });
+                        const data = await res.json();
+                        if (res.ok) {
+                            valInput.value = data.encrypted;
+                            valInput.classList.add('is-encrypted');
+                            vaultBtn.className = 'btn-vault locked';
+                            vaultBtn.textContent = '🔒 Locked';
+                            vaultBtn.title = 'Click to decrypt and view/edit';
+                            app.showToast('Encrypted with Master Password! Remember to click Save Changes.');
+                        } else {
+                            app.showToast(data.detail || 'Failed to encrypt', true);
+                        }
+                    } catch(err) {
+                        app.showToast('Encryption request failed', true);
+                    }
+                }
+            };
+            row.appendChild(vaultBtn);
+        }
+
         row.appendChild(saveBtn);
         row.appendChild(removeBtn);
         container.appendChild(row);
