@@ -327,8 +327,12 @@ header {
 }
 
 .val-input.is-encrypted {
-    letter-spacing: 2px;
-    color: #a78bfa;
+    letter-spacing: 1px;
+    color: #c4b5fd;
+    background: rgba(30, 41, 59, 0.4) !important;
+    border: 1px dashed rgba(139, 92, 246, 0.5) !important;
+    cursor: not-allowed;
+    user-select: none;
 }
 
 /* AI Section */

@@ -74,6 +74,7 @@ const app = {
 
         if (container.id === 'snippets-editor' && String(valInput.value).startsWith('ENC:')) {
             valInput.classList.add('is-encrypted');
+            valInput.readOnly = true;
         }
 
         const saveBtn = document.createElement('button');
@@ -117,6 +118,7 @@ const app = {
                         if (res.ok) {
                             valInput.value = data.decrypted;
                             valInput.classList.remove('is-encrypted');
+                            valInput.readOnly = false;
                             vaultBtn.className = 'btn-vault';
                             vaultBtn.textContent = '🔓 Protect';
                             vaultBtn.title = 'Click to encrypt with Master Password';
@@ -144,6 +146,7 @@ const app = {
                         if (res.ok) {
                             valInput.value = data.encrypted;
                             valInput.classList.add('is-encrypted');
+                            valInput.readOnly = true;
                             vaultBtn.className = 'btn-vault locked';
                             vaultBtn.textContent = '🔒 Locked';
                             vaultBtn.title = 'Click to decrypt and view/edit';
