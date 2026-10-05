@@ -7,6 +7,26 @@ from shellsense.core.config import SAFE_COMMANDS
 logger = logging.getLogger(__name__)
 
 class CommandExecutor:
+    DESTRUCTIVE_INTENTS = {
+        "POWER_OFF": "Shut down your computer immediately",
+        "RESTART": "Restart your computer immediately",
+        "PROCESS_KILL": "Terminate running process",
+    }
+
+    @classmethod
+    def is_destructive(cls, intent: str) -> bool:
+        """Checks if an intent performs a destructive or disruptive system action."""
+        return intent in cls.DESTRUCTIVE_INTENTS
+
+    @classmethod
+    def get_destructive_description(cls, intent: str, user_text: str = "") -> str:
+        """Returns a user-friendly description of what the destructive command will do."""
+        if intent == "PROCESS_KILL":
+            nums = re.findall(r'\d+', user_text)
+            pid = nums[0] if nums else "specified"
+            return f"Force kill process PID {pid}"
+        return cls.DESTRUCTIVE_INTENTS.get(intent, intent.replace('_', ' ').title())
+
     @staticmethod
     def execute(intent: str, user_text: str = ""):
         """

@@ -260,6 +260,93 @@ class VaultPasswordDialog(QDialog):
             self.error_lbl.show()
             self.pass_input.selectAll()
 
+class DestructiveConfirmDialog(QDialog):
+    """Confirmation modal for safety-critical and destructive operations (POWER_OFF, RESTART, PROCESS_KILL)."""
+    def __init__(self, action_title: str, action_desc: str, parent=None):
+        super().__init__(parent)
+        self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.Dialog | Qt.WindowType.WindowStaysOnTopHint)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+        self.action_title = action_title
+        self.action_desc = action_desc
+        self.initUI()
+
+    def center_on_screen(self):
+        screen = QApplication.primaryScreen()
+        if screen:
+            screen_geometry = screen.availableGeometry()
+            x = (screen_geometry.width() - self.width()) // 2
+            y = (screen_geometry.height() - self.height()) // 2
+            self.move(x, y)
+
+    def initUI(self):
+        self.setFixedSize(420, 210)
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(10, 10, 10, 10)
+
+        frame = QFrame(self)
+        frame.setStyleSheet("""
+            QFrame {
+                background: #0f172a;
+                border: 2px solid #ef4444;
+                border-radius: 12px;
+            }
+        """)
+        frame_layout = QVBoxLayout(frame)
+        frame_layout.setContentsMargins(22, 18, 22, 18)
+        frame_layout.setSpacing(12)
+
+        header = QLabel("⚠️ Confirm System Action", frame)
+        header.setStyleSheet("color: #ef4444; font-size: 15px; font-weight: bold; border: none;")
+        frame_layout.addWidget(header)
+
+        desc = QLabel(f"Are you sure you want to execute:\n<b style='color: #f8fafc;'>{self.action_desc}</b>?", frame)
+        desc.setWordWrap(True)
+        desc.setStyleSheet("color: #cbd5e1; font-size: 13px; border: none;")
+        frame_layout.addWidget(desc)
+
+        btn_box = QHBoxLayout()
+        btn_box.setSpacing(10)
+
+        cancel_btn = QPushButton("Cancel (Esc)", frame)
+        cancel_btn.setStyleSheet("""
+            QPushButton {
+                background: #334155;
+                color: #e2e8f0;
+                border: none;
+                border-radius: 6px;
+                padding: 7px 16px;
+                font-weight: 500;
+            }
+            QPushButton:hover {
+                background: #475569;
+            }
+        """)
+        cancel_btn.clicked.connect(self.reject)
+
+        confirm_btn = QPushButton("Yes, Execute", frame)
+        confirm_btn.setStyleSheet("""
+            QPushButton {
+                background: #dc2626;
+                color: #ffffff;
+                border: none;
+                border-radius: 6px;
+                padding: 7px 16px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background: #b91c1c;
+            }
+        """)
+        confirm_btn.clicked.connect(self.accept)
+        btn_box.addStretch()
+        btn_box.addWidget(cancel_btn)
+        btn_box.addWidget(confirm_btn)
+        frame_layout.addLayout(btn_box)
+
+        layout.addWidget(frame)
+        self.center_on_screen()
+        confirm_btn.setFocus()
+
 class RegistrationDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -2411,15 +2498,19 @@ class ShellSenseUI(QWidget):
         
         intent, confidence = self.brain.predict(user_text)
         self.last_category = f"ML Intent: {intent}"
+        logger.info(f"Brain predicted intent '{intent}' with confidence {confidence:.2f} for query '{user_text}'")
         
-        print(f"--- Brain Analysis ---")
         if confidence < 0.35:
-            print(f"❓ Low confidence ({confidence:.2f}). Trying best guess: {intent}")
-        else:
-            print(f"✅ High confidence ({confidence:.2f}). Intent: {intent}")
+            logger.warning(f"Rejected low-confidence match: '{intent}' (confidence: {confidence:.2f} < 0.35)")
+            self.show_result_message(
+                f"<span style='color: #fbbf24;'>⚠️ Low confidence ({confidence*100:.0f}%):</span> Did you mean <b>{intent.replace('_', ' ').title()}</b>? Please be more specific.",
+                show_actions=False,
+                auto_hide=False
+            )
+            return
 
         if intent == "QUIT_PROGRAM":
-            print("Shutting down ShellSense Engine...")
+            logger.info("Shutting down ShellSense Engine...")
             try:
                 import keyboard
                 keyboard.unhook_all()
@@ -2427,6 +2518,18 @@ class ShellSenseUI(QWidget):
                 pass
             QApplication.quit()
             return
+
+        # Hardened confirmation check for destructive intents
+        if CommandExecutor.is_destructive(intent):
+            action_desc = CommandExecutor.get_destructive_description(intent, user_text)
+            confirm_dialog = DestructiveConfirmDialog(intent, action_desc, self)
+            if confirm_dialog.exec() != QDialog.DialogCode.Accepted:
+                self.show_result_message(
+                    f"<span style='color: #94a3b8;'>Action cancelled:</span> {intent.replace('_', ' ').title()}",
+                    show_actions=False,
+                    auto_hide=True
+                )
+                return
 
         # Use the hardened executor service
         success = CommandExecutor.execute(intent, user_text)

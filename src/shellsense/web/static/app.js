@@ -1,5 +1,92 @@
 const API_BASE = '/api';
 
+/**
+ * Zero-Knowledge Client-Side Web Vault
+ * Implements PBKDF2-HMAC-SHA256 (100,000 iterations) + AES-GCM-256.
+ * The Master Password and raw secrets never leave the browser.
+ */
+const WebVault = {
+    bufferToBase64(buf) {
+        const bytes = new Uint8Array(buf);
+        let binary = '';
+        for (let i = 0; i < bytes.byteLength; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return btoa(binary);
+    },
+
+    base64ToBuffer(b64) {
+        const binary = atob(b64);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return bytes;
+    },
+
+    async deriveKey(password, salt) {
+        const enc = new TextEncoder();
+        const pwKey = await crypto.subtle.importKey(
+            'raw',
+            enc.encode(password),
+            'PBKDF2',
+            false,
+            ['deriveKey']
+        );
+        return await crypto.subtle.deriveKey(
+            {
+                name: 'PBKDF2',
+                salt: salt,
+                iterations: 100000,
+                hash: 'SHA-256'
+            },
+            pwKey,
+            { name: 'AES-GCM', length: 256 },
+            false,
+            ['encrypt', 'decrypt']
+        );
+    },
+
+    async encrypt(plainText, masterPassword) {
+        if (!plainText || !masterPassword) return plainText;
+        const salt = crypto.getRandomValues(new Uint8Array(16));
+        const iv = crypto.getRandomValues(new Uint8Array(12));
+        const key = await this.deriveKey(masterPassword, salt);
+        const enc = new TextEncoder();
+        const cipherBuffer = await crypto.subtle.encrypt(
+            { name: 'AES-GCM', iv: iv },
+            key,
+            enc.encode(plainText)
+        );
+        const saltB64 = this.bufferToBase64(salt);
+        const ivB64 = this.bufferToBase64(iv);
+        const cipherB64 = this.bufferToBase64(cipherBuffer);
+        return `ENC:GCM:${saltB64}:${ivB64}:${cipherB64}`;
+    },
+
+    async decrypt(encValue, masterPassword) {
+        if (!encValue || !encValue.startsWith('ENC:GCM:')) {
+            throw new Error('Unsupported or legacy vault format. Please unlock on desktop to migrate.');
+        }
+        const parts = encValue.slice('ENC:GCM:'.length).split(':');
+        if (parts.length !== 3) {
+            throw new Error('Invalid vault ciphertext structure');
+        }
+        const [saltB64, ivB64, cipherB64] = parts;
+        const salt = this.base64ToBuffer(saltB64);
+        const iv = this.base64ToBuffer(ivB64);
+        const cipherBytes = this.base64ToBuffer(cipherB64);
+        const key = await this.deriveKey(masterPassword, salt);
+        const decryptedBuf = await crypto.subtle.decrypt(
+            { name: 'AES-GCM', iv: iv },
+            key,
+            cipherBytes
+        );
+        const dec = new TextDecoder();
+        return dec.decode(decryptedBuf);
+    }
+};
+
 const app = {
     data: {
         snippets: {},
@@ -75,7 +162,29 @@ const app = {
         if (container.id === 'snippets-editor' && String(valInput.value).startsWith('ENC:')) {
             valInput.classList.add('is-encrypted');
             valInput.readOnly = true;
+            valInput.setAttribute('readonly', 'true');
         }
+
+        // Strict immutability protection for encrypted fields
+        valInput.addEventListener('keydown', (e) => {
+            if (valInput.classList.contains('is-encrypted') || valInput.readOnly) {
+                if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'a')) {
+                    return; // Allow select-all and copy
+                }
+                e.preventDefault();
+                return false;
+            }
+        });
+        valInput.addEventListener('paste', (e) => {
+            if (valInput.classList.contains('is-encrypted') || valInput.readOnly) {
+                e.preventDefault();
+            }
+        });
+        valInput.addEventListener('cut', (e) => {
+            if (valInput.classList.contains('is-encrypted') || valInput.readOnly) {
+                e.preventDefault();
+            }
+        });
 
         const saveBtn = document.createElement('button');
         saveBtn.className = 'btn-save-row';
@@ -106,56 +215,38 @@ const app = {
             vaultBtn.onclick = async () => {
                 const currentVal = valInput.value.trim();
                 if (currentVal.startsWith('ENC:')) {
-                    const pass = prompt('Enter Master Password to decrypt:');
+                    const pass = prompt('Enter Master Password to decrypt (client-side):');
                     if (!pass) return;
                     try {
-                        const res = await fetch(`${API_BASE}/vault/decrypt`, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ text: currentVal, password: pass })
-                        });
-                        const data = await res.json();
-                        if (res.ok) {
-                            valInput.value = data.decrypted;
-                            valInput.classList.remove('is-encrypted');
-                            valInput.readOnly = false;
-                            vaultBtn.className = 'btn-vault';
-                            vaultBtn.textContent = '🔓 Protect';
-                            vaultBtn.title = 'Click to encrypt with Master Password';
-                            app.showToast('Decrypted successfully!');
-                        } else {
-                            app.showToast(data.detail || 'Failed to decrypt', true);
-                        }
+                        const decrypted = await WebVault.decrypt(currentVal, pass);
+                        valInput.value = decrypted;
+                        valInput.classList.remove('is-encrypted');
+                        valInput.readOnly = false;
+                        vaultBtn.className = 'btn-vault';
+                        vaultBtn.textContent = '🔓 Protect';
+                        vaultBtn.title = 'Click to encrypt with Master Password';
+                        app.showToast('Decrypted client-side! Password never sent to server.');
                     } catch(err) {
-                        app.showToast('Decryption request failed', true);
+                        app.showToast(err.message || 'Incorrect master password', true);
                     }
                 } else {
                     if (!currentVal) {
                         app.showToast('Please enter a value to encrypt', true);
                         return;
                     }
-                    const pass = prompt('Enter Master Password to encrypt this snippet:');
+                    const pass = prompt('Enter Master Password to encrypt this snippet (client-side):');
                     if (!pass) return;
                     try {
-                        const res = await fetch(`${API_BASE}/vault/encrypt`, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ text: currentVal, password: pass })
-                        });
-                        const data = await res.json();
-                        if (res.ok) {
-                            valInput.value = data.encrypted;
-                            valInput.classList.add('is-encrypted');
-                            valInput.readOnly = true;
-                            vaultBtn.className = 'btn-vault locked';
-                            vaultBtn.textContent = '🔒 Locked';
-                            vaultBtn.title = 'Click to decrypt and view/edit';
-                            app.showToast('Encrypted with Master Password! Remember to click Save Changes.');
-                        } else {
-                            app.showToast(data.detail || 'Failed to encrypt', true);
-                        }
+                        const encrypted = await WebVault.encrypt(currentVal, pass);
+                        valInput.value = encrypted;
+                        valInput.classList.add('is-encrypted');
+                        valInput.readOnly = true;
+                        vaultBtn.className = 'btn-vault locked';
+                        vaultBtn.textContent = '🔒 Locked';
+                        vaultBtn.title = 'Click to decrypt and view/edit';
+                        app.showToast('Encrypted client-side (AES-GCM-256)! Click Save Changes to store.');
                     } catch(err) {
-                        app.showToast('Encryption request failed', true);
+                        app.showToast('Client-side encryption failed: ' + err.message, true);
                     }
                 }
             };
@@ -317,7 +408,52 @@ const app = {
             
             const msgEl = document.getElementById(loadingId);
             if (res.ok) {
-                msgEl.textContent = `Success: ${result.message}`;
+                msgEl.innerHTML = `<strong>Success:</strong> ${result.message}`;
+                
+                if (result.diff) {
+                    const diffEl = document.createElement('div');
+                    diffEl.className = 'diff-container';
+                    
+                    const lines = result.diff.split('\n');
+                    lines.forEach(line => {
+                        const lineEl = document.createElement('span');
+                        if (line.startsWith('+') && !line.startsWith('+++')) {
+                            lineEl.className = 'diff-line-add';
+                        } else if (line.startsWith('-') && !line.startsWith('---')) {
+                            lineEl.className = 'diff-line-del';
+                        } else {
+                            lineEl.className = 'diff-line-info';
+                        }
+                        lineEl.textContent = line;
+                        diffEl.appendChild(lineEl);
+                    });
+                    msgEl.appendChild(diffEl);
+                }
+
+                if (result.backup_created) {
+                    const rollbackBtn = document.createElement('button');
+                    rollbackBtn.className = 'btn-rollback';
+                    rollbackBtn.textContent = '↺ Rollback this change';
+                    rollbackBtn.onclick = async () => {
+                        try {
+                            const rbRes = await fetch(`${API_BASE}/ai/rollback`, { method: 'POST' });
+                            const rbData = await rbRes.json();
+                            if (rbRes.ok) {
+                                app.showToast(rbData.message);
+                                rollbackBtn.disabled = true;
+                                rollbackBtn.textContent = '✓ Rolled back';
+                                app.loadData();
+                            } else {
+                                app.showToast(rbData.detail || 'Rollback failed', true);
+                            }
+                        } catch (e) {
+                            app.showToast('Rollback request error', true);
+                        }
+                    };
+                    msgEl.appendChild(rollbackBtn);
+                }
+
+                this.loadData();
             } else {
                 msgEl.textContent = `Error: ${result.detail}`;
             }

@@ -56,36 +56,41 @@ def update_commands(payload: ConfigData):
         return {"status": "success"}
     raise HTTPException(status_code=500, detail="Failed to update commands")
 
-class VaultCryptRequest(BaseModel):
-    text: str
-    password: str
-
-# Endpoints for Vault
+# Endpoints for Vault (Zero-Knowledge Architecture)
 @app.post("/api/vault/encrypt")
-def vault_encrypt(payload: VaultCryptRequest):
-    from src.shellsense.services.vault_service import VaultService
-    if not payload.password:
-        raise HTTPException(status_code=400, detail="Master password is required")
-    encrypted = VaultService.encrypt_value(payload.text, payload.password)
-    return {"encrypted": encrypted}
+def vault_encrypt():
+    raise HTTPException(
+        status_code=410,
+        detail="Zero-knowledge architecture: Master passwords are never sent to the server. Encryption must be performed client-side using WebCrypto."
+    )
 
 @app.post("/api/vault/decrypt")
-def vault_decrypt(payload: VaultCryptRequest):
-    from src.shellsense.services.vault_service import VaultService
-    if not payload.password:
-        raise HTTPException(status_code=400, detail="Master password is required")
-    decrypted = VaultService.decrypt_value(payload.text, payload.password)
-    if decrypted is None:
-        raise HTTPException(status_code=401, detail="Incorrect master password or corrupted ciphertext")
-    return {"decrypted": decrypted}
+def vault_decrypt():
+    raise HTTPException(
+        status_code=410,
+        detail="Zero-knowledge architecture: Master passwords are never sent to the server. Decryption must be performed client-side using WebCrypto."
+    )
 
 # Endpoint for AI Coder
 @app.post("/api/ai/code")
 def ai_code(request: PromptRequest):
     result = AICoder.execute_prompt(request.prompt)
     if result.get("success"):
-        return {"status": "success", "message": result.get("message")}
+        return {
+            "status": "success",
+            "message": result.get("message"),
+            "file_path": result.get("file_path"),
+            "diff": result.get("diff"),
+            "backup_created": result.get("backup_created", False)
+        }
     raise HTTPException(status_code=500, detail=result.get("error", "AI modification failed"))
+
+@app.post("/api/ai/rollback")
+def ai_rollback():
+    result = AICoder.rollback_last_change()
+    if result.get("success"):
+        return {"status": "success", "message": result.get("message")}
+    raise HTTPException(status_code=400, detail=result.get("error", "Rollback failed"))
 
 # Mount static files for the frontend
 static_dir = os.path.join(os.path.dirname(__file__), "static")
