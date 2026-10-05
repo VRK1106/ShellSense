@@ -141,15 +141,27 @@ def evaluate_snippets(query: str):
     from shellsense.services.vault_service import VaultService
     
     q = query.lower().strip()
-    clean_q = re.sub(r'^(?:copy\s+my|paste\s+my|get\s+my|show\s+my|my|copy|paste|get)\s+', '', q)
-    clean_q = clean_q.strip()
-    norm_q = re.sub(r'[^a-z0-9]', '', clean_q)
+    clean_q = re.sub(r'^(?:copy\s+my|paste\s+my|get\s+my|show\s+my|my|copy|paste|get)\s+', '', q).strip()
     
+    def _normalize(text: str) -> str:
+        t = text.lower()
+        t = re.sub(r'^(?:copy\s+my|paste\s+my|get\s+my|show\s+my|my|copy|paste|get)\s+', '', t)
+        t = re.sub(r'\bsecond\b', 'secondary', t)
+        t = re.sub(r'\bfirst\b', 'primary', t)
+        t = re.sub(r'\b(pwd|pass)\b', 'password', t)
+        return re.sub(r'[^a-z0-9]', '', t)
+
+    norm_q = _normalize(clean_q)
+    if not norm_q:
+        return False, None
+        
+    is_seeking_password = any(w in clean_q for w in ["password", "pwd", "pass", "secret", "pin"])
     raw_snippets = load_snippets()
+    
     # Map normalized key -> (original key, value)
     norm_snippets = {}
     for k, v in raw_snippets.items():
-        norm_k = re.sub(r'[^a-z0-9]', '', k.lower())
+        norm_k = _normalize(k)
         norm_snippets[norm_k] = (k, v)
         
     def _format_snippet_result(orig_key, val):
@@ -157,38 +169,60 @@ def evaluate_snippets(query: str):
             return True, f"Locked Snippet: {orig_key}|{val}"
         return True, f"Copied: {val}"
 
+    # If user explicitly asked for password/secret, prioritize protected/password snippets
+    active_candidates = norm_snippets
+    if is_seeking_password:
+        pw_candidates = {
+            k: (orig_k, v) for k, (orig_k, v) in norm_snippets.items()
+            if "password" in k or "pwd" in k or "secret" in k or "pin" in k or VaultService.is_encrypted(v)
+        }
+        if pw_candidates:
+            active_candidates = pw_candidates
+        else:
+            # User specifically asked for a password, but no password snippet exists
+            return True, f"Error: No password snippet found for '{clean_q}'."
+
     # 1. Exact match on normalized keys
-    if norm_q in norm_snippets:
-        orig_key, val = norm_snippets[norm_q]
+    if norm_q in active_candidates:
+        orig_key, val = active_candidates[norm_q]
         return _format_snippet_result(orig_key, val)
         
     # 2. Substring match on normalized keys
     matches = []
-    for norm_key in norm_snippets:
+    for norm_key in active_candidates:
         if norm_q in norm_key or norm_key in norm_q:
             matches.append(norm_key)
             
     if len(matches) == 1:
-        orig_key, val = norm_snippets[matches[0]]
+        orig_key, val = active_candidates[matches[0]]
         return _format_snippet_result(orig_key, val)
     elif len(matches) > 1:
-        keys_str = ", ".join(f"'{norm_snippets[m][0]}'" for m in matches)
+        # Check if one is exact substring
+        exact_sub = [m for m in matches if norm_q == m]
+        if len(exact_sub) == 1:
+            orig_key, val = active_candidates[exact_sub[0]]
+            return _format_snippet_result(orig_key, val)
+            
+        keys_str = ", ".join(f"'{active_candidates[m][0]}'" for m in matches)
         return True, f"Error: Multiple matches found ({keys_str}). Please be more specific."
         
     # 3. Fuzzy similarity match (for typos like "linkedin" -> "linkdin")
     import difflib
     best_match = None
     highest_ratio = 0.0
-    for norm_key in norm_snippets:
+    for norm_key in active_candidates:
         ratio = difflib.SequenceMatcher(None, norm_q, norm_key).ratio()
         if ratio > highest_ratio:
             highest_ratio = ratio
             best_match = norm_key
             
-    if highest_ratio >= 0.75 and best_match:
-        orig_key, val = norm_snippets[best_match]
+    if highest_ratio >= 0.70 and best_match:
+        orig_key, val = active_candidates[best_match]
         return _format_snippet_result(orig_key, val)
             
+    if is_seeking_password:
+        return True, f"Error: No password snippet found matching '{clean_q}'."
+
     return False, None
 
 def evaluate_math(query: str):

@@ -4,14 +4,33 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from .config import SNIPPETS_PATH, FILE_SHORTCUTS_PATH, COMMANDS_PATH
 
-# Initialize Firebase if credentials are provided in environment
+# Initialize Firebase if credentials or key file are provided
 FIREBASE_CREDENTIALS = os.environ.get("FIREBASE_CREDENTIALS")
+key_file_paths = [
+    os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), "firebase_key.json"),
+    "firebase_key.json"
+]
+
 db = None
+cred = None
+
 if FIREBASE_CREDENTIALS:
     try:
         cred_dict = json.loads(FIREBASE_CREDENTIALS)
         cred = credentials.Certificate(cred_dict)
-        # Check if already initialized to avoid errors in hot-reloading
+    except Exception as e:
+        print(f"Failed to load FIREBASE_CREDENTIALS from env: {e}")
+else:
+    for kp in key_file_paths:
+        if os.path.exists(kp):
+            try:
+                cred = credentials.Certificate(kp)
+                break
+            except Exception as e:
+                print(f"Failed to load key from {kp}: {e}")
+
+if cred:
+    try:
         if not firebase_admin._apps:
             firebase_admin.initialize_app(cred)
         db = firestore.client()
@@ -27,10 +46,24 @@ class ConfigManager:
                 doc_ref = db.collection(collection_name).document(doc_id)
                 doc = doc_ref.get()
                 if doc.exists:
-                    return doc.to_dict().get("data", {})
+                    data = doc.to_dict().get("data", {})
+                    # Keep local file in sync as backup/cache
+                    try:
+                        with open(local_path, 'w', encoding='utf-8') as f:
+                            json.dump(data, f, indent=4)
+                    except Exception:
+                        pass
+                    return data
                 return {}
             except Exception as e:
                 print(f"Error reading from Firebase ({collection_name}): {e}")
+                # Fallback to local file if Firebase read fails
+                if os.path.exists(local_path):
+                    try:
+                        with open(local_path, 'r', encoding='utf-8') as f:
+                            return json.load(f)
+                    except Exception:
+                        return {}
                 return {}
         else:
             if not os.path.exists(local_path):
@@ -44,6 +77,13 @@ class ConfigManager:
 
     @staticmethod
     def write_data(local_path, collection_name, data, doc_id="default"):
+        # Always write local file first
+        try:
+            with open(local_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=4)
+        except Exception as e:
+            print(f"Error writing local {local_path}: {e}")
+
         if db:
             try:
                 doc_ref = db.collection(collection_name).document(doc_id)
@@ -52,14 +92,7 @@ class ConfigManager:
             except Exception as e:
                 print(f"Error writing to Firebase ({collection_name}): {e}")
                 return False
-        else:
-            try:
-                with open(local_path, 'w', encoding='utf-8') as f:
-                    json.dump(data, f, indent=4)
-                return True
-            except Exception as e:
-                print(f"Error writing {local_path}: {e}")
-                return False
+        return True
 
     @classmethod
     def get_snippets(cls):
