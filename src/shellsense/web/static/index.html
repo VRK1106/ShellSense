@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShellSense Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>ShellSense</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active" data-target="snippets-section">Snippets</li>
+                    <li data-target="shortcuts-section">Shortcuts</li>
+                    <li data-target="commands-section">Commands</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="resizer" id="left-resizer"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div class="header-left">
+                    <button id="toggle-menu" class="btn-icon" onclick="app.toggleMenuSidebar()" title="Toggle Menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    </button>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="status-indicator" style="display: flex; gap: 16px; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="dot online"></span>
+                        <span>System Online</span>
+                    </div>
+                    <button id="toggle-ai" class="btn-icon" onclick="app.toggleAISidebar()" title="Toggle AI Chat">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Snippets Section -->
+                <section id="snippets-section" class="tab-content active">
+                    <div class="section-header">
+                        <h2>Manage Snippets</h2>
+                        <div>
+                            <button class="btn-secondary" onclick="app.addEntry('snippets-editor')">+ Add Entry</button>
+                            <button class="btn-primary" onclick="app.saveSnippets()">Save Changes</button>
+                        </div>
+                    </div>
+                    <div class="editor-container" id="snippets-editor"></div>
+                </section>
+
+                <!-- Shortcuts Section -->
+                <section id="shortcuts-section" class="tab-content">
+                    <div class="section-header">
+                        <h2>Manage Shortcuts</h2>
+                        <div>
+                            <button class="btn-secondary" onclick="app.addEntry('shortcuts-editor')">+ Add Entry</button>
+                            <button class="btn-primary" onclick="app.saveShortcuts()">Save Changes</button>
+                        </div>
+                    </div>
+                    <div class="editor-container" id="shortcuts-editor"></div>
+                </section>
+
+                <!-- Commands Section -->
+                <section id="commands-section" class="tab-content">
+                    <div class="section-header">
+                        <h2>Manage Commands</h2>
+                        <div>
+                            <button class="btn-secondary" onclick="app.addEntry('commands-editor')">+ Add Entry</button>
+                            <button class="btn-primary" onclick="app.saveCommands()">Save Changes</button>
+                        </div>
+                    </div>
+                    <div class="editor-container" id="commands-editor"></div>
+                </section>
+            </div>
+        </main>
+
+        <div class="resizer" id="right-resizer"></div>
+
+        <!-- Persistent AI Sidebar -->
+        <aside class="ai-sidebar ai-theme">
+            <div class="section-header ai-header">
+                <h2>AI Code Agent ✨</h2>
+            </div>
+            <div class="ai-container">
+                <div class="ai-chat-history" id="ai-history">
+                    <div class="ai-message system">
+                        Hello! I'm the ShellSense AI Coder. I can edit this UI, add new features, or modify configurations. Tell me what changes you want to make!
+                    </div>
+                </div>
+                <div class="ai-input-group">
+                    <input type="text" id="ai-prompt" placeholder="Ask me to modify the layout...">
+                    <button id="ai-stop-btn" class="btn-stop" style="display: none;" onclick="app.stopAIPrompt()">Stop</button>
+                    <button id="ai-exec-btn" class="btn-glow" onclick="app.sendAIPrompt()">Execute</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

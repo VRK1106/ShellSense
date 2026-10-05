@@ -189,4 +189,5 @@ powershell -ExecutionPolicy Bypass -File .\create_shortcut.ps1
   * **Result Action Widget:** Persistent `Copy & Close` and `Close` buttons allow mouse-driven action on command output.
   * **Double-Enter & Escape Keyboard Flow:** Pressing Enter in the value field submits the conversion, focusing back to the search bar. Pressing Enter a second time copies the result and closes. Pressing Escape closes immediately without copying.
   * **Snooze Option:** Custom snooze timer settings directly in the alarm popup alert.
+   * **Focus Styling:** Updated widget focus styles to eliminate black‑box artifacts in timer, alarm, feedback, and result‑action panels.
 * **Brain Service:** High-confidence `shellsense_v3.pkl` model supporting categorization matching for interactive panels.

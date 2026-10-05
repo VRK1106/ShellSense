@@ -11,3 +11,7 @@ ENV/
 *.json
 shellsense_v1.pkl
 shellsense_v2.pkl
+build/
+dist/
+scratch/
+
