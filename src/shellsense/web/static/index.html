@@ -16,9 +16,12 @@
             </div>
             <nav>
                 <ul>
-                    <li class="active" data-target="snippets-section">Snippets</li>
-                    <li data-target="shortcuts-section">Shortcuts</li>
-                    <li data-target="commands-section">Commands</li>
+                    <li class="active" data-target="snippets-section">Code Snippets</li>
+                    <li data-target="shortcuts-section">Keyboard Shortcuts</li>
+                    <li data-target="commands-section">Shell Commands</li>
+                    <li data-target="settings-section">Settings</li>
+                    <li data-target="faq-section">FAQ</li>
+                    <li data-target="support-section">Support</li>
                 </ul>
             </nav>
         </aside>
@@ -44,7 +47,10 @@
                 <!-- Snippets Section -->
                 <section id="snippets-section" class="tab-content active">
                     <div class="section-header">
-                        <h2>Manage Snippets</h2>
+                        <div>
+                            <h2>Code Snippets</h2>
+                            <p class="section-desc">Manage your frequently used code blocks for quick insertion.</p>
+                        </div>
                         <div>
                             <button class="btn-secondary" onclick="app.addEntry('snippets-editor')">+ Add Entry</button>
                             <button class="btn-primary" onclick="app.saveSnippets()">Save Changes</button>
@@ -56,7 +62,10 @@
                 <!-- Shortcuts Section -->
                 <section id="shortcuts-section" class="tab-content">
                     <div class="section-header">
-                        <h2>Manage Shortcuts</h2>
+                        <div>
+                            <h2>Keyboard Shortcuts</h2>
+                            <p class="section-desc">Configure custom keybindings to boost your productivity.</p>
+                        </div>
                         <div>
                             <button class="btn-secondary" onclick="app.addEntry('shortcuts-editor')">+ Add Entry</button>
                             <button class="btn-primary" onclick="app.saveShortcuts()">Save Changes</button>
@@ -68,13 +77,85 @@
                 <!-- Commands Section -->
                 <section id="commands-section" class="tab-content">
                     <div class="section-header">
-                        <h2>Manage Commands</h2>
+                        <div>
+                            <h2>Shell Commands</h2>
+                            <p class="section-desc">Store and manage powerful terminal commands and scripts.</p>
+                        </div>
                         <div>
                             <button class="btn-secondary" onclick="app.addEntry('commands-editor')">+ Add Entry</button>
                             <button class="btn-primary" onclick="app.saveCommands()">Save Changes</button>
                         </div>
                     </div>
                     <div class="editor-container" id="commands-editor"></div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings-section" class="tab-content">
+                    <div class="section-header">
+                        <div>
+                            <h2>Settings</h2>
+                            <p class="section-desc">Configure application preferences and behavior.</p>
+                        </div>
+                        <div>
+                            <button class="btn-primary" onclick="app.showToast('Settings saved successfully!')">Save Preferences</button>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <div class="kv-pair">
+                            <span class="key-input" style="flex:1;">Theme</span>
+                            <select class="val-input" style="flex:1; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); color: var(--text-primary); padding: 10px 12px; border-radius: 6px;">
+                                <option>Dark (Default)</option>
+                                <option>Light</option>
+                                <option>System</option>
+                            </select>
+                        </div>
+                        <div class="kv-pair">
+                            <span class="key-input" style="flex:1;">Editor Auto-save</span>
+                            <input type="checkbox" checked style="accent-color: var(--accent); width: 20px; height: 20px;">
+                        </div>
+                        <div class="kv-pair">
+                            <span class="key-input" style="flex:1;">Data Backup (Export)</span>
+                            <button class="btn-secondary" onclick="app.showToast('Backup feature coming soon')">Export to JSON</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section id="faq-section" class="tab-content">
+                    <div class="section-header">
+                        <div>
+                            <h2>FAQ</h2>
+                            <p class="section-desc">Frequently asked questions about ShellSense.</p>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <div style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <h3 style="margin-bottom: 8px; color: var(--text-primary);">How do I trigger a snippet?</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.5;">Use your configured global keyboard shortcut to open the command palette, then type the snippet's key.</p>
+                        </div>
+                        <div style="padding: 8px 0; border-bottom: 1px solid var(--border);">
+                            <h3 style="margin-bottom: 8px; color: var(--text-primary);">Where is my data saved?</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.5;">All of your snippets, shortcuts, and commands are stored securely on your local machine.</p>
+                        </div>
+                        <div style="padding: 8px 0;">
+                            <h3 style="margin-bottom: 8px; color: var(--text-primary);">How does client-side encryption work?</h3>
+                            <p style="color: var(--text-secondary); line-height: 1.5;">Your secrets are encrypted in the browser using AES-GCM-256 before being saved to your local storage.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Support Section -->
+                <section id="support-section" class="tab-content">
+                    <div class="section-header">
+                        <div>
+                            <h2>Support</h2>
+                            <p class="section-desc">Get help and contact the developer.</p>
+                        </div>
+                    </div>
+                    <div class="editor-container" style="align-items: flex-start;">
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Need assistance, found a bug, or have a feature request? Reach out to me directly.</p>
+                        <a href="mailto:support@example.com" class="btn-primary" style="text-decoration: none;">Contact Support via Email</a>
+                    </div>
                 </section>
             </div>
         </main>

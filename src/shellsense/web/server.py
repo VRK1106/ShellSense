@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, Any
-from src.shellsense.core.config_manager import ConfigManager
+from shellsense.core.config_manager import ConfigManager
 
 app = FastAPI(title="ShellSense Web API")
 
@@ -71,7 +71,7 @@ import sys
 # Mount static files for the frontend
 if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
     # We are running in a PyInstaller bundle
-    static_dir = os.path.join(sys._MEIPASS, "src", "shellsense", "web", "static")
+    static_dir = os.path.join(sys._MEIPASS, "static")
 else:
     # We are running in a normal Python environment
     static_dir = os.path.join(os.path.dirname(__file__), "static")

@@ -165,6 +165,12 @@ header {
     margin-bottom: 24px;
 }
 
+.section-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
 .btn-primary {
     background-color: var(--accent);
     color: white;

@@ -1,21 +1,22 @@
 # -*- mode: python ; coding: utf-8 -*-
 import sys
+import os
 sys.setrecursionlimit(sys.getrecursionlimit() * 5)
 
 
 a = Analysis(
-    ['main.py'],
-    pathex=['src'],
+    ['src/main.py'],
+    pathex=[os.path.abspath('src')],
     binaries=[],
     datas=[
         ('shellsense_v3.pkl', '.'),
-        ('src/shellsense/web/static', 'src/shellsense/web/static')
+        ('src/shellsense/web/static', 'static')
     ],
-    hiddenimports=[],
+    hiddenimports=['shellsense', 'shellsense.ui.interface', 'shellsense.web.server'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=['torch', 'tensorflow', 'tensorboard', 'cv2', 'transformers', 'onnxruntime', 'matplotlib', 'IPython', 'scipy', 'nltk', 'keras', 'h5py'],
+    excludes=['torch', 'tensorflow', 'tensorboard', 'cv2', 'transformers', 'onnxruntime', 'matplotlib', 'IPython', 'nltk', 'keras', 'h5py'],
     noarchive=False,
     optimize=0,
 )

@@ -152,12 +152,24 @@ const app = {
         const keyInput = document.createElement('input');
         keyInput.className = 'key-input';
         keyInput.value = key;
-        keyInput.placeholder = 'Key';
 
         const valInput = document.createElement('input');
         valInput.className = 'val-input';
         valInput.value = typeof value === 'object' ? JSON.stringify(value) : value;
-        valInput.placeholder = 'Value';
+
+        if (container.id === 'snippets-editor') {
+            keyInput.placeholder = 'e.g., React Component';
+            valInput.placeholder = 'e.g., function Component() { return <div />; }';
+        } else if (container.id === 'shortcuts-editor') {
+            keyInput.placeholder = 'e.g., Ctrl+Shift+P';
+            valInput.placeholder = 'e.g., Open Palette';
+        } else if (container.id === 'commands-editor') {
+            keyInput.placeholder = 'e.g., git commit -am "Update"';
+            valInput.placeholder = 'e.g., Commits all changes';
+        } else {
+            keyInput.placeholder = 'Key';
+            valInput.placeholder = 'Value';
+        }
 
         if (container.id === 'snippets-editor' && String(valInput.value).startsWith('ENC:')) {
             valInput.classList.add('is-encrypted');
