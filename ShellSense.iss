@@ -1,13 +1,13 @@
 [Setup]
 AppName=ShellSense
-AppVersion=1.0.0
+AppVersion=1.1.0
 DefaultDirName={pf}\ShellSense
 DefaultGroupName=ShellSense
 UninstallDisplayIcon={app}\ShellSense.exe
 Compression=lzma2/ultra64
 SolidCompression=yes
 OutputDir=dist
-OutputBaseFilename=ShellSense_Setup_v1.0.0
+OutputBaseFilename=ShellSense_Setup_v1.1.0
 
 [Files]
 Source: "dist\ShellSense.exe"; DestDir: "{app}"; Flags: ignoreversion
