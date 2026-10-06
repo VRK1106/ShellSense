@@ -1,4 +1,11 @@
 import os
+import sys
+
+# Ensure src root is in sys.path so 'shellsense' can be resolved
+src_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+if src_dir not in sys.path:
+    sys.path.insert(0, src_dir)
+
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
