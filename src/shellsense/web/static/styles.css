@@ -364,3 +364,47 @@ header {
 .toast.error {
     border-left-color: var(--error);
 }
+
+/* Support Section Styles */
+.support-card {
+    max-width: 680px;
+}
+
+.support-email-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border);
+    padding: 12px 18px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.support-email-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.support-email-val {
+    color: #60a5fa;
+    font-weight: 600;
+    font-family: monospace;
+    font-size: 1rem;
+    user-select: all;
+    margin-right: auto;
+}
+
+.btn-sm {
+    padding: 6px 12px !important;
+    font-size: 0.85rem !important;
+}
+
+.support-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+}

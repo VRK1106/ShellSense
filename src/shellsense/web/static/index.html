@@ -152,9 +152,30 @@
                             <p class="section-desc">Get help and contact the developer.</p>
                         </div>
                     </div>
-                    <div class="editor-container" style="align-items: flex-start;">
-                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Need assistance, found a bug, or have a feature request? Reach out to me directly.</p>
-                        <a href="mailto:vrk1711@gmail.com" class="btn-primary" style="text-decoration: none;">Contact Support via Email (vrk1711@gmail.com)</a>
+                    <div class="editor-container support-card" style="align-items: flex-start; gap: 20px;">
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            Need assistance, found a bug, or have a feature request? Reach out directly via email.
+                        </p>
+
+                        <div class="support-email-box">
+                            <span class="support-email-label">Developer Email:</span>
+                            <span class="support-email-val">vrk1711@gmail.com</span>
+                            <button type="button" class="btn-secondary btn-sm" onclick="app.copyToClipboard('vrk1711@gmail.com', 'Email address copied to clipboard!')" title="Copy to clipboard">
+                                📋 Copy
+                            </button>
+                        </div>
+
+                        <div class="support-actions">
+                            <button type="button" class="btn-primary" onclick="app.sendEmail('vrk1711@gmail.com', 'ShellSense Support Request')">
+                                ✉️ Open Mail Client
+                            </button>
+                            <button type="button" class="btn-secondary" onclick="app.openGmail('vrk1711@gmail.com', 'ShellSense Support Request')">
+                                🌐 Open in Gmail Web
+                            </button>
+                            <button type="button" class="btn-secondary" onclick="app.copyToClipboard('vrk1711@gmail.com', 'Email address copied to clipboard!')">
+                                📋 Copy Email Address
+                            </button>
+                        </div>
                     </div>
                 </section>
             </div>

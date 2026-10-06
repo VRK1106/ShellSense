@@ -374,6 +374,44 @@ const app = {
         setTimeout(() => {
             toast.className = 'toast';
         }, 3000);
+    },
+
+    copyToClipboard(text, message = 'Copied to clipboard!') {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                this.showToast(message);
+            }).catch(() => {
+                this.fallbackCopyText(text, message);
+            });
+        } else {
+            this.fallbackCopyText(text, message);
+        }
+    },
+
+    fallbackCopyText(text, message) {
+        const tempInput = document.createElement('textarea');
+        tempInput.value = text;
+        tempInput.style.position = 'fixed';
+        tempInput.style.opacity = '0';
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+            document.execCommand('copy');
+            this.showToast(message);
+        } catch (e) {
+            this.showToast('Failed to copy text', true);
+        }
+        document.body.removeChild(tempInput);
+    },
+
+    sendEmail(email = 'vrk1711@gmail.com', subject = 'ShellSense Support Request') {
+        const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+        window.location.href = mailtoUrl;
+    },
+
+    openGmail(email = 'vrk1711@gmail.com', subject = 'ShellSense Support Request') {
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}`;
+        window.open(gmailUrl, '_blank', 'noopener,noreferrer');
     }
 };
 
