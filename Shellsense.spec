@@ -1,22 +1,21 @@
 # -*- mode: python ; coding: utf-8 -*-
+import sys
+sys.setrecursionlimit(sys.getrecursionlimit() * 5)
 
 
 a = Analysis(
-    ['src\\shellsense\\ui\\interface.py'],
+    ['main.py'],
     pathex=['src'],
     binaries=[],
-    datas=[('shellsense_v3.pkl', '.')],
+    datas=[
+        ('shellsense_v3.pkl', '.'),
+        ('src/shellsense/web/static', 'src/shellsense/web/static')
+    ],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[
-        'tensorflow', 'tensorboard', 'keras', 'torch', 'torchvision', 'torchaudio', 
-        'matplotlib', 'pandas', 'mako', 'openpyxl', 'sqlalchemy', 'nltk', 
-        'googleapiclient', 'httplib2', 'tzdata', 'cryptography', 'Crypto', 'PIL', 
-        'pyarrow', 'cv2', 'psycopg2', 'psycopg2_binary', 'ipython', 'notebook', 
-        'tornado', 'jupyter'
-    ],
+    excludes=[],
     noarchive=False,
     optimize=0,
 )
@@ -28,7 +27,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='Shellsense',
+    name='ShellSense',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

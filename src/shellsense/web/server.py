@@ -67,10 +67,20 @@ def vault_decrypt():
         detail="Zero-knowledge architecture: Master passwords are never sent to the server. Decryption must be performed client-side using WebCrypto."
     )
 
+import sys
 # Mount static files for the frontend
-static_dir = os.path.join(os.path.dirname(__file__), "static")
+if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+    # We are running in a PyInstaller bundle
+    static_dir = os.path.join(sys._MEIPASS, "src", "shellsense", "web", "static")
+else:
+    # We are running in a normal Python environment
+    static_dir = os.path.join(os.path.dirname(__file__), "static")
+
 if not os.path.exists(static_dir):
-    os.makedirs(static_dir)
+    try:
+        os.makedirs(static_dir)
+    except Exception:
+        pass
 
 app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
 
