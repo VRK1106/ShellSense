@@ -15,7 +15,7 @@ a = Analysis(
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=['torch', 'tensorflow', 'tensorboard', 'cv2', 'transformers', 'onnxruntime', 'matplotlib', 'IPython', 'scipy', 'nltk', 'keras', 'h5py'],
     noarchive=False,
     optimize=0,
 )
