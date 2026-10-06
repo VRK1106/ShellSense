@@ -299,9 +299,11 @@ class DestructiveConfirmDialog(QDialog):
         header.setStyleSheet("color: #ef4444; font-size: 15px; font-weight: bold; border: none;")
         frame_layout.addWidget(header)
 
-        desc = QLabel(f"Are you sure you want to execute:\n<b style='color: #f8fafc;'>{self.action_desc}</b>?", frame)
+        desc = QLabel(frame)
+        desc.setTextFormat(Qt.TextFormat.RichText)
+        desc.setText(f"Are you sure you want to execute:<br><b style='color: #f8fafc; font-size: 14px;'>{self.action_desc}</b>?")
         desc.setWordWrap(True)
-        desc.setStyleSheet("color: #cbd5e1; font-size: 13px; border: none;")
+        desc.setStyleSheet("color: #cbd5e1; font-size: 13px; border: none; line-height: 1.4;")
         frame_layout.addWidget(desc)
 
         btn_box = QHBoxLayout()

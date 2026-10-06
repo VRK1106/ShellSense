@@ -323,20 +323,14 @@ const app = {
         sidebar.classList.toggle('collapsed');
     },
 
-    toggleAISidebar() {
-        const sidebar = document.querySelector('.ai-sidebar');
-        sidebar.classList.toggle('collapsed');
-    },
-
     initResizers() {
         const leftResizer = document.getElementById('left-resizer');
-        const rightResizer = document.getElementById('right-resizer');
         const leftSidebar = document.querySelector('.sidebar');
-        const rightSidebar = document.querySelector('.ai-sidebar');
         const body = document.body;
 
+        if (!leftResizer || !leftSidebar) return;
+
         let isResizingLeft = false;
-        let isResizingRight = false;
 
         leftResizer.addEventListener('mousedown', (e) => {
             isResizingLeft = true;
@@ -344,25 +338,12 @@ const app = {
             leftSidebar.style.transition = 'none'; // Disable transition while dragging
         });
 
-        rightResizer.addEventListener('mousedown', (e) => {
-            isResizingRight = true;
-            body.style.cursor = 'col-resize';
-            rightSidebar.style.transition = 'none';
-        });
-
         document.addEventListener('mousemove', (e) => {
-            if (!isResizingLeft && !isResizingRight) return;
+            if (!isResizingLeft) return;
 
-            if (isResizingLeft) {
-                // Ensure min width
-                const newWidth = Math.max(150, e.clientX);
-                leftSidebar.style.width = `${newWidth}px`;
-            }
-
-            if (isResizingRight) {
-                const newWidth = Math.max(200, window.innerWidth - e.clientX);
-                rightSidebar.style.width = `${newWidth}px`;
-            }
+            // Ensure min width
+            const newWidth = Math.max(150, e.clientX);
+            leftSidebar.style.width = `${newWidth}px`;
         });
 
         document.addEventListener('mouseup', () => {
@@ -370,124 +351,8 @@ const app = {
                 isResizingLeft = false;
                 leftSidebar.style.transition = ''; // Restore CSS transition
             }
-            if (isResizingRight) {
-                isResizingRight = false;
-                rightSidebar.style.transition = '';
-            }
             body.style.cursor = 'default';
         });
-    },
-
-    currentAIPromptController: null,
-
-    async sendAIPrompt() {
-        const input = document.getElementById('ai-prompt');
-        const prompt = input.value.trim();
-        if (!prompt) return;
-
-        this.appendMessage('user', prompt);
-        input.value = '';
-        
-        const loadingId = this.appendMessage('system', 'Processing Request with Groq...');
-        
-        // Show stop button, hide exec
-        document.getElementById('ai-exec-btn').style.display = 'none';
-        document.getElementById('ai-stop-btn').style.display = 'block';
-
-        this.currentAIPromptController = new AbortController();
-        const signal = this.currentAIPromptController.signal;
-
-        try {
-            const res = await fetch(`${API_BASE}/ai/code`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ prompt }),
-                signal
-            });
-            const result = await res.json();
-            
-            const msgEl = document.getElementById(loadingId);
-            if (res.ok) {
-                msgEl.innerHTML = `<strong>Success:</strong> ${result.message}`;
-                
-                if (result.diff) {
-                    const diffEl = document.createElement('div');
-                    diffEl.className = 'diff-container';
-                    
-                    const lines = result.diff.split('\n');
-                    lines.forEach(line => {
-                        const lineEl = document.createElement('span');
-                        if (line.startsWith('+') && !line.startsWith('+++')) {
-                            lineEl.className = 'diff-line-add';
-                        } else if (line.startsWith('-') && !line.startsWith('---')) {
-                            lineEl.className = 'diff-line-del';
-                        } else {
-                            lineEl.className = 'diff-line-info';
-                        }
-                        lineEl.textContent = line;
-                        diffEl.appendChild(lineEl);
-                    });
-                    msgEl.appendChild(diffEl);
-                }
-
-                if (result.backup_created) {
-                    const rollbackBtn = document.createElement('button');
-                    rollbackBtn.className = 'btn-rollback';
-                    rollbackBtn.textContent = '↺ Rollback this change';
-                    rollbackBtn.onclick = async () => {
-                        try {
-                            const rbRes = await fetch(`${API_BASE}/ai/rollback`, { method: 'POST' });
-                            const rbData = await rbRes.json();
-                            if (rbRes.ok) {
-                                app.showToast(rbData.message);
-                                rollbackBtn.disabled = true;
-                                rollbackBtn.textContent = '✓ Rolled back';
-                                app.loadData();
-                            } else {
-                                app.showToast(rbData.detail || 'Rollback failed', true);
-                            }
-                        } catch (e) {
-                            app.showToast('Rollback request error', true);
-                        }
-                    };
-                    msgEl.appendChild(rollbackBtn);
-                }
-
-                this.loadData();
-            } else {
-                msgEl.textContent = `Error: ${result.detail}`;
-            }
-        } catch(error) {
-            const msgEl = document.getElementById(loadingId);
-            if (error.name === 'AbortError') {
-                msgEl.textContent = 'Request stopped by user.';
-            } else {
-                msgEl.textContent = 'Connection Error: Failed to reach AI backend.';
-                console.error(error);
-            }
-        } finally {
-            this.currentAIPromptController = null;
-            document.getElementById('ai-exec-btn').style.display = 'block';
-            document.getElementById('ai-stop-btn').style.display = 'none';
-        }
-    },
-
-    stopAIPrompt() {
-        if (this.currentAIPromptController) {
-            this.currentAIPromptController.abort();
-        }
-    },
-
-    appendMessage(role, text) {
-        const history = document.getElementById('ai-history');
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `ai-message ${role}`;
-        msgDiv.textContent = text;
-        const id = 'msg-' + Date.now();
-        msgDiv.id = id;
-        history.appendChild(msgDiv);
-        history.scrollTop = history.scrollHeight;
-        return id;
     },
 
     showToast(message, isError = false) {

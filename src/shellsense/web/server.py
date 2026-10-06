@@ -5,7 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, Any
 from src.shellsense.core.config_manager import ConfigManager
-from src.shellsense.services.ai_coder import AICoder
 
 app = FastAPI(title="ShellSense Web API")
 
@@ -19,9 +18,6 @@ app.add_middleware(
 
 class ConfigData(BaseModel):
     data: Dict[str, Any]
-
-class PromptRequest(BaseModel):
-    prompt: str
 
 # Endpoints for Snippets
 @app.get("/api/snippets")
@@ -70,27 +66,6 @@ def vault_decrypt():
         status_code=410,
         detail="Zero-knowledge architecture: Master passwords are never sent to the server. Decryption must be performed client-side using WebCrypto."
     )
-
-# Endpoint for AI Coder
-@app.post("/api/ai/code")
-def ai_code(request: PromptRequest):
-    result = AICoder.execute_prompt(request.prompt)
-    if result.get("success"):
-        return {
-            "status": "success",
-            "message": result.get("message"),
-            "file_path": result.get("file_path"),
-            "diff": result.get("diff"),
-            "backup_created": result.get("backup_created", False)
-        }
-    raise HTTPException(status_code=500, detail=result.get("error", "AI modification failed"))
-
-@app.post("/api/ai/rollback")
-def ai_rollback():
-    result = AICoder.rollback_last_change()
-    if result.get("success"):
-        return {"status": "success", "message": result.get("message")}
-    raise HTTPException(status_code=400, detail=result.get("error", "Rollback failed"))
 
 # Mount static files for the frontend
 static_dir = os.path.join(os.path.dirname(__file__), "static")

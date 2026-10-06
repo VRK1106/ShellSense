@@ -34,14 +34,9 @@
                     </button>
                     <h1>Dashboard</h1>
                 </div>
-                <div class="status-indicator" style="display: flex; gap: 16px; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <span class="dot online"></span>
-                        <span>System Online</span>
-                    </div>
-                    <button id="toggle-ai" class="btn-icon" onclick="app.toggleAISidebar()" title="Toggle AI Chat">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                    </button>
+                <div class="status-indicator">
+                    <span class="dot online"></span>
+                    <span>System Online</span>
                 </div>
             </header>
 
@@ -83,27 +78,6 @@
                 </section>
             </div>
         </main>
-
-        <div class="resizer" id="right-resizer"></div>
-
-        <!-- Persistent AI Sidebar -->
-        <aside class="ai-sidebar ai-theme">
-            <div class="section-header ai-header">
-                <h2>AI Code Agent ✨</h2>
-            </div>
-            <div class="ai-container">
-                <div class="ai-chat-history" id="ai-history">
-                    <div class="ai-message system">
-                        Hello! I'm the ShellSense AI Coder. I can edit this UI, add new features, or modify configurations. Tell me what changes you want to make!
-                    </div>
-                </div>
-                <div class="ai-input-group">
-                    <input type="text" id="ai-prompt" placeholder="Ask me to modify the layout...">
-                    <button id="ai-stop-btn" class="btn-stop" style="display: none;" onclick="app.stopAIPrompt()">Stop</button>
-                    <button id="ai-exec-btn" class="btn-glow" onclick="app.sendAIPrompt()">Execute</button>
-                </div>
-            </div>
-        </aside>
     </div>
 
     <!-- Notification Toast -->
