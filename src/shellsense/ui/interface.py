@@ -1536,15 +1536,11 @@ class ShellSenseUI(QWidget):
         
         result_actions_layout.addStretch()
         
-        self.result_copy_btn = QPushButton("Copy && Close", self.result_actions_widget)
-        self.result_copy_btn.clicked.connect(self.copy_result_and_close)
-        result_actions_layout.addWidget(self.result_copy_btn)
-        
         self.result_feedback_btn = QPushButton("Feedback 💬", self.result_actions_widget)
         self.result_feedback_btn.clicked.connect(self.toggle_feedback_panel)
         result_actions_layout.addWidget(self.result_feedback_btn)
         
-        self.result_close_btn = QPushButton("Close", self.result_actions_widget)
+        self.result_close_btn = QPushButton("Close [Esc/Enter]", self.result_actions_widget)
         self.result_close_btn.clicked.connect(self.hide_and_clear)
         result_actions_layout.addWidget(self.result_close_btn)
         
@@ -2284,7 +2280,7 @@ class ShellSenseUI(QWidget):
         user_text = self.search_bar.text().strip()
         if not user_text:
             if self.result_label.isVisible():
-                self.copy_result_and_close()
+                self.hide_and_clear()
             return
             
         if user_text.lower() in ("exit", "quit", "close"):
@@ -2655,8 +2651,8 @@ class ShellSenseUI(QWidget):
                 if self.result_label.isVisible():
                     active_widget = QApplication.focusWidget()
                     if active_widget not in (self.feedback_comment_input, self.search_bar):
-                        logger.info("Global Enter key intercepted. Copying result and closing.")
-                        self.copy_result_and_close()
+                        logger.info("Global Enter key intercepted. Closing search bar window.")
+                        self.hide_and_clear()
                         return True
                         
         return super().eventFilter(watched, event)
