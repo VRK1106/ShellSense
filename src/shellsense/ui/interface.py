@@ -9,6 +9,7 @@ if src_root not in sys.path:
 
 import signal
 import keyboard
+import webbrowser
 from ctypes import windll, wintypes
 from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QVBoxLayout, QSystemTrayIcon, QMenu, QLabel, QFrame, QHBoxLayout, QComboBox, QPushButton, QScrollArea, QGraphicsOpacityEffect, QDialog
 from PyQt6.QtGui import QIcon, QAction
@@ -1397,6 +1398,9 @@ class ShellSenseUI(QWidget):
         show_action = QAction("Show ShellSense (Ctrl+Shift+Space)", self)
         show_action.triggered.connect(self.toggle_visibility)
         
+        web_action = QAction("Open Web Interface", self)
+        web_action.triggered.connect(lambda: webbrowser.open("http://localhost:8000"))
+        
         repair_action = QAction("Repair Hotkey", self)
         repair_action.triggered.connect(lambda: self.refresh_hotkey(force=True))
         
@@ -1404,6 +1408,7 @@ class ShellSenseUI(QWidget):
         quit_action.triggered.connect(QApplication.quit)
         
         tray_menu.addAction(show_action)
+        tray_menu.addAction(web_action)
         tray_menu.addAction(repair_action)
         tray_menu.addSeparator()
         tray_menu.addAction(quit_action)
