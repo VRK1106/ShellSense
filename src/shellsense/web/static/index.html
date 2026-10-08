@@ -52,6 +52,8 @@
                             <p class="section-desc">Manage your frequently used code blocks for quick insertion.</p>
                         </div>
                         <div>
+                            <button class="btn-vault" onclick="app.unlockAll('snippets-editor')">🔓 Unlock All</button>
+                            <button class="btn-vault locked" onclick="app.lockAll('snippets-editor')">🔒 Lock All</button>
                             <button class="btn-secondary" onclick="app.addEntry('snippets-editor')">+ Add Entry</button>
                             <button class="btn-primary" onclick="app.saveSnippets()">Save Changes</button>
                         </div>
@@ -67,6 +69,8 @@
                             <p class="section-desc">Configure custom keybindings to boost your productivity.</p>
                         </div>
                         <div>
+                            <button class="btn-vault" onclick="app.unlockAll('shortcuts-editor')">🔓 Unlock All</button>
+                            <button class="btn-vault locked" onclick="app.lockAll('shortcuts-editor')">🔒 Lock All</button>
                             <button class="btn-secondary" onclick="app.addEntry('shortcuts-editor')">+ Add Entry</button>
                             <button class="btn-primary" onclick="app.saveShortcuts()">Save Changes</button>
                         </div>

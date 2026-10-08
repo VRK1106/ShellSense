@@ -49,18 +49,32 @@
 * **The Solution:** Audit startup apps and clear cache paths.
   * *Try:* `show startup apps` or `clean temp files`
 
+### 🛡️ 7. Web Dashboard & Local Vault
+* **The Problem:** Managing snippets in JSON files is tedious, and leaving sensitive data in plain text is risky.
+* **The Solution:** A beautiful local web dashboard (available via the System Tray) that lets you visually manage Snippets and Shortcuts. It includes client-side AES-GCM-256 encryption ("Lock All") so your sensitive data is never saved in plain text.
+
+### 💡 8. Dynamic Smart Suggestions
+* **The Problem:** Forgetting what commands, snippets, or shortcuts you've configured.
+* **The Solution:** The ShellSense bar cycles through your configured snippets, shortcuts, and helpful examples dynamically. See one you want to use? Just press **Tab** to auto-complete it!
+
 ---
 
 ## ⚡ Getting Started & Setup
 
-Follow these steps to clone, configure, and use ShellSense:
+### Option A: Download from Releases (Recommended)
+The easiest way to get ShellSense is to download the latest release:
+1. Go to the [Releases page](https://github.com/VRK1106/ShellSense/releases).
+2. Download the latest `.zip` or installer provided.
+3. Extract the contents to a safe location (e.g., `C:\Program Files\ShellSense` or your Documents folder).
+4. Double-click `run.bat` or use the included `create_shortcut.ps1` to configure everything automatically!
 
-### 1. Clone the Repository
-Open your terminal (PowerShell, Command Prompt, or Git Bash) and run:
-```bash
-git clone https://github.com/VRK1106/ShellSense.git
-cd ShellSense
-```
+### Option B: Clone from Source
+If you prefer to run from the source code:
+1. Open your terminal (PowerShell, Command Prompt, or Git Bash) and run:
+   ```bash
+   git clone https://github.com/VRK1106/ShellSense.git
+   cd ShellSense
+   ```
 
 ### 2. Install Dependencies
 Install the required packages using pip:
@@ -75,7 +89,8 @@ Start the background engine:
   ```bash
   pythonw -m shellsense.ui.interface
   ```
-*Once launched, the app runs silently in the background. You'll see a search icon appear in your **System Tray** (bottom-right).*
+*Once launched, the app runs silently in the background. You'll see a search icon appear in your **System Tray** (bottom-right).* 
+*Right-click the tray icon to easily open the **Web Interface**.*
 
 ---
 
@@ -137,12 +152,12 @@ Create a file named `snippets.json` in the root of the project. It maps shorthan
 
 To launch ShellSense instantly or keep it accessible, follow these simple setup steps:
 
-### 1. Create the Desktop Shortcut
-Run the included PowerShell script to create a optimized shortcut pointing to `pythonw.exe`:
+### 1. Create the Desktop & Startup Shortcut (Recommended)
+Run the included PowerShell script to create an optimized shortcut pointing to `pythonw.exe`. This script handles both Desktop and System Startup automatically!
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\create_shortcut.ps1
 ```
-*This will create a `ShellSense` shortcut icon directly on your Desktop.*
+*This will create a `ShellSense` shortcut icon directly on your Desktop and in your Windows Startup folder so it runs automatically on boot.*
 
 ### 2. Pin to Taskbar
 1. Locate the **ShellSense** shortcut on your Desktop.
@@ -153,12 +168,6 @@ powershell -ExecutionPolicy Bypass -File .\create_shortcut.ps1
 2. Type `shell:programs` and hit Enter. This opens the **Start Menu Programs** directory.
 3. Move or Copy the `ShellSense` desktop shortcut into this folder.
 4. *ShellSense is now indexable by Windows Search—just press the Windows key, type "ShellSense", and press Enter.*
-
-### 4. Run Automatically at Startup
-1. Press `Win + R` to open the Run dialog.
-2. Type `shell:startup` and hit Enter. This opens the **Startup** folder.
-3. Paste a copy of the `ShellSense` desktop shortcut into this folder.
-4. *ShellSense will now start silently in the background whenever you boot Windows.*
 
 ---
 

@@ -1465,10 +1465,18 @@ class ShellSenseUI(QWidget):
                 padding: 10px 16px;
                 font-weight: 300;
             }
+            QLineEdit::placeholder {
+                color: rgba(255, 255, 255, 100); /* light colored text */
+            }
         """)
         self.search_bar.returnPressed.connect(self.process_command)
         self.search_bar.textChanged.connect(self.on_text_changed)
+        self.search_bar.installEventFilter(self)
         container_layout.addWidget(self.search_bar)
+        
+        # Placeholder rotation timer
+        self.placeholder_timer = QTimer(self)
+        self.placeholder_timer.timeout.connect(self.update_placeholder_suggestion)
         
         # 4. Divider Line
         self.divider = QFrame(self.container)
@@ -2453,7 +2461,7 @@ class ShellSenseUI(QWidget):
                 if dialog.exec() == QDialog.DialogCode.Accepted and dialog.decrypted_text:
                     clipboard = QApplication.clipboard()
                     clipboard.setText(dialog.decrypted_text)
-                    self.show_result_message(f"🔓 Unlocked & copied password for '{orig_key}' to clipboard!", show_actions=True, auto_hide=False)
+                    self.show_result_message(f"🔓 Unlocked & copied '{orig_key}' to clipboard!", show_actions=True, auto_hide=False)
                 else:
                     self.show_result_message("<span style='color: #ef4444;'>🔒 Access Denied: Incorrect or cancelled password prompt.</span>", show_actions=True, auto_hide=False)
                 return
@@ -2563,6 +2571,7 @@ class ShellSenseUI(QWidget):
             if hasattr(self, 'feedback_panel'):
                 self.feedback_panel.setVisible(False)
             self.hide()
+            self.placeholder_timer.stop()
             logger.info("Window hidden.")
         else:
             self.search_bar.clear()
@@ -2601,7 +2610,38 @@ class ShellSenseUI(QWidget):
                     ctypes.windll.user32.AttachThreadInput(thread_foreground, thread_our, False)
             except Exception as e:
                 logger.error(f"Error forcing window focus: {e}")
-                
+
+            # Setup placeholder rotation
+            try:
+                from shellsense.core.config_manager import ConfigManager
+                snippets = ConfigManager.get_snippets() or {}
+                shortcuts = ConfigManager.get_shortcuts() or {}
+                self.suggestion_pool = [k for k in snippets.keys()] + [k for k in shortcuts.keys()]
+                self.suggestion_pool.extend(["10 USD to EUR", "5 miles to km", "timer 10m", "last download", "clean temp files", "lock screen"])
+                import random
+                random.shuffle(self.suggestion_pool)
+                self.suggestion_index = 0
+                self.update_placeholder_suggestion()
+                self.placeholder_timer.start(1500) # 1.5 seconds cycle as requested
+            except Exception as e:
+                logger.error(f"Error setting up placeholder: {e}")
+
+    def update_placeholder_suggestion(self):
+        if hasattr(self, 'suggestion_pool') and self.suggestion_pool:
+            suggestion = self.suggestion_pool[self.suggestion_index]
+            self.search_bar.setPlaceholderText(suggestion)
+            self.suggestion_index = (self.suggestion_index + 1) % len(self.suggestion_pool)
+
+    def eventFilter(self, obj, event):
+        if obj == self.search_bar and event.type() == QEvent.Type.KeyPress:
+            if event.key() == Qt.Key.Key_Tab:
+                if self.search_bar.text() == "":
+                    placeholder = self.search_bar.placeholderText()
+                    if placeholder and placeholder != "Search ShellSense Features...":
+                        self.search_bar.setText(placeholder)
+                    return True
+        return super().eventFilter(obj, event)
+
             QTimer.singleShot(10, self.search_bar.setFocus)
             logger.info("Window shown and focused.")
 

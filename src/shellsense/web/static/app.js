@@ -171,7 +171,7 @@ const app = {
             valInput.placeholder = 'Value';
         }
 
-        if (container.id === 'snippets-editor' && String(valInput.value).startsWith('ENC:')) {
+        if ((container.id === 'snippets-editor' || container.id === 'shortcuts-editor') && String(valInput.value).startsWith('ENC:')) {
             valInput.classList.add('is-encrypted');
             valInput.readOnly = true;
             valInput.setAttribute('readonly', 'true');
@@ -216,8 +216,8 @@ const app = {
         row.appendChild(keyInput);
         row.appendChild(valInput);
 
-        // Add Vault toggle button for snippets
-        if (container.id === 'snippets-editor') {
+        // Add Vault toggle button for snippets and shortcuts
+        if (container.id === 'snippets-editor' || container.id === 'shortcuts-editor') {
             const vaultBtn = document.createElement('button');
             const isEnc = String(valInput.value).startsWith('ENC:');
             vaultBtn.className = isEnc ? 'btn-vault locked' : 'btn-vault';
@@ -276,6 +276,72 @@ const app = {
         const container = document.getElementById(containerId);
         const keyInput = this.createRow(container);
         keyInput.focus();
+    },
+
+    async lockAll(containerId) {
+        const pass = prompt('Enter Master Password to encrypt all visible items:');
+        if (!pass) return;
+        
+        const container = document.getElementById(containerId);
+        const rows = container.querySelectorAll('.kv-pair');
+        let lockedCount = 0;
+        
+        for (const row of rows) {
+            const valInput = row.querySelector('.val-input');
+            const vaultBtn = row.querySelector('.btn-vault');
+            if (valInput && vaultBtn && !valInput.classList.contains('is-encrypted')) {
+                const currentVal = valInput.value.trim();
+                if (currentVal) {
+                    try {
+                        const encrypted = await WebVault.encrypt(currentVal, pass);
+                        valInput.value = encrypted;
+                        valInput.classList.add('is-encrypted');
+                        valInput.readOnly = true;
+                        vaultBtn.className = 'btn-vault locked';
+                        vaultBtn.textContent = '🔒 Locked';
+                        vaultBtn.title = 'Click to decrypt and view/edit';
+                        lockedCount++;
+                    } catch (err) {
+                        console.error("Failed to encrypt:", err);
+                    }
+                }
+            }
+        }
+        if (lockedCount > 0) app.showToast(`Encrypted ${lockedCount} items client-side! Click Save Changes to store.`);
+        else app.showToast('No items to encrypt.');
+    },
+
+    async unlockAll(containerId) {
+        const pass = prompt('Enter Master Password to decrypt all locked items:');
+        if (!pass) return;
+        
+        const container = document.getElementById(containerId);
+        const rows = container.querySelectorAll('.kv-pair');
+        let unlockedCount = 0;
+        
+        for (const row of rows) {
+            const valInput = row.querySelector('.val-input');
+            const vaultBtn = row.querySelector('.btn-vault');
+            if (valInput && vaultBtn && valInput.classList.contains('is-encrypted')) {
+                const currentVal = valInput.value.trim();
+                if (currentVal.startsWith('ENC:')) {
+                    try {
+                        const decrypted = await WebVault.decrypt(currentVal, pass);
+                        valInput.value = decrypted;
+                        valInput.classList.remove('is-encrypted');
+                        valInput.readOnly = false;
+                        vaultBtn.className = 'btn-vault';
+                        vaultBtn.textContent = '🔓 Protect';
+                        vaultBtn.title = 'Click to encrypt with Master Password';
+                        unlockedCount++;
+                    } catch (err) {
+                        console.error("Failed to decrypt:", err);
+                    }
+                }
+            }
+        }
+        if (unlockedCount > 0) app.showToast(`Decrypted ${unlockedCount} items client-side!`);
+        else app.showToast('Incorrect password or no items to decrypt.', true);
     },
 
     getDataFromEditor(containerId) {
