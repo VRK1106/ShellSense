@@ -999,7 +999,9 @@ class ShellSenseUI(QWidget):
             self.setFixedSize(600, 160)
         self.center_on_screen()
         if hasattr(self, 'search_bar'):
+            self.search_bar.blockSignals(True)
             self.search_bar.clear()
+            self.search_bar.blockSignals(False)
             self.search_bar.setFocus()
         if auto_hide:
             QTimer.singleShot(1500, self.hide_and_clear)
@@ -2529,7 +2531,9 @@ class ShellSenseUI(QWidget):
             self.show_result_message("<span style='color: #ff5252;'>Error:</span> Command failed to execute", show_actions=True, auto_hide=False)
             return
         
+        self.search_bar.blockSignals(True)
         self.search_bar.clear()
+        self.search_bar.blockSignals(False)
         self.show_result_message(f"Command executed successfully: {intent}", show_actions=True, auto_hide=False)
     
     def toggle_visibility(self, trigger_source="Hotkey"):
@@ -2551,7 +2555,9 @@ class ShellSenseUI(QWidget):
             self.placeholder_timer.stop()
             logger.info("Window hidden.")
         else:
+            self.search_bar.blockSignals(True)
             self.search_bar.clear()
+            self.search_bar.blockSignals(False)
             self.last_math_result = None
             self.result_label.setVisible(False)
             if hasattr(self, 'result_actions_widget'):
@@ -2598,8 +2604,17 @@ class ShellSenseUI(QWidget):
                 import random
                 random.shuffle(self.suggestion_pool)
                 self.suggestion_index = 0
+                
+                if not hasattr(self, 'typing_timer'):
+                    self.typing_timer = QTimer(self)
+                    self.typing_timer.timeout.connect(self.type_next_char)
+                    self.current_suggestion = ""
+                    self.typing_index = 0
+                    
                 self.update_placeholder_suggestion()
-                self.placeholder_timer.start(1500) # 1.5 seconds cycle as requested
+                # The placeholder timer triggers the NEXT suggestion cycle.
+                # Let's set it to 3000ms (1.5s typing + 1.5s reading)
+                self.placeholder_timer.start(3000)
             except Exception as e:
                 logger.error(f"Error setting up placeholder: {e}")
 
@@ -2608,9 +2623,21 @@ class ShellSenseUI(QWidget):
 
     def update_placeholder_suggestion(self):
         if hasattr(self, 'suggestion_pool') and self.suggestion_pool:
-            suggestion = self.suggestion_pool[self.suggestion_index]
-            self.search_bar.setPlaceholderText(suggestion)
+            if hasattr(self, 'typing_timer'):
+                self.typing_timer.stop()
+            self.current_suggestion = self.suggestion_pool[self.suggestion_index]
             self.suggestion_index = (self.suggestion_index + 1) % len(self.suggestion_pool)
+            self.typing_index = 0
+            self.search_bar.setPlaceholderText("")
+            # 40ms per character makes it very smooth
+            self.typing_timer.start(40)
+
+    def type_next_char(self):
+        if self.typing_index < len(self.current_suggestion):
+            self.typing_index += 1
+            self.search_bar.setPlaceholderText(self.current_suggestion[:self.typing_index])
+        else:
+            self.typing_timer.stop()
 
     def eventFilter(self, watched, event):
         if watched == self.search_bar and event.type() == QEvent.Type.KeyPress:

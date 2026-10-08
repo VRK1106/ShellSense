@@ -40,7 +40,10 @@ if cred:
 
 class ConfigManager:
     @staticmethod
-    def read_data(local_path, collection_name, doc_id="default"):
+    def read_data(local_path, collection_name, doc_id="default", default_data=None):
+        if default_data is None:
+            default_data = {}
+            
         if db:
             try:
                 doc_ref = db.collection(collection_name).document(doc_id)
@@ -54,6 +57,17 @@ class ConfigManager:
                     except Exception:
                         pass
                     return data
+                
+                # If document doesn't exist in Firebase, initialize it with default data
+                if default_data:
+                    doc_ref.set({"data": default_data})
+                    try:
+                        with open(local_path, 'w', encoding='utf-8') as f:
+                            json.dump(default_data, f, indent=4)
+                    except Exception:
+                        pass
+                    return default_data
+                    
                 return {}
             except Exception as e:
                 print(f"Error reading from Firebase ({collection_name}): {e}")
@@ -63,17 +77,32 @@ class ConfigManager:
                         with open(local_path, 'r', encoding='utf-8') as f:
                             return json.load(f)
                     except Exception:
-                        return {}
-                return {}
+                        return default_data
+                
+                if default_data:
+                    try:
+                        with open(local_path, 'w', encoding='utf-8') as f:
+                            json.dump(default_data, f, indent=4)
+                    except Exception:
+                        pass
+                return default_data
         else:
             if not os.path.exists(local_path):
-                return {}
+                if default_data:
+                    try:
+                        # Ensure directory exists
+                        os.makedirs(os.path.dirname(local_path), exist_ok=True)
+                        with open(local_path, 'w', encoding='utf-8') as f:
+                            json.dump(default_data, f, indent=4)
+                    except Exception as e:
+                        print(f"Error writing default data to {local_path}: {e}")
+                return default_data
             try:
                 with open(local_path, 'r', encoding='utf-8') as f:
                     return json.load(f)
             except Exception as e:
                 print(f"Error reading {local_path}: {e}")
-                return {}
+                return default_data
 
     @staticmethod
     def write_data(local_path, collection_name, data, doc_id="default"):
@@ -96,7 +125,12 @@ class ConfigManager:
 
     @classmethod
     def get_snippets(cls):
-        return cls.read_data(SNIPPETS_PATH, "config_snippets")
+        default_snippets = {
+            "clear_temp_ps": "Remove-Item -Path $env:TEMP\\* -Recurse -Force -ErrorAction SilentlyContinue",
+            "flush_dns": "ipconfig /flushdns",
+            "reset_network": "netsh winsock reset"
+        }
+        return cls.read_data(SNIPPETS_PATH, "config_snippets", default_data=default_snippets)
 
     @classmethod
     def update_snippets(cls, data):
@@ -104,7 +138,13 @@ class ConfigManager:
 
     @classmethod
     def get_shortcuts(cls):
-        return cls.read_data(FILE_SHORTCUTS_PATH, "config_shortcuts")
+        default_shortcuts = {
+            "wifi_settings": "ms-settings:network-wifi",
+            "display_settings": "ms-settings:display",
+            "task_manager": "taskmgr.exe",
+            "control_panel": "control"
+        }
+        return cls.read_data(FILE_SHORTCUTS_PATH, "config_shortcuts", default_data=default_shortcuts)
 
     @classmethod
     def update_shortcuts(cls, data):
@@ -112,11 +152,17 @@ class ConfigManager:
 
     @classmethod
     def get_commands(cls):
-        return cls.read_data(COMMANDS_PATH, "config_commands")
+        default_commands = {
+            "clear_temp": "del /q/f/s %TEMP%\\*",
+            "wifi_profiles": "netsh wlan show profiles",
+            "system_info": "systeminfo",
+            "restart_explorer": "taskkill /f /im explorer.exe & start explorer.exe"
+        }
+        return cls.read_data(COMMANDS_PATH, "config_commands", default_data=default_commands)
 
     @classmethod
     def update_commands(cls, data):
-        import src.shellsense.core.config as config
+        import shellsense.core.config as config
         success = cls.write_data(COMMANDS_PATH, "config_commands", data)
         if success:
             config.SAFE_COMMANDS = data

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShellSense Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -36,6 +36,18 @@
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                     </button>
                     <h1>Dashboard</h1>
+                </div>
+                <div class="header-center">
+                    <div class="shortcut-key-art" title="Global Shortcut to open ShellSense popup">
+                        <span class="shortcut-hint-label">⚡ Popup Shortcut:</span>
+                        <div class="keys-container">
+                            <span class="keycap">Ctrl</span>
+                            <span class="plus">+</span>
+                            <span class="keycap">Shift</span>
+                            <span class="plus">+</span>
+                            <span class="keycap space-key">Space</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="status-indicator">
                     <span class="dot online"></span>
@@ -172,6 +184,6 @@
     <!-- Notification Toast -->
     <div id="toast" class="toast"></div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=3"></script>
 </body>
 </html>

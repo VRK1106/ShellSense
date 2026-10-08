@@ -307,8 +307,13 @@ const app = {
                 }
             }
         }
-        if (lockedCount > 0) app.showToast(`Encrypted ${lockedCount} items client-side! Click Save Changes to store.`);
-        else app.showToast('No items to encrypt.');
+        if (lockedCount > 0) {
+            app.showToast(`Encrypted ${lockedCount} items client-side! Saving...`);
+            if (containerId === 'snippets-editor') await this.saveSnippets();
+            else if (containerId === 'shortcuts-editor') await this.saveShortcuts();
+        } else {
+            app.showToast('No items to encrypt.');
+        }
     },
 
     async unlockAll(containerId) {
@@ -340,8 +345,13 @@ const app = {
                 }
             }
         }
-        if (unlockedCount > 0) app.showToast(`Decrypted ${unlockedCount} items client-side!`);
-        else app.showToast('Incorrect password or no items to decrypt.', true);
+        if (unlockedCount > 0) {
+            app.showToast(`Decrypted ${unlockedCount} items client-side! Saving...`);
+            if (containerId === 'snippets-editor') await this.saveSnippets();
+            else if (containerId === 'shortcuts-editor') await this.saveShortcuts();
+        } else {
+            app.showToast('Incorrect password or no items to decrypt.', true);
+        }
     },
 
     getDataFromEditor(containerId) {
