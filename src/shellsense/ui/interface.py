@@ -2626,26 +2626,24 @@ class ShellSenseUI(QWidget):
             except Exception as e:
                 logger.error(f"Error setting up placeholder: {e}")
 
+            QTimer.singleShot(10, self.search_bar.setFocus)
+            logger.info("Window shown and focused.")
+
     def update_placeholder_suggestion(self):
         if hasattr(self, 'suggestion_pool') and self.suggestion_pool:
             suggestion = self.suggestion_pool[self.suggestion_index]
             self.search_bar.setPlaceholderText(suggestion)
             self.suggestion_index = (self.suggestion_index + 1) % len(self.suggestion_pool)
 
-    def eventFilter(self, obj, event):
-        if obj == self.search_bar and event.type() == QEvent.Type.KeyPress:
+    def eventFilter(self, watched, event):
+        if watched == self.search_bar and event.type() == QEvent.Type.KeyPress:
             if event.key() == Qt.Key.Key_Tab:
                 if self.search_bar.text() == "":
                     placeholder = self.search_bar.placeholderText()
                     if placeholder and placeholder != "Search ShellSense Features...":
                         self.search_bar.setText(placeholder)
                     return True
-        return super().eventFilter(obj, event)
 
-            QTimer.singleShot(10, self.search_bar.setFocus)
-            logger.info("Window shown and focused.")
-
-    def eventFilter(self, watched, event):
         if event.type() == QEvent.Type.KeyPress:
             if event.key() == Qt.Key.Key_Escape:
                 logger.info("Global Escape key intercepted. Hiding search bar window.")
