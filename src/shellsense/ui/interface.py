@@ -999,6 +999,7 @@ class ShellSenseUI(QWidget):
             self.setFixedSize(600, 160)
         self.center_on_screen()
         if hasattr(self, 'search_bar'):
+            self.search_bar.clear()
             self.search_bar.setFocus()
         if auto_hide:
             QTimer.singleShot(1500, self.hide_and_clear)
@@ -2277,12 +2278,10 @@ class ShellSenseUI(QWidget):
                 self.center_on_screen()
 
     def process_command(self):
-        if self.result_label.isVisible():
-            self.hide_and_clear()
-            return
-
         user_text = self.search_bar.text().strip()
         if not user_text:
+            if self.result_label.isVisible():
+                self.hide_and_clear()
             return
             
         if user_text.lower() in ("exit", "quit", "close"):
@@ -2628,15 +2627,6 @@ class ShellSenseUI(QWidget):
                 self.hide_and_clear()
                 return True
                 
-            elif event.key() in (Qt.Key.Key_Enter, Qt.Key.Key_Return):
-                # If result label is visible, and the user is not actively typing in feedback comment input
-                if self.result_label.isVisible():
-                    active_widget = QApplication.focusWidget()
-                    if active_widget != self.feedback_comment_input:
-                        logger.info("Global Enter key intercepted. Closing search bar window.")
-                        self.hide_and_clear()
-                        return True
-                        
         return super().eventFilter(watched, event)
 
     def keyPressEvent(self, event):
