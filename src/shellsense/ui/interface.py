@@ -2277,10 +2277,12 @@ class ShellSenseUI(QWidget):
                 self.center_on_screen()
 
     def process_command(self):
+        if self.result_label.isVisible():
+            self.hide_and_clear()
+            return
+
         user_text = self.search_bar.text().strip()
         if not user_text:
-            if self.result_label.isVisible():
-                self.hide_and_clear()
             return
             
         if user_text.lower() in ("exit", "quit", "close"):
@@ -2304,25 +2306,6 @@ class ShellSenseUI(QWidget):
             return
         
         self.last_query = user_text
-        
-        # If user presses Enter twice on the calculated math result
-        if getattr(self, 'last_math_result', None) is not None:
-            clipboard = QApplication.clipboard()
-            clipboard.setText(self.last_math_result)
-            
-            self.tray_icon.showMessage(
-                "ShellSense Math",
-                f"Result: {self.last_math_result} (Copied to Clipboard)",
-                QSystemTrayIcon.MessageIcon.Information,
-                3000
-            )
-            
-            self.last_math_result = None
-            self.result_label.setVisible(False)
-            self.setFixedSize(600, 88)
-            self.search_bar.clear()
-            self.hide()
-            return
         
         # Intercept math calculations, conversions, and translations
         is_math, result = evaluate_math(user_text)
@@ -2354,7 +2337,6 @@ class ShellSenseUI(QWidget):
             else:
                 self.last_category = "Math & Science"
 
-            self.last_math_result = result
             if "Available Functions:" in result:
                 self.result_label.setText(result)
                 self.result_label.setVisible(True)
@@ -2647,10 +2629,10 @@ class ShellSenseUI(QWidget):
                 return True
                 
             elif event.key() in (Qt.Key.Key_Enter, Qt.Key.Key_Return):
-                # If result label is visible, and the user is not actively typing in input fields
+                # If result label is visible, and the user is not actively typing in feedback comment input
                 if self.result_label.isVisible():
                     active_widget = QApplication.focusWidget()
-                    if active_widget not in (self.feedback_comment_input, self.search_bar):
+                    if active_widget != self.feedback_comment_input:
                         logger.info("Global Enter key intercepted. Closing search bar window.")
                         self.hide_and_clear()
                         return True
