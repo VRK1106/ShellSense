@@ -1,7 +1,8 @@
 from enum import Enum, auto
 from PyQt6.QtWidgets import (
     QScrollArea, QLabel, QFrame, QLineEdit, QHBoxLayout, 
-    QListWidget, QSizePolicy
+    QListWidget, QSizePolicy, QFileDialog, QTabWidget,
+    QTableWidget, QTableWidgetItem, QHeaderView
 )
 from PyQt6.QtCore import Qt, QPoint, QEvent, pyqtSignal
 from PyQt6.QtGui import QMouseEvent, QKeyEvent
@@ -207,6 +208,7 @@ class TokenizedBar(QFrame):
     """
     state_changed = pyqtSignal(object)       # Emits CommandState
     command_collected = pyqtSignal(dict)      # Emits completed in-memory payload
+    entry_saved = pyqtSignal(str, str, str)   # (category, key, value) - signals persistence
     token_added = pyqtSignal(str)
     token_removed = pyqtSignal(str)
     text_changed = pyqtSignal(str)
@@ -221,7 +223,18 @@ class TokenizedBar(QFrame):
         self._tokens = []
         self._dropdown = None
         self._collected_data = {}
+        self.file_dialog_func = QFileDialog.getOpenFileName
+        self.entry_saved.connect(self._persist_to_sqlite)
         self.initUI()
+
+    def _persist_to_sqlite(self, category: str, key: str, value: str):
+        """Auto-persists completed cycles directly to SQLite database."""
+        try:
+            from shellsense.core.db import DatabaseManager
+            db = DatabaseManager.get_instance()
+            db.save_entry(category, key, value)
+        except Exception:
+            pass
 
     def initUI(self):
         self.setObjectName("TokenizedBar")
@@ -395,23 +408,65 @@ class TokenizedBar(QFrame):
             if not text:
                 return
             self._collected_data["value"] = text
+            key = self._collected_data.get("key", "")
             payload = dict(self._collected_data)
+            self.entry_saved.emit("password", key, text)
             self.command_collected.emit(payload)
             self.transition_to(CommandState.IDLE)
 
         elif self.state == CommandState.FILE_NAME:
             if not text:
                 return
+            # Native OS file dialog hook
+            file_path = None
+            if self.file_dialog_func:
+                res = self.file_dialog_func(
+                    self.window(),
+                    "Select Target File for Shortcut",
+                    "",
+                    "All Files (*.*)"
+                )
+                if isinstance(res, tuple):
+                    file_path = res[0]
+                else:
+                    file_path = res
+
+            if not file_path:
+                # User cancelled dialog, stay in FILE_NAME state to allow retry/cancellation
+                return
+
+            self._collected_data["shortcut_name"] = text
             self._collected_data["file_name"] = text
+            self._collected_data["file_path"] = file_path
+            self._collected_data["key"] = text
+            self._collected_data["value"] = file_path
             payload = dict(self._collected_data)
+            self.entry_saved.emit("file", text, file_path)
             self.command_collected.emit(payload)
             self.transition_to(CommandState.IDLE)
 
         elif self.state == CommandState.COMMAND_PROMPT:
             if not text:
                 return
-            self._collected_data["command"] = text
+            cmd_text = text
+            if "=" in cmd_text:
+                k, v = cmd_text.split("=", 1)
+                cmd_name = k.strip()
+                cmd_str = v.strip()
+            elif ":" in cmd_text and not cmd_text.startswith("http") and not ":\\" in cmd_text:
+                k, v = cmd_text.split(":", 1)
+                cmd_name = k.strip()
+                cmd_str = v.strip()
+            else:
+                cmd_name = cmd_text.strip()
+                cmd_str = cmd_text.strip()
+
+            self._collected_data["command_name"] = cmd_name
+            self._collected_data["command"] = cmd_str
+            self._collected_data["key"] = cmd_name
+            self._collected_data["value"] = cmd_str
             payload = dict(self._collected_data)
+            self.entry_saved.emit("command", cmd_name, cmd_str)
             self.command_collected.emit(payload)
             self.transition_to(CommandState.IDLE)
 
@@ -634,3 +689,171 @@ class SuggestionsDropdown(QListWidget):
             self.hide()
             if self.target_bar:
                 self.target_bar.input_field.setFocus()
+
+
+class ViewerTabWidget(QTabWidget):
+    """
+    Modern glassmorphic tab view widget hosting SQLite table views for:
+    1. Vault Passwords (vault_passwords)
+    2. File Shortcuts (file_shortcuts)
+    3. Terminal Commands (terminal_commands)
+    Listens to entry_saved / entry_persisted signals and auto-refreshes tables.
+    """
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.initUI()
+        self.connect_db()
+        self.refresh_all()
+
+    def initUI(self):
+        self.setObjectName("ViewerTabWidget")
+        self.setStyleSheet("""
+            QTabWidget::pane {
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 8px;
+                background-color: rgba(15, 23, 42, 0.95);
+            }
+            QTabBar::tab {
+                background: rgba(30, 41, 59, 0.8);
+                color: #94a3b8;
+                padding: 8px 16px;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                margin-right: 2px;
+                font-family: 'Segoe UI', 'Inter', -apple-system, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            QTabBar::tab:selected {
+                background: rgba(59, 130, 246, 0.25);
+                color: #60a5fa;
+                border: 1px solid rgba(59, 130, 246, 0.5);
+                border-bottom: none;
+            }
+            QTabBar::tab:hover:!selected {
+                background: rgba(51, 65, 85, 0.8);
+                color: #f1f5f9;
+            }
+            QTableWidget {
+                background-color: transparent;
+                gridline-color: rgba(255, 255, 255, 0.08);
+                color: #e2e8f0;
+                font-family: 'Segoe UI', 'Inter', -apple-system, sans-serif;
+                font-size: 12px;
+                border: none;
+                selection-background-color: rgba(59, 130, 246, 0.3);
+                selection-color: #ffffff;
+            }
+            QHeaderView::section {
+                background-color: rgba(30, 41, 59, 0.9);
+                color: #93c5fd;
+                padding: 6px 10px;
+                border: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                font-weight: 600;
+                font-size: 11px;
+            }
+            QScrollBar:vertical {
+                background: transparent;
+                width: 6px;
+                margin: 0px;
+            }
+            QScrollBar::handle:vertical {
+                background: rgba(255, 255, 255, 50);
+                border-radius: 3px;
+                min-height: 20px;
+            }
+        """)
+
+        # Tab 1: Vault Passwords
+        self.vault_table = self._create_table(["ID", "Key Name", "Encrypted Secret", "Last Updated"])
+        self.addTab(self.vault_table, "🔒 Vault Passwords")
+
+        # Tab 2: File Shortcuts
+        self.shortcuts_table = self._create_table(["ID", "Shortcut Name", "File Path", "Last Updated"])
+        self.addTab(self.shortcuts_table, "📁 File Shortcuts")
+
+        # Tab 3: Terminal Commands
+        self.commands_table = self._create_table(["ID", "Command Name", "Command / Script", "Last Updated"])
+        self.addTab(self.commands_table, "⚡ Terminal Commands")
+
+    def _create_table(self, headers: list[str]) -> QTableWidget:
+        table = QTableWidget(0, len(headers))
+        table.setHorizontalHeaderLabels(headers)
+        table.horizontalHeader().setStretchLastSection(True)
+        table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
+        table.verticalHeader().setVisible(False)
+        table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+        table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        table.setAlternatingRowColors(True)
+        return table
+
+    def connect_db(self):
+        try:
+            from shellsense.core.db import DatabaseManager
+            db = DatabaseManager.get_instance()
+            db.entry_persisted.connect(self.on_entry_saved)
+        except Exception:
+            pass
+
+    def wire_to_bar(self, bar: TokenizedBar):
+        """Directly wires TokenizedBar entry_saved signal to this tab view."""
+        if bar:
+            bar.entry_saved.connect(self.on_entry_saved)
+
+    def on_entry_saved(self, category: str, key: str, value: str):
+        """Slot triggered whenever an entry is saved to SQLite or emitted by TokenizedBar."""
+        self.refresh_tab(category)
+
+    def refresh_tab(self, category: str = None):
+        cat = (category or "").lower().strip()
+        if cat in ("password", "vault"):
+            self.refresh_vault()
+        elif cat in ("file", "shortcut"):
+            self.refresh_shortcuts()
+        elif cat in ("command", "cmd", "terminal"):
+            self.refresh_commands()
+        else:
+            self.refresh_all()
+
+    def refresh_all(self):
+        self.refresh_vault()
+        self.refresh_shortcuts()
+        self.refresh_commands()
+
+    def refresh_vault(self):
+        try:
+            from shellsense.core.db import DatabaseManager
+            db = DatabaseManager.get_instance()
+            rows = db.get_vault_passwords()
+            self._populate_table(self.vault_table, rows, ["id", "key_name", "encrypted_value", "updated_at"])
+        except Exception:
+            pass
+
+    def refresh_shortcuts(self):
+        try:
+            from shellsense.core.db import DatabaseManager
+            db = DatabaseManager.get_instance()
+            rows = db.get_file_shortcuts()
+            self._populate_table(self.shortcuts_table, rows, ["id", "shortcut_name", "file_path", "updated_at"])
+        except Exception:
+            pass
+
+    def refresh_commands(self):
+        try:
+            from shellsense.core.db import DatabaseManager
+            db = DatabaseManager.get_instance()
+            rows = db.get_terminal_commands()
+            self._populate_table(self.commands_table, rows, ["id", "command_name", "command_string", "updated_at"])
+        except Exception:
+            pass
+
+    def _populate_table(self, table: QTableWidget, data: list[dict], keys: list[str]):
+        table.setRowCount(0)
+        for row_idx, item in enumerate(data):
+            table.insertRow(row_idx)
+            for col_idx, key in enumerate(keys):
+                val = str(item.get(key, ""))
+                cell = QTableWidgetItem(val)
+                table.setItem(row_idx, col_idx, cell)
+

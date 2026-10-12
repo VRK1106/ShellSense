@@ -18,7 +18,7 @@ from PyQt6.QtCore import Qt, pyqtSignal, QObject, QTimer, QPropertyAnimation, QE
 from shellsense.services.brain_service import BrainService
 from shellsense.services.math_parser import evaluate_math
 from shellsense.services.executor import CommandExecutor
-from shellsense.ui.widgets import ScrollableLabel
+from shellsense.ui.widgets import ScrollableLabel, ViewerTabWidget, TokenizedBar
 from shellsense.ui.dialogs import VaultPasswordDialog, DestructiveConfirmDialog, RegistrationDialog
 from shellsense.core.logger import logger
 from shellsense.core.constants import (
@@ -956,6 +956,9 @@ class ShellSenseUI(QWidget):
         web_action = QAction("Open Web Interface", self)
         web_action.triggered.connect(lambda: webbrowser.open("http://localhost:8000"))
         
+        viewer_action = QAction("Storage Viewer Tabs", self)
+        viewer_action.triggered.connect(self.open_storage_viewer)
+
         repair_action = QAction("Repair Hotkey", self)
         repair_action.triggered.connect(lambda: self.refresh_hotkey(force=True))
         
@@ -963,6 +966,7 @@ class ShellSenseUI(QWidget):
         quit_action.triggered.connect(QApplication.quit)
         
         tray_menu.addAction(show_action)
+        tray_menu.addAction(viewer_action)
         tray_menu.addAction(web_action)
         tray_menu.addAction(repair_action)
         tray_menu.addSeparator()
@@ -972,6 +976,21 @@ class ShellSenseUI(QWidget):
         self.tray_icon.show()
         self.tray_icon.setToolTip("ShellSense is active")
         self.tray_icon.activated.connect(self.on_tray_activated)
+
+    def open_storage_viewer(self):
+        """Opens the desktop SQLite storage viewer tabs dialog."""
+        if not hasattr(self, '_storage_viewer_dialog') or self._storage_viewer_dialog is None:
+            self._storage_viewer_dialog = QDialog()
+            self._storage_viewer_dialog.setWindowTitle("ShellSense Storage Viewer")
+            self._storage_viewer_dialog.resize(750, 480)
+            dialog_layout = QVBoxLayout(self._storage_viewer_dialog)
+            dialog_layout.setContentsMargins(10, 10, 10, 10)
+            self.storage_viewer_widget = ViewerTabWidget(self._storage_viewer_dialog)
+            dialog_layout.addWidget(self.storage_viewer_widget)
+        self.storage_viewer_widget.refresh_all()
+        self._storage_viewer_dialog.show()
+        self._storage_viewer_dialog.raise_()
+        self._storage_viewer_dialog.activateWindow()
 
     def on_tray_activated(self, reason):
         logger.info(f"Tray icon activated. Reason: {reason}")
