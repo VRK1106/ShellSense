@@ -185,5 +185,16 @@
     <div id="toast" class="toast"></div>
 
     <script src="app.js?v=3"></script>
-</body>
+
+    <div id="vault-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3 id="modal-title">Vault Access</h3>
+            <p id="modal-desc">Please enter your master password.</p>
+            <input type="password" id="modal-password" placeholder="Master Password...">
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="app.closeModal()">Cancel</button>
+                <button class="btn-primary" id="modal-confirm">Confirm</button>
+            </div>
+        </div>
+    </div></body>
 </html>

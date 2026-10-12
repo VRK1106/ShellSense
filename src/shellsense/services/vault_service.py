@@ -4,6 +4,8 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet
+from cryptography.exceptions import InvalidTag
+from shellsense.core.logger import logger
 
 PREFIX = "ENC:"
 GCM_PREFIX = "ENC:GCM:"
@@ -85,7 +87,11 @@ class VaultService:
                 aesgcm = AESGCM(key)
                 decrypted = aesgcm.decrypt(iv, ciphertext, None)
                 return decrypted.decode('utf-8')
-            except Exception:
+            except InvalidTag:
+                logger.warning("Vault decryption failed: Invalid Master Password (Tag Mismatch).")
+                return None
+            except Exception as e:
+                logger.error(f"Vault decryption critical error: {e}")
                 return None
 
         # 2. Fallback to legacy Fernet format: ENC:<salt_b64>:<cipher_str>

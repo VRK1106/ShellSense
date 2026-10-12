@@ -1,6 +1,7 @@
 import pandas as pd
 import random
 import itertools
+from shellsense.core.config import SAFE_COMMANDS
 
 # --- CONFIGURATION ---
 TARGET_COUNT = 450  # Set the uniform target count for ALL intents
@@ -215,6 +216,15 @@ def balance_dataset():
     print(df['intent'].value_counts() if not df.empty else "No existing records.")
 
     # Get a distinct list of all target intents
+    
+    # Check for missing rules in generation_rules
+    all_safe_intents = set(SAFE_COMMANDS.keys())
+    defined_rules = set(generation_rules.keys())
+    missing = all_safe_intents - defined_rules
+    if missing:
+        print(f'WARNING: The following intents in SAFE_COMMANDS have no rules in data_generator.py: {missing}')
+        print('They will be generated using basic fallback templates.')
+
     all_intents = list(set(list(df['intent'].unique()) + list(generation_rules.keys())))
     if 'SYSTEM_DETAILS' in all_intents and 'SHOW_SYSTEM_INFO' in all_intents:
         all_intents.remove('SYSTEM_DETAILS') # Clean up duplication if applicable

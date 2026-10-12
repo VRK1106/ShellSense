@@ -94,6 +94,60 @@ const app = {
         commands: {}
     },
 
+
+    closeModal() {
+        const modal = document.getElementById('vault-modal');
+        if (modal) modal.style.display = 'none';
+        const passInput = document.getElementById('modal-password');
+        if (passInput) {
+            passInput.value = '';
+            passInput.onkeydown = null;
+        }
+        if (this._modalResolver) {
+            const resolve = this._modalResolver;
+            this._modalResolver = null;
+            resolve(null);
+        }
+    },
+
+    async customPrompt(title, desc) {
+        return new Promise((resolve) => {
+            const modal = document.getElementById('vault-modal');
+            const titleEl = document.getElementById('modal-title');
+            const descEl = document.getElementById('modal-desc');
+            const passInput = document.getElementById('modal-password');
+            const confirmBtn = document.getElementById('modal-confirm');
+
+            if (titleEl) titleEl.textContent = title;
+            if (descEl) descEl.textContent = desc;
+            if (modal) modal.style.display = 'flex';
+            if (passInput) {
+                passInput.value = '';
+                passInput.focus();
+            }
+
+            this._modalResolver = resolve;
+
+            const handleConfirm = () => {
+                const val = passInput ? passInput.value : '';
+                this._modalResolver = null;
+                this.closeModal();
+                if (confirmBtn) confirmBtn.onclick = null;
+                resolve(val || null);
+            };
+
+            if (confirmBtn) {
+                confirmBtn.onclick = handleConfirm;
+            }
+            if (passInput) {
+                passInput.onkeydown = (e) => {
+                    if (e.key === 'Enter') handleConfirm();
+                    if (e.key === 'Escape') this.closeModal();
+                };
+            }
+        });
+    },
+
     init() {
         this.setupNavigation();
         this.loadData();
@@ -227,7 +281,7 @@ const app = {
             vaultBtn.onclick = async () => {
                 const currentVal = valInput.value.trim();
                 if (currentVal.startsWith('ENC:')) {
-                    const pass = prompt('Enter Master Password to decrypt (client-side):');
+                    const pass = await this.customPrompt('Decrypt Entry', 'Enter Master Password to view this secret');
                     if (!pass) return;
                     try {
                         const decrypted = await WebVault.decrypt(currentVal, pass);
@@ -246,7 +300,7 @@ const app = {
                         app.showToast('Please enter a value to encrypt', true);
                         return;
                     }
-                    const pass = prompt('Enter Master Password to encrypt this snippet (client-side):');
+                    const pass = await this.customPrompt('Protect Entry', 'Enter Master Password to encrypt this secret');
                     if (!pass) return;
                     try {
                         const encrypted = await WebVault.encrypt(currentVal, pass);
@@ -279,7 +333,7 @@ const app = {
     },
 
     async lockAll(containerId) {
-        const pass = prompt('Enter Master Password to encrypt all visible items:');
+        const pass = await this.customPrompt('Lock Vault', 'Encrypt all visible items with your Master Password');
         if (!pass) return;
         
         const container = document.getElementById(containerId);
@@ -317,7 +371,7 @@ const app = {
     },
 
     async unlockAll(containerId) {
-        const pass = prompt('Enter Master Password to decrypt all locked items:');
+        const pass = await this.customPrompt('Unlock Vault', 'Enter your Master Password to decrypt items');
         if (!pass) return;
         
         const container = document.getElementById(containerId);

@@ -29,7 +29,11 @@ def run_cli():
             if intent == "QUIT_PROGRAM":
                 break
                 
-            CommandExecutor.execute(intent, user_input)
+            success = CommandExecutor.execute(intent, user_input)
+            if success:
+                print("Successfully executed.")
+            else:
+                print("Execution failed. Please check logs.")
             
         except KeyboardInterrupt:
             break

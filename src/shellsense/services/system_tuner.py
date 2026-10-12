@@ -87,6 +87,8 @@ def disable_startup_app(app_name: str):
             return f"Error disabling registry key: {e}"
             
     elif source == "HKLM Registry":
+        if not is_admin():
+            return "Error: Disabling registry keys in HKLM requires administrator privileges. Please run ShellSense as Administrator."
         try:
             key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"Software\Microsoft\Windows\CurrentVersion\Run", 0, winreg.KEY_SET_VALUE)
             winreg.DeleteValue(key, name)

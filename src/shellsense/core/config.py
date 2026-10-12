@@ -9,6 +9,8 @@ else:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     USER_DIR = BASE_DIR
 
+PROJECT_ROOT = BASE_DIR
+
 DATA_DIR = os.path.join(BASE_DIR, "data")
 MODEL_PATH = os.path.join(BASE_DIR, "shellsense_v3.pkl")
 FILE_SHORTCUTS_PATH = os.path.join(USER_DIR, "file_shortcuts.json")

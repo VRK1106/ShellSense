@@ -37,30 +37,27 @@ def load_cached_rates():
 def fetch_live_rates_async():
     def fetch():
         global CURRENCY_RATES
-        try:
-            # Fetch from free open-api (1.5s timeout to prevent thread blocking)
-            url = "https://open.er-api.com/v6/latest/USD"
-            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=1.5) as response:
-                data = json.loads(response.read().decode())
-                if data.get("result") == "success":
-                    rates = data.get("rates", {})
-                    # Filter and update only supported currencies
-                    updated = {}
-                    for code in CURRENCY_RATES.keys():
-                        if code in rates:
-                            updated[code] = rates[code]
-                    
-                    CURRENCY_RATES.update(updated)
-                    # Cache to disk
-                    with open(RATES_FILE, 'w') as f:
-                        json.dump(updated, f)
-        except Exception:
-            pass
-
+        import time
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                url = 'https://open.er-api.com/v6/latest/USD'
+                req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+                with urllib.request.urlopen(req, timeout=2.0) as response:
+                    data = json.loads(response.read().decode())
+                    if data.get('result') == 'success':
+                        rates = data.get('rates', {})
+                        updated = {code: rates[code] for code in CURRENCY_RATES if code in rates}
+                        CURRENCY_RATES.update(updated)
+                        with open(RATES_FILE, 'w') as f:
+                            json.dump(updated, f)
+                        break 
+            except Exception:
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)
+    
     thread = threading.Thread(target=fetch, daemon=True)
     thread.start()
-
 # Load cached and fetch live rates asynchronously
 load_cached_rates()
 fetch_live_rates_async()

@@ -17,7 +17,9 @@ class BrainService:
         self.le = None
         self.clf = None
         self.is_loaded = False
-        self.load_model()
+        import threading
+        self._load_thread = threading.Thread(target=self.load_model, daemon=True)
+        self._load_thread.start()
 
     def load_model(self):
         try:
@@ -27,6 +29,9 @@ class BrainService:
         except Exception as e:
             logger.error(f"Error loading model from {self.model_path}: {e}")
             self.is_loaded = False
+
+    def is_healthy(self) -> bool:
+        return self.is_loaded
 
     def predict(self, text):
         if not self.is_loaded:

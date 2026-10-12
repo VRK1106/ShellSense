@@ -10,6 +10,7 @@ def get_last_downloaded_file():
             files = [os.path.join(recent_dir, f) for f in os.listdir(recent_dir) if f.endswith('.lnk')]
             files.sort(key=os.path.getmtime, reverse=True)
             
+            import win32com.client
             shell = win32com.client.Dispatch("WScript.Shell")
             ignored_exts = ('.crdownload', '.tmp', '.part', '.download', '.lnk', '.log', '.git', '.py', '.json')
             ignored_paths = ['\\appdata\\', '\\.git\\', '\\commandgenerator\\', '\\desktop\\']

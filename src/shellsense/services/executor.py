@@ -45,10 +45,15 @@ class CommandExecutor:
                 nums = re.findall(r'\d+', user_text)
                 if nums:
                     val = int(nums[0])
+                    if val < 0 or val > 2592000: # 30 days
+                        logger.error(f"Timer value {val} out of range.")
+                        return False
                     lower_text = user_text.lower()
                     # If user specifies hours, multiply by 3600; otherwise assume minutes and multiply by 60
                     if "hour" in lower_text or "hr" in lower_text:
                         seconds = str(val * 3600)
+                    elif "sec" in lower_text:
+                        seconds = str(val)
                     else:
                         seconds = str(val * 60)
                     cmd_template = [seconds if x == "{s}" else x for x in cmd_template]
@@ -60,14 +65,26 @@ class CommandExecutor:
                 nums = re.findall(r'\d+', user_text)
                 if nums:
                     # Replace placeholder {pid} with actual PID
-                    cmd_template = [nums[0] if x == "{pid}" else x for x in cmd_template]
+                    pid = int(nums[0])
+                    if pid <= 0 or pid > 4194304:
+                        logger.error(f"Invalid PID: {pid}")
+                        return False
+                    cmd_template = [str(pid) if x == "{pid}" else x for x in cmd_template]
                 else:
                     logger.error("Process kill intent detected but no PID found.")
                     return False
 
             # Execute with shell=False for security (prevent injection)
             logger.info(f"Executing hardened command: {cmd_template}")
-            subprocess.Popen(cmd_template, shell=False)
+            
+            process = subprocess.Popen(cmd_template, shell=False)
+            # Short wait to see if it crashed immediately
+            try:
+                if process.poll() is not None and process.returncode != 0:
+                    logger.error(f"Command failed immediately with code {process.returncode}")
+                    return False
+            except Exception:
+                pass
             return True
 
         except Exception as e:
