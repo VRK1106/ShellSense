@@ -1,11 +1,12 @@
 from enum import Enum, auto
 from PyQt6.QtWidgets import (
     QScrollArea, QLabel, QFrame, QLineEdit, QHBoxLayout, 
-    QListWidget, QSizePolicy, QFileDialog, QTabWidget,
+    QListWidget, QListWidgetItem, QSizePolicy, QFileDialog, QTabWidget,
     QTableWidget, QTableWidgetItem, QHeaderView
 )
-from PyQt6.QtCore import Qt, QPoint, QEvent, pyqtSignal
-from PyQt6.QtGui import QMouseEvent, QKeyEvent
+from PyQt6.QtCore import Qt, QPoint, QEvent, pyqtSignal, QThread, QTimer
+from PyQt6.QtGui import QMouseEvent, QKeyEvent, QColor
+from shellsense.core.logger import logger
 
 
 class CommandState(Enum):
@@ -46,6 +47,41 @@ SLASH_ACTIONS = [
         "placeholder": "Enter shell command to execute (e.g. ping google.com)..."
     }
 ]
+
+
+class PromptInferenceWorker(QThread):
+    """
+    Dedicated background QThread for local model inference.
+    Executes intent classification or shell syntax generation without freezing the PyQt main thread.
+    """
+    started_inference = pyqtSignal(str)
+    intent_candidates_ready = pyqtSignal(str, list)
+    command_syntax_ready = pyqtSignal(str, str)
+    finished_inference = pyqtSignal()
+
+    def __init__(self, query: str, state: CommandState, parent=None):
+        super().__init__(parent)
+        self.query = query
+        self.state = state
+
+    def run(self):
+        self.started_inference.emit(self.query)
+        try:
+            from shellsense.services.local_model_service import LocalModelService
+            svc = LocalModelService.get_instance()
+
+            if self.state == CommandState.IDLE:
+                candidates = svc.get_ranked_intent_candidates(self.query)
+                self.intent_candidates_ready.emit(self.query, candidates)
+
+            elif self.state == CommandState.COMMAND_PROMPT:
+                raw_syntax = svc.generate_shell_syntax(self.query)
+                self.command_syntax_ready.emit(self.query, raw_syntax)
+
+        except Exception as e:
+            logger.error(f"Inference worker error: {e}")
+        finally:
+            self.finished_inference.emit()
 
 
 class ScrollableLabel(QScrollArea):
@@ -209,6 +245,7 @@ class TokenizedBar(QFrame):
     state_changed = pyqtSignal(object)       # Emits CommandState
     command_collected = pyqtSignal(dict)      # Emits completed in-memory payload
     entry_saved = pyqtSignal(str, str, str)   # (category, key, value) - signals persistence
+    intent_selected = pyqtSignal(dict)        # Emits selected natural language intent candidate
     token_added = pyqtSignal(str)
     token_removed = pyqtSignal(str)
     text_changed = pyqtSignal(str)
@@ -225,6 +262,14 @@ class TokenizedBar(QFrame):
         self._collected_data = {}
         self.file_dialog_func = QFileDialog.getOpenFileName
         self.entry_saved.connect(self._persist_to_sqlite)
+
+        # Dedicated QThread worker and debounce timer for model inference
+        self._inference_worker = None
+        self._inference_timer = QTimer(self)
+        self._inference_timer.setSingleShot(True)
+        self._inference_timer.setInterval(80)
+        self._inference_timer.timeout.connect(self._trigger_background_inference)
+
         self.initUI()
 
     def _persist_to_sqlite(self, category: str, key: str, value: str):
@@ -277,37 +322,120 @@ class TokenizedBar(QFrame):
         self._dropdown = dropdown
         if self._dropdown is not None:
             self._dropdown.suggestion_selected.connect(self.handle_suggestion_selected)
+            self._dropdown.candidate_selected.connect(self.handle_candidate_selected)
 
     def mousePressEvent(self, event: QMouseEvent):
         """Ensures clicking any margin or empty space within the frame routes focus to the input."""
         super().mousePressEvent(event)
         self.input_field.setFocus()
 
-    # --- Slash Trigger Detection & Autocomplete ---
+    # --- Slash Trigger & Model Inference Pipeline ---
 
     def _on_text_changed(self, text: str):
         self.text_changed.emit(text)
+        trimmed = text.strip()
 
-        # Slash-trigger detection only active in IDLE state
+        # 1. Slash-trigger detection only active in IDLE state with leading '/'
+        if self.state == CommandState.IDLE and trimmed.startswith("/"):
+            query = trimmed.lower()
+            matches = []
+            for item in SLASH_ACTIONS:
+                all_triggers = [item["cmd"]] + item["aliases"]
+                if any(t.startswith(query) or query.startswith(t) for t in all_triggers) or query in item["label"].lower():
+                    matches.append(item["label"])
+
+            if matches and self._dropdown is not None:
+                self._dropdown._current_candidates = []
+                self._dropdown.show_suggestions(matches)
+                if self._dropdown.count() > 0 and self._dropdown.currentRow() < 0:
+                    self._dropdown.setCurrentRow(0)
+            elif self._dropdown is not None:
+                self._dropdown.hide()
+            return
+
+        # 2. Non-prefixed natural language in IDLE -> Trigger QThread Intent Classifier
         if self.state == CommandState.IDLE:
-            trimmed = text.strip()
-            if trimmed.startswith("/"):
-                query = trimmed.lower()
-                matches = []
-                for item in SLASH_ACTIONS:
-                    all_triggers = [item["cmd"]] + item["aliases"]
-                    if any(t.startswith(query) or query.startswith(t) for t in all_triggers) or query in item["label"].lower():
-                        matches.append(item["label"])
-
-                if matches and self._dropdown is not None:
-                    self._dropdown.show_suggestions(matches)
-                    if self._dropdown.count() > 0 and self._dropdown.currentRow() < 0:
-                        self._dropdown.setCurrentRow(0)
-                elif self._dropdown is not None:
-                    self._dropdown.hide()
+            if len(trimmed) >= 2 and not self._tokens:
+                self._inference_timer.start(80)
             else:
                 if self._dropdown is not None:
                     self._dropdown.hide()
+            return
+
+        # 3. Free-form command prompt in COMMAND_PROMPT -> Trigger QThread Syntax Generator
+        if self.state == CommandState.COMMAND_PROMPT:
+            if len(trimmed) >= 3 and not ("=" in trimmed or ":" in trimmed):
+                self._inference_timer.start(100)
+            else:
+                if self._dropdown is not None:
+                    self._dropdown.hide()
+            return
+
+    def _trigger_background_inference(self):
+        text = self.input_field.text().strip()
+        if not text:
+            return
+
+        # Show non-blocking UI loader in SuggestionsDropdown immediately
+        if self._dropdown is not None:
+            if self.state == CommandState.IDLE:
+                self._dropdown.show_loader("⚡ Analyzing natural language intent...")
+            elif self.state == CommandState.COMMAND_PROMPT:
+                self._dropdown.show_loader("⚡ Generating verified shell syntax...")
+
+        if self._inference_worker and self._inference_worker.isRunning():
+            self._inference_worker.terminate()
+            self._inference_worker.wait(50)
+
+        self._inference_worker = PromptInferenceWorker(text, self.state, self)
+        self._inference_worker.intent_candidates_ready.connect(self._on_intent_candidates_ready)
+        self._inference_worker.command_syntax_ready.connect(self._on_command_syntax_ready)
+        self._inference_worker.start()
+
+    def _on_intent_candidates_ready(self, query: str, candidates: list):
+        current_text = self.input_field.text().strip()
+        if current_text == query and self._dropdown is not None:
+            if candidates:
+                self._dropdown.show_intent_candidates(candidates)
+            else:
+                self._dropdown.hide()
+
+    def _on_command_syntax_ready(self, query: str, raw_syntax: str):
+        current_text = self.input_field.text().strip()
+        if current_text == query and self._dropdown is not None:
+            if raw_syntax:
+                candidates = [{
+                    "label": f"⚡ Shell: {raw_syntax}",
+                    "command": raw_syntax,
+                    "title": "Generated Shell Command",
+                    "type": "shell_syntax"
+                }]
+                self._dropdown.show_intent_candidates(candidates)
+            else:
+                self._dropdown.hide()
+
+    def handle_candidate_selected(self, candidate: dict):
+        """Processes accepted smart suggestion (intent candidate or shell syntax)."""
+        cand_type = candidate.get("type")
+        if cand_type == "shell_syntax":
+            # Populate line edit with verified shell command
+            cmd = candidate.get("command", "")
+            self.input_field.setText(cmd)
+            self.input_field.setCursorPosition(len(cmd))
+            if self._dropdown is not None:
+                self._dropdown.hide()
+        else:
+            # User accepted an intent candidate in IDLE
+            self.clear_tokens()
+            icon = candidate.get("icon", "⚡")
+            title = candidate.get("title", candidate.get("intent", "Action"))
+            cmd = candidate.get("command", "")
+            self.add_token(f"{icon} {title}")
+            self.input_field.setText(cmd)
+            self.input_field.setCursorPosition(len(cmd))
+            self.intent_selected.emit(candidate)
+            if self._dropdown is not None:
+                self._dropdown.hide()
 
     def handle_suggestion_selected(self, label: str):
         """Pushes the corresponding token badge and steps state forward upon suggestion selection."""
@@ -396,6 +524,12 @@ class TokenizedBar(QFrame):
                     if query in all_triggers or any(query.startswith(a) for a in all_triggers):
                         self.transition_to(item["target_state"], item)
                         return
+            if self._tokens and text:
+                token_title = self._tokens[0].token_text
+                self.entry_saved.emit("command", token_title, text)
+                self.command_collected.emit({"type": "command", "command": text, "title": token_title})
+                self.transition_to(CommandState.IDLE)
+                return
             self.return_pressed.emit()
 
         elif self.state == CommandState.PASSWORD_KEY:
@@ -574,6 +708,7 @@ class SuggestionsDropdown(QListWidget):
     Uses Qt.WindowType.ToolTip / WA_ShowWithoutActivating to prevent stealing keyboard focus.
     """
     suggestion_selected = pyqtSignal(str)
+    candidate_selected = pyqtSignal(dict)
 
     def __bool__(self):
         # Override PyQt default len(self) > 0 evaluation so an empty dropdown is never treated as falsy
@@ -582,6 +717,7 @@ class SuggestionsDropdown(QListWidget):
     def __init__(self, target_bar: TokenizedBar, parent=None):
         super().__init__(parent)
         self.target_bar = target_bar
+        self._current_candidates = []
         if self.target_bar is not None:
             self.target_bar.set_dropdown(self)
 
@@ -631,6 +767,20 @@ class SuggestionsDropdown(QListWidget):
         self.move(bottom_left)
         self.setFixedWidth(self.target_bar.width())
 
+    def show_loader(self, message: str = "⚡ Analyzing natural language intent..."):
+        """Displays a non-blocking UI loader directly inside SuggestionsDropdown."""
+        self.clear()
+        self._current_candidates = []
+        loader_item = QListWidgetItem(message)
+        loader_item.setFlags(Qt.ItemFlag.NoItemFlags)
+        loader_item.setForeground(QColor("#93c5fd"))
+        self.addItem(loader_item)
+        self.reposition()
+        self.setFixedHeight(48)
+        self.show()
+        if self.target_bar:
+            self.target_bar.input_field.setFocus()
+
     def show_suggestions(self, items: list[str]):
         """Populates suggestions and displays floating dropdown without stealing focus."""
         if not items:
@@ -638,6 +788,7 @@ class SuggestionsDropdown(QListWidget):
             return
 
         self.clear()
+        self._current_candidates = []
         for item in items:
             self.addItem(item)
 
@@ -650,6 +801,29 @@ class SuggestionsDropdown(QListWidget):
 
         self.show()
         # Keep keyboard focus firmly on the target text input
+        if self.target_bar:
+            self.target_bar.input_field.setFocus()
+
+    def show_intent_candidates(self, candidates: list[dict]):
+        """Displays ranked intent candidates or generated shell command."""
+        if not candidates:
+            self.hide()
+            return
+
+        self.clear()
+        self._current_candidates = list(candidates)
+        for c in candidates:
+            label = c.get("label") or c.get("title") or str(c)
+            self.addItem(label)
+
+        self.reposition()
+
+        item_count = min(len(candidates), 6)
+        row_height = 36
+        self.setFixedHeight(item_count * row_height + 10)
+        self.setCurrentRow(0)
+
+        self.show()
         if self.target_bar:
             self.target_bar.input_field.setFocus()
 
@@ -676,7 +850,19 @@ class SuggestionsDropdown(QListWidget):
         return item.text() if item else ""
 
     def select_current(self):
-        text = self.current_text()
+        item = self.currentItem()
+        if not item or not (item.flags() & Qt.ItemFlag.ItemIsSelectable):
+            return
+
+        idx = self.currentRow()
+        if idx >= 0:
+            if self._current_candidates and idx < len(self._current_candidates):
+                candidate = self._current_candidates[idx]
+                self.candidate_selected.emit(candidate)
+                self.hide()
+                return
+
+        text = item.text()
         if text:
             self.suggestion_selected.emit(text)
             self.hide()
@@ -684,8 +870,20 @@ class SuggestionsDropdown(QListWidget):
                 self.target_bar.input_field.setFocus()
 
     def _on_item_clicked(self, item):
-        if item:
-            self.suggestion_selected.emit(item.text())
+        if not item or not (item.flags() & Qt.ItemFlag.ItemIsSelectable):
+            return
+
+        idx = self.row(item)
+        if idx >= 0:
+            if self._current_candidates and idx < len(self._current_candidates):
+                candidate = self._current_candidates[idx]
+                self.candidate_selected.emit(candidate)
+                self.hide()
+                return
+
+        text = item.text()
+        if text:
+            self.suggestion_selected.emit(text)
             self.hide()
             if self.target_bar:
                 self.target_bar.input_field.setFocus()
