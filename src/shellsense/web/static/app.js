@@ -904,7 +904,14 @@ const app = {
         if (!container) return;
 
         if (!items.length) {
-            container.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-secondary);">No records found in SQLite.</div>';
+            const catLabels = { vault: 'Vault Password', file: 'File Shortcut', command: 'Terminal Command' };
+            const catLabel = catLabels[category] || category;
+            container.innerHTML = `
+                <div style="padding: 36px 20px; text-align: center; color: var(--text-secondary); background: rgba(15, 23, 42, 0.4); border: 1px dashed var(--border); border-radius: 10px; margin-top: 8px;">
+                    <div style="font-size: 2rem; margin-bottom: 8px;">📂</div>
+                    <div style="font-size: 1rem; color: #e2e8f0; font-weight: 500;">No ${catLabel} records found in SQLite</div>
+                    <p style="font-size: 0.85rem; margin-top: 4px; color: var(--text-secondary);">Use the <strong>AI Command Palette</strong> or click <strong>+ Add Record</strong> to store entries.</p>
+                </div>`;
             return;
         }
 

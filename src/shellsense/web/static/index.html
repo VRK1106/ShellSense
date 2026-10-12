@@ -4,8 +4,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShellSense Dashboard</title>
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=20261012_v6">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Embedded guaranteed styles immune to external stylesheet cache lag */
+        .chips-container-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .chips-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .quick-chips {
+            display: flex !important;
+            gap: 8px !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+        }
+        .chip {
+            background: rgba(59, 130, 246, 0.15) !important;
+            border: 1px solid rgba(59, 130, 246, 0.45) !important;
+            border-radius: 9999px !important;
+            padding: 6px 14px !important;
+            font-size: 0.85rem !important;
+            cursor: pointer !important;
+            color: #93c5fd !important;
+            transition: all 0.2s ease !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            user-select: none !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+        }
+        .chip:hover {
+            background: rgba(59, 130, 246, 0.35) !important;
+            color: #ffffff !important;
+            border-color: #60a5fa !important;
+            transform: translateY(-1px) !important;
+        }
+        .palette-card {
+            background: rgba(30, 41, 59, 0.6) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 14px !important;
+            padding: 24px !important;
+            backdrop-filter: blur(12px) !important;
+            margin-top: 8px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        }
+        .palette-bar-container {
+            display: flex !important;
+            align-items: center !important;
+            background: rgba(15, 23, 42, 0.95) !important;
+            border: 1px solid rgba(59, 130, 246, 0.5) !important;
+            border-radius: 12px !important;
+            padding: 8px 16px !important;
+            gap: 12px !important;
+            min-height: 58px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+            transition: all 0.2s ease !important;
+        }
+        .palette-bar-container:focus-within {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.35), 0 8px 25px rgba(0, 0, 0, 0.5) !important;
+        }
+        .token-badges {
+            display: flex !important;
+            gap: 6px !important;
+            align-items: center !important;
+        }
+        .token-badge {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(37, 99, 235, 0.45)) !important;
+            border: 1px solid rgba(96, 165, 250, 0.7) !important;
+            color: #bfdbfe !important;
+            padding: 6px 12px !important;
+            border-radius: 8px !important;
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            white-space: nowrap !important;
+        }
+        .token-badge .badge-close {
+            cursor: pointer !important;
+            opacity: 0.8 !important;
+            font-size: 0.75rem !important;
+        }
+        .token-badge .badge-close:hover {
+            opacity: 1 !important;
+            color: #f87171 !important;
+        }
+        .palette-input {
+            flex: 1 !important;
+            background: transparent !important;
+            border: none !important;
+            color: #f8fafc !important;
+            font-size: 1.15rem !important;
+            outline: none !important;
+            font-family: inherit !important;
+            padding: 6px 0 !important;
+            width: 100% !important;
+        }
+        .palette-input::placeholder {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+        .btn-palette-submit {
+            background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+            border: none !important;
+            border-radius: 8px !important;
+            color: white !important;
+            padding: 10px 22px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.2s !important;
+            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.35) !important;
+        }
+        .btn-palette-submit:hover {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+            transform: translateY(-1px) !important;
+        }
+        .palette-dropdown {
+            background: rgba(15, 23, 42, 0.98) !important;
+            border: 1px solid rgba(59, 130, 246, 0.45) !important;
+            border-radius: 10px !important;
+            margin-top: 10px !important;
+            max-height: 260px !important;
+            overflow-y: auto !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6) !important;
+        }
+        .dropdown-item {
+            padding: 12px 16px !important;
+            cursor: pointer !important;
+            font-size: 0.95rem !important;
+            color: var(--text-primary) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            transition: background 0.15s !important;
+        }
+        .dropdown-item:hover, .dropdown-item.active {
+            background: rgba(59, 130, 246, 0.3) !important;
+            color: #ffffff !important;
+        }
+        .confidence-badge {
+            font-size: 0.75rem !important;
+            color: #93c5fd !important;
+            background: rgba(59, 130, 246, 0.25) !important;
+            border: 1px solid rgba(59, 130, 246, 0.4) !important;
+            padding: 2px 8px !important;
+            border-radius: 9999px !important;
+            font-weight: 600 !important;
+        }
+        .palette-feedback-panel {
+            margin-top: 20px !important;
+            padding: 18px !important;
+            background: rgba(15, 23, 42, 0.85) !important;
+            border: 1px solid rgba(59, 130, 246, 0.4) !important;
+            border-radius: 10px !important;
+        }
+        .records-subnav {
+            display: flex !important;
+            gap: 10px !important;
+            margin-bottom: 20px !important;
+        }
+        .subnav-btn {
+            background: rgba(30, 41, 59, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            color: #94a3b8 !important;
+            padding: 10px 20px !important;
+            border-radius: 8px !important;
+            cursor: pointer !important;
+            font-size: 0.95rem !important;
+            font-weight: 600 !important;
+            transition: all 0.2s !important;
+        }
+        .subnav-btn:hover {
+            color: #ffffff !important;
+            background: rgba(51, 65, 85, 0.8) !important;
+        }
+        .subnav-btn.active {
+            background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+            color: #ffffff !important;
+            border-color: rgba(59, 130, 246, 0.6) !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35) !important;
+        }
+        .records-table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            background: rgba(15, 23, 42, 0.6) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+        }
+        .records-table th {
+            background: rgba(30, 41, 59, 0.9) !important;
+            padding: 14px 18px !important;
+            color: #94a3b8 !important;
+            text-transform: uppercase !important;
+            font-size: 0.8rem !important;
+            letter-spacing: 0.5px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        .records-table td {
+            padding: 14px 18px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+            color: #e2e8f0 !important;
+        }
+        .records-table tr:hover td {
+            background: rgba(59, 130, 246, 0.08) !important;
+        }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -65,13 +280,17 @@
                             <h2>⚡ AI Command Palette & Tokenized Bar</h2>
                             <p class="section-desc">Type <code>/</code> for modal workflows (<code>/vault</code>, <code>/file</code>, <code>/command</code>) or natural language queries (e.g. <em>wifi</em>, <em>kill chrome</em>).</p>
                         </div>
+                    </div>
+
+                    <div class="chips-container-row">
+                        <span class="chips-label">Quick Prompts:</span>
                         <div class="quick-chips">
-                            <span class="chip" onclick="app.setPaletteExample('/command')">/command</span>
-                            <span class="chip" onclick="app.setPaletteExample('/vault')">/vault</span>
-                            <span class="chip" onclick="app.setPaletteExample('/file')">/file</span>
-                            <span class="chip" onclick="app.setPaletteExample('wifi')">📶 Wi-Fi</span>
-                            <span class="chip" onclick="app.setPaletteExample('find all python files')">🔍 Python files</span>
-                            <span class="chip" onclick="app.setPaletteExample('kill process chrome')">🛑 Kill chrome</span>
+                            <span class="chip" onclick="app.setPaletteExample('/command')">⚡ /command</span>
+                            <span class="chip" onclick="app.setPaletteExample('/vault')">🔒 /vault</span>
+                            <span class="chip" onclick="app.setPaletteExample('/file')">📁 /file</span>
+                            <span class="chip" onclick="app.setPaletteExample('wifi')">📶 Wi-Fi Settings</span>
+                            <span class="chip" onclick="app.setPaletteExample('find all python files')">🔍 Find *.py files</span>
+                            <span class="chip" onclick="app.setPaletteExample('kill process chrome')">🛑 Kill Chrome</span>
                         </div>
                     </div>
 
@@ -257,7 +476,7 @@
     <!-- Notification Toast -->
     <div id="toast" class="toast"></div>
 
-    <script src="app.js?v=3"></script>
+    <script src="app.js?v=20261012_v6"></script>
 
     <div id="vault-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
@@ -269,6 +488,8 @@
                 <button class="btn-primary" id="modal-confirm">Confirm</button>
             </div>
         </div>
+    </div>
+
     <div id="record-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <h3>Add SQLite Record</h3>
