@@ -134,6 +134,63 @@ def synthesize_command(payload: PromptPayload):
     syntax = svc.generate_shell_syntax(payload.prompt)
     return {"prompt": payload.prompt, "syntax": syntax}
 
+# --- Native File Chooser Dialog Endpoint ---
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
+from typing import Optional
+
+_dialog_pool = ThreadPoolExecutor(max_workers=2)
+
+def _open_native_file_dialog(title: str = "Select Target File for Shortcut") -> Optional[str]:
+    # 1. Try tkinter (standard Python GUI)
+    try:
+        import tkinter as tk
+        from tkinter import filedialog
+        root = tk.Tk()
+        root.withdraw()
+        root.attributes("-topmost", True)
+        selected = filedialog.askopenfilename(title=title)
+        root.destroy()
+        if selected:
+            return os.path.normpath(selected)
+    except Exception as e:
+        from shellsense.core.logger import logger
+        logger.warning(f"Tkinter file dialog failed: {e}")
+
+    # 2. Windows PowerShell fallback
+    try:
+        import subprocess
+        ps_script = (
+            "Add-Type -AssemblyName System.Windows.Forms; "
+            "$f = New-Object System.Windows.Forms.OpenFileDialog; "
+            f"$f.Title = '{title}'; "
+            "$f.Filter = 'All Files (*.*)|*.*'; "
+            "if ($f.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK) { Write-Output $f.FileName }"
+        )
+        res = subprocess.run(["powershell", "-NoProfile", "-Command", ps_script], capture_output=True, text=True, timeout=30)
+        output = res.stdout.strip()
+        if output:
+            return os.path.normpath(output)
+    except Exception as e:
+        from shellsense.core.logger import logger
+        logger.warning(f"PowerShell file dialog failed: {e}")
+
+    return None
+
+class FileDialogPayload(BaseModel):
+    title: Optional[str] = "Select Target File for Shortcut"
+
+@app.post("/api/choose-file")
+@app.get("/api/choose-file")
+async def api_choose_file(payload: Optional[FileDialogPayload] = None):
+    title = payload.title if payload and payload.title else "Select Target File for Shortcut"
+    loop = asyncio.get_event_loop()
+    chosen_path = await loop.run_in_executor(_dialog_pool, _open_native_file_dialog, title)
+    return {
+        "file_path": chosen_path,
+        "cancelled": not bool(chosen_path)
+    }
+
 import sys
 # Mount static files for the frontend
 if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):

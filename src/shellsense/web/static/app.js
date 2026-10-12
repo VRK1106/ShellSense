@@ -700,7 +700,7 @@ const app = {
         if (input) {
             input.value = '';
             if (mode === 'PASSWORD_KEY') input.placeholder = 'Enter secret key name (e.g. github_token)...';
-            else if (mode === 'FILE_NAME') input.placeholder = 'Enter shortcut name (e.g. project_report)...';
+            else if (mode === 'FILE_NAME') input.placeholder = 'Enter shortcut name (e.g. project_report) and press Enter to choose file...';
             else if (mode === 'COMMAND_PROMPT') input.placeholder = 'Describe command or enter shell syntax...';
             input.focus();
         }
@@ -802,12 +802,30 @@ const app = {
         }
 
         if (mode === 'FILE_NAME') {
-            const parts = text.includes('=') ? text.split('=') : [text, 'C:/Users/vrk17/'];
-            const key = parts[0].trim();
-            const val = parts[1] ? parts[1].trim() : 'C:/';
-            this.saveSqliteDirect('file', key, val);
-            this.showPaletteFeedback('File Shortcut Saved', `Shortcut ${key} -> ${val}`, 'file', key, val);
-            this.resetPalette();
+            if (text.includes('=')) {
+                const parts = text.split('=');
+                const key = parts[0].trim();
+                const val = parts[1].trim();
+                if (!key || !val) return;
+                this.saveSqliteDirect('file', key, val);
+                this.showPaletteFeedback('File Shortcut Saved', `Shortcut ${key} -> ${val}`, 'file', key, val);
+                this.resetPalette();
+                return;
+            }
+
+            const key = text.trim();
+            if (!key) return;
+
+            this.showToast('📂 Opening file chooser for shortcut...');
+            this.promptFileChooser(`Select file for shortcut: ${key}`).then(selectedPath => {
+                if (!selectedPath) {
+                    this.showToast('File selection cancelled. Please choose a file or type name=path.', true);
+                    return;
+                }
+                this.saveSqliteDirect('file', key, selectedPath);
+                this.showPaletteFeedback('File Shortcut Saved', `Shortcut ${key} -> ${selectedPath}`, 'file', key, selectedPath);
+                this.resetPalette();
+            });
             return;
         }
 
@@ -817,6 +835,76 @@ const app = {
             this.showPaletteFeedback('Terminal Command Ready', `Command stored & ready: ${text}`, 'command', key, text);
             this.resetPalette();
             return;
+        }
+    },
+
+    async promptFileChooser(title = 'Select Target File for Shortcut') {
+        // 1. Primary: Native OS file chooser dialog via local server
+        try {
+            const res = await fetch(`${API_BASE}/choose-file`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title })
+            });
+            if (res.ok) {
+                const data = await res.json();
+                if (data.file_path) {
+                    return data.file_path;
+                }
+                if (data.cancelled) {
+                    return null;
+                }
+            }
+        } catch (err) {
+            console.warn('Native server file chooser failed, falling back to browser picker:', err);
+        }
+
+        // 2. Client-side browser file picker fallback
+        return new Promise((resolve) => {
+            let picker = document.getElementById('palette-file-picker');
+            if (!picker) {
+                picker = document.createElement('input');
+                picker.type = 'file';
+                picker.id = 'palette-file-picker';
+                picker.style.display = 'none';
+                document.body.appendChild(picker);
+            }
+            picker.value = '';
+
+            const handleChange = () => {
+                picker.removeEventListener('change', handleChange);
+                if (picker.files && picker.files[0]) {
+                    resolve(picker.files[0].name);
+                } else {
+                    resolve(null);
+                }
+            };
+
+            picker.addEventListener('change', handleChange, { once: true });
+
+            const handleFocus = () => {
+                window.removeEventListener('focus', handleFocus);
+                setTimeout(() => {
+                    if (!picker.files || picker.files.length === 0) {
+                        resolve(null);
+                    }
+                }, 1000);
+            };
+            window.addEventListener('focus', handleFocus, { once: true });
+
+            picker.click();
+        });
+    },
+
+    async browseFileForModal() {
+        this.showToast('📂 Opening file chooser...');
+        const path = await this.promptFileChooser('Select Target File for Shortcut');
+        if (path) {
+            const valInput = document.getElementById('modal-record-val');
+            if (valInput) valInput.value = path;
+            this.showToast(`Selected: ${path}`);
+        } else {
+            this.showToast('File selection cancelled', true);
         }
     },
 

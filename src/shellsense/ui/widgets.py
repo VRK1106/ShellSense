@@ -553,31 +553,38 @@ class TokenizedBar(QFrame):
         elif self.state == CommandState.FILE_NAME:
             if not text:
                 return
-            # Native OS file dialog hook
-            file_path = None
-            if self.file_dialog_func:
-                res = self.file_dialog_func(
-                    self.window(),
-                    "Select Target File for Shortcut",
-                    "",
-                    "All Files (*.*)"
-                )
-                if isinstance(res, tuple):
-                    file_path = res[0]
-                else:
-                    file_path = res
+            if "=" in text:
+                parts = text.split("=", 1)
+                shortcut_name = parts[0].strip()
+                file_path = parts[1].strip()
+            else:
+                shortcut_name = text
+                # Native OS file dialog hook
+                file_path = None
+                if self.file_dialog_func:
+                    dialog_parent = self.window() if (self.window() and self.window().isVisible()) else None
+                    res = self.file_dialog_func(
+                        dialog_parent,
+                        "Select Target File for Shortcut",
+                        "",
+                        "All Files (*.*)"
+                    )
+                    if isinstance(res, tuple):
+                        file_path = res[0]
+                    else:
+                        file_path = res
 
             if not file_path:
                 # User cancelled dialog, stay in FILE_NAME state to allow retry/cancellation
                 return
 
-            self._collected_data["shortcut_name"] = text
-            self._collected_data["file_name"] = text
+            self._collected_data["shortcut_name"] = shortcut_name
+            self._collected_data["file_name"] = shortcut_name
             self._collected_data["file_path"] = file_path
-            self._collected_data["key"] = text
+            self._collected_data["key"] = shortcut_name
             self._collected_data["value"] = file_path
             payload = dict(self._collected_data)
-            self.entry_saved.emit("file", text, file_path)
+            self.entry_saved.emit("file", shortcut_name, file_path)
             self.command_collected.emit(payload)
             self.transition_to(CommandState.IDLE)
 

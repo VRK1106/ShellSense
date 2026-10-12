@@ -476,7 +476,10 @@
     <!-- Notification Toast -->
     <div id="toast" class="toast"></div>
 
-    <script src="app.js?v=20261012_v6"></script>
+    <!-- Hidden native browser file picker fallback -->
+    <input type="file" id="palette-file-picker" style="display: none;" />
+
+    <script src="app.js?v=20261012_v7"></script>
 
     <div id="vault-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
@@ -498,17 +501,20 @@
                 <label style="font-size: 13px; color: var(--text-secondary); display: block; margin-bottom: 6px;">Category:</label>
                 <select id="modal-record-category" style="width: 100%; padding: 8px 12px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary);">
                     <option value="vault">🔒 Vault Password</option>
-                    <option value="file">📁 File Shortcut</option>
+                    <option value="file" selected>📁 File Shortcut</option>
                     <option value="command">⚡ Terminal Command</option>
                 </select>
             </div>
             <div style="margin: 12px 0;">
                 <label style="font-size: 13px; color: var(--text-secondary); display: block; margin-bottom: 6px;">Key / Name:</label>
-                <input type="text" id="modal-record-key" placeholder="e.g. github_token or deploy_cmd..." style="width: 100%; padding: 8px 12px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary);" />
+                <input type="text" id="modal-record-key" placeholder="e.g. notes or project_plan..." style="width: 100%; padding: 8px 12px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary);" />
             </div>
             <div style="margin: 12px 0;">
                 <label style="font-size: 13px; color: var(--text-secondary); display: block; margin-bottom: 6px;">Value / Path / Syntax:</label>
-                <input type="text" id="modal-record-val" placeholder="e.g. ghp_xxxx or C:/app.py or git pull..." style="width: 100%; padding: 8px 12px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary);" />
+                <div style="display: flex; gap: 8px;">
+                    <input type="text" id="modal-record-val" placeholder="e.g. C:/documents/notes.txt or click Browse..." style="flex: 1; padding: 8px 12px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border); border-radius: 6px; color: var(--text-primary);" />
+                    <button id="modal-browse-btn" type="button" class="btn-secondary" style="white-space: nowrap; padding: 8px 12px; font-size: 12px; border-radius: 6px; cursor: pointer;" onclick="app.browseFileForModal()">📁 Browse File...</button>
+                </div>
             </div>
             <div class="modal-actions">
                 <button class="btn-secondary" onclick="app.closeRecordModal()">Cancel</button>
