@@ -21,6 +21,12 @@ from shellsense.services.executor import CommandExecutor
 from shellsense.ui.widgets import ScrollableLabel
 from shellsense.ui.dialogs import VaultPasswordDialog, DestructiveConfirmDialog, RegistrationDialog
 from shellsense.core.logger import logger
+from shellsense.core.constants import (
+    CONVERSION_CATEGORIES_UNITS,
+    CURRENCY_NAMES,
+    TRANSLATE_LANGUAGES_MAP,
+    TIMEZONE_NAMES
+)
 
 # Windows Constants for Session Notification
 WM_WTSSESSION_CHANGE = 0x02B1
