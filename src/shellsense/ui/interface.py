@@ -18,7 +18,7 @@ from PyQt6.QtCore import Qt, pyqtSignal, QObject, QTimer, QPropertyAnimation, QE
 from shellsense.services.brain_service import BrainService
 from shellsense.services.math_parser import evaluate_math
 from shellsense.services.executor import CommandExecutor
-from shellsense.ui.widgets import ScrollableLabel, ViewerTabWidget, TokenizedBar
+from shellsense.ui.widgets import ScrollableLabel, ViewerTabWidget, TokenizedBar, SuggestionsDropdown
 from shellsense.ui.dialogs import VaultPasswordDialog, DestructiveConfirmDialog, RegistrationDialog
 from shellsense.core.logger import logger
 from shellsense.core.constants import (
@@ -44,6 +44,7 @@ class ShellSenseUI(QWidget):
         if hasattr(self, 'divider') and hasattr(self, 'result_label'):
             has_results = (self.result_label.isVisible() or 
                            self.timer_widget.isVisible() or 
+                           (hasattr(self, 'viewer_tabs') and self.viewer_tabs.isVisible()) or
                            (hasattr(self, 'alarm_widget') and self.alarm_widget.isVisible()) or
                            self.alert_widget.isVisible() or
                            (hasattr(self, 'conversion_widget') and self.conversion_widget.isVisible()) or
@@ -586,6 +587,44 @@ class ShellSenseUI(QWidget):
             
         self.center_on_screen()
 
+    def toggle_records_panel(self):
+        if not hasattr(self, 'viewer_tabs'):
+            return
+        is_visible = not self.viewer_tabs.isVisible()
+        self.viewer_tabs.setVisible(is_visible)
+        if is_visible:
+            self.viewer_tabs.refresh_all()
+            self.setFixedSize(600, 360)
+        else:
+            self.setFixedSize(600, 88)
+        self.center_on_screen()
+
+    def _on_command_bar_collected(self, payload: dict):
+        cmd_type = payload.get("type")
+        if cmd_type == "command":
+            cmd = payload.get("command") or payload.get("value")
+            if cmd:
+                logger.info(f"Executing collected command from TokenizedBar: {cmd}")
+                import subprocess
+                try:
+                    subprocess.Popen(cmd, shell=True)
+                    self.show_result_message(f"⚡ Executed: <code>{cmd}</code>", show_actions=True, auto_hide=False)
+                except Exception as e:
+                    self.show_result_message(f"<span style='color: #ff5252;'>Execution Error:</span> {e}", show_actions=True, auto_hide=False)
+        elif cmd_type == "password":
+            self.show_result_message(f"🔒 Password securely saved in SQLite Vault: <b>{payload.get('key')}</b>", show_actions=False, auto_hide=True)
+            if hasattr(self, 'viewer_tabs'):
+                self.viewer_tabs.refresh_all()
+        elif cmd_type == "file":
+            self.show_result_message(f"📁 File shortcut saved: <b>{payload.get('key')}</b>", show_actions=False, auto_hide=True)
+            if hasattr(self, 'viewer_tabs'):
+                self.viewer_tabs.refresh_all()
+
+    def _on_intent_selected(self, candidate: dict):
+        cmd = candidate.get("command", "")
+        title = candidate.get("title", "")
+        self.show_result_message(f"⚡ Ready to execute: <code>{cmd}</code> (Press Enter to run)", show_actions=True, auto_hide=False)
+
     def close_interactive_pane_and_show_feedback(self, query, category, output_msg):
         # Hide interactive widgets
         if hasattr(self, 'timer_widget'):
@@ -735,6 +774,8 @@ class ShellSenseUI(QWidget):
         self.result_label.setVisible(False)
         if hasattr(self, 'result_actions_widget'):
             self.result_actions_widget.setVisible(False)
+        if hasattr(self, 'viewer_tabs'):
+            self.viewer_tabs.setVisible(False)
         if hasattr(self, 'timer_widget'):
             self.timer_widget.setVisible(False)
         if hasattr(self, 'alarm_widget'):
@@ -1025,26 +1066,14 @@ class ShellSenseUI(QWidget):
         container_layout.setContentsMargins(16, 16, 16, 16)
         container_layout.setSpacing(12)
         
-        # 3. Search Bar Widget
-        self.search_bar = QLineEdit(self.container)
-        self.search_bar.setPlaceholderText("Search ShellSense Features...")
-        self.search_bar.setFixedHeight(50)
-        self.search_bar.setStyleSheet("""
-            QLineEdit {
-                background: transparent;
-                border: none;
-                color: #ffffff;
-                font-size: 22px;
-                font-family: 'Segoe UI', 'Inter', sans-serif;
-                padding: 10px 16px;
-                font-weight: 300;
-            }
-            QLineEdit::placeholder {
-                color: rgba(255, 255, 255, 100); /* light colored text */
-            }
-        """)
+        # 3. Modern TokenizedBar & Floating SuggestionsDropdown
+        self.search_bar = TokenizedBar(self.container)
+        self.search_bar.setFixedHeight(48)
+        self.suggestions_dropdown = SuggestionsDropdown(target_bar=self.search_bar, parent=self)
         self.search_bar.returnPressed.connect(self.process_command)
         self.search_bar.textChanged.connect(self.on_text_changed)
+        self.search_bar.command_collected.connect(self._on_command_bar_collected)
+        self.search_bar.intent_selected.connect(self._on_intent_selected)
         self.search_bar.installEventFilter(self)
         container_layout.addWidget(self.search_bar)
         
@@ -1110,6 +1139,10 @@ class ShellSenseUI(QWidget):
         
         result_actions_layout.addStretch()
         
+        self.result_records_btn = QPushButton("Records 📋", self.result_actions_widget)
+        self.result_records_btn.clicked.connect(self.toggle_records_panel)
+        result_actions_layout.addWidget(self.result_records_btn)
+
         self.result_feedback_btn = QPushButton("Feedback 💬", self.result_actions_widget)
         self.result_feedback_btn.clicked.connect(self.toggle_feedback_panel)
         result_actions_layout.addWidget(self.result_feedback_btn)
@@ -1119,6 +1152,13 @@ class ShellSenseUI(QWidget):
         result_actions_layout.addWidget(self.result_close_btn)
         
         container_layout.addWidget(self.result_actions_widget)
+
+        # 5c. SQLite Viewer Tabs for Vault, Shortcuts, Commands
+        self.viewer_tabs = ViewerTabWidget(self.container)
+        self.viewer_tabs.wire_to_bar(self.search_bar)
+        self.viewer_tabs.setVisible(False)
+        self.viewer_tabs.setFixedHeight(220)
+        container_layout.addWidget(self.viewer_tabs)
         
         # Build interactive Timer form widget
         self.timer_widget = QFrame(self.container)

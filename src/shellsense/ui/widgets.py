@@ -250,6 +250,8 @@ class TokenizedBar(QFrame):
     token_removed = pyqtSignal(str)
     text_changed = pyqtSignal(str)
     return_pressed = pyqtSignal()
+    textChanged = text_changed
+    returnPressed = return_pressed
     backspace_on_empty = pyqtSignal()
 
     DEFAULT_PLACEHOLDER = "Search or type a natural language command (or / for modes)..."
@@ -700,6 +702,29 @@ class TokenizedBar(QFrame):
 
     def setFocus(self):
         self.input_field.setFocus()
+
+    def placeholderText(self) -> str:
+        return self.input_field.placeholderText()
+
+    def setPlaceholderText(self, text: str):
+        self.input_field.setPlaceholderText(text)
+
+    def blockSignals(self, b: bool):
+        self.input_field.blockSignals(b)
+        return super().blockSignals(b)
+
+    def installEventFilter(self, filter_obj):
+        self.input_field.installEventFilter(filter_obj)
+        super().installEventFilter(filter_obj)
+
+    def setEchoMode(self, mode):
+        self.input_field.setEchoMode(mode)
+
+    def selectAll(self):
+        self.input_field.selectAll()
+
+    def setCursorPosition(self, pos: int):
+        self.input_field.setCursorPosition(pos)
 
 
 class SuggestionsDropdown(QListWidget):

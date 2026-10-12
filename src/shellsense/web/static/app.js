@@ -151,6 +151,8 @@ const app = {
     init() {
         this.setupNavigation();
         this.loadData();
+        this.initPalette();
+        this.loadSqliteRecords();
     },
 
     setupNavigation() {
@@ -542,6 +544,448 @@ const app = {
     openGmail(email = 'vrk1711@gmail.com', subject = 'ShellSense Support Request') {
         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}`;
         window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+    },
+
+    // --- AI Command Palette & Tokenized Bar Logic ---
+    paletteState: {
+        mode: 'IDLE', // 'IDLE', 'PASSWORD_KEY', 'PASSWORD_VAL', 'FILE_NAME', 'COMMAND_PROMPT'
+        tokens: [],
+        collected: {},
+        debounceTimer: null,
+        candidates: [],
+        currentResult: null
+    },
+
+    initPalette() {
+        const input = document.getElementById('palette-input');
+        if (!input) return;
+
+        input.addEventListener('input', (e) => this.onPaletteInput(e.target.value));
+        input.addEventListener('keydown', (e) => this.onPaletteKeydown(e));
+    },
+
+    setPaletteExample(text) {
+        const input = document.getElementById('palette-input');
+        if (!input) return;
+        input.value = text;
+        input.focus();
+        this.onPaletteInput(text);
+    },
+
+    onPaletteInput(val) {
+        clearTimeout(this.paletteState.debounceTimer);
+        const trimmed = val.trim();
+        const dropdown = document.getElementById('palette-dropdown');
+
+        if (!trimmed) {
+            if (dropdown) dropdown.style.display = 'none';
+            return;
+        }
+
+        // 1. Slash actions
+        if (this.paletteState.mode === 'IDLE' && trimmed.startsWith('/')) {
+            const matches = [
+                { label: '🔒 /vault — Store encrypted secret password in SQLite', mode: 'PASSWORD_KEY', token: 'Vault' },
+                { label: '📁 /file — Create fast file launcher shortcut', mode: 'FILE_NAME', token: 'File' },
+                { label: '⚡ /command — Execute & store terminal command', mode: 'COMMAND_PROMPT', token: 'Command' }
+            ].filter(m => m.label.toLowerCase().includes(trimmed.toLowerCase()));
+
+            this.renderPaletteDropdown(matches.map(m => ({
+                label: m.label,
+                action: () => this.selectPaletteMode(m.mode, m.token)
+            })));
+            return;
+        }
+
+        // 2. IDLE mode natural language -> AI Intent classification
+        if (this.paletteState.mode === 'IDLE' && this.paletteState.tokens.length === 0 && trimmed.length >= 2) {
+            this.showPaletteLoader('⚡ Analyzing natural language intent...');
+            this.paletteState.debounceTimer = setTimeout(() => this.fetchIntentCandidates(trimmed), 120);
+            return;
+        }
+
+        // 3. COMMAND_PROMPT mode free-form command -> AI Shell syntax synthesis
+        if (this.paletteState.mode === 'COMMAND_PROMPT' && trimmed.length >= 3 && !trimmed.includes('=')) {
+            this.showPaletteLoader('⚡ Generating verified shell syntax...');
+            this.paletteState.debounceTimer = setTimeout(() => this.fetchShellSyntax(trimmed), 150);
+            return;
+        }
+
+        if (dropdown) dropdown.style.display = 'none';
+    },
+
+    showPaletteLoader(msg) {
+        const dropdown = document.getElementById('palette-dropdown');
+        if (!dropdown) return;
+        dropdown.innerHTML = `<div class="dropdown-item" style="color: #93c5fd; font-style: italic;">${msg}</div>`;
+        dropdown.style.display = 'block';
+    },
+
+    async fetchIntentCandidates(query) {
+        try {
+            const res = await fetch(`${API_BASE}/ai/classify`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: query, top_k: 5 })
+            });
+            if (!res.ok) return;
+            const data = await res.json();
+            const candidates = data.candidates || [];
+            if (!candidates.length) {
+                const dropdown = document.getElementById('palette-dropdown');
+                if (dropdown) dropdown.style.display = 'none';
+                return;
+            }
+
+            this.renderPaletteDropdown(candidates.map(c => ({
+                label: `${c.icon || '⚡'} ${c.title} — <code>${c.command}</code>`,
+                confidence: Math.round((c.confidence || 0.8) * 100),
+                action: () => this.acceptIntentCandidate(c)
+            })));
+        } catch (e) {
+            console.error('AI classify error:', e);
+        }
+    },
+
+    async fetchShellSyntax(prompt) {
+        try {
+            const res = await fetch(`${API_BASE}/ai/synthesize`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: prompt })
+            });
+            if (!res.ok) return;
+            const data = await res.json();
+            const syntax = data.syntax;
+            if (!syntax) return;
+
+            this.renderPaletteDropdown([{
+                label: `⚡ Shell: <code>${syntax}</code>`,
+                action: () => {
+                    const input = document.getElementById('palette-input');
+                    if (input) input.value = syntax;
+                    this.showPaletteFeedback('Generated Shell Syntax', syntax, 'command', 'command', syntax);
+                    const dropdown = document.getElementById('palette-dropdown');
+                    if (dropdown) dropdown.style.display = 'none';
+                }
+            }]);
+        } catch (e) {
+            console.error('AI synthesize error:', e);
+        }
+    },
+
+    renderPaletteDropdown(items) {
+        const dropdown = document.getElementById('palette-dropdown');
+        if (!dropdown) return;
+        if (!items || !items.length) {
+            dropdown.style.display = 'none';
+            return;
+        }
+        dropdown.innerHTML = '';
+        items.forEach((item, idx) => {
+            const el = document.createElement('div');
+            el.className = 'dropdown-item' + (idx === 0 ? ' active' : '');
+            el.innerHTML = `<span>${item.label}</span>` + (item.confidence ? `<span class="confidence-badge">${item.confidence}%</span>` : '');
+            el.onclick = () => item.action();
+            dropdown.appendChild(el);
+        });
+        dropdown.style.display = 'block';
+    },
+
+    selectPaletteMode(mode, tokenLabel) {
+        this.paletteState.mode = mode;
+        this.paletteState.tokens = [tokenLabel];
+        this.renderPaletteBadges();
+        const input = document.getElementById('palette-input');
+        if (input) {
+            input.value = '';
+            if (mode === 'PASSWORD_KEY') input.placeholder = 'Enter secret key name (e.g. github_token)...';
+            else if (mode === 'FILE_NAME') input.placeholder = 'Enter shortcut name (e.g. project_report)...';
+            else if (mode === 'COMMAND_PROMPT') input.placeholder = 'Describe command or enter shell syntax...';
+            input.focus();
+        }
+        const dropdown = document.getElementById('palette-dropdown');
+        if (dropdown) dropdown.style.display = 'none';
+    },
+
+    acceptIntentCandidate(candidate) {
+        this.paletteState.tokens = [`${candidate.icon || '⚡'} ${candidate.title}`];
+        this.renderPaletteBadges();
+        const input = document.getElementById('palette-input');
+        if (input) {
+            input.value = candidate.command || '';
+            input.focus();
+        }
+        this.showPaletteFeedback('Natural Language Intent', candidate.command, 'command', candidate.title, candidate.command);
+        const dropdown = document.getElementById('palette-dropdown');
+        if (dropdown) dropdown.style.display = 'none';
+    },
+
+    renderPaletteBadges() {
+        const container = document.getElementById('palette-badges');
+        if (!container) return;
+        container.innerHTML = '';
+        this.paletteState.tokens.forEach(tok => {
+            const b = document.createElement('div');
+            b.className = 'token-badge';
+            b.innerHTML = `<span>${tok}</span><span class="badge-close" onclick="app.popPaletteBadge()">✕</span>`;
+            container.appendChild(b);
+        });
+    },
+
+    popPaletteBadge() {
+        this.paletteState.tokens.pop();
+        if (this.paletteState.tokens.length === 0) {
+            this.paletteState.mode = 'IDLE';
+            const input = document.getElementById('palette-input');
+            if (input) {
+                input.placeholder = 'Search or type a natural language command (or / for modes)...';
+                input.value = '';
+            }
+        }
+        this.renderPaletteBadges();
+    },
+
+    onPaletteKeydown(e) {
+        const dropdown = document.getElementById('palette-dropdown');
+        const isDropdownOpen = dropdown && dropdown.style.display !== 'none';
+
+        if (e.key === 'Escape') {
+            this.paletteState.tokens = [];
+            this.paletteState.mode = 'IDLE';
+            this.renderPaletteBadges();
+            if (dropdown) dropdown.style.display = 'none';
+            e.target.value = '';
+            return;
+        }
+
+        if (e.key === 'Backspace' && e.target.value === '' && this.paletteState.tokens.length > 0) {
+            this.popPaletteBadge();
+            return;
+        }
+
+        if (e.key === 'Enter') {
+            if (isDropdownOpen) {
+                const activeItem = dropdown.querySelector('.dropdown-item.active') || dropdown.querySelector('.dropdown-item');
+                if (activeItem) {
+                    activeItem.click();
+                    return;
+                }
+            }
+            this.handlePaletteEnter();
+        }
+    },
+
+    handlePaletteEnter() {
+        const input = document.getElementById('palette-input');
+        const text = input ? input.value.trim() : '';
+        if (!text && this.paletteState.tokens.length === 0) return;
+
+        const mode = this.paletteState.mode;
+
+        if (mode === 'PASSWORD_KEY') {
+            this.paletteState.collected.key = text;
+            this.paletteState.tokens.push(`Key: ${text}`);
+            this.paletteState.mode = 'PASSWORD_VAL';
+            this.renderPaletteBadges();
+            input.value = '';
+            input.placeholder = 'Enter secret password/value to store...';
+            return;
+        }
+
+        if (mode === 'PASSWORD_VAL') {
+            const key = this.paletteState.collected.key;
+            this.saveSqliteDirect('vault', key, text);
+            this.showPaletteFeedback('Vault Password Stored', `Successfully encrypted and saved key: ${key}`, 'vault', key, text);
+            this.resetPalette();
+            return;
+        }
+
+        if (mode === 'FILE_NAME') {
+            const parts = text.includes('=') ? text.split('=') : [text, 'C:/Users/vrk17/'];
+            const key = parts[0].trim();
+            const val = parts[1] ? parts[1].trim() : 'C:/';
+            this.saveSqliteDirect('file', key, val);
+            this.showPaletteFeedback('File Shortcut Saved', `Shortcut ${key} -> ${val}`, 'file', key, val);
+            this.resetPalette();
+            return;
+        }
+
+        if (mode === 'COMMAND_PROMPT' || this.paletteState.tokens.length > 0 || text) {
+            const key = text.includes(' ') ? text.split(' ')[0] : text;
+            this.saveSqliteDirect('command', key, text);
+            this.showPaletteFeedback('Terminal Command Ready', `Command stored & ready: ${text}`, 'command', key, text);
+            this.resetPalette();
+            return;
+        }
+    },
+
+    resetPalette() {
+        this.paletteState.tokens = [];
+        this.paletteState.mode = 'IDLE';
+        this.paletteState.collected = {};
+        this.renderPaletteBadges();
+        const input = document.getElementById('palette-input');
+        if (input) {
+            input.value = '';
+            input.placeholder = 'Search or type a natural language command (or / for modes)...';
+        }
+        const dropdown = document.getElementById('palette-dropdown');
+        if (dropdown) dropdown.style.display = 'none';
+    },
+
+    showPaletteFeedback(title, body, category, key, value) {
+        const panel = document.getElementById('palette-feedback');
+        if (!panel) return;
+        document.getElementById('feedback-title').textContent = title;
+        document.getElementById('feedback-body').textContent = body;
+        this.paletteState.currentResult = { category, key, value };
+        panel.style.display = 'block';
+    },
+
+    dismissPaletteFeedback() {
+        const panel = document.getElementById('palette-feedback');
+        if (panel) panel.style.display = 'none';
+    },
+
+    async executeOrSaveResult() {
+        if (!this.paletteState.currentResult) return;
+        const { category, key, value } = this.paletteState.currentResult;
+        await this.saveSqliteDirect(category, key, value);
+        this.dismissPaletteFeedback();
+    },
+
+    async saveSqliteDirect(category, key, value) {
+        try {
+            const res = await fetch(`${API_BASE}/records`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category, key, value })
+            });
+            if (res.ok) {
+                this.showToast(`Saved to SQLite (${category}): ${key}`);
+                this.loadSqliteRecords();
+            } else {
+                this.showToast('Failed to save to SQLite', true);
+            }
+        } catch (e) {
+            this.showToast('Network error saving record', true);
+        }
+    },
+
+    // --- SQLite Records Viewer ---
+    async loadSqliteRecords() {
+        try {
+            const res = await fetch(`${API_BASE}/records`);
+            if (!res.ok) return;
+            const data = await res.json();
+
+            const vaultList = data.vault_passwords || [];
+            const fileList = data.file_shortcuts || [];
+            const cmdList = data.terminal_commands || [];
+
+            const cVault = document.getElementById('count-vault');
+            const cFile = document.getElementById('count-file');
+            const cCmd = document.getElementById('count-cmd');
+            if (cVault) cVault.textContent = vaultList.length;
+            if (cFile) cFile.textContent = fileList.length;
+            if (cCmd) cCmd.textContent = cmdList.length;
+
+            this.renderRecordsTable('records-vault-list', vaultList, 'key_name', 'encrypted_value', 'vault');
+            this.renderRecordsTable('records-file-list', fileList, 'shortcut_name', 'file_path', 'file');
+            this.renderRecordsTable('records-cmd-list', cmdList, 'command_name', 'command_string', 'command');
+        } catch (e) {
+            console.error('Failed to load SQLite records:', e);
+        }
+    },
+
+    renderRecordsTable(containerId, items, keyField, valField, category) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        if (!items.length) {
+            container.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-secondary);">No records found in SQLite.</div>';
+            return;
+        }
+
+        let html = '<table class="records-table"><thead><tr>';
+        html += `<th>Key / Name</th><th>Value / Command</th><th>Updated</th><th>Action</th></tr></thead><tbody>`;
+
+        items.forEach(item => {
+            const keyVal = item[keyField];
+            const rawVal = item[valField];
+            const updated = item.updated_at ? item.updated_at.split('T')[0] : 'Just now';
+
+            html += `<tr>
+                <td style="font-weight: 600; color: #93c5fd;">${this.escapeHtml(keyVal)}</td>
+                <td style="font-family: monospace; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${this.escapeHtml(rawVal)}</td>
+                <td style="color: var(--text-secondary); font-size: 0.8rem;">${updated}</td>
+                <td>
+                    <button class="btn-delete" onclick="app.deleteSqliteRecord('${category}', '${this.escapeHtml(keyVal)}')">Delete</button>
+                </td>
+            </tr>`;
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    },
+
+    escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    },
+
+    async deleteSqliteRecord(category, key) {
+        if (!confirm(`Are you sure you want to delete '${key}' from SQLite?`)) return;
+        try {
+            const res = await fetch(`${API_BASE}/records`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category, key })
+            });
+            if (res.ok) {
+                this.showToast(`Deleted '${key}' from SQLite`);
+                this.loadSqliteRecords();
+            } else {
+                this.showToast('Failed to delete record', true);
+            }
+        } catch (e) {
+            this.showToast('Network error deleting record', true);
+        }
+    },
+
+    switchSubTab(e, tabId) {
+        document.querySelectorAll('.subnav-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.subtab-content').forEach(s => s.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        const tabEl = document.getElementById(tabId);
+        if (tabEl) tabEl.classList.add('active');
+    },
+
+    showAddRecordModal() {
+        const modal = document.getElementById('record-modal');
+        if (modal) modal.style.display = 'flex';
+    },
+
+    closeRecordModal() {
+        const modal = document.getElementById('record-modal');
+        if (modal) modal.style.display = 'none';
+    },
+
+    async submitNewRecord() {
+        const cat = document.getElementById('modal-record-category').value;
+        const key = document.getElementById('modal-record-key').value.trim();
+        const val = document.getElementById('modal-record-val').value.trim();
+
+        if (!key || !val) {
+            this.showToast('Key and Value are required', true);
+            return;
+        }
+
+        await this.saveSqliteDirect(cat, key, val);
+        this.closeRecordModal();
+        document.getElementById('modal-record-key').value = '';
+        document.getElementById('modal-record-val').value = '';
     }
 };
 

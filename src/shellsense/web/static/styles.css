@@ -516,3 +516,224 @@ header {
     justify-content: flex-end;
     gap: 12px;
 }
+
+/* AI Command Palette & Tokenized Bar */
+.quick-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.chip {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    border-radius: 9999px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: #93c5fd;
+    transition: all 0.2s ease;
+}
+.chip:hover {
+    background: rgba(59, 130, 246, 0.3);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+.palette-card {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+}
+.palette-bar-container {
+    display: flex;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 8px 14px;
+    gap: 10px;
+    min-height: 54px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.palette-bar-container:focus-within {
+    border-color: rgba(59, 130, 246, 0.8);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+.token-badges {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.token-badge {
+    background: rgba(59, 130, 246, 0.28);
+    border: 1px solid rgba(59, 130, 246, 0.6);
+    color: #93c5fd;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.token-badge .badge-close {
+    cursor: pointer;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+.token-badge .badge-close:hover {
+    opacity: 1;
+}
+.palette-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #f8fafc;
+    font-size: 1.05rem;
+    outline: none;
+}
+.palette-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+.btn-palette-submit {
+    background: var(--accent);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-palette-submit:hover {
+    background: var(--accent-hover);
+}
+.palette-dropdown {
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 8px;
+    margin-top: 8px;
+    max-height: 240px;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.dropdown-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dropdown-item:hover, .dropdown-item.active {
+    background: rgba(59, 130, 246, 0.25);
+    color: #ffffff;
+}
+.dropdown-item .confidence-badge {
+    font-size: 0.75rem;
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.palette-feedback-panel {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    border-radius: 8px;
+}
+.feedback-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #93c5fd;
+}
+.feedback-body {
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    color: #e2e8f0;
+    word-break: break-all;
+}
+.feedback-actions {
+    display: flex;
+    gap: 8px;
+}
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+/* SQLite Records Tabs */
+.records-subnav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.subnav-btn {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+.subnav-btn:hover {
+    color: white;
+}
+.subnav-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+.subtab-content {
+    display: none;
+}
+.subtab-content.active {
+    display: block;
+}
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.records-table th, .records-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+.records-table th {
+    background: rgba(30, 41, 59, 0.8);
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+.records-table tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+.records-table .btn-delete {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.records-table .btn-delete:hover {
+    background: rgba(239, 68, 68, 0.4);
+    color: #ffffff;
+}

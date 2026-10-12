@@ -74,6 +74,66 @@ def vault_decrypt():
         detail="Zero-knowledge architecture: Master passwords are never sent to the server. Decryption must be performed client-side using WebCrypto."
     )
 
+# --- SQLite Persistence Endpoints ---
+class RecordPayload(BaseModel):
+    category: str  # 'vault', 'file', 'command'
+    key: str
+    value: str
+
+class RecordDeletePayload(BaseModel):
+    category: str
+    key: str
+
+@app.get("/api/records")
+def get_all_records():
+    from shellsense.core.db import DatabaseManager
+    db = DatabaseManager.get_instance()
+    return {
+        "vault_passwords": db.get_vault_passwords(),
+        "file_shortcuts": db.get_file_shortcuts(),
+        "terminal_commands": db.get_terminal_commands()
+    }
+
+@app.post("/api/records")
+def save_record(payload: RecordPayload):
+    from shellsense.core.db import DatabaseManager
+    db = DatabaseManager.get_instance()
+    success = db.save_entry(payload.category, payload.key, payload.value)
+    if success:
+        return {"status": "success", "category": payload.category, "key": payload.key}
+    raise HTTPException(status_code=500, detail="Failed to save record to SQLite")
+
+@app.delete("/api/records")
+def delete_record(payload: RecordDeletePayload):
+    from shellsense.core.db import DatabaseManager
+    db = DatabaseManager.get_instance()
+    success = db.delete_entry(payload.category, payload.key)
+    if success:
+        return {"status": "success", "category": payload.category, "key": payload.key}
+    raise HTTPException(status_code=500, detail="Failed to delete record from SQLite")
+
+# --- Local AI Pipeline & Intent Disambiguation Endpoints ---
+class QueryPayload(BaseModel):
+    query: str
+    top_k: int = 5
+
+class PromptPayload(BaseModel):
+    prompt: str
+
+@app.post("/api/ai/classify")
+def classify_intent(payload: QueryPayload):
+    from shellsense.services.local_model_service import LocalModelService
+    svc = LocalModelService.get_instance()
+    candidates = svc.get_ranked_intent_candidates(payload.query, top_k=payload.top_k)
+    return {"query": payload.query, "candidates": candidates}
+
+@app.post("/api/ai/synthesize")
+def synthesize_command(payload: PromptPayload):
+    from shellsense.services.local_model_service import LocalModelService
+    svc = LocalModelService.get_instance()
+    syntax = svc.generate_shell_syntax(payload.prompt)
+    return {"prompt": payload.prompt, "syntax": syntax}
+
 import sys
 # Mount static files for the frontend
 if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
