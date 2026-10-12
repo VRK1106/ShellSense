@@ -133,8 +133,20 @@ class ConfigManager:
         return cls.read_data(SNIPPETS_PATH, "config_snippets", default_data=default_snippets)
 
     @classmethod
-    def update_snippets(cls, data):
-        return cls.write_data(SNIPPETS_PATH, "config_snippets", data)
+    def update_snippets(cls, data, sync_sqlite=True):
+        success = cls.write_data(SNIPPETS_PATH, "config_snippets", data)
+        if success and sync_sqlite:
+            try:
+                from shellsense.core.db import DatabaseManager
+                db = DatabaseManager.get_instance()
+                existing_keys = {row["key_name"] for row in db.get_vault_passwords()}
+                for k, v in data.items():
+                    db.save_entry("vault", k, str(v), sync_json=False)
+                for k in existing_keys - set(data.keys()):
+                    db.delete_entry("vault", k, sync_json=False)
+            except Exception as e:
+                print(f"Error syncing snippets to SQLite: {e}")
+        return success
 
     @classmethod
     def get_shortcuts(cls):
@@ -147,8 +159,20 @@ class ConfigManager:
         return cls.read_data(FILE_SHORTCUTS_PATH, "config_shortcuts", default_data=default_shortcuts)
 
     @classmethod
-    def update_shortcuts(cls, data):
-        return cls.write_data(FILE_SHORTCUTS_PATH, "config_shortcuts", data)
+    def update_shortcuts(cls, data, sync_sqlite=True):
+        success = cls.write_data(FILE_SHORTCUTS_PATH, "config_shortcuts", data)
+        if success and sync_sqlite:
+            try:
+                from shellsense.core.db import DatabaseManager
+                db = DatabaseManager.get_instance()
+                existing_keys = {row["shortcut_name"] for row in db.get_file_shortcuts()}
+                for k, v in data.items():
+                    db.save_entry("file", k, str(v), sync_json=False)
+                for k in existing_keys - set(data.keys()):
+                    db.delete_entry("file", k, sync_json=False)
+            except Exception as e:
+                print(f"Error syncing shortcuts to SQLite: {e}")
+        return success
 
     @classmethod
     def get_commands(cls):
@@ -161,9 +185,22 @@ class ConfigManager:
         return cls.read_data(COMMANDS_PATH, "config_commands", default_data=default_commands)
 
     @classmethod
-    def update_commands(cls, data):
+    def update_commands(cls, data, sync_sqlite=True):
         import shellsense.core.config as config
         success = cls.write_data(COMMANDS_PATH, "config_commands", data)
         if success:
             config.SAFE_COMMANDS = data
+            if sync_sqlite:
+                try:
+                    from shellsense.core.db import DatabaseManager
+                    db = DatabaseManager.get_instance()
+                    existing_keys = {row["command_name"] for row in db.get_terminal_commands()}
+                    for k, v in data.items():
+                        cmd_str = " ".join(v) if isinstance(v, list) else str(v) if v is not None else ""
+                        if cmd_str:
+                            db.save_entry("command", k, cmd_str, sync_json=False)
+                    for k in existing_keys - set(data.keys()):
+                        db.delete_entry("command", k, sync_json=False)
+                except Exception as e:
+                    print(f"Error syncing commands to SQLite: {e}")
         return success
