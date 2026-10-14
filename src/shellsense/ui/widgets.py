@@ -1,8 +1,9 @@
 from enum import Enum, auto
 from PyQt6.QtWidgets import (
-    QScrollArea, QLabel, QFrame, QLineEdit, QHBoxLayout, 
+    QScrollArea, QLabel, QFrame, QLineEdit, QHBoxLayout, QVBoxLayout,
     QListWidget, QListWidgetItem, QSizePolicy, QFileDialog, QTabWidget,
-    QTableWidget, QTableWidgetItem, QHeaderView, QMenu, QApplication, QDialog
+    QTableWidget, QTableWidgetItem, QHeaderView, QMenu, QApplication, QDialog,
+    QPushButton, QCheckBox, QComboBox, QWidget
 )
 from PyQt6.QtCore import Qt, QPoint, QEvent, pyqtSignal, QThread, QTimer
 from PyQt6.QtGui import QMouseEvent, QKeyEvent, QColor
@@ -951,13 +952,17 @@ class SuggestionsDropdown(QListWidget):
                 self.target_bar.input_field.setFocus()
 
 
-class ViewerTabWidget(QTabWidget):
+class ViewerTabWidget(QFrame):
     """
-    Modern glassmorphic tab view widget hosting SQLite table views for:
-    1. Vault Passwords (vault_passwords)
-    2. File Shortcuts (file_shortcuts)
-    3. Terminal Commands (terminal_commands)
-    Features double-click actions, context menus, clean headers, and auto-refresh.
+    Modern glassmorphic Command & Storage Hub hosting:
+    - Search / Filter bar across all entries
+    - Add New Item button (contextual to active tab)
+    - Edit Selected Item button
+    - Delete Selected Item button
+    - Tab 1: Vault Passwords (vault_passwords)
+    - Tab 2: File Shortcuts (file_shortcuts)
+    - Tab 3: Terminal Commands (terminal_commands)
+    - Tab 4: Preferences & Backup (settings, shell selector, JSON export/restore)
     """
     entry_deleted = pyqtSignal(str, str) # (category, key)
 
@@ -970,6 +975,10 @@ class ViewerTabWidget(QTabWidget):
     def initUI(self):
         self.setObjectName("ViewerTabWidget")
         self.setStyleSheet("""
+            QFrame#ViewerTabWidget {
+                background: transparent;
+                border: none;
+            }
             QTabWidget::pane {
                 border: 1px solid rgba(255, 255, 255, 0.08);
                 border-radius: 10px;
@@ -1040,26 +1049,151 @@ class ViewerTabWidget(QTabWidget):
             }
         """)
 
-        # Tab 1: Vault Passwords
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(8)
+
+        # 1. Top Management Toolbar
+        toolbar_layout = QHBoxLayout()
+        toolbar_layout.setContentsMargins(0, 0, 0, 0)
+        toolbar_layout.setSpacing(8)
+
+        self.search_filter = QLineEdit(self)
+        self.search_filter.setPlaceholderText("🔍 Filter items in this tab...")
+        self.search_filter.setStyleSheet("""
+            QLineEdit {
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.10);
+                border-radius: 7px;
+                color: #ffffff;
+                font-size: 12px;
+                padding: 5px 10px;
+                min-height: 20px;
+            }
+            QLineEdit:focus {
+                border-color: #3b82f6;
+                background: rgba(255, 255, 255, 0.07);
+            }
+        """)
+        self.search_filter.textChanged.connect(self._on_filter_changed)
+        toolbar_layout.addWidget(self.search_filter, stretch=1)
+
+        self.add_btn = QPushButton("+ Add Item", self)
+        self.add_btn.setStyleSheet("""
+            QPushButton {
+                background-color: rgba(59, 130, 246, 0.22);
+                border: 1px solid rgba(59, 130, 246, 0.5);
+                border-radius: 7px;
+                color: #93c5fd;
+                font-size: 12px;
+                font-weight: 600;
+                padding: 5px 14px;
+            }
+            QPushButton:hover {
+                background-color: rgba(59, 130, 246, 0.38);
+                color: #ffffff;
+            }
+        """)
+        self.add_btn.clicked.connect(self._on_add_clicked)
+        toolbar_layout.addWidget(self.add_btn)
+
+        self.edit_btn = QPushButton("✏️ Edit", self)
+        self.edit_btn.setStyleSheet("""
+            QPushButton {
+                background-color: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.10);
+                border-radius: 7px;
+                color: #cbd5e1;
+                font-size: 12px;
+                font-weight: 500;
+                padding: 5px 12px;
+            }
+            QPushButton:hover {
+                background-color: rgba(255, 255, 255, 0.08);
+                color: #ffffff;
+            }
+        """)
+        self.edit_btn.clicked.connect(self._on_edit_clicked)
+        toolbar_layout.addWidget(self.edit_btn)
+
+        self.del_btn = QPushButton("🗑️ Delete", self)
+        self.del_btn.setStyleSheet("""
+            QPushButton {
+                background-color: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.10);
+                border-radius: 7px;
+                color: #cbd5e1;
+                font-size: 12px;
+                font-weight: 500;
+                padding: 5px 12px;
+            }
+            QPushButton:hover {
+                background-color: rgba(239, 68, 68, 0.25);
+                border-color: rgba(239, 68, 68, 0.5);
+                color: #fca5a5;
+            }
+        """)
+        self.del_btn.clicked.connect(self._on_delete_selected_clicked)
+        toolbar_layout.addWidget(self.del_btn)
+
+        self.refresh_btn = QPushButton("🔄", self)
+        self.refresh_btn.setToolTip("Refresh data")
+        self.refresh_btn.setStyleSheet("""
+            QPushButton {
+                background-color: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.10);
+                border-radius: 7px;
+                color: #94a3b8;
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+            QPushButton:hover {
+                background-color: rgba(255, 255, 255, 0.08);
+                color: #ffffff;
+            }
+        """)
+        self.refresh_btn.clicked.connect(self.refresh_all)
+        toolbar_layout.addWidget(self.refresh_btn)
+
+        main_layout.addLayout(toolbar_layout)
+
+        # 2. Central Tab Widget
+        self.tab_widget = QTabWidget(self)
+
+        # Tab 0: Vault Passwords
         self.vault_table = self._create_table(["Credential Name", "Protection Status", "Last Modified"])
         self.vault_table.itemDoubleClicked.connect(self._on_vault_double_clicked)
         self.vault_table.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.vault_table.customContextMenuRequested.connect(self._on_vault_context_menu)
-        self.addTab(self.vault_table, "🔒 Vault Passwords")
+        self.tab_widget.addTab(self.vault_table, "🔒 Vault Passwords")
 
-        # Tab 2: File Shortcuts
+        # Tab 1: File Shortcuts
         self.shortcuts_table = self._create_table(["Shortcut Name", "Target File / Folder", "Last Modified"])
         self.shortcuts_table.itemDoubleClicked.connect(self._on_shortcut_double_clicked)
         self.shortcuts_table.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.shortcuts_table.customContextMenuRequested.connect(self._on_shortcut_context_menu)
-        self.addTab(self.shortcuts_table, "📁 File Shortcuts")
+        self.tab_widget.addTab(self.shortcuts_table, "📁 File Shortcuts")
 
-        # Tab 3: Terminal Commands
+        # Tab 2: Terminal Commands
         self.commands_table = self._create_table(["Command Alias", "Shell Command", "Last Modified"])
         self.commands_table.itemDoubleClicked.connect(self._on_command_double_clicked)
         self.commands_table.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.commands_table.customContextMenuRequested.connect(self._on_command_context_menu)
-        self.addTab(self.commands_table, "⚡ Terminal Commands")
+        self.tab_widget.addTab(self.commands_table, "⚡ Terminal Commands")
+
+        # Tab 3: Preferences & Backup
+        self.settings_tab = self._create_settings_tab()
+        self.tab_widget.addTab(self.settings_tab, "⚙️ Preferences & Backup")
+
+        main_layout.addWidget(self.tab_widget)
+
+        # 3. Bottom Hints Bar
+        self.hint_label = QLabel("💡 Double-click to unlock/open • Right-click or use toolbar to edit/delete", self)
+        self.hint_label.setStyleSheet("color: #64748b; font-size: 11px; padding: 2px 4px; border: none;")
+        main_layout.addWidget(self.hint_label)
+
+        # Connect currentChanged signal after all UI child widgets are created
+        self.tab_widget.currentChanged.connect(self._on_tab_changed)
 
     def _create_table(self, headers: list[str]) -> QTableWidget:
         table = QTableWidget(0, len(headers))
@@ -1076,6 +1210,289 @@ class ViewerTabWidget(QTabWidget):
         table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         table.setAlternatingRowColors(True)
         return table
+
+    def _create_settings_tab(self) -> QWidget:
+        panel = QWidget()
+        panel_layout = QVBoxLayout(panel)
+        panel_layout.setContentsMargins(18, 14, 18, 14)
+        panel_layout.setSpacing(14)
+
+        # Section 1: System Integration
+        sec1_title = QLabel("SYSTEM & LAUNCHER", panel)
+        sec1_title.setStyleSheet("color: #60a5fa; font-size: 11px; font-weight: bold; letter-spacing: 0.5px;")
+        panel_layout.addWidget(sec1_title)
+
+        self.startup_checkbox = QCheckBox("Launch ShellSense automatically at Windows startup", panel)
+        self.startup_checkbox.setChecked(self._is_startup_enabled())
+        self.startup_checkbox.setStyleSheet("""
+            QCheckBox {
+                color: #e2e8f0;
+                font-size: 13px;
+                spacing: 8px;
+            }
+            QCheckBox::indicator {
+                width: 16px;
+                height: 16px;
+                border-radius: 4px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                background: rgba(255, 255, 255, 0.04);
+            }
+            QCheckBox::indicator:checked {
+                background: #2563eb;
+                border-color: #3b82f6;
+            }
+        """)
+        self.startup_checkbox.toggled.connect(self._toggle_startup)
+        panel_layout.addWidget(self.startup_checkbox)
+
+        # Section 2: Terminal Shell
+        sec2_title = QLabel("DEFAULT COMMAND SHELL", panel)
+        sec2_title.setStyleSheet("color: #60a5fa; font-size: 11px; font-weight: bold; letter-spacing: 0.5px;")
+        panel_layout.addWidget(sec2_title)
+
+        shell_row = QHBoxLayout()
+        shell_row.setSpacing(10)
+        shell_lbl = QLabel("Preferred Terminal Environment:", panel)
+        shell_lbl.setStyleSheet("color: #94a3b8; font-size: 12px;")
+        shell_row.addWidget(shell_lbl)
+
+        self.shell_combo = QComboBox(panel)
+        self.shell_combo.addItems([
+            "PowerShell (powershell.exe)",
+            "Command Prompt (cmd.exe)",
+            "Git Bash (bash.exe)",
+            "WSL (wsl.exe)"
+        ])
+        self.shell_combo.setStyleSheet("""
+            QComboBox {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 6px;
+                color: #ffffff;
+                padding: 4px 10px;
+                font-size: 12px;
+                min-width: 220px;
+            }
+            QComboBox QAbstractItemView {
+                background: #1e293b;
+                color: #ffffff;
+                selection-background-color: #2563eb;
+            }
+        """)
+        shell_row.addWidget(self.shell_combo)
+        shell_row.addStretch()
+        panel_layout.addLayout(shell_row)
+
+        # Section 3: Backup & Restore
+        sec3_title = QLabel("DATA BACKUP & PORTABILITY", panel)
+        sec3_title.setStyleSheet("color: #60a5fa; font-size: 11px; font-weight: bold; letter-spacing: 0.5px;")
+        panel_layout.addWidget(sec3_title)
+
+        desc = QLabel("Export all commands, file shortcuts, and encrypted vault records into a portable backup JSON, or restore on a new machine.", panel)
+        desc.setWordWrap(True)
+        desc.setStyleSheet("color: #94a3b8; font-size: 12px;")
+        panel_layout.addWidget(desc)
+
+        backup_row = QHBoxLayout()
+        backup_row.setSpacing(10)
+
+        export_btn = QPushButton("💾 Export Backup (.json)", panel)
+        export_btn.setStyleSheet("""
+            QPushButton {
+                background-color: rgba(59, 130, 246, 0.2);
+                border: 1px solid rgba(59, 130, 246, 0.5);
+                border-radius: 6px;
+                color: #93c5fd;
+                padding: 7px 16px;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            QPushButton:hover {
+                background-color: rgba(59, 130, 246, 0.35);
+                color: #ffffff;
+            }
+        """)
+        export_btn.clicked.connect(self._export_backup)
+        backup_row.addWidget(export_btn)
+
+        import_btn = QPushButton("📥 Restore from Backup (.json)", panel)
+        import_btn.setStyleSheet("""
+            QPushButton {
+                background-color: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 6px;
+                color: #e2e8f0;
+                padding: 7px 16px;
+                font-size: 12px;
+                font-weight: 500;
+            }
+            QPushButton:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+            }
+        """)
+        import_btn.clicked.connect(self._import_backup)
+        backup_row.addWidget(import_btn)
+
+        backup_row.addStretch()
+        panel_layout.addLayout(backup_row)
+        panel_layout.addStretch()
+
+        return panel
+
+    def _on_tab_changed(self, idx: int):
+        if hasattr(self, 'search_filter'):
+            self.search_filter.clear()
+        if idx == 3:
+            if hasattr(self, 'search_filter'):
+                self.search_filter.setVisible(False)
+            if hasattr(self, 'add_btn'):
+                self.add_btn.setVisible(False)
+            if hasattr(self, 'edit_btn'):
+                self.edit_btn.setVisible(False)
+            if hasattr(self, 'del_btn'):
+                self.del_btn.setVisible(False)
+            if hasattr(self, 'hint_label'):
+                self.hint_label.setText("💡 Configure your local preferences, startup integration, and data backups")
+        else:
+            if hasattr(self, 'search_filter'):
+                self.search_filter.setVisible(True)
+            if hasattr(self, 'add_btn'):
+                self.add_btn.setVisible(True)
+            if hasattr(self, 'edit_btn'):
+                self.edit_btn.setVisible(True)
+            if hasattr(self, 'del_btn'):
+                self.del_btn.setVisible(True)
+            titles = ["credentials", "file shortcuts", "terminal commands"]
+            cat_name = titles[idx] if idx < len(titles) else "items"
+            if hasattr(self, 'search_filter'):
+                self.search_filter.setPlaceholderText(f"🔍 Filter {cat_name} in this tab...")
+            if hasattr(self, 'hint_label'):
+                self.hint_label.setText("💡 Double-click to unlock/open • Right-click or use toolbar to edit/delete")
+
+    def _on_filter_changed(self, query: str):
+        idx = self.tab_widget.currentIndex()
+        table = None
+        if idx == 0:
+            table = self.vault_table
+        elif idx == 1:
+            table = self.shortcuts_table
+        elif idx == 2:
+            table = self.commands_table
+
+        if not table:
+            return
+
+        q = query.lower().strip()
+        for r in range(table.rowCount()):
+            match = False
+            for c in range(table.columnCount()):
+                item = table.item(r, c)
+                if item and q in item.text().lower():
+                    match = True
+                    break
+            table.setRowHidden(r, not match if q else False)
+
+    def _on_add_clicked(self):
+        idx = self.tab_widget.currentIndex()
+        if idx == 0:
+            from shellsense.ui.dialogs import VaultItemEditDialog
+            dlg = VaultItemEditDialog(parent=self)
+            if dlg.exec() == QDialog.DialogCode.Accepted:
+                self.refresh_vault()
+                self._notify_parent("🔒 Added new credential to vault.")
+        elif idx == 1:
+            from shellsense.ui.dialogs import ShortcutItemEditDialog
+            dlg = ShortcutItemEditDialog(parent=self)
+            if dlg.exec() == QDialog.DialogCode.Accepted:
+                self.refresh_shortcuts()
+                self._notify_parent("📁 Added new file shortcut.")
+        elif idx == 2:
+            from shellsense.ui.dialogs import CommandItemEditDialog
+            dlg = CommandItemEditDialog(parent=self)
+            if dlg.exec() == QDialog.DialogCode.Accepted:
+                self.refresh_commands()
+                self._notify_parent("⚡ Added new terminal command.")
+
+    def _on_edit_clicked(self):
+        idx = self.tab_widget.currentIndex()
+        if idx == 0:
+            item = self.vault_table.currentItem()
+            if not item:
+                return
+            data = self._get_row_data(self.vault_table, item)
+            key_name = data.get("key_name", "")
+            if not key_name:
+                return
+            from shellsense.ui.dialogs import VaultItemEditDialog
+            dlg = VaultItemEditDialog(key_name=key_name, is_edit=True, parent=self)
+            if dlg.exec() == QDialog.DialogCode.Accepted:
+                self.refresh_vault()
+                self._notify_parent(f"🔒 Updated credential: {key_name}")
+        elif idx == 1:
+            item = self.shortcuts_table.currentItem()
+            if not item:
+                return
+            data = self._get_row_data(self.shortcuts_table, item)
+            sc_name = data.get("shortcut_name", "")
+            path = data.get("file_path", "")
+            if not sc_name:
+                return
+            from shellsense.ui.dialogs import ShortcutItemEditDialog
+            dlg = ShortcutItemEditDialog(shortcut_name=sc_name, file_path=path, is_edit=True, parent=self)
+            if dlg.exec() == QDialog.DialogCode.Accepted:
+                self.refresh_shortcuts()
+                self._notify_parent(f"📁 Updated shortcut: {sc_name}")
+        elif idx == 2:
+            item = self.commands_table.currentItem()
+            if not item:
+                return
+            data = self._get_row_data(self.commands_table, item)
+            cmd_name = data.get("command_name", "")
+            cmd_str = data.get("command_string", "")
+            if not cmd_name:
+                return
+            from shellsense.ui.dialogs import CommandItemEditDialog
+            dlg = CommandItemEditDialog(command_name=cmd_name, command_string=cmd_str, is_edit=True, parent=self)
+            if dlg.exec() == QDialog.DialogCode.Accepted:
+                self.refresh_commands()
+                self._notify_parent(f"⚡ Updated command: {cmd_name}")
+
+    def _on_delete_selected_clicked(self):
+        idx = self.tab_widget.currentIndex()
+        if idx == 0:
+            item = self.vault_table.currentItem()
+            if not item:
+                return
+            data = self._get_row_data(self.vault_table, item)
+            k = data.get("key_name", "")
+            if k:
+                self._confirm_and_delete("vault", "Credential", k, self.refresh_vault)
+        elif idx == 1:
+            item = self.shortcuts_table.currentItem()
+            if not item:
+                return
+            data = self._get_row_data(self.shortcuts_table, item)
+            k = data.get("shortcut_name", "")
+            if k:
+                self._confirm_and_delete("file", "File Shortcut", k, self.refresh_shortcuts)
+        elif idx == 2:
+            item = self.commands_table.currentItem()
+            if not item:
+                return
+            data = self._get_row_data(self.commands_table, item)
+            k = data.get("command_name", "")
+            if k:
+                self._confirm_and_delete("command", "Terminal Command", k, self.refresh_commands)
+
+    def _confirm_and_delete(self, category: str, label: str, name: str, callback):
+        from shellsense.ui.dialogs import ConfirmDeleteDialog
+        dlg = ConfirmDeleteDialog(label, name, self)
+        if dlg.exec() == QDialog.DialogCode.Accepted:
+            from shellsense.core.db import DatabaseManager
+            DatabaseManager.get_instance().delete_entry(category, name)
+            callback()
+            self._notify_parent(f"🗑️ Deleted {label.lower()}: {name}")
 
     def connect_db(self):
         try:
@@ -1117,7 +1534,7 @@ class ViewerTabWidget(QTabWidget):
             rows = db.get_vault_passwords()
             self.vault_table.setRowCount(0)
             if not rows:
-                self._set_empty_state(self.vault_table, "No credentials saved yet. Type /password to store a secret.")
+                self._set_empty_state(self.vault_table, "No credentials saved yet. Click '+ Add Item' to store a secret.")
                 return
 
             for row_idx, item in enumerate(rows):
@@ -1151,7 +1568,7 @@ class ViewerTabWidget(QTabWidget):
             rows = db.get_file_shortcuts()
             self.shortcuts_table.setRowCount(0)
             if not rows:
-                self._set_empty_state(self.shortcuts_table, "No file shortcuts saved yet. Type /file to link a path.")
+                self._set_empty_state(self.shortcuts_table, "No file shortcuts saved yet. Click '+ Add Item' to link a path.")
                 return
 
             for row_idx, item in enumerate(rows):
@@ -1185,7 +1602,7 @@ class ViewerTabWidget(QTabWidget):
             rows = db.get_terminal_commands()
             self.commands_table.setRowCount(0)
             if not rows:
-                self._set_empty_state(self.commands_table, "No custom commands saved yet. Type /command to register one.")
+                self._set_empty_state(self.commands_table, "No custom commands saved yet. Click '+ Add Item' to register one.")
                 return
 
             for row_idx, item in enumerate(rows):
@@ -1252,15 +1669,19 @@ class ViewerTabWidget(QTabWidget):
         menu = QMenu(self)
         menu.setStyleSheet(self._menu_stylesheet())
         act_unlock = menu.addAction("🔓 Unlock & Copy Password")
+        act_edit = menu.addAction("✏️ Edit Credential...")
         act_delete = menu.addAction("🗑️ Delete Credential")
         chosen = menu.exec(self.vault_table.viewport().mapToGlobal(pos))
         if chosen == act_unlock:
             self._on_vault_double_clicked(item)
+        elif chosen == act_edit:
+            from shellsense.ui.dialogs import VaultItemEditDialog
+            dlg = VaultItemEditDialog(key_name=key_name, is_edit=True, parent=self)
+            if dlg.exec() == QDialog.DialogCode.Accepted:
+                self.refresh_vault()
+                self._notify_parent(f"🔒 Updated credential: {key_name}")
         elif chosen == act_delete:
-            from shellsense.core.db import DatabaseManager
-            DatabaseManager.get_instance().delete_entry("vault", key_name)
-            self.refresh_vault()
-            self._notify_parent(f"🗑️ Deleted vault secret: {key_name}")
+            self._confirm_and_delete("vault", "Credential", key_name, self.refresh_vault)
 
     def _on_shortcut_double_clicked(self, item: QTableWidgetItem):
         data = self._get_row_data(self.shortcuts_table, item)
@@ -1289,6 +1710,7 @@ class ViewerTabWidget(QTabWidget):
         menu.setStyleSheet(self._menu_stylesheet())
         act_open = menu.addAction("📂 Open File / Folder")
         act_copy = menu.addAction("📋 Copy Path to Clipboard")
+        act_edit = menu.addAction("✏️ Edit Shortcut...")
         act_delete = menu.addAction("🗑️ Delete Shortcut")
         chosen = menu.exec(self.shortcuts_table.viewport().mapToGlobal(pos))
         if chosen == act_open:
@@ -1296,11 +1718,14 @@ class ViewerTabWidget(QTabWidget):
         elif chosen == act_copy:
             QApplication.clipboard().setText(file_path)
             self._notify_parent(f"📋 Copied path for '{sc_name}'")
+        elif chosen == act_edit:
+            from shellsense.ui.dialogs import ShortcutItemEditDialog
+            dlg = ShortcutItemEditDialog(shortcut_name=sc_name, file_path=file_path, is_edit=True, parent=self)
+            if dlg.exec() == QDialog.DialogCode.Accepted:
+                self.refresh_shortcuts()
+                self._notify_parent(f"📁 Updated shortcut: {sc_name}")
         elif chosen == act_delete:
-            from shellsense.core.db import DatabaseManager
-            DatabaseManager.get_instance().delete_entry("file", sc_name)
-            self.refresh_shortcuts()
-            self._notify_parent(f"🗑️ Deleted shortcut: {sc_name}")
+            self._confirm_and_delete("file", "File Shortcut", sc_name, self.refresh_shortcuts)
 
     def _on_command_double_clicked(self, item: QTableWidgetItem):
         data = self._get_row_data(self.commands_table, item)
@@ -1327,6 +1752,7 @@ class ViewerTabWidget(QTabWidget):
         menu.setStyleSheet(self._menu_stylesheet())
         act_run = menu.addAction("⚡ Run Command")
         act_copy = menu.addAction("📋 Copy Command to Clipboard")
+        act_edit = menu.addAction("✏️ Edit Command...")
         act_delete = menu.addAction("🗑️ Delete Command")
         chosen = menu.exec(self.commands_table.viewport().mapToGlobal(pos))
         if chosen == act_run:
@@ -1334,11 +1760,106 @@ class ViewerTabWidget(QTabWidget):
         elif chosen == act_copy:
             QApplication.clipboard().setText(cmd_str)
             self._notify_parent(f"📋 Copied command '{cmd_name}'")
+        elif chosen == act_edit:
+            from shellsense.ui.dialogs import CommandItemEditDialog
+            dlg = CommandItemEditDialog(command_name=cmd_name, command_string=cmd_str, is_edit=True, parent=self)
+            if dlg.exec() == QDialog.DialogCode.Accepted:
+                self.refresh_commands()
+                self._notify_parent(f"⚡ Updated command: {cmd_name}")
         elif chosen == act_delete:
-            from shellsense.core.db import DatabaseManager
-            DatabaseManager.get_instance().delete_entry("command", cmd_name)
-            self.refresh_commands()
-            self._notify_parent(f"🗑️ Deleted command: {cmd_name}")
+            self._confirm_and_delete("command", "Terminal Command", cmd_name, self.refresh_commands)
+
+    # --- Windows Registry & Portability Methods ---
+
+    def _is_startup_enabled(self) -> bool:
+        try:
+            import winreg
+            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Run", 0, winreg.KEY_READ)
+            val, _ = winreg.QueryValueEx(key, "ShellSense")
+            winreg.CloseKey(key)
+            return bool(val)
+        except Exception:
+            return False
+
+    def _toggle_startup(self, enabled: bool):
+        try:
+            import winreg
+            import sys
+            import os
+            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Run", 0, winreg.KEY_SET_VALUE)
+            if enabled:
+                exe = sys.executable
+                main_py = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "main.py"))
+                cmd = f'"{exe}" "{main_py}"'
+                winreg.SetValueEx(key, "ShellSense", 0, winreg.REG_SZ, cmd)
+                self._notify_parent("✅ ShellSense will now launch on Windows startup.")
+            else:
+                try:
+                    winreg.DeleteValue(key, "ShellSense")
+                except FileNotFoundError:
+                    pass
+                self._notify_parent("ℹ️ ShellSense removed from Windows startup.")
+            winreg.CloseKey(key)
+        except Exception as e:
+            logger.error(f"Failed to toggle startup: {e}")
+
+    def _export_backup(self):
+        f, _ = QFileDialog.getSaveFileName(self, "Export ShellSense Backup", "shellsense_backup.json", "JSON Files (*.json)")
+        if not f:
+            return
+        import json
+        from shellsense.core.db import DatabaseManager
+        db = DatabaseManager.get_instance()
+        payload = {
+            "version": "1.0",
+            "vault_passwords": db.get_vault_passwords(),
+            "file_shortcuts": db.get_file_shortcuts(),
+            "terminal_commands": db.get_terminal_commands()
+        }
+        try:
+            with open(f, "w", encoding="utf-8") as fp:
+                json.dump(payload, fp, indent=4)
+            self._notify_parent(f"💾 Backup successfully exported to {os.path.basename(f)}!")
+        except Exception as e:
+            self._notify_parent(f"❌ Error exporting backup: {e}")
+
+    def _import_backup(self):
+        f, _ = QFileDialog.getOpenFileName(self, "Import ShellSense Backup", "", "JSON Files (*.json)")
+        if not f:
+            return
+        import json
+        from shellsense.core.db import DatabaseManager
+        db = DatabaseManager.get_instance()
+        try:
+            with open(f, "r", encoding="utf-8") as fp:
+                payload = json.load(fp)
+            
+            imported_count = 0
+            for item in payload.get("vault_passwords", []):
+                k = item.get("key_name")
+                v = item.get("encrypted_value")
+                if k and v:
+                    db.save_entry("vault", k, v)
+                    imported_count += 1
+
+            for item in payload.get("file_shortcuts", []):
+                k = item.get("shortcut_name")
+                v = item.get("file_path")
+                if k and v:
+                    db.save_entry("file", k, v)
+                    imported_count += 1
+
+            for item in payload.get("terminal_commands", []):
+                k = item.get("command_name")
+                v = item.get("command_string")
+                if k and v:
+                    db.save_entry("command", k, v)
+                    imported_count += 1
+
+            self.refresh_all()
+            self._notify_parent(f"📥 Successfully imported {imported_count} records from backup!")
+        except Exception as e:
+            self._notify_parent(f"❌ Error importing backup: {e}")
 
     def _notify_parent(self, text: str):
         parent = self.parent()
@@ -1369,4 +1890,5 @@ class ViewerTabWidget(QTabWidget):
                 color: #ffffff;
             }
         """
+
 
