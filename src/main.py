@@ -28,9 +28,10 @@ if __name__ == '__main__':
     sys.stdout = log_file
     sys.stderr = log_file
 
-    # Start the web server in a background thread
-    server_thread = threading.Thread(target=start_server, daemon=True)
-    server_thread.start()
+    # Start the web server only if explicitly requested via --web flag
+    if "--web" in sys.argv or os.environ.get("SHELLSENSE_ENABLE_WEB") == "1":
+        server_thread = threading.Thread(target=start_server, daemon=True)
+        server_thread.start()
 
     # Start the PyQt UI
     run_ui()

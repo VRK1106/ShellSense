@@ -596,8 +596,8 @@ class ShellSenseUI(QWidget):
         self.viewer_tabs.setVisible(is_visible)
         if is_visible:
             self.viewer_tabs.refresh_all()
-            self.setFixedSize(680, 440)
-            self.viewer_tabs.setFixedHeight(300)
+            self.setFixedSize(680, 480)
+            self.viewer_tabs.setFixedHeight(340)
         else:
             self.setFixedSize(620, 84)
         self.center_on_screen()
@@ -1031,11 +1031,8 @@ class ShellSenseUI(QWidget):
         show_action = QAction("Show ShellSense (Ctrl+Shift+Space)", self)
         show_action.triggered.connect(self.toggle_visibility)
         
-        web_action = QAction("Open Web Interface", self)
-        web_action.triggered.connect(lambda: webbrowser.open("http://localhost:8000"))
-        
-        viewer_action = QAction("Storage Viewer Tabs", self)
-        viewer_action.triggered.connect(self.open_storage_viewer)
+        hub_action = QAction("Open ShellSense Hub (Records & Settings)", self)
+        hub_action.triggered.connect(self.open_storage_viewer)
 
         repair_action = QAction("Repair Hotkey", self)
         repair_action.triggered.connect(lambda: self.refresh_hotkey(force=True))
@@ -1044,8 +1041,7 @@ class ShellSenseUI(QWidget):
         quit_action.triggered.connect(QApplication.quit)
         
         tray_menu.addAction(show_action)
-        tray_menu.addAction(viewer_action)
-        tray_menu.addAction(web_action)
+        tray_menu.addAction(hub_action)
         tray_menu.addAction(repair_action)
         tray_menu.addSeparator()
         tray_menu.addAction(quit_action)
@@ -1056,11 +1052,11 @@ class ShellSenseUI(QWidget):
         self.tray_icon.activated.connect(self.on_tray_activated)
 
     def open_storage_viewer(self):
-        """Opens the desktop SQLite storage viewer tabs dialog."""
+        """Opens the desktop SQLite Command & Storage Hub tabs dialog."""
         if not hasattr(self, '_storage_viewer_dialog') or self._storage_viewer_dialog is None:
             self._storage_viewer_dialog = QDialog()
-            self._storage_viewer_dialog.setWindowTitle("ShellSense Storage Viewer")
-            self._storage_viewer_dialog.resize(800, 520)
+            self._storage_viewer_dialog.setWindowTitle("ShellSense Hub — Storage & Preferences")
+            self._storage_viewer_dialog.resize(860, 560)
             self._storage_viewer_dialog.setStyleSheet("""
                 QDialog {
                     background-color: #0f1118;
@@ -1204,7 +1200,7 @@ class ShellSenseUI(QWidget):
         self.viewer_tabs = ViewerTabWidget(self.container)
         self.viewer_tabs.wire_to_bar(self.search_bar)
         self.viewer_tabs.setVisible(False)
-        self.viewer_tabs.setFixedHeight(300)
+        self.viewer_tabs.setFixedHeight(340)
         container_layout.addWidget(self.viewer_tabs)
         
         # Build interactive Timer form widget

@@ -12,6 +12,7 @@ if __name__ == '__main__':
     import multiprocessing
     
     multiprocessing.freeze_support()
-    server_thread = threading.Thread(target=start_server, daemon=True)
-    server_thread.start()
+    if "--web" in sys.argv:
+        server_thread = threading.Thread(target=start_server, daemon=True)
+        server_thread.start()
     run_ui()
