@@ -31,8 +31,16 @@ INTENT_METADATA = {
 }
 
 FALLBACK_SYNTAX_PATTERNS = [
-    (r"(?:find|search|locate)\s+(?:all\s+)?(\w+)\s+files?", r"Get-ChildItem -Recurse -Filter '*.\1'"),
-    (r"(?:kill|stop|terminate)\s+process\s+(\w+)", r"Stop-Process -Name '\1' -Force"),
+    (r"(?:restart|reboot)\s+wsl", r"wsl --shutdown; wsl"),
+    (r"(?:shutdown|stop)\s+wsl", r"wsl --shutdown"),
+    (r"(?:clean|clear|empty|delete)\s+(?:temp|temporary)\s*(?:files?)?", r"Remove-Item -Path \"$env:TEMP\\*\" -Recurse -Force -ErrorAction SilentlyContinue"),
+    (r"(?:empty|clear)\s+recycle\s*bin", r"Clear-RecycleBin -Force"),
+    (r"(?:list|show)\s+(?:running\s+)?services?", r"Get-Service | Where-Object {$_.Status -eq 'Running'}"),
+    (r"(?:restart|reload)\s+explorer", r"Stop-Process -Name explorer -Force; Start-Process explorer"),
+    (r"(?:docker\s+)?restart\s+all\s+containers?", r"docker restart $(docker ps -q)"),
+    (r"(?:docker\s+)?stop\s+all\s+containers?", r"docker stop $(docker ps -q)"),
+    (r"(?:git\s+)?pull\s+all", r"git pull --all"),
+    (r"(?:kill|stop|terminate)\s+(?:process\s+)?(\w+)(?:\.exe)?", r"Stop-Process -Name '\1' -Force"),
     (r"(?:kill|stop|terminate)\s+(?:pid\s+)?(\d+)", r"Stop-Process -Id \1 -Force"),
     (r"(?:ping|check\s+reachability\s+of)\s+([a-zA-Z0-9\.\-]+)", r"Test-Connection -TargetName \1 -Count 4"),
     (r"(?:list|show|check)\s+(?:open\s+)?ports?", r"netstat -ano | findstr LISTENING"),
@@ -278,8 +286,22 @@ class LocalModelService:
                 except Exception:
                     pass
 
-        # If user typed something that already looks like shell syntax (e.g. ping google.com, ls, dir)
-        if any(p_lower.startswith(x) for x in ["get-", "set-", "stop-", "start-", "ping", "dir", "ls", "netstat", "ipconfig"]):
+        # Check intent classification from BrainService
+        try:
+            if hasattr(self, 'brain') and self.brain and self.brain.is_healthy():
+                intent, prob = self.brain.predict(p_lower)
+                if intent and intent != "NEUTRAL" and prob >= 0.20:
+                    safe_cmd = SAFE_COMMANDS.get(intent)
+                    if safe_cmd:
+                        return " ".join(safe_cmd)
+                    meta = INTENT_METADATA.get(intent)
+                    if meta and meta.get("default_cmd"):
+                        return meta["default_cmd"]
+        except Exception:
+            pass
+
+        # If user typed something that already looks like shell syntax
+        if any(p_lower.startswith(x) for x in ["get-", "set-", "stop-", "start-", "ping", "dir", "ls", "netstat", "ipconfig", "wsl", "taskkill", "shutdown", "rundll32", "curl", "git", "docker", "ssh"]):
             return prompt
 
         return f"# Executable PowerShell: {prompt}"
