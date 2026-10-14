@@ -142,88 +142,90 @@ def evaluate_snippets(query: str):
     
     q = query.lower().strip()
     clean_q = re.sub(r'^(?:copy\s+my|paste\s+my|get\s+my|show\s+my|my|copy|paste|get)\s+', '', q).strip()
-    
-    def _normalize(text: str) -> str:
-        t = text.lower()
-        t = re.sub(r'^(?:copy\s+my|paste\s+my|get\s+my|show\s+my|my|copy|paste|get)\s+', '', t)
-        t = re.sub(r'\bsecond\b', 'secondary', t)
-        t = re.sub(r'\bfirst\b', 'primary', t)
-        t = re.sub(r'\b(pwd|pass)\b', 'password', t)
-        return re.sub(r'[^a-z0-9]', '', t)
-
-    norm_q = _normalize(clean_q)
-    if not norm_q:
+    if not clean_q:
         return False, None
-        
-    is_seeking_password = any(w in clean_q for w in ["password", "pwd", "pass", "secret", "pin"])
+
     raw_snippets = load_snippets()
-    
-    # Map normalized key -> (original key, value)
-    norm_snippets = {}
-    for k, v in raw_snippets.items():
-        norm_k = _normalize(k)
-        norm_snippets[norm_k] = (k, v)
-        
+    if not raw_snippets:
+        return False, None
+
     def _format_snippet_result(orig_key, val):
         if VaultService.is_encrypted(val):
             return True, f"Locked Snippet: {orig_key}|{val}"
         return True, f"Copied: {val}"
 
-    # If user explicitly asked for password/secret, prioritize protected/password snippets
-    active_candidates = norm_snippets
-    if is_seeking_password:
-        pw_candidates = {
-            k: (orig_k, v) for k, (orig_k, v) in norm_snippets.items()
-            if "password" in k or "pwd" in k or "secret" in k or "pin" in k or VaultService.is_encrypted(v)
-        }
-        if pw_candidates:
-            active_candidates = pw_candidates
+    # 1. Exact match check (case-insensitive & underscore-agnostic)
+    clean_cmp = clean_q.replace('_', ' ')
+    for orig_k, val in raw_snippets.items():
+        k_cmp = orig_k.lower().strip().replace('_', ' ')
+        if clean_cmp == k_cmp:
+            return _format_snippet_result(orig_k, val)
+
+    alias_map = {
+        'pwd': 'password', 'pass': 'password', 'passwd': 'password',
+        'first': 'primary', '1st': 'primary',
+        'second': 'secondary', '2nd': 'secondary',
+        'third': 'tertiary', '3rd': 'tertiary'
+    }
+
+    def tokenize(text):
+        words = re.findall(r'[a-z0-9]+', text.lower())
+        return [alias_map.get(w, w) for w in words]
+
+    q_tokens = tokenize(clean_q)
+    if not q_tokens:
+        return False, None
+
+    is_seeking_password = any(w in ('password', 'secret', 'pin') for w in q_tokens)
+
+    scored = []
+    for orig_k, val in raw_snippets.items():
+        k_tokens = tokenize(orig_k)
+        overlap = sum(1 for t in q_tokens if t in k_tokens)
+        if overlap == 0:
+            continue
+
+        precision = overlap / len(k_tokens) if k_tokens else 0
+        recall = overlap / len(q_tokens) if q_tokens else 0
+        score = (recall * 2.5) + precision
+
+        # Substring / exact token sequence bonus
+        if ' '.join(q_tokens) in ' '.join(k_tokens):
+            score += 2.0
+        elif ' '.join(k_tokens) in ' '.join(q_tokens):
+            score += 1.5
+
+        has_pwd = any(w in ('password', 'secret', 'pin') for w in k_tokens)
+        if is_seeking_password:
+            if has_pwd:
+                score += 3.0
+            else:
+                score -= 2.0
         else:
-            # User specifically asked for a password, but no password snippet exists
+            if has_pwd and 'password' not in q_tokens:
+                score -= 1.0
+
+        scored.append((score, orig_k, val))
+
+    if not scored:
+        if is_seeking_password:
             return True, f"Error: No password snippet found for '{clean_q}'."
+        return False, None
 
-    # 1. Exact match on normalized keys
-    if norm_q in active_candidates:
-        orig_key, val = active_candidates[norm_q]
-        return _format_snippet_result(orig_key, val)
-        
-    # 2. Substring match on normalized keys
-    matches = []
-    for norm_key in active_candidates:
-        if norm_q in norm_key or norm_key in norm_q:
-            matches.append(norm_key)
-            
-    if len(matches) == 1:
-        orig_key, val = active_candidates[matches[0]]
-        return _format_snippet_result(orig_key, val)
-    elif len(matches) > 1:
-        # Check if one is exact substring
-        exact_sub = [m for m in matches if norm_q == m]
-        if len(exact_sub) == 1:
-            orig_key, val = active_candidates[exact_sub[0]]
-            return _format_snippet_result(orig_key, val)
-            
-        keys_str = ", ".join(f"'{active_candidates[m][0]}'" for m in matches)
-        return True, f"Error: Multiple matches found ({keys_str}). Please be more specific."
-        
-    # 3. Fuzzy similarity match (for typos like "linkedin" -> "linkdin")
-    import difflib
-    best_match = None
-    highest_ratio = 0.0
-    for norm_key in active_candidates:
-        ratio = difflib.SequenceMatcher(None, norm_q, norm_key).ratio()
-        if ratio > highest_ratio:
-            highest_ratio = ratio
-            best_match = norm_key
-            
-    if highest_ratio >= 0.70 and best_match:
-        orig_key, val = active_candidates[best_match]
-        return _format_snippet_result(orig_key, val)
-            
-    if is_seeking_password:
-        return True, f"Error: No password snippet found matching '{clean_q}'."
+    scored.sort(key=lambda x: x[0], reverse=True)
+    top_score = scored[0][0]
 
-    return False, None
+    # If top match is clearly ahead of second place
+    if len(scored) == 1 or top_score >= scored[1][0] + 0.30:
+        return _format_snippet_result(scored[0][1], scored[0][2])
+
+    top_ties = [x for x in scored if x[0] >= top_score - 0.20]
+    if len(top_ties) == 1:
+        return _format_snippet_result(top_ties[0][1], top_ties[0][2])
+
+    items_html = ''.join([f"<br>• <b>{t[1]}</b>" for t in top_ties[:5]])
+    msg = f"<span style='color: #60a5fa;'>Multiple items match <b>'{clean_q}'</b>:</span>{items_html}<br><span style='color: #94a3b8; font-size: 11px;'>Please specify the exact name to unlock.</span>"
+    return True, msg
 
 def evaluate_math(query: str):
     """

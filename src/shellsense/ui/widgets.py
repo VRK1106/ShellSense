@@ -2,7 +2,7 @@ from enum import Enum, auto
 from PyQt6.QtWidgets import (
     QScrollArea, QLabel, QFrame, QLineEdit, QHBoxLayout, 
     QListWidget, QListWidgetItem, QSizePolicy, QFileDialog, QTabWidget,
-    QTableWidget, QTableWidgetItem, QHeaderView
+    QTableWidget, QTableWidgetItem, QHeaderView, QMenu, QApplication, QDialog
 )
 from PyQt6.QtCore import Qt, QPoint, QEvent, pyqtSignal, QThread, QTimer
 from PyQt6.QtGui import QMouseEvent, QKeyEvent, QColor
@@ -159,10 +159,10 @@ class TokenBadge(QLabel):
                 color: #93c5fd;
                 border: 1px solid rgba(59, 130, 246, 0.45);
                 border-radius: 6px;
-                padding: 3px 8px;
+                padding: 3px 10px;
                 font-size: 12px;
                 font-weight: 600;
-                font-family: 'Segoe UI', 'Inter', -apple-system, sans-serif;
+                font-family: 'Segoe UI Variable Text', 'Segoe UI', 'Inter', -apple-system, sans-serif;
             }
             QLabel:hover {
                 background-color: rgba(59, 130, 246, 0.35);
@@ -191,10 +191,10 @@ class TokenizedLineEdit(QLineEdit):
                 background: transparent;
                 border: none;
                 color: #f8fafc;
-                font-size: 14px;
-                font-family: 'Segoe UI', 'Inter', -apple-system, sans-serif;
-                padding: 4px 2px;
-                selection-background-color: #3b82f6;
+                font-size: 15px;
+                font-family: 'Segoe UI Variable Text', 'Segoe UI', 'Inter', -apple-system, sans-serif;
+                padding: 4px 6px;
+                selection-background-color: rgba(59, 130, 246, 0.5);
             }
             QLineEdit:focus {
                 outline: none;
@@ -228,8 +228,11 @@ class TokenizedLineEdit(QLineEdit):
             self.bar.handle_backspace_on_empty()
             return
 
-        # 4. Map Escape to clear tokens and return the state to IDLE
+        # 4. Map Escape to dismiss floating dropdown first, or clear tokens/reset state
         if key == Qt.Key.Key_Escape:
+            if dropdown is not None and dropdown.isVisible():
+                dropdown.hide()
+                return
             self.bar.handle_escape_pressed()
             return
 
@@ -288,8 +291,13 @@ class TokenizedBar(QFrame):
         
         # Zero-margin horizontal layout for tight alignment without jitter
         self.main_layout = QHBoxLayout(self)
-        self.main_layout.setContentsMargins(8, 4, 8, 4)
-        self.main_layout.setSpacing(6)
+        self.main_layout.setContentsMargins(10, 4, 10, 4)
+        self.main_layout.setSpacing(8)
+
+        # Sleek search icon on the far left
+        self.search_icon = QLabel("🔍", self)
+        self.search_icon.setStyleSheet("color: rgba(255, 255, 255, 0.45); font-size: 13px; background: transparent; border: none;")
+        self.main_layout.addWidget(self.search_icon)
 
         # Dynamic tokens container on the left
         self.tokens_layout = QHBoxLayout()
@@ -305,17 +313,17 @@ class TokenizedBar(QFrame):
         # Connect text change to slash-trigger detection
         self.input_field.textChanged.connect(self._on_text_changed)
 
-        # Glassmorphism container styling
+        # Glassmorphism container styling - sleek, modern, unified with container
         self.setStyleSheet("""
             QFrame#TokenizedBar {
-                background-color: rgba(15, 23, 42, 0.85);
-                border: 1px solid rgba(255, 255, 255, 0.15);
+                background-color: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.10);
                 border-radius: 10px;
-                min-height: 38px;
+                min-height: 42px;
             }
             QFrame#TokenizedBar:focus-within {
-                border: 1px solid rgba(59, 130, 246, 0.8);
-                background-color: rgba(15, 23, 42, 0.95);
+                border: 1px solid rgba(59, 130, 246, 0.65);
+                background-color: rgba(255, 255, 255, 0.07);
             }
         """)
 
@@ -357,20 +365,18 @@ class TokenizedBar(QFrame):
 
         # 2. Non-prefixed natural language in IDLE -> Trigger QThread Intent Classifier
         if self.state == CommandState.IDLE:
-            if len(trimmed) >= 2 and not self._tokens:
+            if self._dropdown is not None and len(trimmed) >= 2 and not self._tokens:
                 self._inference_timer.start(80)
-            else:
-                if self._dropdown is not None:
-                    self._dropdown.hide()
+            elif self._dropdown is not None:
+                self._dropdown.hide()
             return
 
         # 3. Free-form command prompt in COMMAND_PROMPT -> Trigger QThread Syntax Generator
         if self.state == CommandState.COMMAND_PROMPT:
-            if len(trimmed) >= 3 and not ("=" in trimmed or ":" in trimmed):
+            if self._dropdown is not None and len(trimmed) >= 3 and not ("=" in trimmed or ":" in trimmed):
                 self._inference_timer.start(100)
-            else:
-                if self._dropdown is not None:
-                    self._dropdown.hide()
+            elif self._dropdown is not None:
+                self._dropdown.hide()
             return
 
     def _trigger_background_inference(self):
@@ -417,9 +423,33 @@ class TokenizedBar(QFrame):
                 self._dropdown.hide()
 
     def handle_candidate_selected(self, candidate: dict):
-        """Processes accepted smart suggestion (intent candidate or shell syntax)."""
+        """Processes accepted smart suggestion (intent candidate, direct eval, or shell syntax)."""
         cand_type = candidate.get("type")
-        if cand_type == "shell_syntax":
+        if cand_type == "locked_snippet":
+            # Protected snippet: DO NOT copy raw ciphertext, let interface prompt for Master Password
+            if self._dropdown is not None:
+                self._dropdown.hide()
+            self.intent_selected.emit(candidate)
+            return
+        elif cand_type == "direct_eval":
+            # Direct calculation / conversion / plain snippet: copy to clipboard & notify interface
+            res = candidate.get("result", candidate.get("command", ""))
+            try:
+                from PyQt6.QtWidgets import QApplication
+                clipboard = QApplication.clipboard()
+                if clipboard and res:
+                    clipboard.setText(str(res))
+            except Exception:
+                pass
+            if self._dropdown is not None:
+                self._dropdown.hide()
+            self.intent_selected.emit(candidate)
+        elif cand_type == "direct_action":
+            # Direct action (e.g. timers, download open)
+            if self._dropdown is not None:
+                self._dropdown.hide()
+            self.intent_selected.emit(candidate)
+        elif cand_type == "shell_syntax":
             # Populate line edit with verified shell command
             cmd = candidate.get("command", "")
             self.input_field.setText(cmd)
@@ -927,8 +957,10 @@ class ViewerTabWidget(QTabWidget):
     1. Vault Passwords (vault_passwords)
     2. File Shortcuts (file_shortcuts)
     3. Terminal Commands (terminal_commands)
-    Listens to entry_saved / entry_persisted signals and auto-refreshes tables.
+    Features double-click actions, context menus, clean headers, and auto-refresh.
     """
+    entry_deleted = pyqtSignal(str, str) # (category, key)
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.initUI()
@@ -939,82 +971,109 @@ class ViewerTabWidget(QTabWidget):
         self.setObjectName("ViewerTabWidget")
         self.setStyleSheet("""
             QTabWidget::pane {
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 8px;
-                background-color: rgba(15, 23, 42, 0.95);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 10px;
+                background-color: rgba(15, 17, 24, 0.95);
+            }
+            QTabBar {
+                qproperty-drawBase: 0;
+                border: none;
+                margin-bottom: 6px;
             }
             QTabBar::tab {
-                background: rgba(30, 41, 59, 0.8);
+                background: rgba(255, 255, 255, 0.04);
                 color: #94a3b8;
-                padding: 8px 16px;
-                border-top-left-radius: 6px;
-                border-top-right-radius: 6px;
-                margin-right: 2px;
-                font-family: 'Segoe UI', 'Inter', -apple-system, sans-serif;
+                padding: 7px 16px;
+                border-radius: 7px;
+                margin-right: 6px;
+                font-family: 'Segoe UI Variable Text', 'Segoe UI', -apple-system, sans-serif;
                 font-size: 12px;
                 font-weight: 600;
+                border: 1px solid transparent;
             }
             QTabBar::tab:selected {
-                background: rgba(59, 130, 246, 0.25);
-                color: #60a5fa;
-                border: 1px solid rgba(59, 130, 246, 0.5);
-                border-bottom: none;
+                background: rgba(59, 130, 246, 0.2);
+                color: #93c5fd;
+                border: 1px solid rgba(59, 130, 246, 0.45);
             }
             QTabBar::tab:hover:!selected {
-                background: rgba(51, 65, 85, 0.8);
-                color: #f1f5f9;
+                background: rgba(255, 255, 255, 0.08);
+                color: #f8fafc;
             }
             QTableWidget {
                 background-color: transparent;
-                gridline-color: rgba(255, 255, 255, 0.08);
-                color: #e2e8f0;
-                font-family: 'Segoe UI', 'Inter', -apple-system, sans-serif;
-                font-size: 12px;
                 border: none;
-                selection-background-color: rgba(59, 130, 246, 0.3);
+                color: #e2e8f0;
+                font-family: 'Segoe UI Variable Text', 'Segoe UI', -apple-system, sans-serif;
+                font-size: 12px;
+                selection-background-color: rgba(59, 130, 246, 0.25);
                 selection-color: #ffffff;
+                outline: none;
+            }
+            QTableWidget::item {
+                padding: 7px 10px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             }
             QHeaderView::section {
-                background-color: rgba(30, 41, 59, 0.9);
-                color: #93c5fd;
+                background-color: rgba(255, 255, 255, 0.03);
+                color: #64748b;
                 padding: 6px 10px;
                 border: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
                 font-weight: 600;
                 font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
             }
             QScrollBar:vertical {
                 background: transparent;
-                width: 6px;
-                margin: 0px;
+                width: 5px;
+                margin: 2px;
             }
             QScrollBar::handle:vertical {
-                background: rgba(255, 255, 255, 50);
-                border-radius: 3px;
+                background: rgba(255, 255, 255, 0.15);
+                border-radius: 2px;
                 min-height: 20px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: rgba(255, 255, 255, 0.3);
             }
         """)
 
         # Tab 1: Vault Passwords
-        self.vault_table = self._create_table(["ID", "Key Name", "Encrypted Secret", "Last Updated"])
+        self.vault_table = self._create_table(["Credential Name", "Protection Status", "Last Modified"])
+        self.vault_table.itemDoubleClicked.connect(self._on_vault_double_clicked)
+        self.vault_table.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        self.vault_table.customContextMenuRequested.connect(self._on_vault_context_menu)
         self.addTab(self.vault_table, "🔒 Vault Passwords")
 
         # Tab 2: File Shortcuts
-        self.shortcuts_table = self._create_table(["ID", "Shortcut Name", "File Path", "Last Updated"])
+        self.shortcuts_table = self._create_table(["Shortcut Name", "Target File / Folder", "Last Modified"])
+        self.shortcuts_table.itemDoubleClicked.connect(self._on_shortcut_double_clicked)
+        self.shortcuts_table.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        self.shortcuts_table.customContextMenuRequested.connect(self._on_shortcut_context_menu)
         self.addTab(self.shortcuts_table, "📁 File Shortcuts")
 
         # Tab 3: Terminal Commands
-        self.commands_table = self._create_table(["ID", "Command Name", "Command / Script", "Last Updated"])
+        self.commands_table = self._create_table(["Command Alias", "Shell Command", "Last Modified"])
+        self.commands_table.itemDoubleClicked.connect(self._on_command_double_clicked)
+        self.commands_table.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
+        self.commands_table.customContextMenuRequested.connect(self._on_command_context_menu)
         self.addTab(self.commands_table, "⚡ Terminal Commands")
 
     def _create_table(self, headers: list[str]) -> QTableWidget:
         table = QTableWidget(0, len(headers))
         table.setHorizontalHeaderLabels(headers)
-        table.horizontalHeader().setStretchLastSection(True)
-        table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
+        table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Interactive)
+        table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Interactive)
+        table.horizontalHeader().resizeSection(0, 180)
+        table.horizontalHeader().resizeSection(2, 130)
         table.verticalHeader().setVisible(False)
+        table.setShowGrid(False)
         table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        table.setSelectionMode(QTableWidget.SelectionMode.SingleSelection)
         table.setAlternatingRowColors(True)
         return table
 
@@ -1056,34 +1115,258 @@ class ViewerTabWidget(QTabWidget):
             from shellsense.core.db import DatabaseManager
             db = DatabaseManager.get_instance()
             rows = db.get_vault_passwords()
-            self._populate_table(self.vault_table, rows, ["id", "key_name", "encrypted_value", "updated_at"])
-        except Exception:
-            pass
+            self.vault_table.setRowCount(0)
+            if not rows:
+                self._set_empty_state(self.vault_table, "No credentials saved yet. Type /password to store a secret.")
+                return
+
+            for row_idx, item in enumerate(rows):
+                self.vault_table.insertRow(row_idx)
+                key_name = item.get("key_name", "")
+                enc_val = item.get("encrypted_value", "")
+                updated_at = str(item.get("updated_at", ""))[:16]
+
+                item_key = QTableWidgetItem(f"🔑 {key_name}")
+                item_key.setData(Qt.ItemDataRole.UserRole, {"key_name": key_name, "encrypted_value": enc_val})
+                item_key.setForeground(QColor("#f8fafc"))
+
+                item_status = QTableWidgetItem("🔒 Protected (Double-click to Unlock)")
+                item_status.setData(Qt.ItemDataRole.UserRole, {"key_name": key_name, "encrypted_value": enc_val})
+                item_status.setForeground(QColor("#93c5fd"))
+
+                item_date = QTableWidgetItem(updated_at)
+                item_date.setData(Qt.ItemDataRole.UserRole, {"key_name": key_name, "encrypted_value": enc_val})
+                item_date.setForeground(QColor("#64748b"))
+
+                self.vault_table.setItem(row_idx, 0, item_key)
+                self.vault_table.setItem(row_idx, 1, item_status)
+                self.vault_table.setItem(row_idx, 2, item_date)
+        except Exception as e:
+            logger.error(f"Error refreshing vault table: {e}")
 
     def refresh_shortcuts(self):
         try:
             from shellsense.core.db import DatabaseManager
             db = DatabaseManager.get_instance()
             rows = db.get_file_shortcuts()
-            self._populate_table(self.shortcuts_table, rows, ["id", "shortcut_name", "file_path", "updated_at"])
-        except Exception:
-            pass
+            self.shortcuts_table.setRowCount(0)
+            if not rows:
+                self._set_empty_state(self.shortcuts_table, "No file shortcuts saved yet. Type /file to link a path.")
+                return
+
+            for row_idx, item in enumerate(rows):
+                self.shortcuts_table.insertRow(row_idx)
+                sc_name = item.get("shortcut_name", "")
+                file_path = item.get("file_path", "")
+                updated_at = str(item.get("updated_at", ""))[:16]
+
+                item_name = QTableWidgetItem(f"📄 {sc_name}")
+                item_name.setData(Qt.ItemDataRole.UserRole, {"shortcut_name": sc_name, "file_path": file_path})
+                item_name.setForeground(QColor("#f8fafc"))
+
+                item_path = QTableWidgetItem(file_path)
+                item_path.setData(Qt.ItemDataRole.UserRole, {"shortcut_name": sc_name, "file_path": file_path})
+                item_path.setForeground(QColor("#94a3b8"))
+
+                item_date = QTableWidgetItem(updated_at)
+                item_date.setData(Qt.ItemDataRole.UserRole, {"shortcut_name": sc_name, "file_path": file_path})
+                item_date.setForeground(QColor("#64748b"))
+
+                self.shortcuts_table.setItem(row_idx, 0, item_name)
+                self.shortcuts_table.setItem(row_idx, 1, item_path)
+                self.shortcuts_table.setItem(row_idx, 2, item_date)
+        except Exception as e:
+            logger.error(f"Error refreshing shortcuts table: {e}")
 
     def refresh_commands(self):
         try:
             from shellsense.core.db import DatabaseManager
             db = DatabaseManager.get_instance()
             rows = db.get_terminal_commands()
-            self._populate_table(self.commands_table, rows, ["id", "command_name", "command_string", "updated_at"])
-        except Exception:
-            pass
+            self.commands_table.setRowCount(0)
+            if not rows:
+                self._set_empty_state(self.commands_table, "No custom commands saved yet. Type /command to register one.")
+                return
 
-    def _populate_table(self, table: QTableWidget, data: list[dict], keys: list[str]):
-        table.setRowCount(0)
-        for row_idx, item in enumerate(data):
-            table.insertRow(row_idx)
-            for col_idx, key in enumerate(keys):
-                val = str(item.get(key, ""))
-                cell = QTableWidgetItem(val)
-                table.setItem(row_idx, col_idx, cell)
+            for row_idx, item in enumerate(rows):
+                self.commands_table.insertRow(row_idx)
+                cmd_name = item.get("command_name", "")
+                cmd_str = item.get("command_string", "")
+                updated_at = str(item.get("updated_at", ""))[:16]
+
+                item_name = QTableWidgetItem(f"⚡ {cmd_name}")
+                item_name.setData(Qt.ItemDataRole.UserRole, {"command_name": cmd_name, "command_string": cmd_str})
+                item_name.setForeground(QColor("#f8fafc"))
+
+                item_cmd = QTableWidgetItem(cmd_str)
+                item_cmd.setData(Qt.ItemDataRole.UserRole, {"command_name": cmd_name, "command_string": cmd_str})
+                item_cmd.setForeground(QColor("#6ee7b7"))
+
+                item_date = QTableWidgetItem(updated_at)
+                item_date.setData(Qt.ItemDataRole.UserRole, {"command_name": cmd_name, "command_string": cmd_str})
+                item_date.setForeground(QColor("#64748b"))
+
+                self.commands_table.setItem(row_idx, 0, item_name)
+                self.commands_table.setItem(row_idx, 1, item_cmd)
+                self.commands_table.setItem(row_idx, 2, item_date)
+        except Exception as e:
+            logger.error(f"Error refreshing commands table: {e}")
+
+    def _set_empty_state(self, table: QTableWidget, message: str):
+        table.setRowCount(1)
+        item = QTableWidgetItem(f"ℹ️  {message}")
+        item.setFlags(Qt.ItemFlag.NoItemFlags)
+        item.setForeground(QColor("#64748b"))
+        table.setItem(0, 1, item)
+
+    def _get_row_data(self, table: QTableWidget, item: QTableWidgetItem) -> dict:
+        if not item:
+            return {}
+        data = item.data(Qt.ItemDataRole.UserRole)
+        if not data:
+            row = item.row()
+            first = table.item(row, 0)
+            data = first.data(Qt.ItemDataRole.UserRole) if first else {}
+        return data or {}
+
+    def _on_vault_double_clicked(self, item: QTableWidgetItem):
+        data = self._get_row_data(self.vault_table, item)
+        key_name = data.get("key_name")
+        enc_val = data.get("encrypted_value")
+        if not key_name or not enc_val:
+            return
+        from shellsense.ui.dialogs import VaultPasswordDialog
+        dialog = VaultPasswordDialog(key_name, enc_val, self)
+        if dialog.exec() == QDialog.DialogCode.Accepted and dialog.decrypted_text:
+            cb = QApplication.clipboard()
+            if cb:
+                cb.setText(dialog.decrypted_text)
+            self._notify_parent(f"🔓 Unlocked & copied '{key_name}' to clipboard!")
+
+    def _on_vault_context_menu(self, pos: QPoint):
+        item = self.vault_table.itemAt(pos)
+        data = self._get_row_data(self.vault_table, item)
+        key_name = data.get("key_name")
+        if not key_name:
+            return
+        menu = QMenu(self)
+        menu.setStyleSheet(self._menu_stylesheet())
+        act_unlock = menu.addAction("🔓 Unlock & Copy Password")
+        act_delete = menu.addAction("🗑️ Delete Credential")
+        chosen = menu.exec(self.vault_table.viewport().mapToGlobal(pos))
+        if chosen == act_unlock:
+            self._on_vault_double_clicked(item)
+        elif chosen == act_delete:
+            from shellsense.core.db import DatabaseManager
+            DatabaseManager.get_instance().delete_entry("vault", key_name)
+            self.refresh_vault()
+            self._notify_parent(f"🗑️ Deleted vault secret: {key_name}")
+
+    def _on_shortcut_double_clicked(self, item: QTableWidgetItem):
+        data = self._get_row_data(self.shortcuts_table, item)
+        file_path = data.get("file_path")
+        sc_name = data.get("shortcut_name", "file")
+        if not file_path:
+            return
+        import os
+        try:
+            if os.path.exists(file_path):
+                os.startfile(file_path)
+                self._notify_parent(f"📂 Opened file: {sc_name}")
+            else:
+                self._notify_parent(f"⚠️ Target file not found: {file_path}")
+        except Exception as e:
+            self._notify_parent(f"❌ Error opening file: {e}")
+
+    def _on_shortcut_context_menu(self, pos: QPoint):
+        item = self.shortcuts_table.itemAt(pos)
+        data = self._get_row_data(self.shortcuts_table, item)
+        file_path = data.get("file_path")
+        sc_name = data.get("shortcut_name")
+        if not file_path:
+            return
+        menu = QMenu(self)
+        menu.setStyleSheet(self._menu_stylesheet())
+        act_open = menu.addAction("📂 Open File / Folder")
+        act_copy = menu.addAction("📋 Copy Path to Clipboard")
+        act_delete = menu.addAction("🗑️ Delete Shortcut")
+        chosen = menu.exec(self.shortcuts_table.viewport().mapToGlobal(pos))
+        if chosen == act_open:
+            self._on_shortcut_double_clicked(item)
+        elif chosen == act_copy:
+            QApplication.clipboard().setText(file_path)
+            self._notify_parent(f"📋 Copied path for '{sc_name}'")
+        elif chosen == act_delete:
+            from shellsense.core.db import DatabaseManager
+            DatabaseManager.get_instance().delete_entry("file", sc_name)
+            self.refresh_shortcuts()
+            self._notify_parent(f"🗑️ Deleted shortcut: {sc_name}")
+
+    def _on_command_double_clicked(self, item: QTableWidgetItem):
+        data = self._get_row_data(self.commands_table, item)
+        cmd_str = data.get("command_string")
+        cmd_name = data.get("command_name", "Command")
+        if not cmd_str:
+            return
+        QApplication.clipboard().setText(cmd_str)
+        import subprocess
+        try:
+            subprocess.Popen(cmd_str, shell=True)
+            self._notify_parent(f"⚡ Executed: {cmd_str}")
+        except Exception as e:
+            self._notify_parent(f"❌ Execution error: {e}")
+
+    def _on_command_context_menu(self, pos: QPoint):
+        item = self.commands_table.itemAt(pos)
+        data = self._get_row_data(self.commands_table, item)
+        cmd_str = data.get("command_string")
+        cmd_name = data.get("command_name")
+        if not cmd_str:
+            return
+        menu = QMenu(self)
+        menu.setStyleSheet(self._menu_stylesheet())
+        act_run = menu.addAction("⚡ Run Command")
+        act_copy = menu.addAction("📋 Copy Command to Clipboard")
+        act_delete = menu.addAction("🗑️ Delete Command")
+        chosen = menu.exec(self.commands_table.viewport().mapToGlobal(pos))
+        if chosen == act_run:
+            self._on_command_double_clicked(item)
+        elif chosen == act_copy:
+            QApplication.clipboard().setText(cmd_str)
+            self._notify_parent(f"📋 Copied command '{cmd_name}'")
+        elif chosen == act_delete:
+            from shellsense.core.db import DatabaseManager
+            DatabaseManager.get_instance().delete_entry("command", cmd_name)
+            self.refresh_commands()
+            self._notify_parent(f"🗑️ Deleted command: {cmd_name}")
+
+    def _notify_parent(self, text: str):
+        parent = self.parent()
+        while parent:
+            if hasattr(parent, 'show_result_message'):
+                parent.show_result_message(text, show_actions=True, auto_hide=False)
+                return
+            parent = parent.parent()
+
+    def _menu_stylesheet(self) -> str:
+        return """
+            QMenu {
+                background-color: rgba(20, 24, 33, 0.98);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 8px;
+                padding: 4px;
+            }
+            QMenu::item {
+                background-color: transparent;
+                padding: 6px 18px;
+                color: #e2e8f0;
+                font-family: 'Segoe UI Variable Text', 'Segoe UI', sans-serif;
+                font-size: 12px;
+                border-radius: 4px;
+            }
+            QMenu::item:selected {
+                background-color: rgba(59, 130, 246, 0.35);
+                color: #ffffff;
+            }
+        """
 

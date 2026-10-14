@@ -73,13 +73,66 @@ class LocalModelService:
         if len(cleaned) < 2:
             return []
 
+        # 1. Deterministic Multi-Engine Evaluation (Math, Conversions, Downloads, Timers, Snippets)
+        direct_matches = []
+        try:
+            from shellsense.services.math_parser import evaluate_math
+            is_match, match_res = evaluate_math(cleaned)
+            if is_match and match_res:
+                res_str = str(match_res).strip()
+                if not any(k in res_str for k in ("Active Windows Startup", "Available Functions")):
+                    if res_str.startswith("Locked Snippet: "):
+                        data = res_str[16:]
+                        orig_key, enc_val = data.split("|", 1) if "|" in data else (data, "")
+                        direct_matches.append({
+                            "type": "locked_snippet",
+                            "intent": "LOCKED_SNIPPET",
+                            "title": f"Unlock {orig_key}",
+                            "icon": "🔒",
+                            "key_name": orig_key,
+                            "enc_val": enc_val,
+                            "command": cleaned,
+                            "result": res_str,
+                            "confidence": 1.0,
+                            "label": f"🔒 Protected Snippet: {orig_key} (Master Password Required)"
+                        })
+                    else:
+                        icon = "🧮"
+                        intent_type = "direct_eval"
+                        title = res_str
+                        if any(c in res_str.lower() for c in ("inr", "usd", "eur", "gbp", "km", "miles", "celsius", "fahrenheit", "kg", "lbs", "cm", "meter", "foot", "inch", "yard")):
+                            icon = "💱"
+                        elif "timer" in cleaned or "remind" in cleaned:
+                            icon = "⏱️"
+                            intent_type = "direct_action"
+                        elif "download" in cleaned or "file" in cleaned or "\\" in res_str or "/" in res_str:
+                            icon = "📂"
+                            intent_type = "direct_action"
+                        elif "copied" in res_str.lower() or "snippet" in res_str.lower():
+                            icon = "📋"
+
+                        label = f"{icon} {res_str}"
+                        direct_matches.append({
+                            "type": intent_type,
+                            "intent": "DIRECT_RESULT",
+                            "title": title,
+                            "icon": icon,
+                            "command": cleaned,
+                            "result": res_str,
+                            "confidence": 1.0,
+                            "label": label
+                        })
+        except Exception as e:
+            logger.debug(f"Direct feature eval error: {e}")
+
         # Ensure brain model thread has finished loading before classifying
         if not self.brain.is_healthy() and hasattr(self.brain, '_load_thread') and self.brain._load_thread.is_alive():
             self.brain._load_thread.join(timeout=2.0)
 
         if not self.brain.is_healthy():
             # Allow fallback if model is still loading or unavailable
-            return self._heuristic_intent_search(cleaned, top_k)
+            fallback_res = self._heuristic_intent_search(cleaned, top_k)
+            return direct_matches + [r for r in fallback_res if r.get('intent') != 'OPEN_CALCULATOR'] if direct_matches else fallback_res
 
         try:
             import numpy as np
@@ -124,11 +177,16 @@ class LocalModelService:
                 if len(results) >= top_k:
                     break
 
+            if direct_matches:
+                filtered_ml = [r for r in results if r.get('intent') != 'OPEN_CALCULATOR']
+                return direct_matches + filtered_ml[:max(1, top_k - len(direct_matches))]
+
             return results
 
         except Exception as e:
             logger.error(f"Error classifying intent for '{query}': {e}")
-            return self._heuristic_intent_search(cleaned, top_k)
+            fallback_res = self._heuristic_intent_search(cleaned, top_k)
+            return direct_matches + fallback_res if direct_matches else fallback_res
 
     def _heuristic_intent_search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
         results = []

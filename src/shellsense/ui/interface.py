@@ -536,6 +536,8 @@ class ShellSenseUI(QWidget):
     def show_result_message(self, text, show_actions=True, auto_hide=False):
         self.result_label.setText(text)
         self.result_label.setVisible(True)
+        if hasattr(self, 'divider'):
+            self.divider.setVisible(True)
         
         # Store output for feedback (strip HTML tags)
         import re
@@ -547,9 +549,9 @@ class ShellSenseUI(QWidget):
         if hasattr(self, 'result_actions_widget'):
             self.result_actions_widget.setVisible(show_actions)
         if show_actions:
-            self.setFixedSize(600, 220)
+            self.setFixedSize(620, 220)
         else:
-            self.setFixedSize(600, 160)
+            self.setFixedSize(620, 160)
         self.center_on_screen()
         if hasattr(self, 'search_bar'):
             self.search_bar.blockSignals(True)
@@ -594,9 +596,10 @@ class ShellSenseUI(QWidget):
         self.viewer_tabs.setVisible(is_visible)
         if is_visible:
             self.viewer_tabs.refresh_all()
-            self.setFixedSize(600, 360)
+            self.setFixedSize(680, 440)
+            self.viewer_tabs.setFixedHeight(300)
         else:
-            self.setFixedSize(600, 88)
+            self.setFixedSize(620, 84)
         self.center_on_screen()
 
     def _on_command_bar_collected(self, payload: dict):
@@ -621,6 +624,40 @@ class ShellSenseUI(QWidget):
                 self.viewer_tabs.refresh_all()
 
     def _on_intent_selected(self, candidate: dict):
+        cand_type = candidate.get("type")
+        if cand_type == "locked_snippet":
+            key_name = candidate.get("key_name", "")
+            enc_val = candidate.get("enc_val", "")
+            dialog = VaultPasswordDialog(key_name, enc_val, self)
+            if dialog.exec() == QDialog.DialogCode.Accepted and dialog.decrypted_text:
+                try:
+                    clipboard = QApplication.clipboard()
+                    if clipboard:
+                        clipboard.setText(dialog.decrypted_text)
+                except Exception:
+                    pass
+                self.show_result_message(f"🔓 Unlocked & copied '{key_name}' to clipboard!", show_actions=True, auto_hide=False)
+            else:
+                self.show_result_message("<span style='color: #ef4444;'>🔒 Access Denied: Incorrect or cancelled password prompt.</span>", show_actions=True, auto_hide=False)
+            return
+        elif cand_type == "direct_eval":
+            res = candidate.get("result", "")
+            self.last_math_result = res
+            self.last_query = candidate.get("command", "")
+            self.last_category = "Calculation / Conversion"
+            self.last_output = res
+            self.show_result_message(f"✅ Copied to clipboard: <b>{res}</b>", show_actions=True, auto_hide=False)
+            return
+        elif cand_type == "direct_action":
+            # Direct action (timers, file downloads) - route into process_command
+            cmd = candidate.get("command", "")
+            if hasattr(self, 'search_bar'):
+                self.search_bar.blockSignals(True)
+                self.search_bar.setText(cmd)
+                self.search_bar.blockSignals(False)
+            self.process_command()
+            return
+
         cmd = candidate.get("command", "")
         title = candidate.get("title", "")
         self.show_result_message(f"⚡ Ready to execute: <code>{cmd}</code> (Press Enter to run)", show_actions=True, auto_hide=False)
@@ -793,7 +830,7 @@ class ShellSenseUI(QWidget):
             if hasattr(self, 'rating_buttons'):
                 for btn in self.rating_buttons:
                     btn.setChecked(False)
-        self.setFixedSize(600, 88)
+        self.setFixedSize(620, 84)
         self.search_bar.clear()
         self.hide()
 
@@ -1023,9 +1060,14 @@ class ShellSenseUI(QWidget):
         if not hasattr(self, '_storage_viewer_dialog') or self._storage_viewer_dialog is None:
             self._storage_viewer_dialog = QDialog()
             self._storage_viewer_dialog.setWindowTitle("ShellSense Storage Viewer")
-            self._storage_viewer_dialog.resize(750, 480)
+            self._storage_viewer_dialog.resize(800, 520)
+            self._storage_viewer_dialog.setStyleSheet("""
+                QDialog {
+                    background-color: #0f1118;
+                }
+            """)
             dialog_layout = QVBoxLayout(self._storage_viewer_dialog)
-            dialog_layout.setContentsMargins(10, 10, 10, 10)
+            dialog_layout.setContentsMargins(14, 14, 14, 14)
             self.storage_viewer_widget = ViewerTabWidget(self._storage_viewer_dialog)
             dialog_layout.addWidget(self.storage_viewer_widget)
         self.storage_viewer_widget.refresh_all()
@@ -1055,21 +1097,21 @@ class ShellSenseUI(QWidget):
         self.container.setObjectName("CentralContainer")
         self.container.setStyleSheet("""
             QFrame#CentralContainer {
-                background-color: rgba(20, 20, 25, 220);
-                border: 1px solid rgba(255, 255, 255, 35);
-                border-radius: 12px;
+                background-color: rgba(18, 20, 28, 0.96);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 14px;
             }
         """)
         main_layout.addWidget(self.container)
         
         container_layout = QVBoxLayout(self.container)
-        container_layout.setContentsMargins(16, 16, 16, 16)
-        container_layout.setSpacing(12)
+        container_layout.setContentsMargins(14, 14, 14, 14)
+        container_layout.setSpacing(10)
         
-        # 3. Modern TokenizedBar & Floating SuggestionsDropdown
+        # 3. Modern Minimalist TokenizedBar (Clean, distraction-free single-stage entry)
         self.search_bar = TokenizedBar(self.container)
-        self.search_bar.setFixedHeight(48)
-        self.suggestions_dropdown = SuggestionsDropdown(target_bar=self.search_bar, parent=self)
+        self.search_bar.setFixedHeight(46)
+        self.suggestions_dropdown = None
         self.search_bar.returnPressed.connect(self.process_command)
         self.search_bar.textChanged.connect(self.on_text_changed)
         self.search_bar.command_collected.connect(self._on_command_bar_collected)
@@ -1114,21 +1156,26 @@ class ShellSenseUI(QWidget):
                 border: none;
             }
             QPushButton {
-                background-color: rgba(255, 255, 255, 20);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 6px;
-                color: white;
-                font-size: 13px;
+                background-color: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.10);
+                border-radius: 7px;
+                color: #e2e8f0;
+                font-size: 12px;
                 font-weight: 500;
-                padding: 6px 12px;
-                font-family: 'Segoe UI', sans-serif;
+                padding: 6px 14px;
+                font-family: 'Segoe UI Variable Text', 'Segoe UI', -apple-system, sans-serif;
                 min-width: 90px;
             }
             QPushButton:hover {
-                background-color: rgba(255, 255, 255, 35);
+                background-color: rgba(59, 130, 246, 0.22);
+                border-color: rgba(59, 130, 246, 0.45);
+                color: #ffffff;
+            }
+            QPushButton:pressed {
+                background-color: rgba(59, 130, 246, 0.35);
             }
             QPushButton:focus {
-                border: 1px solid rgba(255, 255, 255, 0.4);
+                border: 1px solid rgba(59, 130, 246, 0.5);
                 outline: none;
             }
         """)
@@ -1157,7 +1204,7 @@ class ShellSenseUI(QWidget):
         self.viewer_tabs = ViewerTabWidget(self.container)
         self.viewer_tabs.wire_to_bar(self.search_bar)
         self.viewer_tabs.setVisible(False)
-        self.viewer_tabs.setFixedHeight(220)
+        self.viewer_tabs.setFixedHeight(300)
         container_layout.addWidget(self.viewer_tabs)
         
         # Build interactive Timer form widget
@@ -1845,9 +1892,15 @@ class ShellSenseUI(QWidget):
     def on_text_changed(self):
         # Reset math results, clear error states, and collapse UI if the search query is modified
         self.last_math_result = None
-        if self.result_label.isVisible():
+        if self.result_label.isVisible() or (hasattr(self, 'result_actions_widget') and self.result_actions_widget.isVisible()) or (hasattr(self, 'viewer_tabs') and self.viewer_tabs.isVisible()):
             self.result_label.setVisible(False)
-            self.setFixedSize(600, 88)
+            if hasattr(self, 'result_actions_widget'):
+                self.result_actions_widget.setVisible(False)
+            if hasattr(self, 'viewer_tabs'):
+                self.viewer_tabs.setVisible(False)
+            if hasattr(self, 'divider'):
+                self.divider.setVisible(False)
+            self.setFixedSize(620, 84)
             self.center_on_screen()
             
         # Collapse timer widget if search bar text is edited to something other than timer triggers
@@ -2097,7 +2150,15 @@ class ShellSenseUI(QWidget):
             if result.startswith("Error:"):
                 msg = f"<span style='color: #ff5252;'>{result}</span>"
             else:
-                msg = f"Result: {result}"
+                clean_copy = result.split('(')[0].strip() if '(' in result else result.strip()
+                try:
+                    clipboard = QApplication.clipboard()
+                    if clipboard:
+                        clipboard.setText(clean_copy)
+                    self.last_math_result = clean_copy
+                except Exception:
+                    pass
+                msg = f"<b>{result}</b> <span style='color: #4ade80;'>[Copied to clipboard]</span>"
             self.show_result_message(msg, show_actions=True, auto_hide=False)
             return
         
