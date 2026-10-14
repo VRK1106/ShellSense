@@ -314,17 +314,12 @@ class TokenizedBar(QFrame):
         # Connect text change to slash-trigger detection
         self.input_field.textChanged.connect(self._on_text_changed)
 
-        # Glassmorphism container styling - sleek, modern, unified with container
+        # Seamless spotlight styling - borderless and transparent so outer container is the single unified frame
         self.setStyleSheet("""
             QFrame#TokenizedBar {
-                background-color: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 255, 255, 0.10);
-                border-radius: 10px;
-                min-height: 42px;
-            }
-            QFrame#TokenizedBar:focus-within {
-                border: 1px solid rgba(59, 130, 246, 0.65);
-                background-color: rgba(255, 255, 255, 0.07);
+                background: transparent;
+                border: none;
+                min-height: 40px;
             }
         """)
 
@@ -1060,15 +1055,16 @@ class ViewerTabWidget(QFrame):
 
         self.search_filter = QLineEdit(self)
         self.search_filter.setPlaceholderText("🔍 Filter items in this tab...")
+        self.search_filter.setClearButtonEnabled(True)
         self.search_filter.setStyleSheet("""
             QLineEdit {
                 background: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 255, 255, 0.10);
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 border-radius: 7px;
                 color: #ffffff;
                 font-size: 12px;
-                padding: 5px 10px;
-                min-height: 20px;
+                padding: 5px 12px;
+                min-height: 22px;
             }
             QLineEdit:focus {
                 border-color: #3b82f6;
@@ -1081,17 +1077,16 @@ class ViewerTabWidget(QFrame):
         self.add_btn = QPushButton("+ Add Item", self)
         self.add_btn.setStyleSheet("""
             QPushButton {
-                background-color: rgba(59, 130, 246, 0.22);
-                border: 1px solid rgba(59, 130, 246, 0.5);
+                background-color: #2563eb;
+                border: none;
                 border-radius: 7px;
-                color: #93c5fd;
+                color: #ffffff;
                 font-size: 12px;
                 font-weight: 600;
                 padding: 5px 14px;
             }
             QPushButton:hover {
-                background-color: rgba(59, 130, 246, 0.38);
-                color: #ffffff;
+                background-color: #1d4ed8;
             }
         """)
         self.add_btn.clicked.connect(self._on_add_clicked)
@@ -1101,7 +1096,7 @@ class ViewerTabWidget(QFrame):
         self.edit_btn.setStyleSheet("""
             QPushButton {
                 background-color: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 255, 255, 0.10);
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 border-radius: 7px;
                 color: #cbd5e1;
                 font-size: 12px;
@@ -1120,7 +1115,7 @@ class ViewerTabWidget(QFrame):
         self.del_btn.setStyleSheet("""
             QPushButton {
                 background-color: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 255, 255, 0.10);
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 border-radius: 7px;
                 color: #cbd5e1;
                 font-size: 12px;
@@ -1141,7 +1136,7 @@ class ViewerTabWidget(QFrame):
         self.refresh_btn.setStyleSheet("""
             QPushButton {
                 background-color: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 255, 255, 0.10);
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 border-radius: 7px;
                 color: #94a3b8;
                 font-size: 12px;
@@ -1198,12 +1193,14 @@ class ViewerTabWidget(QFrame):
     def _create_table(self, headers: list[str]) -> QTableWidget:
         table = QTableWidget(0, len(headers))
         table.setHorizontalHeaderLabels(headers)
-        table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeMode.Interactive)
-        table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
-        table.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Interactive)
-        table.horizontalHeader().resizeSection(0, 180)
-        table.horizontalHeader().resizeSection(2, 130)
+        hdr = table.horizontalHeader()
+        hdr.setSectionResizeMode(0, QHeaderView.ResizeMode.Interactive)
+        hdr.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        hdr.setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
+        hdr.resizeSection(0, 200)
+        hdr.setMinimumSectionSize(110)
         table.verticalHeader().setVisible(False)
+        table.verticalHeader().setDefaultSectionSize(36)
         table.setShowGrid(False)
         table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
@@ -1630,11 +1627,14 @@ class ViewerTabWidget(QFrame):
             logger.error(f"Error refreshing commands table: {e}")
 
     def _set_empty_state(self, table: QTableWidget, message: str):
+        table.clearSpans()
         table.setRowCount(1)
         item = QTableWidgetItem(f"ℹ️  {message}")
+        item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
         item.setFlags(Qt.ItemFlag.NoItemFlags)
         item.setForeground(QColor("#64748b"))
-        table.setItem(0, 1, item)
+        table.setSpan(0, 0, 1, table.columnCount())
+        table.setItem(0, 0, item)
 
     def _get_row_data(self, table: QTableWidget, item: QTableWidgetItem) -> dict:
         if not item:

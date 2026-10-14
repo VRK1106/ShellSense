@@ -596,10 +596,10 @@ class ShellSenseUI(QWidget):
         self.viewer_tabs.setVisible(is_visible)
         if is_visible:
             self.viewer_tabs.refresh_all()
-            self.setFixedSize(680, 480)
+            self.setFixedSize(700, 480)
             self.viewer_tabs.setFixedHeight(340)
         else:
-            self.setFixedSize(620, 84)
+            self.setFixedSize(620, 60)
         self.center_on_screen()
 
     def _on_command_bar_collected(self, payload: dict):
@@ -1067,6 +1067,13 @@ class ShellSenseUI(QWidget):
             self.storage_viewer_widget = ViewerTabWidget(self._storage_viewer_dialog)
             dialog_layout.addWidget(self.storage_viewer_widget)
         self.storage_viewer_widget.refresh_all()
+        # Explicit screen centering
+        screen = QApplication.primaryScreen()
+        if screen:
+            geom = screen.availableGeometry()
+            x = (geom.width() - self._storage_viewer_dialog.width()) // 2
+            y = (geom.height() - self._storage_viewer_dialog.height()) // 2
+            self._storage_viewer_dialog.move(x, y)
         self._storage_viewer_dialog.show()
         self._storage_viewer_dialog.raise_()
         self._storage_viewer_dialog.activateWindow()
@@ -1093,20 +1100,24 @@ class ShellSenseUI(QWidget):
         self.container.setObjectName("CentralContainer")
         self.container.setStyleSheet("""
             QFrame#CentralContainer {
-                background-color: rgba(18, 20, 28, 0.96);
+                background-color: rgba(18, 20, 28, 0.98);
                 border: 1px solid rgba(255, 255, 255, 0.12);
-                border-radius: 14px;
+                border-radius: 12px;
+            }
+            QFrame#CentralContainer:focus-within {
+                border: 1px solid rgba(59, 130, 246, 0.70);
+                background-color: rgba(20, 24, 34, 0.99);
             }
         """)
         main_layout.addWidget(self.container)
         
         container_layout = QVBoxLayout(self.container)
-        container_layout.setContentsMargins(14, 14, 14, 14)
-        container_layout.setSpacing(10)
+        container_layout.setContentsMargins(12, 6, 12, 6)
+        container_layout.setSpacing(6)
         
         # 3. Modern Minimalist TokenizedBar (Clean, distraction-free single-stage entry)
         self.search_bar = TokenizedBar(self.container)
-        self.search_bar.setFixedHeight(46)
+        self.search_bar.setFixedHeight(44)
         self.suggestions_dropdown = None
         self.search_bar.returnPressed.connect(self.process_command)
         self.search_bar.textChanged.connect(self.on_text_changed)
@@ -1873,7 +1884,7 @@ class ShellSenseUI(QWidget):
         self.fade_animation = QPropertyAnimation(self.opacity_effect, b"opacity")
         self.fade_animation.setDuration(150)
         
-        self.setFixedSize(600, 88)
+        self.setFixedSize(620, 60)
         self.center_on_screen()
 
     def center_on_screen(self):
@@ -1896,7 +1907,7 @@ class ShellSenseUI(QWidget):
                 self.viewer_tabs.setVisible(False)
             if hasattr(self, 'divider'):
                 self.divider.setVisible(False)
-            self.setFixedSize(620, 84)
+            self.setFixedSize(620, 60)
             self.center_on_screen()
             
         # Collapse timer widget if search bar text is edited to something other than timer triggers
